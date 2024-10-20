@@ -1,0 +1,17 @@
+{
+    "name": "UI.PlayerList",
+    "rootNamespace": "UI",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:466ba4bee7f3ce546b61b2649f8d7bbd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

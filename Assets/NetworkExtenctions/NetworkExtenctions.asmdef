@@ -1,0 +1,20 @@
+{
+    "name": "NetworkExtenctions",
+    "rootNamespace": "Unity.Netcode.Custom",
+    "references": [
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:3b8ed52f1b5c64994af4c4e0aa4b6c4b",
+        "GUID:3dead85be7f2971488464f57ea6d0186",
+        "GUID:febaf25a60dafbd44941357b21678606"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
