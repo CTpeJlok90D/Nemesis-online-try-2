@@ -11,30 +11,30 @@ namespace Core.Players
         private const string NICKNAME_FORMAT = "Player: {0}";
 #endif
 
-        [SerializeField] private string _nickname;
+        [SerializeField] private string _value;
         private NetworkVariable<FixedString64Bytes> _networkNickname = new(writePerm:NetworkVariableWritePermission.Owner);
 
         public event Action<string> Changed;
         
-        public string Nickname
+        public string Value
         {
-            get => _nickname;
+            get => _value;
             set
             {
 #if UNITY_EDITOR
                 gameObject.name = string.Format(NICKNAME_FORMAT, value);
 #endif
                 _networkNickname.Value = new FixedString64Bytes(value);
-                _nickname = value;
+                _value = value;
             }
         }
 
         private void Start()
         {
-            _nickname = _networkNickname.Value.ToString();
-            Changed?.Invoke(_nickname);
+            _value = _networkNickname.Value.ToString();
+            Changed?.Invoke(_value);
 #if UNITY_EDITOR
-            gameObject.name = string.Format(NICKNAME_FORMAT, _nickname);
+            gameObject.name = string.Format(NICKNAME_FORMAT, _value);
 #endif
         }
 
@@ -45,10 +45,10 @@ namespace Core.Players
 
         private void OnNicknameChange(FixedString64Bytes oldNickname, FixedString64Bytes newNickname) 
         {
-            _nickname = newNickname.ToString();
-            Changed?.Invoke(_nickname);
+            _value = newNickname.ToString();
+            Changed?.Invoke(_value);
 #if UNITY_EDITOR
-            gameObject.name = string.Format(NICKNAME_FORMAT, _nickname);
+            gameObject.name = string.Format(NICKNAME_FORMAT, _value);
 #endif
         }
     }

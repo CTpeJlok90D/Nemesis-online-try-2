@@ -7,12 +7,17 @@ namespace Core.Players
     public class Player : NetworkBehaviour
     {
         private static List<Player> _list = new();
+        
         public static Player Local { get; private set; }
+
         public static IReadOnlyList<Player> List => _list;
 
         public static event Action<Player> LocalPlayerSpawned;
+
         public static event Action<Player> LocalPlayerDespawned;
+
         public static event Action<Player> Join;
+
         public static event Action<Player> Left;
 
         public bool IsLocal => this == Local;

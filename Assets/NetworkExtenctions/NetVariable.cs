@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace Unity.Netcode.Custom
 {
-    [Serializable]
     public class NetVariable<T> : NetworkVariable<T>
     {
-        public event OnValueChangedDelegate ValueChanged;
+        public event OnValueChangedDelegate Changed;
 
         public NetVariable() : base()
         {
@@ -25,7 +24,7 @@ namespace Unity.Netcode.Custom
         {
             try
             {
-                ValueChanged?.Invoke(previousValue, newValue);
+                Changed?.Invoke(previousValue, newValue);
             }
             catch (Exception e) 
             {

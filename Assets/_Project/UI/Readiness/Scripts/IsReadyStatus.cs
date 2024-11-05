@@ -16,7 +16,7 @@ namespace UI.Readiness
             base.OnDisable();
             if (_playerPrepearing != null)
             {
-                _playerPrepearing.IsReady.ValueChanged -= OnReadyChange;
+                _playerPrepearing.IsReady.Changed -= OnReadyChange;
             }
         }
 
@@ -24,14 +24,14 @@ namespace UI.Readiness
         {
             if (_playerPrepearing != null)
             {
-                _playerPrepearing.IsReady.ValueChanged -= OnReadyChange;
+                _playerPrepearing.IsReady.Changed -= OnReadyChange;
             }
 
             _playerPrepearing = player.GetComponent<Preparation>();
 
             if (_playerPrepearing != null)
             {
-                _playerPrepearing.IsReady.ValueChanged += OnReadyChange;
+                _playerPrepearing.IsReady.Changed += OnReadyChange;
 
                 ValidateStatus();
             }

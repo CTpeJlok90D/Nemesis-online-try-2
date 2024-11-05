@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be96e329caf718242957082259d70197, type: 3}
+  m_Name: Scientist
+  m_EditorClassIdentifier: 
+  <CharacterPawn>k__BackingField:
+    m_AssetGUID: 92bf65eaef573dc4ab795397a7ef1aab
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <CharacterAvatar>k__BackingField:
+    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+    m_SubObjectName: character-avatar-scientist
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  <CharacterBackground>k__BackingField:
+    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+    m_SubObjectName: character-backgrounds-scientist
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0

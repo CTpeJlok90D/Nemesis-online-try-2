@@ -27,7 +27,7 @@ namespace UI.Readiness
         private void OnClientStart()
         {
             _localPlayerPreparation = Player.Local.GetComponent<Preparation>();
-            _localPlayerPreparation.IsReady.ValueChanged += OnValueChange;
+            _localPlayerPreparation.IsReady.Changed += OnValueChange;
 
             ValidateTabs();
         }

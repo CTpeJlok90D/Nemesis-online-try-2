@@ -47,7 +47,7 @@ namespace UI.NicknameReader
                 return;
             }
 
-            _nicknameLabel.text = _nicknameContainer.Nickname;
+            _nicknameLabel.text = _nicknameContainer.Value;
         }
     }
 }

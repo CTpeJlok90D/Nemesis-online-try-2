@@ -14,7 +14,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: f2523d0343852a64d9bddf5e76466612
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1149afd990674364fa4bd0314f477a20
+    m_Address: Assets/_Project/Data/Characters/Mechanic.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cb6a8b3beaa1404789678cd004bf6fc
+    m_Address: Assets/_Project/View/Characters/Capitan/Prefabs/Capitan view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b7d72e4813b48a469029336e2cf8841
+    m_Address: Assets/_Project/Data/Characters/Scout.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+    m_Address: Assets/_Project/View/Characters/_Sprites/character-backgrounds.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75ff028630961fe418a8865735bab297
+    m_Address: Assets/_Project/Data/Characters/Capitan.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c3cc1628c3783c4aa204e67c4c7f0bf
+    m_Address: Assets/_Project/View/Characters/Mechanic/Prefabs/Mechanic view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92bf65eaef573dc4ab795397a7ef1aab
+    m_Address: Assets/_Project/View/Characters/Scientist/Prefabs/Scientist view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a81491d41131a4540840ea690f7058a8
+    m_Address: Assets/_Project/Data/Characters/Soldier.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b77dae1967412a54f85113b7d3b07c98
+    m_Address: Assets/_Project/View/Characters/Pilot/Prefabs/Pilot view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b98f25c575d5a7c4ba8535d610c1fe9e
+    m_Address: Assets/_Project/View/Characters/Scout/Prefabs/Scout view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d1529cc6b3b018643b1074eb87920257
+    m_Address: Assets/_Project/Data/Characters/Pilot.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd74b7ca7aa245b4398fbb45316925cc
+    m_Address: Assets/_Project/Data/Characters/Scientist.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1075b25542b8f54e93a61e1d8d5e5f6
+    m_Address: Assets/_Project/View/Characters/Soldier/Prefabs/Soldier view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c3c00e9d3cb75cc4a9ac89bf39f951cc, type: 2}
   m_SchemaSet:

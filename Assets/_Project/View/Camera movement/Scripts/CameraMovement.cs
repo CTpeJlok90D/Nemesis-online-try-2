@@ -8,8 +8,8 @@ namespace View
         [SerializeField] private float _yPosition;
         [SerializeField] private Vector2 _borders;
 
-        public (float min, float max) XBorders => (transform.position.x - _borders.x, transform.position.x + _borders.x);
-        public (float min, float max) YBorders => (transform.position.y - _borders.y, transform.position.y + _borders.y);
+        public (float min, float max) XBorders => (transform.position.x - _borders.x/2, transform.position.x + _borders.x/2);
+        public (float min, float max) ZBorders => (transform.position.z - _borders.y/2, transform.position.z + _borders.y/2);
 
         public void Move(Vector2 offcet)
         {
@@ -20,7 +20,7 @@ namespace View
             position = new Vector3(
                 Mathf.Clamp(position.x, XBorders.min, XBorders.max),
                 _yPosition,
-                Mathf.Clamp(position.z, YBorders.min, YBorders.max)
+                Mathf.Clamp(position.z, ZBorders.min, ZBorders.max)
                 );
 
             _cameraRotationCenter.position = position;

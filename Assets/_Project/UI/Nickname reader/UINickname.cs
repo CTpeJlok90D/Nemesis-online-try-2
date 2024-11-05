@@ -41,7 +41,7 @@ namespace UI.Nickname_reader
         {
             PlayerPrefs.SetString(NICKNAME_SAVE_KEY, newNick);
 
-            _localNicknameContainer.Nickname = newNick;
+            _localNicknameContainer.Value = newNick;
         }
     }
 }
