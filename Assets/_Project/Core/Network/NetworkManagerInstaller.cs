@@ -6,17 +6,23 @@ namespace Core.Network
 {
     public class NetworkManagerInstaller : MonoInstaller
     {
-        [SerializeField] private NetworkManager _networkManager;
+        [SerializeField] private NetworkManager _networkManager_PREFAB;
+
+        public NetworkManager Instance { get; private set; }
+
         public override void InstallBindings()
         {
-            if (NetworkManager.Singleton == null) 
-            {
-                Container.Bind<NetworkManager>().FromInstance(_networkManager);
-            }
-            else 
-            {
-                Container.Bind<NetworkManager>().FromInstance(NetworkManager.Singleton);
-            }
+            Instance = Instantiate(_networkManager_PREFAB);
+
+            Container.Bind<NetworkManager>()
+                .FromInstance(Instance)
+                .AsSingle();
+        }
+
+        public override void Start()
+        {
+            base.Start();
+            DontDestroyOnLoad(Instance);
         }
     }
 }

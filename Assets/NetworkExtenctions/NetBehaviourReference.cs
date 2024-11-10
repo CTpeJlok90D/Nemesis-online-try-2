@@ -8,17 +8,36 @@ namespace Unity.Netcode.Custom
     {
         public delegate void ReferenceChangedListener(T oldValue, T newValue);
 
-        private T _reference;
+        private T _previousReference;
 
         public T Reference 
         {
             get
             {
-                return _reference;
+                if (Value.TryGet(out NetworkObject networkObject))
+                {
+                    T result = networkObject.GetComponent<T>();
+                    return result;
+                }
+                return default;
             }
             set
             {
-                base.Value = value.NetworkObject;
+                if (Value.TryGet(out NetworkObject netObject))
+                {
+                    _previousReference = netObject.GetComponent<T>();
+                }
+                else
+                {
+                    _previousReference = default;
+                }
+
+                if (value == null)
+                {
+                    Value = new NetworkObjectReference();
+                    return;
+                }
+                Value = value.NetworkObject;
             }
         }
 
@@ -40,30 +59,8 @@ namespace Unity.Netcode.Custom
 
         private void OnValueChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)
         {
-            try
-            {
-                Changed?.Invoke(previousValue, newValue);
-
-                T previousReference = null;
-                T newReference = null;
-
-                if (previousValue.TryGet(out NetworkObject previousObject))
-                {
-                    previousReference = previousObject.GetComponent<T>();
-                }
-
-                if (newValue.TryGet(out NetworkObject newObject))
-                {
-                    newReference = newObject.GetComponent<T>();
-                }
-
-                _reference = newReference;
-                ReferenceChanged?.Invoke(previousReference, newReference);
-            }
-            catch (Exception e) 
-            {
-                Debug.LogException(e);
-            }
+            Changed?.Invoke(previousValue, newValue);
+            ReferenceChanged?.Invoke(_previousReference, Reference);
         }
     }
 }

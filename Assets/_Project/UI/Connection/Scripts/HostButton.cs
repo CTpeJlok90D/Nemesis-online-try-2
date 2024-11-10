@@ -29,7 +29,7 @@ namespace UI.Starter
         private void StartHost()
         {
             Task task = _relay.CreateRelay();
-            _ = _loadScreen.StartLoading(task);
+            _ = _loadScreen.Show(task);
         }
     }
 }

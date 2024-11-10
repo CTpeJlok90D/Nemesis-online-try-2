@@ -29,7 +29,7 @@ namespace UI.Connection
         private void StartClient()
         {
             Task task = _relay.JoinRelay(_input.text);
-            _ = _loadScreen.StartLoading(task);
+            _ = _loadScreen.Show(task);
         }
     }
 }

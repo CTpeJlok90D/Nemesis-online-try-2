@@ -2,8 +2,10 @@
     "name": "UI.Common",
     "rootNamespace": "UI.Common",
     "references": [
-        "GUID:3231e794d69047f44af3464dcbc2e6ca",
-        "GUID:fad1a65e62263cb4e8e199c5c4b187f0"
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:fad1a65e62263cb4e8e199c5c4b187f0",
+        "GUID:3231e794d69047f44af3464dcbc2e6ca"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

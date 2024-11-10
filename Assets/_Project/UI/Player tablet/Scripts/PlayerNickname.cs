@@ -1,6 +1,7 @@
 using System;
 using Core.Lobbies;
 using Core.Players;
+using Core.PlayerTablets;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -41,6 +42,14 @@ namespace UI.PlayerTablets
             if (player.TryGetComponent(out NicknameContainer nicknameContainer))
             {
                 _label.text = nicknameContainer.Value;
+                if (player.IsLocal)
+                {
+                    _label.fontStyle = FontStyles.Underline;
+                }
+                else
+                {
+                    _label.fontStyle = FontStyles.Normal;
+                }
                 return;
             }
             _label.text = "ERROR";

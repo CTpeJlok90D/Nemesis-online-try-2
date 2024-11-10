@@ -7,6 +7,7 @@
 namespace Gaskellgames.FolderSystem
 {
     [ExecuteInEditMode]
+    [Icon("Assets/Gaskellgames/Folder System/Editor/icons8-folder-96.png")]
     public class HierarchyFolders : GGMonoBehaviour
     {
         #region Variables

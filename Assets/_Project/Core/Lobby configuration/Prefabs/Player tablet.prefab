@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9007745118306120659}
   - component: {fileID: 3579841921263101233}
   - component: {fileID: 6401198425793500036}
+  - component: {fileID: 5548865125843845878}
   m_Layer: 0
   m_Name: Player tablet
   m_TagString: Untagged
@@ -71,3 +72,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &5548865125843845878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362443353141989831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2

@@ -4,8 +4,8 @@ using System.Linq;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
-using Unity.Profiling;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Lobbies
 {
@@ -13,16 +13,15 @@ namespace Core.Lobbies
     {
         public delegate void PlayerCountChangedListener(ChangedData changedData, int oldCount, int newCount);
 
-        [SerializeField] private PlayerTablet _playerTablet_PREFAB;
         [SerializeField] private LobbyConfiguration _defaultLobbyConfiguration;
 
         private NetVariable<LobbyConfiguration> _configuration;
 
-        private NetObjectList<PlayerTablet> _activeTablets;
-
         public event PlayerCountChangedListener PlayerCountChanged;
 
-        public PlayerTablet[] ActiveTablets => _activeTablets.ToArray();
+        private PlayerTabletList _playerTabletList;
+
+        [Inject] private NetworkManager _networkManager;
 
         public LobbyConfiguration Configuration 
         {
@@ -47,34 +46,33 @@ namespace Core.Lobbies
             }
         }
 
+        public Lobby Instantiate(PlayerTabletList playerTabletList, NetworkManager networkManager)
+        {
+            gameObject.SetActive(false);
+            Lobby result = Instantiate(this);
+            gameObject.SetActive(true);
+
+            result._playerTabletList = playerTabletList;
+            result._networkManager = networkManager;
+            result.gameObject.SetActive(true);
+            return result;
+        }
+
         public void Awake()
         {
             _configuration = new(_defaultLobbyConfiguration);
-            _activeTablets = new();
-        }
-
-        public void Start()
-        {
-            UpdateTablets();
-            NetworkManager.OnServerStarted += OnServerStart;
         }
 
         private void OnEnable()
         {
             _configuration.Changed += OnConfigurationChange;
-            if (didStart)
-            {
-                NetworkManager.OnServerStarted += OnServerStart;
-            }
+            _networkManager.OnServerStarted += OnServerStart;
         }
 
         private void OnDisable()
         {
-            if (NetworkManager != null)
-            {
-                NetworkManager.OnServerStarted -= OnServerStart;                
-            }
             _configuration.Changed -= OnConfigurationChange;
+            _networkManager.OnServerStarted -= OnServerStart;
         }
 
         private void OnServerStart()
@@ -94,28 +92,20 @@ namespace Core.Lobbies
                 return;
             }
 
-            int oldPlayersCount = _activeTablets.Count;
+            int oldPlayersCount = _playerTabletList.ActiveTablets.Length;
             List<PlayerTablet> addedTablets = new();
             List<PlayerTablet> removedTablets = new();
 
-            while (_activeTablets.Count > _configuration.Value.PlayersCount)
+            while (_playerTabletList.ActiveTablets.Length > _configuration.Value.PlayersCount)
             {
-                PlayerTablet playerTablet = _activeTablets.First();
-
-                removedTablets.Add(playerTablet);
-
-                _activeTablets.Remove(playerTablet);
-                playerTablet.NetworkObject.Despawn(true);
+                PlayerTablet removedTablet = _playerTabletList.RemoveTablet();
+                removedTablets.Add(removedTablet);
             }
 
-            while (_activeTablets.Count < _configuration.Value.PlayersCount)
+            while (_playerTabletList.ActiveTablets.Length < _configuration.Value.PlayersCount)
             {
-                PlayerTablet prefabInstance = Instantiate(_playerTablet_PREFAB);
-                DontDestroyOnLoad(prefabInstance);
-                prefabInstance.NetworkObject.Spawn();
-
-                _activeTablets.Add(prefabInstance);
-                addedTablets.Add(prefabInstance);
+                PlayerTablet playerTablet = _playerTabletList.AddTablet();
+                addedTablets.Add(playerTablet);
             }
 
             ChangedData data = new()
@@ -124,7 +114,7 @@ namespace Core.Lobbies
                 RemovedTablets = removedTablets
             };
 
-            PlayerCountChanged?.Invoke(data, oldPlayersCount, _activeTablets.Count);
+            PlayerCountChanged?.Invoke(data, oldPlayersCount, _playerTabletList.ActiveTablets.Length);
         }
 
         public record ChangedData

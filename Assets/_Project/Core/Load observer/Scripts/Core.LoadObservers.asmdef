@@ -1,0 +1,21 @@
+{
+    "name": "Core.LoadObservers",
+    "rootNamespace": "Core.LoadObservers",
+    "references": [
+        "GUID:d525ad6bd40672747bde77962f1c401e",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:466ba4bee7f3ce546b61b2649f8d7bbd",
+        "GUID:32652ad839799784ebfaa9908645cafb",
+        "GUID:3231e794d69047f44af3464dcbc2e6ca"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

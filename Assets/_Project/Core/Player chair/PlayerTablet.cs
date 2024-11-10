@@ -1,30 +1,51 @@
 using System;
+using System.Linq;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
+using Core.Characters;
 using Core.Players;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
+using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 namespace Core.PlayerTablets
 {
     public class PlayerTablet : NetworkBehaviour
     {
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
-
-        public bool CanBookIt => PlayerReference.Reference == null;
+        
+        [Inject] private PlayerTabletList _playetTabletList;
 
         private bool _haveResult;
+
         private ToBookResult _result;
+
+        public bool IsEmpty => PlayerReference.Reference == null;
+
+        public NetVariable<Character> Character { get; private set; }
+
+        public NetVariable<int> OrderNumber { get; private set; }
+
+        public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
 
         private void Awake()
         {
+            Character = new();
             PlayerReference = new();
+            OrderNumber = new();
         }
         
         public async Task<ToBookResult> ToBookItFor(Player player)
         {
             try
             {
+                if (CanBookIt(player) == false)
+                {
+                    throw new Exception("Can't book this tablet");
+                }
+
                 ToBookItFor_RPC(player.NetworkObject);
                 while (_haveResult == false)
                 {
@@ -39,7 +60,6 @@ namespace Core.PlayerTablets
                 Debug.LogException(e);
                 return ToBookResult.Failure;
             }
-
         }
 
 
@@ -52,7 +72,7 @@ namespace Core.PlayerTablets
             }
 
             Player player = playerObject.GetComponent<Player>();
-            if (CanBookIt)
+            if (IsEmpty)
             {
                 PlayerReference.Reference = player;
                 SendResult_RPC(ToBookResult.Success, RpcTarget.Single(player.OwnerClientId, RpcTargetUse.Persistent));
@@ -68,7 +88,50 @@ namespace Core.PlayerTablets
             _result = result;
             _haveResult = true;
         }
+
+        public void LeavePlayerTablet()
+        {
+            LeavePlayerTablet_RPC();
+        }
+
+        [Rpc(SendTo.Server)]
+        private void LeavePlayerTablet_RPC()
+        {
+            PlayerReference.Reference = null;
+        }
+    #if UNITY_EDITOR
+        [CustomEditor(typeof(PlayerTablet))]
+        private class CEditor : Editor
+        {
+            private PlayerTablet tablet => target as PlayerTablet;
+
+            public override void OnInspectorGUI()
+            {
+                base.OnInspectorGUI();
+                if (tablet.NetworkManager == null)
+                {
+                    return;
+                }
+
+                if (tablet.NetworkManager.IsServer)
+                {
+                    tablet.Character.Value = EditorGUILayout.ObjectField(tablet.Character.Value, typeof(Character), false) as Character;
+                }
+                else
+                {
+                    GUI.enabled = false;
+                    EditorGUILayout.ObjectField(tablet.Character.Value, typeof(Character), false);
+                    GUI.enabled = true;
+                }
+
+                GUI.enabled = false;
+                EditorGUILayout.ObjectField(tablet.PlayerReference.Reference, typeof(Player), false);
+                GUI.enabled = true;
+            }
+        }
+    #endif
     }
 
     public enum ToBookResult { Success, Failure }
+
 }

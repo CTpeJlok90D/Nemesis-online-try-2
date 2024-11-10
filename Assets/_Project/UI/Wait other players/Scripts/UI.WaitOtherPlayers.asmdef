@@ -1,0 +1,17 @@
+{
+    "name": "UI.WaitOtherPlayers",
+    "rootNamespace": "UI.WaitOtherPlayers",
+    "references": [
+        "GUID:cf6717f45d6c40949bebbf438fb18221",
+        "GUID:fad1a65e62263cb4e8e199c5c4b187f0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
