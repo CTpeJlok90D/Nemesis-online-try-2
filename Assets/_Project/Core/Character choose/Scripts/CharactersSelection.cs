@@ -5,20 +5,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Characters;
 using ModestTree;
-using Unity.Collections;
 using Unity.Netcode;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using WebSocketSharp;
 
 namespace Core.CharacterChoose
 {
     public class CharactersSelection : NetworkBehaviour, IEnumerable<Character>
     {
         public delegate void ChangedListener();
-
-        private NetworkList<FixedString64Bytes> _networkCharacters;
 
         private Character _choosedCharacter;
 
@@ -28,18 +23,7 @@ namespace Core.CharacterChoose
 
         private void Awake()
         {
-            _networkCharacters = new();
             _characters = new();
-        }
-
-        private void OnEnable()
-        {
-            _networkCharacters.OnListChanged += OnListChange;
-        }
-
-        private void OnDisable()
-        {
-            _networkCharacters.OnListChanged -= OnListChange;
         }
 
         public Character[] Get()
@@ -60,17 +44,12 @@ namespace Core.CharacterChoose
                 {
                     throw new ArgumentException("Array is empty!");
                 }
+
+                _characters = characters.ToList();
+                SendCharactersToChooseFrom_RPC(characters);
                 
-                _networkCharacters.Clear();
-                FixedString64Bytes[] charactersLoadkeys = characters.Select(x => new FixedString64Bytes((string)x.AddessablePath.RuntimeKey)).ToArray();
-
-                foreach (FixedString64Bytes key in charactersLoadkeys)
-                {
-                    _networkCharacters.Add(key);
-                    Debug.Log(key);
-                }
-
-                while (_choosedCharacter == null)
+                _choosedCharacter = null;
+                while (_choosedCharacter == null && _characters.Contains(_choosedCharacter) == false)
                 {
                     await Awaitable.NextFrameAsync();
                 }
@@ -92,7 +71,6 @@ namespace Core.CharacterChoose
 
         internal void Clear()
         {
-            _networkCharacters.Clear();
             _characters.Clear();
         }
 
@@ -106,33 +84,16 @@ namespace Core.CharacterChoose
             Choose_RPC(character);
         }
 
+        [Rpc(SendTo.Owner)]
+        private void SendCharactersToChooseFrom_RPC(Character[] characters)
+        {
+            _characters = characters.ToList();
+        }
+
         [Rpc(SendTo.Server)]
         private void Choose_RPC(Character character)
         {
             _choosedCharacter = character;
-        }
-
-        private void OnListChange(NetworkListEvent<FixedString64Bytes> changeEvent)
-        {
-            List<Character> charactersBuffer = new();
-            int loadCount = _networkCharacters.Count;
-
-            foreach (FixedString64Bytes result in _networkCharacters)
-            {
-                string key = result.ToString();
-                AsyncOperationHandle<Character> handle = Addressables.LoadAssetAsync<Character>(key);
-
-                handle.Completed += handle => 
-                {
-                    charactersBuffer.Add(handle.Result);
-
-                    if (charactersBuffer.Count == loadCount)
-                    {
-                        Changed?.Invoke();
-                        _characters = charactersBuffer.ToList();
-                    }
-                };
-            }
         }
 
         public IEnumerator<Character> GetEnumerator()

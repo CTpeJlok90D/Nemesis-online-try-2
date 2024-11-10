@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -14,9 +15,9 @@ namespace Core.PlayerTablets
 
         private NetworkList<NetworkObjectReference> _activeTablets;
 
-        private int _oldCount;
-
         private Starter.Activator _activator;
+
+        private NetworkManager _networkManager;
 
         public PlayerTablet[] ActiveTablets => _activeTablets.ToEnumerable<PlayerTablet>().ToArray();
 
@@ -36,22 +37,22 @@ namespace Core.PlayerTablets
             }
         }
 
-        public PlayerTabletList Instantiate(Starter.Activator activator)
+        public PlayerTabletList Init(Starter.Activator activator, NetworkManager networkManager)
         {
-            gameObject.SetActive(false);
-            PlayerTabletList instance = Instantiate(this);
-            gameObject.SetActive(true);
+            _activator = activator;
+            _networkManager = networkManager;
 
-            instance._activator = activator;
-            instance.gameObject.SetActive(true);
-
-            return instance;
+            return this;
         }
 
         private void Awake()
         {
             _activeTablets = new();
-            _oldCount = _activeTablets.Count;
+
+            // По какой то причине Unity автоматически не заполняет это поле
+            Type type = typeof(NetworkVariableBase);
+            FieldInfo fieldInfo = type.GetField("m_NetworkBehaviour", BindingFlags.NonPublic | BindingFlags.Instance);
+            fieldInfo.SetValue(_activeTablets, this);
         }
 
         private void OnEnable()
@@ -62,6 +63,11 @@ namespace Core.PlayerTablets
         private void OnDisable()
         {
             _activator.GameActivated -= OnGameActive;
+        }
+
+        public void Clear()
+        {
+            _activeTablets.Clear();
         }
 
         private void OnGameActive()
@@ -78,27 +84,10 @@ namespace Core.PlayerTablets
             }
         }
 
-        private void Start()
+        protected override void OnNetworkPostSpawn()
         {
-            SyncTablets();
-        }
-
-        private async void SyncTablets()
-        {
-            try
-            {
-                while (_activeTablets.Count == _oldCount)
-                {
-                    await Awaitable.NextFrameAsync();
-                }
-
-                NetworkListEvent<NetworkObjectReference> args = new();
-                _activeTabletsSynced?.Invoke(args);
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
+            NetworkListEvent<NetworkObjectReference> args = new();
+            _activeTabletsSynced?.Invoke(args);   
         }
 
         public PlayerTablet AddTablet()
@@ -106,7 +95,8 @@ namespace Core.PlayerTablets
             PlayerTablet prefabInstance = Instantiate(_playerTablet_PREFAB);
             DontDestroyOnLoad(prefabInstance);
             prefabInstance.NetworkObject.Spawn();
-            _activeTablets.Add(prefabInstance.NetworkObject);
+            NetworkObjectReference networkObjectReference = new(prefabInstance.NetworkObject);
+            _activeTablets.Add(networkObjectReference);
 
             return prefabInstance;
         }

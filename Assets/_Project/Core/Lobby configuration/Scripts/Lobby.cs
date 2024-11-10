@@ -63,21 +63,16 @@ namespace Core.Lobbies
             _configuration = new(_defaultLobbyConfiguration);
         }
 
-        private void OnEnable()
+        public override void OnNetworkSpawn()
         {
             _configuration.Changed += OnConfigurationChange;
-            _networkManager.OnServerStarted += OnServerStart;
-        }
-
-        private void OnDisable()
-        {
-            _configuration.Changed -= OnConfigurationChange;
-            _networkManager.OnServerStarted -= OnServerStart;
-        }
-
-        private void OnServerStart()
-        {
             UpdateTablets();
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            _configuration.Changed -= OnConfigurationChange;
         }
 
         private void OnConfigurationChange(LobbyConfiguration previousValue, LobbyConfiguration newValue)
@@ -91,6 +86,8 @@ namespace Core.Lobbies
             {
                 return;
             }
+
+            _playerTabletList.Clear();
 
             int oldPlayersCount = _playerTabletList.ActiveTablets.Length;
             List<PlayerTablet> addedTablets = new();

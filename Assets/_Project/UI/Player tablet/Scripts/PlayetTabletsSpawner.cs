@@ -23,11 +23,8 @@ namespace UI.PlayerTablets
         {
             _playetTabletList.ActiveTabletsChanged += OnActiveTabletsChange;
             _networkManager.OnClientStarted += OnClientStart;
-
-            if (NetworkManager.Singleton.IsClient)
-            {
-                UpdateCards();
-            }
+            DestroyCards();
+            SpawnLobbyCards();
         }
 
         private void OnDisable()

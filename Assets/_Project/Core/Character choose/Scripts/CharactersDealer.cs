@@ -40,7 +40,7 @@ namespace Core.CharacterChoose
 
         private void Awake()
         {
-            IsDealing = new();
+            IsDealing = new(false, writePerm: NetworkVariableWritePermission.Server);
         }
 
         public void Init(Lobby lobby, PlayerTabletList playerTabletList)
@@ -75,17 +75,13 @@ namespace Core.CharacterChoose
 
                 PlayerTablet[] orderedTablets = _playerTabletList.OrderBy(x => x.OrderNumber.Value).ToArray();
 
+                _characters = _lobby.Configuration.Characters.ToList();
                 foreach (PlayerTablet tablet in orderedTablets)
                 {
-                    _characters = _lobby.Configuration.Characters.ToList();
-                    Character[] characters = GetRandomCharacters(ChooseCharactersCount, _characters.ToArray());
+                    Character[] charactersToChooseFrom = GetRandomCharacters(ChooseCharactersCount, _characters.ToArray());
 
                     Selection.NetworkObject.ChangeOwnership(tablet.PlayerReference.Reference.OwnerClientId);
-
-                    Debug.Log(tablet.PlayerReference.Reference, tablet.PlayerReference.Reference);
-                    Character choose = await Selection.Choose(characters);
-                    Debug.Log(choose);
-
+                    Character choose = await Selection.Choose(charactersToChooseFrom);
                     Selection.NetworkObject.ChangeOwnership(NetworkManager.ServerClientId);
 
                     if (choose == null)
@@ -161,7 +157,12 @@ namespace Core.CharacterChoose
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
-                if (CharactersDealer.NetworkManager == null || CharactersDealer.NetworkManager.IsServer == false || CharactersDealer.IsDealing.Value)
+                if (CharactersDealer.NetworkManager == null)
+                {
+                    return;
+                }
+
+                if (CharactersDealer.NetworkManager.IsServer == false || CharactersDealer.IsDealing.Value)
                 {
                     GUI.enabled = false;
                 }
@@ -175,8 +176,11 @@ namespace Core.CharacterChoose
 
                 if (CharactersDealer.Selection.IsOwner == false)
                 {
-                    return;
+                    GUI.enabled = false;
                 }
+
+                GUILayout.Label($"Characters count: {CharactersDealer.Selection.Count()}");
+                GUILayout.Label($"Is dealing: {CharactersDealer.IsDealing.Value}");
 
                 foreach (Character character in CharactersDealer.Selection)
                 {
@@ -186,6 +190,7 @@ namespace Core.CharacterChoose
                     }
                 }
 
+                GUI.enabled = true;
             }
         }
 #endif
