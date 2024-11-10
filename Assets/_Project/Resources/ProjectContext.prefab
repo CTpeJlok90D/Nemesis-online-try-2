@@ -45,6 +45,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _networkManager_PREFAB: {fileID: 5375105036635256339, guid: e25972d0451d1c44793b1b484145bff7, type: 3}
+--- !u!1 &1818130761315331506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740137079669739113}
+  - component: {fileID: 7337797486557246042}
+  m_Layer: 0
+  m_Name: Activator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &740137079669739113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818130761315331506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2472517959088604098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7337797486557246042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818130761315331506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6e50c7799e2ec4c84372744f1bc7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameSceneName: Default map
 --- !u!1 &2139480582891123771
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +120,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 740137079669739113}
   - {fileID: 724270402330174872}
   - {fileID: 6329915968608259915}
   - {fileID: 1476254844385819155}
@@ -248,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: 7337797486557246042}
   - {fileID: 8576925943480459143}
   - {fileID: 6306792181071583619}
   - {fileID: 7099646986286635750}
@@ -359,3 +406,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTabletList_PREFAB: {fileID: 4613133039376332552, guid: bc9ae6a341d9e12438745f1a471fdaee, type: 3}
+  _activatorInstaller: {fileID: 7337797486557246042}

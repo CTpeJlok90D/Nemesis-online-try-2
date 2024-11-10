@@ -7,8 +7,13 @@ namespace Core.Starter
 {
     public class Activator
     {
+        public delegate void ActivatedListener();
+
         private string _activatedGameSceneName;
+
         private float _loadDelay = 0.5f;
+
+        public event ActivatedListener GameActivated;
 
         public Activator(string activeGameSceneName)
         {
@@ -26,13 +31,13 @@ namespace Core.Starter
                 
                 await Awaitable.WaitForSecondsAsync(_loadDelay);
                 
+                GameActivated?.Invoke();
                 NetworkManager.Singleton.SceneManager.LoadScene(_activatedGameSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
                 bool isCompleted = false;
                 NetworkManager.Singleton.SceneManager.OnLoadComplete += (clientID, sceneName, mode) => 
                 {
                     isCompleted = true;
                 };
-
 
                 while (isCompleted == false)
                 {

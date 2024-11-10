@@ -6,6 +6,7 @@ using Core.Characters;
 using Core.Lobbies;
 using Core.PlayerTablets;
 using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -27,7 +28,7 @@ namespace Core.CharacterChoose
 
         private Lobby _lobby;
 
-        public bool IsDealing { get; private set; }
+        public NetVariable<bool> IsDealing { get; private set; }
 
         private List<Character> _characters;
 
@@ -37,50 +38,72 @@ namespace Core.CharacterChoose
 
         public int ChooseCharactersCount => _lobby.Configuration.ChooseCharactersCount;
 
+        private void Awake()
+        {
+            IsDealing = new();
+        }
+
         public void Init(Lobby lobby, PlayerTabletList playerTabletList)
         {
             _lobby = lobby;
             _playerTabletList = playerTabletList;
         }
 
+        public override void OnNetworkSpawn()
+        {
+            if (NetworkManager.Singleton.IsServer)
+            {
+                DistributeOrderNumbers();
+            }
+        }
+
         public async Task StartDeal()
         {       
             try
             {
-                if (IsDealing)
+                if (IsDealing.Value)
                 {
                     throw new Exception("Dealer is already dealing!");
                 }
 
-                IsDealing = true;
+                IsDealing.Value = true;
                 if (NetworkManager.Singleton.IsServer == false)
                 {
-                    IsDealing = false;
+                    IsDealing.Value = false;
                     throw new NotServerException("Only server can start characters deal!");
                 }
-
-                DistributeOrderNumbers();
 
                 PlayerTablet[] orderedTablets = _playerTabletList.OrderBy(x => x.OrderNumber.Value).ToArray();
 
                 foreach (PlayerTablet tablet in orderedTablets)
                 {
                     _characters = _lobby.Configuration.Characters.ToList();
-                    Character[] characters = GetRandomCharacters(ChooseCharactersCount);
+                    Character[] characters = GetRandomCharacters(ChooseCharactersCount, _characters.ToArray());
 
                     Selection.NetworkObject.ChangeOwnership(tablet.PlayerReference.Reference.OwnerClientId);
+
+                    Debug.Log(tablet.PlayerReference.Reference, tablet.PlayerReference.Reference);
                     Character choose = await Selection.Choose(characters);
+                    Debug.Log(choose);
+
                     Selection.NetworkObject.ChangeOwnership(NetworkManager.ServerClientId);
+
+                    if (choose == null)
+                    {
+                        return;
+                    }
 
                     _characters.Remove(choose);
                     tablet.Character.Value = choose;
                 }
-                IsDealing = false;
+
+                IsDealing.Value = false;
+                Selection.Clear();
             }     
             catch (Exception e)
             {
                 Debug.LogException(e);
-                IsDealing = false;
+                IsDealing.Value = false;
             }
         }
 
@@ -102,16 +125,21 @@ namespace Core.CharacterChoose
             OrderNumbersWereDistributed?.Invoke();
         }
 
-        private Character[] GetRandomCharacters(int count)
+        private Character[] GetRandomCharacters(int count, Character[] selectFrom)
         {
-            List<Character> result = _characters.ToList();
+            if (count <= 0)
+            {
+                throw new ArgumentException("Count must be grater then zero");
+            }
+
+            List<Character> result = selectFrom.ToList();
 
             if (result.Count < count)
             {
                 return result.ToArray();
             }
 
-            while (result.Count != count || result.Count != 0)
+            while (result.Count != count && result.Count != 0)
             {
                 result.Remove(result[UnityEngine.Random.Range(0, result.Count)]);
             }
@@ -133,17 +161,31 @@ namespace Core.CharacterChoose
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
-                if (CharactersDealer.NetworkManager == null || CharactersDealer.NetworkManager.IsServer == false || CharactersDealer.IsDealing)
+                if (CharactersDealer.NetworkManager == null || CharactersDealer.NetworkManager.IsServer == false || CharactersDealer.IsDealing.Value)
                 {
                     GUI.enabled = false;
                 }
 
-                if (GUILayout.Button("Deal"))
+                if (CharactersDealer.IsDealing.Value == false && GUILayout.Button("Deal"))
                 {
                     _ = CharactersDealer.StartDeal();
                 }
 
                 GUI.enabled = true;
+
+                if (CharactersDealer.Selection.IsOwner == false)
+                {
+                    return;
+                }
+
+                foreach (Character character in CharactersDealer.Selection)
+                {
+                    if (GUILayout.Button(character.name))
+                    {
+                        CharactersDealer.Selection.Choose(character);
+                    }
+                }
+
             }
         }
 #endif

@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Lobbies;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using UnityEngine;
@@ -25,7 +23,11 @@ namespace UI.PlayerTablets
         {
             _playetTabletList.ActiveTabletsChanged += OnActiveTabletsChange;
             _networkManager.OnClientStarted += OnClientStart;
-            UpdateCards();
+
+            if (NetworkManager.Singleton.IsClient)
+            {
+                UpdateCards();
+            }
         }
 
         private void OnDisable()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Characters;
+using ModestTree;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEditor;
@@ -48,31 +49,56 @@ namespace Core.CharacterChoose
 
         internal async Task<Character> Choose(Character[] characters)
         {
-            if (NetworkManager.IsServer == false)
+            try
             {
-                throw new NotServerException("Only server can set characters to choose!");
+                if (NetworkManager.IsServer == false)
+                {
+                    throw new NotServerException("Only server can set characters to choose!");
+                }
+
+                if (characters.IsEmpty())
+                {
+                    throw new ArgumentException("Array is empty!");
+                }
+                
+                _networkCharacters.Clear();
+                FixedString64Bytes[] charactersLoadkeys = characters.Select(x => new FixedString64Bytes((string)x.AddessablePath.RuntimeKey)).ToArray();
+
+                foreach (FixedString64Bytes key in charactersLoadkeys)
+                {
+                    _networkCharacters.Add(key);
+                    Debug.Log(key);
+                }
+
+                while (_choosedCharacter == null)
+                {
+                    await Awaitable.NextFrameAsync();
+                }
+
+                Character choose = _choosedCharacter;
+                return choose;
             }
-            
+            catch (ArgumentException e)
+            {
+                Debug.LogException(e);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                return characters[0];
+            }
+        }
+
+        internal void Clear()
+        {
             _networkCharacters.Clear();
-            FixedString64Bytes[] charactersLoadkeys = characters.Select(x => (FixedString64Bytes)x.AddessablePath.RuntimeKey).ToArray();
-
-            foreach (FixedString64Bytes key in charactersLoadkeys)
-            {
-                _networkCharacters.Add(key);
-            }
-
-            while (_choosedCharacter == null)
-            {
-                await Awaitable.NextFrameAsync();
-            }
-
-            Character choose = _choosedCharacter;
-            return choose;
+            _characters.Clear();
         }
 
         public void Choose(Character character)
         {
-            if (IsOwner)
+            if (IsOwner == false)
             {
                 throw new Exception("Only owner can choose characters");
             }
@@ -95,10 +121,12 @@ namespace Core.CharacterChoose
             {
                 string key = result.ToString();
                 AsyncOperationHandle<Character> handle = Addressables.LoadAssetAsync<Character>(key);
+
                 handle.Completed += handle => 
                 {
                     charactersBuffer.Add(handle.Result);
-                    if (charactersBuffer.Count == _networkCharacters.Count)
+
+                    if (charactersBuffer.Count == loadCount)
                     {
                         Changed?.Invoke();
                         _characters = charactersBuffer.ToList();
@@ -119,31 +147,5 @@ namespace Core.CharacterChoose
                 yield return character;
             }
         }
-
-#if UNITY_EDITOR
-        [CustomEditor(typeof(CharactersSelection))]
-        private class CEditor : Editor
-        {
-            private CharactersSelection CharactersSelection => target as CharactersSelection;
-
-            public override void OnInspectorGUI()
-            {
-                base.OnInspectorGUI();
-                if (CharactersSelection.IsOwner == false)
-                {
-                    return;
-                }
-
-                foreach (Character character in CharactersSelection)
-                {
-                    if (GUILayout.Button(character.name))
-                    {
-                        Character pointerCopy = character;
-                        CharactersSelection.Choose(pointerCopy);
-                    }
-                }
-            }
-        }
-#endif
     }
 }

@@ -73,7 +73,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _defaultLobbyConfiguration:
     PlayersCount: 5
-    ChooseCharactersCount: 0
+    ChooseCharactersCount: 2
     Characters:
     - {fileID: 11400000, guid: 75ff028630961fe418a8865735bab297, type: 2}
     - {fileID: 11400000, guid: 1149afd990674364fa4bd0314f477a20, type: 2}

@@ -36,7 +36,30 @@ namespace Core.PlayerTablets
             PlayerReference = new();
             OrderNumber = new();
         }
-        
+
+        private void OnEnable()
+        {
+            Player.Left += OnPlayerLeft;
+        }
+
+        private void OnDisable()
+        {
+            Player.Left -= OnPlayerLeft;
+        }
+
+        private void OnPlayerLeft(Player player)
+        {
+            if (NetworkManager.Singleton == null || NetworkManager.Singleton.IsServer == false)
+            {
+                return;
+            }
+
+            if (PlayerReference.Reference == player)
+            {
+                PlayerReference.Reference = null;
+            }
+        }
+
         public async Task<ToBookResult> ToBookItFor(Player player)
         {
             try
@@ -126,6 +149,7 @@ namespace Core.PlayerTablets
 
                 GUI.enabled = false;
                 EditorGUILayout.ObjectField(tablet.PlayerReference.Reference, typeof(Player), false);
+                EditorGUILayout.IntField("Order number: ", tablet.OrderNumber.Value);
                 GUI.enabled = true;
             }
         }

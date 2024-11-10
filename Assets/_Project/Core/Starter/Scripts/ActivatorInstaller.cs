@@ -7,10 +7,12 @@ namespace Core.Starter
     {
         [SerializeField] private string _gameSceneName;
 
+        public Activator Activator { get; private set; }
+
         public override void InstallBindings()
         {
-            Activator activator = new(_gameSceneName);
-            Container.Bind<Activator>().FromInstance(activator).AsSingle();
+            Activator = new(_gameSceneName);
+            Container.Bind<Activator>().FromInstance(Activator).AsSingle();
         }
     }
 }

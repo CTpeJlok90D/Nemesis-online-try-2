@@ -16,6 +16,8 @@ namespace Core.PlayerTablets
 
         private int _oldCount;
 
+        private Starter.Activator _activator;
+
         public PlayerTablet[] ActiveTablets => _activeTablets.ToEnumerable<PlayerTablet>().ToArray();
 
         private event NetworkList<NetworkObjectReference>.OnListChangedDelegate _activeTabletsSynced;
@@ -34,10 +36,46 @@ namespace Core.PlayerTablets
             }
         }
 
+        public PlayerTabletList Instantiate(Starter.Activator activator)
+        {
+            gameObject.SetActive(false);
+            PlayerTabletList instance = Instantiate(this);
+            gameObject.SetActive(true);
+
+            instance._activator = activator;
+            instance.gameObject.SetActive(true);
+
+            return instance;
+        }
+
         private void Awake()
         {
             _activeTablets = new();
             _oldCount = _activeTablets.Count;
+        }
+
+        private void OnEnable()
+        {
+            _activator.GameActivated += OnGameActive;
+        }
+
+        private void OnDisable()
+        {
+            _activator.GameActivated -= OnGameActive;
+        }
+
+        private void OnGameActive()
+        {
+            NetworkObject[] objectToRemove = ActiveTablets
+                .Where(x => x.PlayerReference.Reference == null)
+                .Select(x => x.NetworkObject)
+                .ToArray();
+
+            foreach (NetworkObject netObject in objectToRemove)
+            {
+                _activeTablets.Remove(netObject);
+                netObject.Despawn(true);
+            }
         }
 
         private void Start()

@@ -7,6 +7,7 @@ namespace UI.Connection
     public class ConnectionTabs : MonoBehaviour
     {
         [SerializeField] private GameObject _notConnectedTab;
+        
         [SerializeField] private GameObject _connectedTab;
 
         [Inject] private NetworkManager _networkManager;
