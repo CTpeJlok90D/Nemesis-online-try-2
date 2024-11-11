@@ -7,7 +7,6 @@ using Core.Characters;
 using ModestTree;
 using Unity.Netcode;
 using UnityEngine;
-using WebSocketSharp;
 
 namespace Core.CharacterChoose
 {
@@ -15,11 +14,15 @@ namespace Core.CharacterChoose
     {
         public delegate void ChangedListener();
 
+        public delegate void CharacterChoosedListener();
+
         private Character _choosedCharacter;
 
         private List<Character> _characters;
 
-        public event ChangedListener Changed;
+        public event ChangedListener GotCharacters;
+
+        public event CharacterChoosedListener CharacterChoosed;
 
         private void Awake()
         {
@@ -88,12 +91,15 @@ namespace Core.CharacterChoose
         private void SendCharactersToChooseFrom_RPC(Character[] characters)
         {
             _characters = characters.ToList();
+            GotCharacters?.Invoke();
         }
 
         [Rpc(SendTo.Server)]
         private void Choose_RPC(Character character)
         {
             _choosedCharacter = character;
+            _characters.Clear();
+            CharacterChoosed?.Invoke();
         }
 
         public IEnumerator<Character> GetEnumerator()

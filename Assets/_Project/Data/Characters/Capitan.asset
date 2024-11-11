@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be96e329caf718242957082259d70197, type: 3}
   m_Name: Capitan
   m_EditorClassIdentifier: 
+  <Id>k__BackingField: Capitan
+  <AddessablePath>k__BackingField:
+    m_AssetGUID: 75ff028630961fe418a8865735bab297
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   <CharacterPawn>k__BackingField:
     m_AssetGUID: 3cb6a8b3beaa1404789678cd004bf6fc
     m_SubObjectName: 

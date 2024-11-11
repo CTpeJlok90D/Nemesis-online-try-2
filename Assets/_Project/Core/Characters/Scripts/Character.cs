@@ -12,70 +12,27 @@ namespace Core.Characters
     [CreateAssetMenu(menuName = "Game/Character")]
     public class Character : ScriptableObject, INetworkSerializable, IEquatable<Character>
     {
-        [field: SerializeField] public AssetReferenceT<Character> AddessablePath { get; private set; }
-        [field: SerializeField] public AssetReferenceGameObject CharacterPawn { get; private set; }
-        [field: SerializeField] public AssetReferenceT<Sprite> CharacterAvatar { get; private set; }
-        [field: SerializeField] public AssetReferenceT<Sprite> CharacterBackground { get; private set; }
+        [SerializeField] public FixedString64Bytes _id;
+
+        public string Id => _id.ToString();
 
         public bool Equals(Character other)
         {
             return
-                AddessablePath.Equals(other.AddessablePath) &&
-                CharacterPawn.Equals(other.CharacterPawn) &&
-                CharacterAvatar.Equals(other.CharacterAvatar) &&
-                CharacterBackground.Equals(other.CharacterBackground);
+                _id.Equals(other._id);
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            FixedString64Bytes key = "";
-
-            if (serializer.IsWriter)
-            {
-                key = AddessablePath.RuntimeKey.ToString();
-            }
-
-            serializer.SerializeValue(ref key);
-
-            if (serializer.IsReader)
-            {
-                AsyncOperationHandle<Character> handle = Addressables.LoadAssetAsync<Character>(key.ToString());
-                handle.Completed += handle => 
-                {
-                    name = handle.Result.name + "(Clone)";
-                    AddessablePath = handle.Result.AddessablePath;
-                    CharacterPawn = handle.Result.CharacterPawn;
-                    CharacterAvatar = handle.Result.CharacterAvatar;
-                    CharacterBackground = handle.Result.CharacterBackground;
-                };
-            }
+            serializer.SerializeValue(ref _id);
         }
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            string GUID = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(this));
-            AddessablePath = new(GUID);
-        }
-
-        [CustomEditor(typeof(Character))]
-        private class CEditor : Editor
-        {
-            private Character character => target as Character;
-
-            public override void OnInspectorGUI()
+            if (Application.isPlaying == false)
             {
-                base.OnInspectorGUI();
-                GUILayout.Label("Key: " + character.AddessablePath.RuntimeKey.ToString());
-                GUILayout.Label("Key type: " + character.AddessablePath.RuntimeKey.GetType().FullName);
-                if (GUILayout.Button("Load"))
-                {
-                    AsyncOperationHandle<Character> handle = Addressables.LoadAssetAsync<Character>(character.AddessablePath.RuntimeKey);
-                    handle.Completed += completed => 
-                    {
-                        Debug.Log("Loaded!", completed.Result);
-                    };
-                }
+                _id = name;
             }
         }
 #endif

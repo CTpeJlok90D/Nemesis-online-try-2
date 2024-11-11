@@ -15,7 +15,6 @@ namespace Core.CharacterChoose
 {
     public class CharactersDealer : NetworkBehaviour
     {
-
         public delegate void СhoiceIsProvidedListener();
 
         public delegate void OrderNumbersWereDistributedListener();
@@ -28,20 +27,13 @@ namespace Core.CharacterChoose
 
         private Lobby _lobby;
 
-        public NetVariable<bool> IsDealing { get; private set; }
+        public NetVariable<bool> IsDealing { get; private set; } = new (false, writePerm: NetworkVariableWritePermission.Server);
 
         private List<Character> _characters;
-
-        public event СhoiceIsProvidedListener ChoiceIsProvided;
 
         public event OrderNumbersWereDistributedListener OrderNumbersWereDistributed;
 
         public int ChooseCharactersCount => _lobby.Configuration.ChooseCharactersCount;
-
-        private void Awake()
-        {
-            IsDealing = new(false, writePerm: NetworkVariableWritePermission.Server);
-        }
 
         public void Init(Lobby lobby, PlayerTabletList playerTabletList)
         {
@@ -184,7 +176,7 @@ namespace Core.CharacterChoose
 
                 foreach (Character character in CharactersDealer.Selection)
                 {
-                    if (GUILayout.Button(character.name))
+                    if (GUILayout.Button(character.Id))
                     {
                         CharactersDealer.Selection.Choose(character);
                     }
