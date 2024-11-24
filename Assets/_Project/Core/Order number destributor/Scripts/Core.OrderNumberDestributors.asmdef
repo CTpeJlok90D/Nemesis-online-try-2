@@ -1,0 +1,19 @@
+{
+    "name": "Core.OrderNumberDestributors",
+    "rootNamespace": "Core.OrderNumberDestributors",
+    "references": [
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:3831e96cc44463d4e9b815bf7d538a7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

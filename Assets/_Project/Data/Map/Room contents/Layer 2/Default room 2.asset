@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
+  m_Name: Default room 2
+  m_EditorClassIdentifier: 
+  _id:
+    utf8LengthInBytes: 32
+    bytes:
+      offset0000:
+        byte0000: 55
+        byte0001: 48
+        byte0002: 97
+        byte0003: 97
+        byte0004: 49
+        byte0005: 48
+        byte0006: 56
+        byte0007: 54
+        byte0008: 54
+        byte0009: 51
+        byte0010: 56
+        byte0011: 101
+        byte0012: 53
+        byte0013: 50
+        byte0014: 55
+        byte0015: 52
+      offset0016:
+        byte0000: 57
+        byte0001: 97
+        byte0002: 99
+        byte0003: 50
+        byte0004: 57
+        byte0005: 51
+        byte0006: 56
+        byte0007: 51
+        byte0008: 50
+        byte0009: 102
+        byte0010: 101
+        byte0011: 57
+        byte0012: 98
+        byte0013: 49
+        byte0014: 48
+        byte0015: 54
+      offset0032:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      byte0048: 0
+      byte0049: 0
+      byte0050: 0
+      byte0051: 0
+      byte0052: 0
+      byte0053: 0
+      byte0054: 0
+      byte0055: 0
+      byte0056: 0
+      byte0057: 0
+      byte0058: 0
+      byte0059: 0
+      byte0060: 0
+      byte0061: 0
+  <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
+  <Layer>k__BackingField: 2

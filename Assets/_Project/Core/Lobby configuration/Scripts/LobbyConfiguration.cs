@@ -1,5 +1,6 @@
 using System;
 using Core.Characters;
+using Core.Maps.Generation;
 using Unity.Netcode;
 
 namespace Core.Lobbies
@@ -13,25 +14,14 @@ namespace Core.Lobbies
         
         public Character[] Characters;
 
+        public MapGeneratorConfiguration MapGeneratorConfiguration;
+
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             serializer.SerializeValue(ref PlayersCount);
             serializer.SerializeValue(ref ChooseCharactersCount);
-
-            int arraySize = 0;
-            if (serializer.IsWriter)
-            {
-                arraySize = Characters.Length;
-            }
-
-            serializer.SerializeValue(ref arraySize);
-            if (serializer.IsReader)
-            {
-                for (int i = 0; i < arraySize; i++)
-                {
-                    serializer.SerializeValue(ref Characters[i]);
-                }
-            }
+            serializer.SerializeValue(ref MapGeneratorConfiguration);
+            serializer.SerializeValue(ref Characters);
         }
     }
 }

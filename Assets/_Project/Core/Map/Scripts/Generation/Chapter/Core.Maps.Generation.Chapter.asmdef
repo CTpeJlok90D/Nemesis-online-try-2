@@ -1,0 +1,18 @@
+{
+    "name": "Core.Maps.Generation.Chapter",
+    "rootNamespace": "Core.Maps.Generation.Chapter",
+    "references": [
+        "GUID:3831e96cc44463d4e9b815bf7d538a7c",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:cea7544fb8d07494aa7bd3d211d57ce3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -9,15 +9,12 @@ using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
 using UnityEngine;
-using Zenject;
 
 namespace Core.CharacterChoose
 {
     public class CharactersDealer : NetworkBehaviour
     {
         public delegate void СhoiceIsProvidedListener();
-
-        public delegate void OrderNumbersWereDistributedListener();
 
         [SerializeField] private CharactersSelection _charactersSelection;
 
@@ -31,22 +28,12 @@ namespace Core.CharacterChoose
 
         private List<Character> _characters;
 
-        public event OrderNumbersWereDistributedListener OrderNumbersWereDistributed;
-
         public int ChooseCharactersCount => _lobby.Configuration.ChooseCharactersCount;
 
         public void Init(Lobby lobby, PlayerTabletList playerTabletList)
         {
             _lobby = lobby;
             _playerTabletList = playerTabletList;
-        }
-
-        public override void OnNetworkSpawn()
-        {
-            if (NetworkManager.Singleton.IsServer)
-            {
-                DistributeOrderNumbers();
-            }
         }
 
         public async Task StartDeal()
@@ -58,12 +45,12 @@ namespace Core.CharacterChoose
                     throw new Exception("Dealer is already dealing!");
                 }
 
-                IsDealing.Value = true;
                 if (NetworkManager.Singleton.IsServer == false)
                 {
-                    IsDealing.Value = false;
                     throw new NotServerException("Only server can start characters deal!");
                 }
+
+                IsDealing.Value = true;
 
                 PlayerTablet[] orderedTablets = _playerTabletList.OrderBy(x => x.OrderNumber.Value).ToArray();
 
@@ -95,24 +82,6 @@ namespace Core.CharacterChoose
             }
         }
 
-        private void DistributeOrderNumbers()
-        {
-            List<int> numbers = new();
-            for (int i = 1; i <= _playerTabletList.ActiveTablets.Length; i++)
-            {
-                numbers.Add(i);
-            }
-
-            foreach (PlayerTablet playerTablet in _playerTabletList)
-            {
-                int number = UnityEngine.Random.Range(0, _playerTabletList.Count());
-                playerTablet.OrderNumber.Value = number;
-                numbers.Remove(number);
-            }
-
-            OrderNumbersWereDistributed?.Invoke();
-        }
-
         private Character[] GetRandomCharacters(int count, Character[] selectFrom)
         {
             if (count <= 0)
@@ -139,7 +108,6 @@ namespace Core.CharacterChoose
         {
             _characters.Remove(character);
         }
-
 #if UNITY_EDITOR
         [CustomEditor(typeof(CharactersDealer))]
         private class CEditor : Editor

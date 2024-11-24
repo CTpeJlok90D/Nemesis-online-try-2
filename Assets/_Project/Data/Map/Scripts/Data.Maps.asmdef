@@ -1,0 +1,20 @@
+{
+    "name": "Data.Maps",
+    "rootNamespace": "Data.Maps",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:91a3b25ee5e06ab43b474f2215fb5097",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

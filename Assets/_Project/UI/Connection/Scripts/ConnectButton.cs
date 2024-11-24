@@ -28,6 +28,11 @@ namespace UI.Connection
         
         private void StartClient()
         {
+            if (string.IsNullOrEmpty(_input.text))
+            {
+                return;
+            }
+
             Task task = _relay.JoinRelay(_input.text);
             _ = _loadScreen.Show(task);
         }

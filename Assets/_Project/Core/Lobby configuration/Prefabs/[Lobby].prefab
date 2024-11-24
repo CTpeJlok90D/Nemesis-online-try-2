@@ -81,3 +81,17 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dd74b7ca7aa245b4398fbb45316925cc, type: 2}
     - {fileID: 11400000, guid: 5b7d72e4813b48a469029336e2cf8841, type: 2}
     - {fileID: 11400000, guid: a81491d41131a4540840ea690f7058a8, type: 2}
+    MapGeneratorConfiguration:
+      BagsOfRooms:
+        _serializedList:
+        - Key: 1
+          Value:
+            _items:
+            - {fileID: 11400000, guid: 385542f880d787840834b5eaedc6daef, type: 2}
+            - {fileID: 11400000, guid: 291eacc0adf5e414b87687648d15a19c, type: 2}
+        - Key: 2
+          Value:
+            _items:
+            - {fileID: 11400000, guid: 70aa1086638e52749ac293832fe9b106, type: 2}
+            - {fileID: 11400000, guid: 597812e233da0004f9de8bbf90752454, type: 2}
+      PlayerCount: 5

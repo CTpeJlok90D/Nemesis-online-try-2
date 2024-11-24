@@ -9,16 +9,16 @@ namespace Core.CharacterChoose
     {
         [SerializeField] private CharactersDealer _dealer;
 
-        public CharactersDealer Instance => _dealer;
+        public CharactersDealer CharacterDealer => _dealer;
 
         public override void InstallBindings()
         {
             LobbyInstaller lobbyInstaller = ProjectContext.Instance.GetComponentInChildren<LobbyInstaller>();
             PlayerTabletListInstaller playerTabletList = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
 
-            _dealer.Init(lobbyInstaller.Instance, playerTabletList.Instance);
+            _dealer.Init(lobbyInstaller.Lobby, playerTabletList.Instance);
 
-            Container.Bind<CharactersDealer>().FromInstance(Instance).AsSingle();
+            Container.Bind<CharactersDealer>().FromInstance(_dealer).AsSingle();
         }
     }
 }

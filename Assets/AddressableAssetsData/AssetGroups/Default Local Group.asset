@@ -20,8 +20,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 291eacc0adf5e414b87687648d15a19c
+    m_Address: Assets/_Project/Data/Map/Room contents/Default room 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35de4af51585ba14ea7df8f8149f7014
+    m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 385542f880d787840834b5eaedc6daef
+    m_Address: Assets/_Project/Data/Map/Room contents/Default room 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3cb6a8b3beaa1404789678cd004bf6fc
     m_Address: Assets/_Project/View/Characters/Capitan/Prefabs/Capitan view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46da0b449f9c73f47854207c49a69639
+    m_Address: Assets/_Project/Data/Map/Room actions/Empty room action.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 597812e233da0004f9de8bbf90752454
+    m_Address: Assets/_Project/Data/Map/Room contents/Default room 4.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -32,6 +57,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
     m_Address: Assets/_Project/View/Characters/_Sprites/character-backgrounds.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70aa1086638e52749ac293832fe9b106
+    m_Address: Assets/_Project/Data/Room contents/Default room 2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,8 +80,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a39f42ae3a3516a408cce851b535f4d4
+    m_Address: Assets/_Project/Data/Map/Room contents/Control point.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a81491d41131a4540840ea690f7058a8
     m_Address: Assets/_Project/Data/Characters/Soldier.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad27df700b0f6f040b39d4e642397459
+    m_Address: Assets/_Project/Data/Map/Room contents/Control point 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b511e7db71bc5ce4f8a1c18b8ee809f5
+    m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 1.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -77,6 +122,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1075b25542b8f54e93a61e1d8d5e5f6
     m_Address: Assets/_Project/View/Characters/Soldier/Prefabs/Soldier view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e92ce2550ea83b64ea5f133f8407e865
+    m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

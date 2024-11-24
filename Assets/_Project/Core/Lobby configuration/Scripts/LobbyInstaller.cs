@@ -13,16 +13,16 @@ namespace Core.Lobbies
 
         [SerializeField] private NetworkManagerInstaller _networkManagerInstaller;
 
-        public Lobby Instance { get; private set; }
+        public Lobby Lobby { get; private set; }
 
         public override void InstallBindings()
         {
-            Instance = _lobby_PREFAB.Instantiate(_playetTabletListInstaller.Instance, _networkManagerInstaller.Instance);
-            DontDestroyOnLoad(Instance);
+            Lobby = _lobby_PREFAB.Instantiate(_playetTabletListInstaller.Instance, _networkManagerInstaller.Instance);
+            DontDestroyOnLoad(Lobby);
 
             Container
                 .Bind<Lobby>()
-                .FromInstance(Instance)
+                .FromInstance(Lobby)
                 .AsSingle();
         }
     }
