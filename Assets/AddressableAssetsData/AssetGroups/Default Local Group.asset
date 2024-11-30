@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f2523d0343852a64d9bddf5e76466612
   m_SerializeEntries:
+  - m_GUID: 05f621b2eb9afa2479c80e0375d09b03
+    m_Address: Assets/_Project/Data/Map/Control point/Destinations/Deep space.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1149afd990674364fa4bd0314f477a20
     m_Address: Assets/_Project/Data/Characters/Mechanic.asset
     m_ReadOnly: 0
@@ -45,6 +50,27 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4db021a610b412d41adbbc01f09f1612
+    m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4edd818cfd2048f4c9354c0a494008ab
+    m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57e622d595caf0544a32835125e5589c
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Malfunction intellegence
+      token 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5910c73fc8f8c09499980b5401ad093e
+    m_Address: Assets/_Project/Data/Map/Control point/Coordinats/D.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 597812e233da0004f9de8bbf90752454
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 4.asset
     m_ReadOnly: 0
@@ -57,6 +83,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
     m_Address: Assets/_Project/View/Characters/_Sprites/character-backgrounds.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 640e60c0966db1842814e773dfa2aa1c
+    m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6648204404f61f3469a20061b627863d
+    m_Address: Assets/_Project/Data/Map/Control point/Destinations/Earth.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,18 +111,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83f5b8842394f7440b33a2952623c61b
+    m_Address: Assets/_Project/Data/Map/Control point/Coordinats/B.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90d47e4cd9977024c9e30a414f5d14d8
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Fire intellegence token.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92bf65eaef573dc4ab795397a7ef1aab
     m_Address: Assets/_Project/View/Characters/Scientist/Prefabs/Scientist view.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a39f42ae3a3516a408cce851b535f4d4
-    m_Address: Assets/_Project/Data/Map/Room contents/Control point.asset
+    m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Control point.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a81491d41131a4540840ea690f7058a8
     m_Address: Assets/_Project/Data/Characters/Soldier.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acd38d54311ad5e4b8234350e491770e
+    m_Address: Assets/_Project/Data/Map/Control point/Destinations/Venus.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -110,6 +161,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfc0091eea6bc4f47afb2cf2dc7878e0
+    m_Address: Assets/_Project/Data/Map/Control point/Coordinats/C.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1529cc6b3b018643b1074eb87920257
     m_Address: Assets/_Project/Data/Characters/Pilot.asset
     m_ReadOnly: 0
@@ -127,6 +183,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e92ce2550ea83b64ea5f133f8407e865
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd6996471d5bb194fb05be3a621b338c
+    m_Address: Assets/_Project/Data/Map/Control point/Destinations/Mars.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe3b6ef9d1f1bcf4ea2de3167b909055
+    m_Address: Assets/_Project/Data/Map/Control point/Coordinats/A.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

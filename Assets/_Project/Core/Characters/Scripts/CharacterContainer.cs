@@ -8,6 +8,7 @@ namespace Core.Characters
 
         public CharacterContainer Instantiate(Character character, Transform parent = null)
         {
+            Debug.Log(character);
             gameObject.SetActive(false);
             CharacterContainer characterContainer = Instantiate(this, parent);
             gameObject.SetActive(true);

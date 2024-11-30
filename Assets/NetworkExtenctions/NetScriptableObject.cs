@@ -11,22 +11,18 @@ using UnityEditor;
 
 namespace Unity.Netcode.Custom
 {
-    public class NetScriptableObject : ScriptableObject, INetworkSerializable, IEquatable<NetScriptableObject>
+    [Serializable]
+    public sealed class NetScriptableObject<T> where T : UnityEngine.Object, INetworkSerializable, IEquatable<T>
     {
-        public delegate void LoadedListener(NetScriptableObject sender);
+        public delegate void LoadedListener(T result);
 
-        [SerializeField] private AssetReferenceT<NetScriptableObject> _selfAssetReference;
+        [SerializeField] private AssetReferenceT<T> _selfAssetReference;
 
         public event LoadedListener Loaded;
 
-        protected AssetReferenceT<NetScriptableObject> SelfAssetReference => _selfAssetReference;
-
-        public bool Equals(NetScriptableObject other)
-        {
-            return _selfAssetReference.RuntimeKey == other._selfAssetReference.RuntimeKey;
-        }
-
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+        public AssetReferenceT<T> SelfAssetReference => _selfAssetReference;
+        
+        public void OnNetworkSerialize<T1>(BufferSerializer<T1> serializer, ScriptableObject sender) where T1 : IReaderWriter
         {
             FixedString64Bytes loadKey = "";
 
@@ -39,25 +35,26 @@ namespace Unity.Netcode.Custom
 
             serializer.SerializeValue(ref loadKey);
 
-            AssetReferenceT<NetScriptableObject> assetReference = new(loadKey.ToString());
-            AsyncOperationHandle<NetScriptableObject> loadHandle = assetReference.LoadAssetAsync();
+            AssetReferenceT<T> assetReference = new(loadKey.ToString());
+            AsyncOperationHandle<T> loadHandle = assetReference.LoadAssetAsync();
+            _selfAssetReference = assetReference;
 
             loadHandle.Completed += (handle) => 
             {
-                _selfAssetReference = handle.Result._selfAssetReference;
-                OnNetworkSerialize(handle.Result);
-                Loaded?.Invoke(this);
+                if (string.IsNullOrEmpty(sender.name))
+                {
+                    sender.name = $"{handle.Result.name} (net loaded)";
+                }
+                Loaded?.Invoke(handle.Result);
             };
         }
-
-        protected virtual void OnNetworkSerialize(NetScriptableObject original) { }
         
 #if UNITY_EDITOR
-        protected virtual void OnValidate()
+        public void OnValidate(UnityEngine.Object target)
         {
             if (Application.isPlaying == false)
             {
-                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(this));
+                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(target));
                 _selfAssetReference = new(guid);
             }
         }

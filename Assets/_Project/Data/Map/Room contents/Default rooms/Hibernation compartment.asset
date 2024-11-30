@@ -12,73 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
   m_Name: Hibernation compartment
   m_EditorClassIdentifier: 
-  _id:
-    utf8LengthInBytes: 32
-    bytes:
-      offset0000:
-        byte0000: 97
-        byte0001: 100
-        byte0002: 50
-        byte0003: 55
-        byte0004: 100
-        byte0005: 102
-        byte0006: 55
-        byte0007: 48
-        byte0008: 48
-        byte0009: 98
-        byte0010: 48
-        byte0011: 102
-        byte0012: 54
-        byte0013: 102
-        byte0014: 48
-        byte0015: 52
-      offset0016:
-        byte0000: 48
-        byte0001: 98
-        byte0002: 51
-        byte0003: 57
-        byte0004: 100
-        byte0005: 52
-        byte0006: 101
-        byte0007: 54
-        byte0008: 52
-        byte0009: 50
-        byte0010: 51
-        byte0011: 57
-        byte0012: 55
-        byte0013: 52
-        byte0014: 53
-        byte0015: 57
-      offset0032:
-        byte0000: 0
-        byte0001: 0
-        byte0002: 0
-        byte0003: 0
-        byte0004: 0
-        byte0005: 0
-        byte0006: 0
-        byte0007: 0
-        byte0008: 0
-        byte0009: 0
-        byte0010: 0
-        byte0011: 0
-        byte0012: 0
-        byte0013: 0
-        byte0014: 0
-        byte0015: 0
-      byte0048: 0
-      byte0049: 0
-      byte0050: 0
-      byte0051: 0
-      byte0052: 0
-      byte0053: 0
-      byte0054: 0
-      byte0055: 0
-      byte0056: 0
-      byte0057: 0
-      byte0058: 0
-      byte0059: 0
-      byte0060: 0
-      byte0061: 0
+  _loadKey: ad27df700b0f6f040b39d4e642397459
+  <Id>k__BackingField: Hibernation compartment
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
   <Layer>k__BackingField: 0

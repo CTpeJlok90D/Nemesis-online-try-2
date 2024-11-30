@@ -12,73 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
   m_Name: Engine room 1
   m_EditorClassIdentifier: 
-  _id:
-    utf8LengthInBytes: 32
-    bytes:
-      offset0000:
-        byte0000: 98
-        byte0001: 53
-        byte0002: 49
-        byte0003: 49
-        byte0004: 101
-        byte0005: 55
-        byte0006: 100
-        byte0007: 98
-        byte0008: 55
-        byte0009: 49
-        byte0010: 98
-        byte0011: 99
-        byte0012: 53
-        byte0013: 99
-        byte0014: 101
-        byte0015: 52
-      offset0016:
-        byte0000: 102
-        byte0001: 56
-        byte0002: 97
-        byte0003: 49
-        byte0004: 99
-        byte0005: 49
-        byte0006: 56
-        byte0007: 98
-        byte0008: 56
-        byte0009: 101
-        byte0010: 101
-        byte0011: 56
-        byte0012: 48
-        byte0013: 57
-        byte0014: 102
-        byte0015: 53
-      offset0032:
-        byte0000: 0
-        byte0001: 0
-        byte0002: 0
-        byte0003: 0
-        byte0004: 0
-        byte0005: 0
-        byte0006: 0
-        byte0007: 0
-        byte0008: 0
-        byte0009: 0
-        byte0010: 0
-        byte0011: 0
-        byte0012: 0
-        byte0013: 0
-        byte0014: 0
-        byte0015: 0
-      byte0048: 0
-      byte0049: 0
-      byte0050: 0
-      byte0051: 0
-      byte0052: 0
-      byte0053: 0
-      byte0054: 0
-      byte0055: 0
-      byte0056: 0
-      byte0057: 0
-      byte0058: 0
-      byte0059: 0
-      byte0060: 0
-      byte0061: 0
+  _loadKey: b511e7db71bc5ce4f8a1c18b8ee809f5
+  <Id>k__BackingField: Engine room 1
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
   <Layer>k__BackingField: 0

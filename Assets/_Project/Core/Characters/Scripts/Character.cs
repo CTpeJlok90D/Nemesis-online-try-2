@@ -9,19 +9,33 @@ namespace Core.Characters
     [CreateAssetMenu(menuName = "Game/Character")]
     public class Character : ScriptableObject, INetworkSerializable, IEquatable<Character>
     {
-        [SerializeField] public FixedString64Bytes _id;
+        [SerializeField] public string _id;
 
-        public string Id => _id.ToString();
+        public string Id => _id;
 
         public bool Equals(Character other)
         {
             return
-                _id.Equals(other._id);
+                _id == other._id;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            serializer.SerializeValue(ref _id);
+            FixedString64Bytes id = new();
+            if (serializer.IsWriter)
+            {
+                id = new(_id);
+            }
+            serializer.SerializeValue(ref id);
+            if (serializer.IsReader)
+            {
+                _id = id.ToString();
+            }
+
+            if (string.IsNullOrEmpty(name))
+            {
+                name = $"{_id} (net loaded)";
+            }
         }
 
 #if UNITY_EDITOR

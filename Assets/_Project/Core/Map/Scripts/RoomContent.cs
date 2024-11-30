@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.Netcode.Custom;
 using System;
 using Unity.Netcode;
 using Unity.Collections;
@@ -18,7 +17,8 @@ namespace Core.Maps
     {
         public delegate void LoadedListener(RoomContent sender);
 
-        [field: SerializeField] private FixedString64Bytes _id;
+        [field: SerializeField] private string _loadKey;
+        [field: SerializeField] public string Id { get; private set; }
         [field: SerializeField] public RoomAction RoomAction { get; private set; } 
         [field: SerializeField] public int Layer { get; private set; } = 0;
 
@@ -26,19 +26,49 @@ namespace Core.Maps
 
         public bool Equals(RoomContent other)
         {
-            return _id == other._id;
+            return _loadKey == other._loadKey;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            serializer.SerializeValue(ref _id);
+            if (string.IsNullOrEmpty(Id) && serializer.IsWriter)
+            {
+                throw new ArgumentException($"ID is null");
+            }
 
-            AssetReferenceT<RoomContent> assetReference = new(_id.ToString());
+            if (string.IsNullOrEmpty(_loadKey) && serializer.IsWriter)
+            {
+                throw new ArgumentException($"Load key is null");
+            }
+
+            FixedString64Bytes loadKey = new();
+            if (serializer.IsWriter)
+            {
+                loadKey = new(_loadKey);
+            }
+            serializer.SerializeValue(ref loadKey);
+            if (serializer.IsReader)
+            {
+                _loadKey = loadKey.ToString();
+            }
+
+            FixedString64Bytes id = new();
+            if (serializer.IsWriter)
+            {
+                id = new(Id);
+            }
+            serializer.SerializeValue(ref id);
+            if (serializer.IsReader)
+            {
+                Id = id.ToString();
+            }
+
+            AssetReferenceT<RoomContent> assetReference = new(_loadKey.ToString());
             AsyncOperationHandle<RoomContent> loadHandle = assetReference.LoadAssetAsync();
 
             loadHandle.Completed += (handle) => 
             {
-                _id = handle.Result._id;
+                _loadKey = handle.Result._loadKey;
                 RoomAction = handle.Result.RoomAction;
                 if (string.IsNullOrEmpty(name))
                 {
@@ -53,9 +83,20 @@ namespace Core.Maps
         {
             if (Application.isPlaying == false)
             {
+
                 string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(this));
                 AssetReference reference = new AssetReference(guid);
-                _id = new(reference.RuntimeKey.ToString());
+
+                if (string.IsNullOrEmpty(_loadKey))
+                {
+                    _loadKey = new(reference.RuntimeKey.ToString());
+                    EditorUtility.SetDirty(this);
+                }
+                if (string.IsNullOrEmpty(Id))
+                {
+                    Id = name;
+                    EditorUtility.SetDirty(this);
+                }
             }
         }
 #endif

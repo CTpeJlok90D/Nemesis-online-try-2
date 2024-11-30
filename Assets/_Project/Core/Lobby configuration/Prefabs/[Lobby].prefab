@@ -94,4 +94,12 @@ MonoBehaviour:
             _items:
             - {fileID: 11400000, guid: 70aa1086638e52749ac293832fe9b106, type: 2}
             - {fileID: 11400000, guid: 597812e233da0004f9de8bbf90752454, type: 2}
+      IntelegenceTokens:
+      - {fileID: 11400000, guid: 90d47e4cd9977024c9e30a414f5d14d8, type: 2}
+      - {fileID: 11400000, guid: 57e622d595caf0544a32835125e5589c, type: 2}
+      AvailableDestinationCards:
+      - {fileID: 11400000, guid: 4db021a610b412d41adbbc01f09f1612, type: 2}
+      - {fileID: 11400000, guid: 640e60c0966db1842814e773dfa2aa1c, type: 2}
+      - {fileID: 11400000, guid: 4edd818cfd2048f4c9354c0a494008ab, type: 2}
+      EscapePodCountPerPlayer: 020000000200000002000000030000000300000004000000
       PlayerCount: 5

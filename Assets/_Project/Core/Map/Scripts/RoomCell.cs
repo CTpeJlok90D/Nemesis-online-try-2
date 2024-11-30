@@ -1,5 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
+using Unity.Netcode.Custom;
+using Core.Map.IntellegenceTokens;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,17 +17,22 @@ namespace Core.Maps
         [field: SerializeField] public int Number { get; private set; } = 1;
 
         [field: SerializeField] public int Layer { get; private set; } = 1;
-        
-        private NetworkVariable<RoomContent> _roomContentNet;
 
-        private NetworkVariable<bool> _isInitialized;
+        [field: SerializeField] public bool GenerateIntellegenceToken { get; private set; } = true;
+
+        public NetVariable<IntelegenceToken> IntellegenceTokenNet { get; private set; }
+        
+        private NetVariable<RoomContent> _roomContentNet;
+
+        public NetVariable<bool> IsInitialized { get; private set; }
 
         public RoomContent RoomContent => _roomContentNet.Value;
 
         private void Awake()
         {
+            IntellegenceTokenNet = new();
             _roomContentNet = new();
-            _isInitialized = new();
+            IsInitialized = new();
         }
 
         public override void OnNetworkSpawn()
@@ -45,13 +52,13 @@ namespace Core.Maps
                 throw new NotServerException("Only server can initialize rooms");
             }
 
-            if (_isInitialized.Value)
+            if (IsInitialized.Value)
             {
                 throw new RoomAlreadyInitializedException();
             }
 
             _roomContentNet.Value = roomContent;
-            _isInitialized.Value = true;
+            IsInitialized.Value = true;
             return this;
         }
 
@@ -71,6 +78,7 @@ namespace Core.Maps
                     GUI.enabled = false;
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
                     EditorGUILayout.ObjectField("Room: " ,RoomCell._roomContentNet.Value, typeof(RoomContent), false);
+                    EditorGUILayout.ObjectField("Intellegence token: " ,RoomCell.IntellegenceTokenNet.Value, typeof(IntelegenceToken), false);
                     GUI.enabled = true;
                 }
             }

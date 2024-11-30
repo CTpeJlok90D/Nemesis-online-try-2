@@ -12,73 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
   m_Name: Control point
   m_EditorClassIdentifier: 
-  _id:
-    utf8LengthInBytes: 32
-    bytes:
-      offset0000:
-        byte0000: 97
-        byte0001: 51
-        byte0002: 57
-        byte0003: 102
-        byte0004: 52
-        byte0005: 50
-        byte0006: 97
-        byte0007: 101
-        byte0008: 51
-        byte0009: 97
-        byte0010: 51
-        byte0011: 53
-        byte0012: 49
-        byte0013: 54
-        byte0014: 97
-        byte0015: 52
-      offset0016:
-        byte0000: 48
-        byte0001: 56
-        byte0002: 99
-        byte0003: 99
-        byte0004: 101
-        byte0005: 56
-        byte0006: 53
-        byte0007: 49
-        byte0008: 98
-        byte0009: 53
-        byte0010: 51
-        byte0011: 53
-        byte0012: 102
-        byte0013: 52
-        byte0014: 100
-        byte0015: 52
-      offset0032:
-        byte0000: 0
-        byte0001: 0
-        byte0002: 0
-        byte0003: 0
-        byte0004: 0
-        byte0005: 0
-        byte0006: 0
-        byte0007: 0
-        byte0008: 0
-        byte0009: 0
-        byte0010: 0
-        byte0011: 0
-        byte0012: 0
-        byte0013: 0
-        byte0014: 0
-        byte0015: 0
-      byte0048: 0
-      byte0049: 0
-      byte0050: 0
-      byte0051: 0
-      byte0052: 0
-      byte0053: 0
-      byte0054: 0
-      byte0055: 0
-      byte0056: 0
-      byte0057: 0
-      byte0058: 0
-      byte0059: 0
-      byte0060: 0
-      byte0061: 0
+  _loadKey: a39f42ae3a3516a408cce851b535f4d4
+  <Id>k__BackingField: Control point
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
   <Layer>k__BackingField: 0

@@ -1,13 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Core.DestinationCoordinats;
+using Core.Engines;
+using Core.EscapePods;
+using Unity.Netcode;
+using Unity.Netcode.Custom;
+using UnityEditor;
 using UnityEngine;
 
 namespace Core.Maps
 {
     [Icon("Assets/_Project/Core/Map/Editor/icons8-map-96.png")]
-    public class Map : MonoBehaviour, IEnumerable<RoomCell>
+    public class Map : NetworkBehaviour, IEnumerable<RoomCell>
     {
+        [SerializeField] private Coordinate _defaultCordinats;
+
         [SerializeField] private RoomCell[] _roomCells;
+
+        [SerializeField] private ShipEngine[] _shipEngines;
+
+        [SerializeField] private List<EscapePod> _escapePods;
+
+        public NetVariable<DestinationCoordinatsCard> DestinationCoordinatsCard { get; private set; }
+
+        public NetVariable<Coordinate> Cordinates { get; private set; }
+
+        public IReadOnlyCollection<EscapePod> EscapePods => _escapePods;
+
+        public IReadOnlyCollection<ShipEngine> ShipEngies => _shipEngines;
+
+        private void Awake()
+        {
+            DestinationCoordinatsCard = new();
+            Cordinates = new(_defaultCordinats);
+        }
 
         public IReadOnlyCollection<RoomCell> RoomCells => _roomCells;
 
@@ -24,10 +50,36 @@ namespace Core.Maps
             return _roomCells.GetEnumerator();
         }
 
-#if UNITY_EDITOR
-        private void OnValidate()
+        public void RemoveEscapePod(EscapePod escapePod)
         {
-            _roomCells = GetComponentsInChildren<RoomCell>();
+            RemoveEscapePod_RPC(escapePod.NetworkObject);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void RemoveEscapePod_RPC(NetworkObjectReference reference)
+        {
+            NetworkObject netObject = reference;
+            EscapePod escapePod = netObject.GetComponent<EscapePod>();
+            _escapePods.Remove(escapePod);
+            escapePod.NetworkObject.Despawn(true);
+        }
+
+#if UNITY_EDITOR
+        [CustomEditor(typeof(Map))]
+        private class CEditor : Editor
+        {
+            private Map Map => target as Map;
+            public override void OnInspectorGUI()
+            {
+                base.OnInspectorGUI();
+                if (Map.DestinationCoordinatsCard == null)
+                {
+                    return;
+                }
+                GUI.enabled = false;
+                EditorGUILayout.ObjectField(Map.DestinationCoordinatsCard.Value, typeof(DestinationCoordinatsCard), false);
+                GUI.enabled = true;
+            }
         }
 #endif
     }

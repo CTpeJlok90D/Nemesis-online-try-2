@@ -98,16 +98,12 @@ namespace Core.CharacterChoose
 
             while (result.Count != count && result.Count != 0)
             {
-                result.Remove(result[UnityEngine.Random.Range(0, result.Count)]);
+                result.RemoveAt(UnityEngine.Random.Range(0, result.Count));
             }
 
             return result.ToArray();
         }
-
-        private void RemoveCharacter(Character character)
-        {
-            _characters.Remove(character);
-        }
+        
 #if UNITY_EDITOR
         [CustomEditor(typeof(CharactersDealer))]
         private class CEditor : Editor
