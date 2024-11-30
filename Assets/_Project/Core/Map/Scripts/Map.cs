@@ -53,6 +53,7 @@ namespace Core.Maps
         public void RemoveEscapePod(EscapePod escapePod)
         {
             RemoveEscapePod_RPC(escapePod.NetworkObject);
+            escapePod.NetworkObject.Despawn(true);
         }
 
         [Rpc(SendTo.Everyone)]
@@ -61,7 +62,6 @@ namespace Core.Maps
             NetworkObject netObject = reference;
             EscapePod escapePod = netObject.GetComponent<EscapePod>();
             _escapePods.Remove(escapePod);
-            escapePod.NetworkObject.Despawn(true);
         }
 
 #if UNITY_EDITOR

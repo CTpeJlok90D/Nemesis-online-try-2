@@ -1,0 +1,16 @@
+{
+    "name": "Data.AliensTablet",
+    "rootNamespace": "Data.AliensTablet",
+    "references": [
+        "GUID:e99187c4fc4adf14cab11b2fd0c8e84d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

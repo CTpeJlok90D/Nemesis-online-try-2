@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c9a999f843a73b47a2e0b7d0dd641e2
+    m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1149afd990674364fa4bd0314f477a20
     m_Address: Assets/_Project/Data/Characters/Mechanic.asset
     m_ReadOnly: 0
@@ -106,6 +111,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77ca9397d5c5dbc47882e259ed17d6cd
+    m_Address: Assets/_Project/Data/Weakness/Weaknesses/Test alien weakness.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78f09c5fbe11b0c49ba22a011eb27b28
+    m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c3cc1628c3783c4aa204e67c4c7f0bf
     m_Address: Assets/_Project/View/Characters/Mechanic/Prefabs/Mechanic view.prefab
     m_ReadOnly: 0
@@ -123,6 +138,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92bf65eaef573dc4ab795397a7ef1aab
     m_Address: Assets/_Project/View/Characters/Scientist/Prefabs/Scientist view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99e0489f2723f5d49912959d59369013
+    m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 1.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -173,6 +193,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dd74b7ca7aa245b4398fbb45316925cc
     m_Address: Assets/_Project/Data/Characters/Scientist.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df5a9e02a7771b841a217fa69774a345
+    m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

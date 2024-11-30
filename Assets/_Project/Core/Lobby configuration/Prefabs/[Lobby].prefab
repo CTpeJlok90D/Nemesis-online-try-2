@@ -101,5 +101,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 4db021a610b412d41adbbc01f09f1612, type: 2}
       - {fileID: 11400000, guid: 640e60c0966db1842814e773dfa2aa1c, type: 2}
       - {fileID: 11400000, guid: 4edd818cfd2048f4c9354c0a494008ab, type: 2}
+      AlienWeaknessCards:
+      - {fileID: 11400000, guid: 99e0489f2723f5d49912959d59369013, type: 2}
+      - {fileID: 11400000, guid: df5a9e02a7771b841a217fa69774a345, type: 2}
+      - {fileID: 11400000, guid: 0c9a999f843a73b47a2e0b7d0dd641e2, type: 2}
+      - {fileID: 11400000, guid: 78f09c5fbe11b0c49ba22a011eb27b28, type: 2}
       EscapePodCountPerPlayer: 020000000200000002000000030000000300000004000000
       PlayerCount: 5

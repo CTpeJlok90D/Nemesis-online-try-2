@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
+using Core.AliensTablets;
 using Core.DestinationCoordinats;
 using Core.Map.IntellegenceTokens;
 using Core.TabletopRandom;
@@ -13,12 +14,16 @@ namespace Core.Maps.Generation
     [Serializable]
     public struct MapGeneratorConfiguration : INetworkSerializable
     {
+        public const int WEAKNESS_CARDS_COUNT = 3;
+
         [SerializedDictionary("Layer","Bag")]
         public SerializedDictionary<int, Bag<RoomContent>> BagsOfRooms;
 
         public IntelegenceToken[] IntelegenceTokens;
 
         public DestinationCoordinatsCard[] AvailableDestinationCards;
+
+        public AlienWeaknessCard[] AlienWeaknessCards;
 
         public int[] EscapePodCountPerPlayer;
 
@@ -30,6 +35,7 @@ namespace Core.Maps.Generation
             serializer.SerializeValue(ref AvailableDestinationCards);
             serializer.SerializeValue(ref IntelegenceTokens);
             serializer.SerializeValue(ref EscapePodCountPerPlayer);
+            serializer.SerializeValue(ref AlienWeaknessCards);
             SerializeRooms(serializer);
         }
 

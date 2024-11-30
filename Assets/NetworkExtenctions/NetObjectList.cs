@@ -7,7 +7,7 @@ namespace Unity.Netcode.Custom
     [Serializable]
     public static class NetObjectListExcentions
     {
-        public static IEnumerable ToEnumerable(this NetworkList<NetworkObjectReference> list)
+        public static IEnumerable<T> ToEnumerable<T>(this NetworkList<T> list) where T : unmanaged, IEquatable<T>
         {
             for (int i = 0; i < list.Count; i++)
             {

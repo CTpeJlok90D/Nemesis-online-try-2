@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.AliensTablets;
 using Core.DestinationCoordinats;
 using Core.Engines;
 using Core.EscapePods;
@@ -19,15 +20,29 @@ namespace Core.Maps.Generation
 
         [Inject] private PlayerTabletList _playerTabletList;
 
+        [Inject] private AliensTablet _aliensTablet;
+
         private Dictionary<int, Bag<RoomContent>> _runtimeBags;
         
         public void Generate()
         {
             GenerateDestinationCards();
             GenerateRooms();
-            GenerateTokens();
+            GenerateIntelegenceTokens();
             GenerateEscapePods();
             GenerateShipEngines();
+            GenerateAlienTablets();
+        }
+
+        private void GenerateAlienTablets()
+        {
+            List<AlienWeaknessCard> result = new List<AlienWeaknessCard>();
+            Bag<AlienWeaknessCard> deckCopy = new(_mapGeneratorConfiguration.AlienWeaknessCards);
+            while (result.Count < MapGeneratorConfiguration.WEAKNESS_CARDS_COUNT)
+            {
+                result.Add(deckCopy.PickOne());
+            }
+            _aliensTablet.Initialize(result.ToArray());
         }
 
         private void GenerateShipEngines()
@@ -51,7 +66,7 @@ namespace Core.Maps.Generation
                 enablePodsCount = _mapGeneratorConfiguration.EscapePodCountPerPlayer[_playerTabletList.ActiveTablets.Length];
             }
 
-            foreach (EscapePod escapePod in _map.EscapePods)
+            foreach (EscapePod escapePod in _map.EscapePods.ToArray())
             {
                 if (enablePodsCount <= 0)
                 {
@@ -103,7 +118,7 @@ namespace Core.Maps.Generation
             }
         }
 
-        private void GenerateTokens()
+        private void GenerateIntelegenceTokens()
         {
             bool tokensIsOut = false;
             Bag<IntelegenceToken> _tokens = new(_mapGeneratorConfiguration.IntelegenceTokens);

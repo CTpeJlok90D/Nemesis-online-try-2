@@ -4,7 +4,6 @@ using UnityEngine.AddressableAssets;
 using Unity.Collections;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -12,7 +11,7 @@ using UnityEditor;
 namespace Unity.Netcode.Custom
 {
     [Serializable]
-    public sealed class NetScriptableObject<T> where T : UnityEngine.Object, INetworkSerializable, IEquatable<T>
+    public class NetScriptableObject<T> where T : UnityEngine.Object, INetworkSerializable, IEquatable<T>
     {
         public delegate void LoadedListener(T result);
 
