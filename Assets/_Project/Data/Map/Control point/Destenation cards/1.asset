@@ -22,9 +22,10 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: fd6996471d5bb194fb05be3a621b338c, type: 2}
     - Key: {fileID: 11400000, guid: 5910c73fc8f8c09499980b5401ad093e, type: 2}
       Value: {fileID: 11400000, guid: acd38d54311ad5e4b8234350e491770e, type: 2}
-  _selfLoadPath:
-    m_AssetGUID: 4db021a610b412d41adbbc01f09f1612
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: 4db021a610b412d41adbbc01f09f1612
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

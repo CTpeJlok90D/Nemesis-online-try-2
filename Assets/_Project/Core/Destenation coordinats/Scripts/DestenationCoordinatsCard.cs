@@ -32,13 +32,6 @@ namespace Core.DestinationCoordinats
             };
             _net.OnNetworkSerialize(serializer, this);
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            _net.OnValidate(this);
-        }
-#endif
 #endregion
     }
 }

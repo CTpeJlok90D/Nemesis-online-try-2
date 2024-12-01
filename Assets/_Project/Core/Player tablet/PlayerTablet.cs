@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Threading.Tasks;
 using Core.Characters;
+using Core.Missions;
 using Core.Players;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
@@ -28,6 +29,8 @@ namespace Core.PlayerTablets
 
         public NetVariable<int> OrderNumber { get; private set; }
 
+        public NetScriptableObjectList4096<Mission> Missions { get; private set; }
+
         public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
 
         private void Awake()
@@ -35,6 +38,7 @@ namespace Core.PlayerTablets
             Character = new();
             PlayerReference = new();
             OrderNumber = new();
+            Missions = new();
         }
 
         private void OnEnable()
@@ -150,6 +154,10 @@ namespace Core.PlayerTablets
                 GUI.enabled = false;
                 EditorGUILayout.ObjectField(tablet.PlayerReference.Reference, typeof(Player), false);
                 EditorGUILayout.IntField("Order number: ", tablet.OrderNumber.Value);
+                foreach (Mission mission in tablet.Missions)
+                {
+                    EditorGUILayout.ObjectField(mission, typeof(Mission), false);
+                }
                 GUI.enabled = true;
             }
         }

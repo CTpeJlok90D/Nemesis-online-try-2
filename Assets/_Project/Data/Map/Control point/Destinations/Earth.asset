@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1149086c24a5b343afb7a7b632dff47, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: 6648204404f61f3469a20061b627863d
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

@@ -9,7 +9,6 @@ namespace Core.DestinationCoordinats
     [Icon("Assets/_Project/Core/Destenation coordinats/Editor/icons8-navigate-96.png")]
     public class Coordinate : ScriptableObject, INetworkSerializable, IEquatable<Coordinate>
     {
-#region NETWORK
         [field: SerializeField] public NetScriptableObject<Coordinate> _net = new();
 
         public bool Equals(Coordinate other)
@@ -22,13 +21,5 @@ namespace Core.DestinationCoordinats
         {
             _net.OnNetworkSerialize(serializer, this);
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            _net.OnValidate(this);
-        }
-#endif
-#endregion
     }
 }

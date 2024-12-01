@@ -20,7 +20,7 @@ namespace Unity.Netcode.Custom
             OnValueChanged = OnValueChange;
         }
 
-        private void OnValueChange(T previousValue, T newValue)
+        protected virtual void OnValueChange(T previousValue, T newValue)
         {
             try
             {

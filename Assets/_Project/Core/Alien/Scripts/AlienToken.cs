@@ -32,16 +32,5 @@ namespace Core.Aliens
             };
             _self.OnNetworkSerialize(serializer, this);
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if (Application.isPlaying == false)
-            {
-                Id = name;
-            }
-            _self.OnValidate(this);
-        }
-#endif
     }
 }

@@ -35,12 +35,5 @@ namespace Core.AliensTablets
             _net.OnNetworkSerialize(serializer, this);
             serializer.SerializeValue(ref _isActive);
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            _net.OnValidate(this);
-        }
-#endif
     }
 }

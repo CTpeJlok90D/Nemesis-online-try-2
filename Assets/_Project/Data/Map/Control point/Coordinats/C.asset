@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f5f7a670ee8a74098b9cb2f40a29f5, type: 3}
   m_Name: C
   m_EditorClassIdentifier: 
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: bfc0091eea6bc4f47afb2cf2dc7878e0
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

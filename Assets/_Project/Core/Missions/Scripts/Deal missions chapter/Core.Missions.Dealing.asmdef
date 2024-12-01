@@ -1,0 +1,21 @@
+{
+    "name": "Core.Missions.Dealing",
+    "rootNamespace": "Core.Missions.Dealing",
+    "references": [
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:3831e96cc44463d4e9b815bf7d538a7c",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:c4f1e97734423ef42a4472f2045007a5",
+        "GUID:3276f6df9e93a6a4c886e23eb9f04444"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

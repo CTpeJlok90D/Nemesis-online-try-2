@@ -2,6 +2,7 @@ using Core.CharacterChoose;
 using Core.LoadObservers;
 using Core.Maps.Generation;
 using Core.Maps.Generation.Chapter;
+using Core.Missions.Dealing;
 using Core.OrderNumberDestributors;
 using UnityEngine;
 using Zenject;
@@ -16,11 +17,14 @@ namespace Core.Scenarios
 
         [SerializeField] private MapGenerator _map;
 
+        [SerializeField] private MissionsDealer _missionDealer;
+
         private Scenario _scenario;
         
         public override void InstallBindings()
         {
             LoadObserverInstaller loadObserverInstaller = ProjectContext.Instance.GetComponentInChildren<LoadObserverInstaller>();
+
             GenerateMapChapter generateMapChapter = new(_map);
             LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
 
@@ -29,6 +33,7 @@ namespace Core.Scenarios
                 new AwaitOtherPlayers(loadObserver),
                 generateMapChapter,
                 _orderNumberDestributor,
+                _missionDealer,
                 new DealCharactersChapter(_charactersDealer),
             };
 

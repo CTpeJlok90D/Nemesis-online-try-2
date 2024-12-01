@@ -30,6 +30,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d37d51d9977ab04a92ab497c9e00d0d
+    m_Address: Assets/_Project/Data/Missions/Default/Test personal mission.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0da1f9f5475fd4444a60d0473fd7465d
+    m_Address: Assets/_Project/Data/Missions/Default/Test corporate mission.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1149afd990674364fa4bd0314f477a20
     m_Address: Assets/_Project/Data/Characters/Mechanic.asset
     m_ReadOnly: 0

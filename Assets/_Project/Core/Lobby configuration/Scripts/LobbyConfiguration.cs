@@ -1,6 +1,7 @@
 using System;
 using Core.Characters;
 using Core.Maps.Generation;
+using Core.Missions.Dealing;
 using Unity.Netcode;
 
 namespace Core.Lobbies
@@ -16,12 +17,15 @@ namespace Core.Lobbies
 
         public MapGeneratorConfiguration MapGeneratorConfiguration;
 
+        public MissionsDealerConfiguration DealMissionsConfiguration;
+
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             serializer.SerializeValue(ref PlayersCount);
             serializer.SerializeValue(ref ChooseCharactersCount);
-            serializer.SerializeValue(ref MapGeneratorConfiguration);
             serializer.SerializeValue(ref Characters);
+            serializer.SerializeValue(ref MapGeneratorConfiguration);
+            serializer.SerializeValue(ref DealMissionsConfiguration);
         }
     }
 }

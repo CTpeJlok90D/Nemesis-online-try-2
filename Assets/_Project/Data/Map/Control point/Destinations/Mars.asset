@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1149086c24a5b343afb7a7b632dff47, type: 3}
   m_Name: Mars
   m_EditorClassIdentifier: 
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: fd6996471d5bb194fb05be3a621b338c
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

@@ -3,9 +3,11 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Unity.Collections;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UIElements;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.UIElements;
 #endif
 
 namespace Unity.Netcode.Custom
@@ -20,6 +22,8 @@ namespace Unity.Netcode.Custom
         public event LoadedListener Loaded;
 
         public AssetReferenceT<T> SelfAssetReference => _selfAssetReference;
+
+        public string RuntimeLoadKey => _selfAssetReference.RuntimeKey.ToString();
         
         public void OnNetworkSerialize<T1>(BufferSerializer<T1> serializer, ScriptableObject sender) where T1 : IReaderWriter
         {
@@ -47,16 +51,36 @@ namespace Unity.Netcode.Custom
                 Loaded?.Invoke(handle.Result);
             };
         }
-        
+    }
+
 #if UNITY_EDITOR
-        public void OnValidate(UnityEngine.Object target)
+    [CustomPropertyDrawer(typeof(NetScriptableObject<>))]
+    internal class CEditor : PropertyDrawer
+    {
+        public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
-            if (Application.isPlaying == false)
+            VisualElement root = new();
+
+            SerializedProperty serializedProperty = property.FindPropertyRelative("_selfAssetReference");
+            ValidateAssetReference(serializedProperty);
+
+
+            PropertyField assetReferenceField = new(serializedProperty, "Net key");
+            assetReferenceField.enabledSelf = false;
+            root.Add(assetReferenceField);
+            return root;
+        }
+
+        private void ValidateAssetReference(SerializedProperty property)
+        {
+            SerializedProperty assetGUIDProperty = property.FindPropertyRelative("m_AssetGUID");
+            string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(assetGUIDProperty.serializedObject.targetObject));
+            if (assetGUIDProperty.stringValue != guid)
             {
-                string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(target));
-                _selfAssetReference = new(guid);
+                assetGUIDProperty.stringValue = guid;
+                assetGUIDProperty.serializedObject.ApplyModifiedProperties();
             }
         }
-#endif
     }
+#endif
 }

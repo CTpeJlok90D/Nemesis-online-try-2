@@ -121,3 +121,9 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
       EscapePodCountPerPlayer: 020000000200000002000000030000000300000004000000
       PlayerCount: 5
+    DealMissionsConfiguration:
+      AvailableMissions:
+      - {fileID: 11400000, guid: 0da1f9f5475fd4444a60d0473fd7465d, type: 2}
+      - {fileID: 11400000, guid: 0d37d51d9977ab04a92ab497c9e00d0d, type: 2}
+      PersonalMissionsCount: 1
+      CorporateMissionsCount: 1
