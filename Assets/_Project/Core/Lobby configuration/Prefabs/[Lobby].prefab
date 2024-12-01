@@ -106,5 +106,18 @@ MonoBehaviour:
       - {fileID: 11400000, guid: df5a9e02a7771b841a217fa69774a345, type: 2}
       - {fileID: 11400000, guid: 0c9a999f843a73b47a2e0b7d0dd641e2, type: 2}
       - {fileID: 11400000, guid: 78f09c5fbe11b0c49ba22a011eb27b28, type: 2}
+      DefaultAliensBag:
+      - {fileID: 11400000, guid: 1dc56fb3e110e114893a7b36a84575b7, type: 2}
+      - {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+      - {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+      - {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+      - {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+      - {fileID: 11400000, guid: 069110f25be01644fb6d0fbc6b9f83de, type: 2}
+      - {fileID: 11400000, guid: 36d160c84370af646b944d1ed74a9f97, type: 2}
+      - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
+      - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
+      - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
+      AddictionalAliensPerPlayer:
+      - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
       EscapePodCountPerPlayer: 020000000200000002000000030000000300000004000000
       PlayerCount: 5

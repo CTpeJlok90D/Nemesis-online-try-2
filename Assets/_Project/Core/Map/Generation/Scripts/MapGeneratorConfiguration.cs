@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
+using Core.Aliens;
 using Core.AliensTablets;
 using Core.DestinationCoordinats;
 using Core.Map.IntellegenceTokens;
@@ -25,6 +26,10 @@ namespace Core.Maps.Generation
 
         public AlienWeaknessCard[] AlienWeaknessCards;
 
+        public AlienToken[] DefaultAliensBag;
+
+        public AlienToken[] AddictionalAliensPerPlayer;
+
         public int[] EscapePodCountPerPlayer;
 
         public int PlayerCount;
@@ -36,6 +41,8 @@ namespace Core.Maps.Generation
             serializer.SerializeValue(ref IntelegenceTokens);
             serializer.SerializeValue(ref EscapePodCountPerPlayer);
             serializer.SerializeValue(ref AlienWeaknessCards);
+            serializer.SerializeValue(ref DefaultAliensBag);
+            serializer.SerializeValue(ref AddictionalAliensPerPlayer);
             SerializeRooms(serializer);
         }
 

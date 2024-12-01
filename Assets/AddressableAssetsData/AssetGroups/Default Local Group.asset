@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 069110f25be01644fb6d0fbc6b9f83de
+    m_Address: Assets/_Project/Data/Aliens/Default/Creeper.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c9a999f843a73b47a2e0b7d0dd641e2
     m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 3.asset
     m_ReadOnly: 0
@@ -30,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
+    m_Address: Assets/_Project/Data/Aliens/Default/Empty.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 291eacc0adf5e414b87687648d15a19c
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 3.asset
     m_ReadOnly: 0
@@ -37,6 +47,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35de4af51585ba14ea7df8f8149f7014
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36d160c84370af646b944d1ed74a9f97
+    m_Address: Assets/_Project/Data/Aliens/Default/Queen.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -62,6 +77,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4edd818cfd2048f4c9354c0a494008ab
     m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 510f3d8b68a1e6343b7bc54bcecd25b7
+    m_Address: Assets/_Project/Data/Aliens/Default/Breeder.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -128,6 +148,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83f5b8842394f7440b33a2952623c61b
     m_Address: Assets/_Project/Data/Map/Control point/Coordinats/B.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c469b25e4ab46d44be5eeb72ec96f7b
+    m_Address: Assets/_Project/Data/Aliens/Default/Larvae.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -208,6 +233,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e92ce2550ea83b64ea5f133f8407e865
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f45563ac563f9d74b9d7314b880c47b6
+    m_Address: Assets/_Project/Data/Aliens/Default/Adult intruder.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -7,8 +7,10 @@ using Core.EscapePods;
 using Core.Map.IntellegenceTokens;
 using Core.PlayerTablets;
 using Core.TabletopRandom;
+using Core.AliensBags;
 using UnityEngine;
 using Zenject;
+using Core.Aliens;
 
 namespace Core.Maps.Generation
 {
@@ -22,6 +24,8 @@ namespace Core.Maps.Generation
 
         [Inject] private AliensTablet _aliensTablet;
 
+        [Inject] private AliensBag _aliensBag;
+
         private Dictionary<int, Bag<RoomContent>> _runtimeBags;
         
         public void Generate()
@@ -32,6 +36,31 @@ namespace Core.Maps.Generation
             GenerateEscapePods();
             GenerateShipEngines();
             GenerateAlienTablets();
+            GenerateAliensBug();
+        }
+
+        private void GenerateAliensBug()
+        {
+            if (_mapGeneratorConfiguration.DefaultAliensBag.Count() == 0)
+            {
+                Debug.LogWarning($"[<color=yellow>Generation warning</color>] Default aliens bag is empty!");
+            }
+
+            if (_mapGeneratorConfiguration.AddictionalAliensPerPlayer.Count() == 0)
+            {
+                Debug.LogWarning($"[<color=yellow>Generation warning</color>] Addictional aliens bag is empty!");
+            }
+
+            List<AlienToken> result = new();
+
+            result.AddRange(_mapGeneratorConfiguration.DefaultAliensBag);
+
+            for (int i = 0; i < _playerTabletList.Count(); i++)
+            {
+                result.AddRange(_mapGeneratorConfiguration.AddictionalAliensPerPlayer);
+            }
+
+            _aliensBag.Initialize(result);
         }
 
         private void GenerateAlienTablets()
