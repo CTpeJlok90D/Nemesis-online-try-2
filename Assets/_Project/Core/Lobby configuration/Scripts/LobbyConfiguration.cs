@@ -1,5 +1,6 @@
 using System;
 using Core.Characters;
+using Core.EventsDeck;
 using Core.Maps.Generation;
 using Core.Missions.Dealing;
 using Unity.Netcode;
@@ -19,6 +20,8 @@ namespace Core.Lobbies
 
         public MissionsDealerConfiguration DealMissionsConfiguration;
 
+        public EventDeckConfiguration EventDeckConfiguration;
+
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             serializer.SerializeValue(ref PlayersCount);
@@ -26,6 +29,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref Characters);
             serializer.SerializeValue(ref MapGeneratorConfiguration);
             serializer.SerializeValue(ref DealMissionsConfiguration);
+            serializer.SerializeValue(ref EventDeckConfiguration);
         }
     }
 }

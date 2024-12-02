@@ -10,7 +10,9 @@ namespace Core.Lobbies
             LobbyInstaller lobbyInstaller = ProjectContext.Instance.GetComponentInChildren<LobbyInstaller>();
 
             MapGeneratorConfiguration mapConfiguration = lobbyInstaller.Lobby.Configuration.MapGeneratorConfiguration;
-            Container.Bind<MapGeneratorConfiguration>().FromInstance(mapConfiguration);
+            Container
+                .Bind<MapGeneratorConfiguration>()
+                .FromInstance(mapConfiguration);
         }
     }
 }

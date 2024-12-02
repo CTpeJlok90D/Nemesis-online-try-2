@@ -1,0 +1,18 @@
+{
+    "name": "Core.EventsDeck",
+    "rootNamespace": "Core.EventsDeck",
+    "references": [
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
