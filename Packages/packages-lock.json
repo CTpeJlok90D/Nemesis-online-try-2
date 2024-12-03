@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.coffee.softmask-for-ugui": {
+      "version": "https://github.com/mob-sakai/SoftMaskForUGUI.git?path=Packages/src",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "35024fb551a7e9a7c5b46913d6981d0d2039c4c9"
+    },
     "com.gilzoide.gradient-rect": {
       "version": "https://github.com/gilzoide/unity-gradient-rect.git",
       "depth": 0,

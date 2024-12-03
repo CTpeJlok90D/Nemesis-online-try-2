@@ -36,7 +36,7 @@ namespace Core.Missions.Dealing
                     if (personalMissions.Items.Count == 0)
                     {
                         personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= _playerTablets.Count()));
-                        Debug.Log("[<color=yellow>Missions dealing warning</color>] Personal missions is out. Duplication is possible");
+                        Debug.LogWarning("[<color=yellow>Missions dealing</color>] Personal missions is out. Duplication is possible");
                     }
                 }
 
@@ -49,7 +49,7 @@ namespace Core.Missions.Dealing
                     if (corporateMissions.Items.Count == 0)
                     {
                         corporateMissions = new(availableMissions.Where(x => x.Type == MissionType.Сorporate && x.MinPlayerCount <= _playerTablets.Count()));
-                        Debug.Log("[<color=yellow>Missions dealing warning</color>] Сorporate missions is out. Duplication is possible");
+                        Debug.LogWarning("[<color=yellow>Missions dealing</color>] Сorporate missions is out. Duplication is possible");
                     }
                 }
             }

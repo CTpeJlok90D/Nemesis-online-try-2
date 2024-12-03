@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.DestinationCoordinats;
 using Core.Engines;
 using Core.EscapePods;
@@ -59,9 +60,7 @@ namespace Core.Maps
         [Rpc(SendTo.Everyone)]
         private void RemoveEscapePod_RPC(NetworkObjectReference reference)
         {
-            NetworkObject netObject = reference;
-            EscapePod escapePod = netObject.GetComponent<EscapePod>();
-            _escapePods.Remove(escapePod);
+            _escapePods = _escapePods.Where(x => x != null).ToList();
         }
 
 #if UNITY_EDITOR

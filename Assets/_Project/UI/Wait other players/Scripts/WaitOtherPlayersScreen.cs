@@ -8,15 +8,18 @@ namespace UI.WaitOtherPlayers
 {
     public class WaitOtherPlayersScreen : MonoBehaviour
     {
-        [SerializeField] private GameObject _screen;
+        [SerializeField] private Animator _animator;
+
+        [SerializeField] private string _hideTrigger = "Hide";
+
+        [SerializeField] private string _showTrigger = "Show";
 
         [Inject] private LoadObserver _loadObserver;
-
-        [Inject] private LoadScreen _loadScreen;
 
         private void OnEnable()
         {
             _loadObserver.StatusChanged += OnStatusChange;
+            UpdateScreen();
         }
 
         private void OnDisable()
@@ -26,15 +29,18 @@ namespace UI.WaitOtherPlayers
 
         private void OnStatusChange(ulong clientId, bool oldStatus, bool newStatus)
         {
-            bool result = _loadObserver.LoadStatuses.Values.All(x => x == false);
-            _screen.SetActive(result);
-            if (result)
+            UpdateScreen();   
+        }
+
+        private void UpdateScreen()
+        {
+            if (_loadObserver.EveryoneIsReady == false)
             {
-                _loadScreen.Show();
+                _animator.SetTrigger(_showTrigger);
             }
             else
             {
-                _loadScreen.Hide();
+                _animator.SetTrigger(_hideTrigger);
             }
         }
     }

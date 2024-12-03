@@ -27,13 +27,15 @@ namespace Core.Scenarios
 
             GenerateMapChapter generateMapChapter = new(_map);
             LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
+            Delay delay = new(2f);
 
             IChapter[] chapters =
             {
-                new AwaitOtherPlayers(loadObserver),
                 generateMapChapter,
                 _orderNumberDestributor,
                 _missionDealer,
+                new AwaitOtherPlayers(loadObserver),
+                delay,
                 new DealCharactersChapter(_charactersDealer),
             };
 

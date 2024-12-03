@@ -15,6 +15,11 @@ namespace Core.Scenarios
 
         public void Begin()
         {
+            if (_loadObserver.EveryoneIsReady)
+            {
+                Ended?.Invoke(this);
+                return;
+            }
             _loadObserver.StatusChanged += OnLoadStatusChange;
         }
 

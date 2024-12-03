@@ -14,7 +14,6 @@ namespace UI.Common
         public void OnPointerClick(PointerEventData eventData)
         {
             Task loadTask = _activator.StartGame();
-            _ = _loadScreen.Show(loadTask);
         }
     }
 }

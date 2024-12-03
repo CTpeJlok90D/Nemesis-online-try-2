@@ -12,7 +12,7 @@ namespace Core.Maps.Generation.Chapter
             _mapGenerator = mapGenerator;
         }
 
-        public void Begin()
+    public void Begin()
         {
             _mapGenerator.Generate();
             Ended?.Invoke(this);
