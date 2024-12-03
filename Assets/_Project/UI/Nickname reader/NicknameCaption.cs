@@ -20,7 +20,7 @@ namespace UI.NicknameReader
 
             if (PlayerContainer.Player == null)
             {
-                _nicknameLabel.text = "</PLAYER NOT FOUND>";
+                _nicknameLabel.text = "PLAYER NOT FOUND";
                 return;
             }
 
