@@ -25,12 +25,15 @@ namespace Core.Aliens
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            _self.Loaded += (loadResult) => 
-            {
-                Id = loadResult.Id;
-                AttackReaction = loadResult.AttackReaction;
-            };
+            _self.Loaded += OnLoad;
             _self.OnNetworkSerialize(serializer, this);
+        }
+
+        private void OnLoad(AlienToken result)
+        {
+            _self.Loaded -= OnLoad;
+            Id = result.Id;
+            AttackReaction = result.AttackReaction;
         }
     }
 }

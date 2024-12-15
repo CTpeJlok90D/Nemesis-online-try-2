@@ -17,7 +17,7 @@ namespace Core.Lobbies
 
         public override void InstallBindings()
         {
-            Lobby = _lobby_PREFAB.Instantiate(_playetTabletListInstaller.Instance, _networkManagerInstaller.Instance);
+            Lobby = _lobby_PREFAB.Instantiate(_playetTabletListInstaller.PlayerTabletList, _networkManagerInstaller.Instance);
             DontDestroyOnLoad(Lobby);
 
             Container

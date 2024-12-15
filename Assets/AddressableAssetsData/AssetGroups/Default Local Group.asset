@@ -45,6 +45,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a93bb2c9fcb782448e5417e395a6047
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/hive.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c0cbcedf15b21b46af76125676e54d6
+    m_Address: Assets/_Project/Data/Event cards/Test event card 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
     m_Address: Assets/_Project/Data/Aliens/Default/Empty.asset
     m_ReadOnly: 0
@@ -75,8 +85,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ef1b9b652711244fb59d7055caa27d5
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/armory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44845ecfeb3c09e418026ee69e80399d
+    m_Address: Assets/_Project/Data/Event cards/Test event card.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46da0b449f9c73f47854207c49a69639
     m_Address: Assets/_Project/Data/Map/Room actions/Empty room action.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49d1611b13264b146ab9aeeaad9364eb
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/laboratory.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -156,6 +181,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f097c5497cf331489205708eaef2c9d
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Room base.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83f5b8842394f7440b33a2952623c61b
     m_Address: Assets/_Project/Data/Map/Control point/Coordinats/B.asset
     m_ReadOnly: 0
@@ -201,6 +231,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b04ce8ce912d3bf48a8f8bdb6dce2630
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/engine-room.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2a8bb2e2636b9a4c96f47c0359ca1f1
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/dining room.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b511e7db71bc5ce4f8a1c18b8ee809f5
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 1.asset
     m_ReadOnly: 0
@@ -243,6 +283,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e92ce2550ea83b64ea5f133f8407e865
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebd530ce5048ba244b5670e5b103241c
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/cabins.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

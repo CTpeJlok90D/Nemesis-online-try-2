@@ -1,0 +1,76 @@
+<linker>
+  <assembly fullname="Core.Aliens, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.Aliens.AlienToken" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.AliensTablets, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.AliensTablets.AlienWeaknessCard" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.Characters, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.Characters.Character" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.DestenationCoordinats, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.DestinationCoordinats.Coordinate" preserve="all" />
+    <type fullname="Core.DestinationCoordinats.Destination" preserve="all" />
+    <type fullname="Core.DestinationCoordinats.DestinationCoordinatsCard" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.EventsDeck, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.EventsDeck.EventCard" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.Map.IntellegenceTokens, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.Map.IntellegenceTokens.IntelegenceToken" preserve="all" />
+    <type fullname="Core.Map.IntellegenceTokens.TestIntellegenceToken" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.Maps, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.Maps.RoomType" preserve="all" />
+  </assembly>
+  <assembly fullname="Core.Missions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Core.Missions.Mission" preserve="all" />
+  </assembly>
+  <assembly fullname="Data.AliensTablet, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Data.AliensTablet.TestWeakness" preserve="all" />
+  </assembly>
+  <assembly fullname="Data.Maps, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Data.Maps.EmptyRoomAction" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReferenceT`1" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Localization, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Localization.Locale" preserve="all" />
+    <type fullname="UnityEngine.Localization.Tables.SharedTableData" preserve="all" />
+    <type fullname="UnityEngine.Localization.Tables.StringTable" preserve="all" />
+    <type fullname="UnityEngine.Localization.LocaleIdentifier" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Localization.Metadata.MetadataCollection" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Localization.Tables.TableEntryData" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Localization.Tables.DistributedUIDGenerator" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Localization.Tables.SharedTableData/SharedTableEntry" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.U2D.SpriteAtlas" preserve="all" />
+  </assembly>
+  <assembly fullname="AYellowpaper.SerializedCollections">
+    <type fullname="AYellowpaper.SerializedCollections.SerializedDictionary`2" preserve="nothing" serialized="true" />
+    <type fullname="AYellowpaper.SerializedCollections.SerializedKeyValuePair`2" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="NetworkExtenctions">
+    <type fullname="Unity.Netcode.Custom.NetScriptableObject`1" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>

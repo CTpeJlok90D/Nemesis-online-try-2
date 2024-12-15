@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
-  m_Name: Test 2
+  m_Name: armory
   m_EditorClassIdentifier: 
-  _loadKey: 291eacc0adf5e414b87687648d15a19c
-  <Id>k__BackingField: Default room 3
+  _loadKey: 385542f880d787840834b5eaedc6daef
+  <Id>k__BackingField: armory
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
   <Layer>k__BackingField: 1

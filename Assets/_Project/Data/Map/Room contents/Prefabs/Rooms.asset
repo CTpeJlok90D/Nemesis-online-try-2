@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a031487f6bcb1489b77122f7f15d9f, type: 3}
+  m_Name: Rooms
+  m_EditorClassIdentifier: 
+  _assets:
+    _serializedList:
+    - Key: armory
+      Value:
+        m_AssetGUID: 3ef1b9b652711244fb59d7055caa27d5
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - Key: hive
+      Value:
+        m_AssetGUID: 1a93bb2c9fcb782448e5417e395a6047
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - Key: labaratory
+      Value:
+        m_AssetGUID: 49d1611b13264b146ab9aeeaad9364eb
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - Key: cabins
+      Value:
+        m_AssetGUID: ebd530ce5048ba244b5670e5b103241c
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - Key: dining room
+      Value:
+        m_AssetGUID: b2a8bb2e2636b9a4c96f47c0359ca1f1
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+    - Key: engine room
+      Value:
+        m_AssetGUID: b04ce8ce912d3bf48a8f8bdb6dce2630
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+  _errorValue:
+    m_AssetGUID: 7f097c5497cf331489205708eaef2c9d
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

@@ -26,11 +26,14 @@ namespace Core.DestinationCoordinats
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            _net.Loaded += (result) => 
-            {
-                _coordinateForDestenation = new(result._coordinateForDestenation);
-            };
+            _net.Loaded += OnLoad;
             _net.OnNetworkSerialize(serializer, this);
+        }
+
+        private void OnLoad(DestinationCoordinatsCard result)
+        {
+            _net.Loaded -= OnLoad;
+            _coordinateForDestenation = new(result._coordinateForDestenation);
         }
 #endregion
     }

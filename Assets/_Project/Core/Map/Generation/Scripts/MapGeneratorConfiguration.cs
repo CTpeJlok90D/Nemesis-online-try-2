@@ -18,7 +18,7 @@ namespace Core.Maps.Generation
         public const int WEAKNESS_CARDS_COUNT = 3;
 
         [SerializedDictionary("Layer","Bag")]
-        public SerializedDictionary<int, Bag<RoomContent>> BagsOfRooms;
+        public SerializedDictionary<int, Bag<RoomType>> BagsOfRooms;
 
         public IntelegenceToken[] IntelegenceTokens;
 
@@ -79,7 +79,7 @@ namespace Core.Maps.Generation
 
                 serializer.SerializeValue(ref roomsCount);
 
-                RoomContent[] roomContents = new RoomContent[roomsCount];
+                RoomType[] roomContents = new RoomType[roomsCount];
                 if (serializer.IsWriter)
                 {
                     roomContents = BagsOfRooms.Values.ElementAt(i).Items.ToArray();

@@ -1,9 +1,12 @@
 using Core.CharacterChoose;
 using Core.LoadObservers;
+using Core.Maps;
 using Core.Maps.Generation;
 using Core.Maps.Generation.Chapter;
 using Core.Missions.Dealing;
 using Core.OrderNumberDestributors;
+using Core.PlayerTablets;
+using Core.Scenarios.Default;
 using UnityEngine;
 using Zenject;
 
@@ -19,11 +22,18 @@ namespace Core.Scenarios
 
         [SerializeField] private MissionsDealer _missionDealer;
 
+        [SerializeField] private PawnPlacerConfig _pawnPlacerConfig;
+
+        [SerializeField] private RoomCell _startRoom;
+    
+        [SerializeField] private GameObject _cameraControl;
+
         private Scenario _scenario;
         
         public override void InstallBindings()
         {
             LoadObserverInstaller loadObserverInstaller = ProjectContext.Instance.GetComponentInChildren<LoadObserverInstaller>();
+            PlayerTabletListInstaller playerTabletListInstaller = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
 
             GenerateMapChapter generateMapChapter = new(_map);
             LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
@@ -37,6 +47,8 @@ namespace Core.Scenarios
                 new AwaitOtherPlayers(loadObserver),
                 delay,
                 new DealCharactersChapter(_charactersDealer),
+                new PawnsPlacer(playerTabletListInstaller.PlayerTabletList, _pawnPlacerConfig, _startRoom),
+                new EnableGameObjectChapter(_cameraControl)
             };
 
             _scenario = new(chapters);

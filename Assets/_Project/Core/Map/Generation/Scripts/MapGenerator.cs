@@ -26,7 +26,7 @@ namespace Core.Maps.Generation
 
         [Inject] private AliensBag _aliensBag;
 
-        private Dictionary<int, Bag<RoomContent>> _runtimeBags;
+        private Dictionary<int, Bag<RoomType>> _runtimeBags;
         
         public void Generate()
         {
@@ -126,12 +126,12 @@ namespace Core.Maps.Generation
 
             foreach (RoomCell roomCell in _map)
             {
-                if (_runtimeBags.TryGetValue(roomCell.Layer, out Bag<RoomContent> bagOfRooms) == false)
+                if (_runtimeBags.TryGetValue(roomCell.Layer, out Bag<RoomType> bagOfRooms) == false)
                 {
                     continue;   
                 }
 
-                RoomContent content = bagOfRooms.PickOne();
+                RoomType content = bagOfRooms.PickOne();
                 roomCell.Init(content);
 
                 if (bagOfRooms.Items.Count == 0)

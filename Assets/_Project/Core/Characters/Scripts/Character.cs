@@ -9,7 +9,7 @@ namespace Core.Characters
     [CreateAssetMenu(menuName = "Game/Character")]
     public class Character : ScriptableObject, INetworkSerializable, IEquatable<Character>
     {
-        [SerializeField] public string _id;
+        [SerializeField] private string _id;
 
         public string Id => _id;
 

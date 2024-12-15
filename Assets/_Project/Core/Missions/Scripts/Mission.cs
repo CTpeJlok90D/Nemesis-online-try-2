@@ -20,14 +20,17 @@ namespace Core.Missions
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
-            _net.Loaded += (loadedHandle) => 
+            _net.Loaded += OnLoad;
+        }
+
+        private void OnLoad(Mission result)
+        {
+            _net.Loaded -= OnLoad;
+            MinPlayerCount = result.MinPlayerCount;
+            if (string.IsNullOrEmpty(name))
             {
-                MinPlayerCount = loadedHandle.MinPlayerCount;
-                if (string.IsNullOrEmpty(name))
-                {
-                    name = $"{loadedHandle.name} (net loaded)";
-                }
-            };
+                name = $"{result.name} (net loaded)";
+            }
         }
 
         public bool Equals(Mission other)

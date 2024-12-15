@@ -89,11 +89,13 @@ MonoBehaviour:
             _items:
             - {fileID: 11400000, guid: 385542f880d787840834b5eaedc6daef, type: 2}
             - {fileID: 11400000, guid: 291eacc0adf5e414b87687648d15a19c, type: 2}
+            - {fileID: 11400000, guid: b84ca319cd9dd8f46be28db6b2c45ab1, type: 2}
         - Key: 2
           Value:
             _items:
             - {fileID: 11400000, guid: 70aa1086638e52749ac293832fe9b106, type: 2}
             - {fileID: 11400000, guid: 597812e233da0004f9de8bbf90752454, type: 2}
+            - {fileID: 11400000, guid: 7dddae815ee73db429757dfa8f2b03ad, type: 2}
       IntelegenceTokens:
       - {fileID: 11400000, guid: 90d47e4cd9977024c9e30a414f5d14d8, type: 2}
       - {fileID: 11400000, guid: 57e622d595caf0544a32835125e5589c, type: 2}

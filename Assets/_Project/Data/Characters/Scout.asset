@@ -12,23 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be96e329caf718242957082259d70197, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  <CharacterPawn>k__BackingField:
-    m_AssetGUID: b98f25c575d5a7c4ba8535d610c1fe9e
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  <CharacterAvatar>k__BackingField:
-    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
-    m_SubObjectName: character-avatar-scout
-    m_SubObjectGUID: 
-    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_EditorAssetChanged: 0
-  <CharacterBackground>k__BackingField:
-    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
-    m_SubObjectName: character-backgrounds-scout
-    m_SubObjectGUID: 
-    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_EditorAssetChanged: 0
+  _id: Scout

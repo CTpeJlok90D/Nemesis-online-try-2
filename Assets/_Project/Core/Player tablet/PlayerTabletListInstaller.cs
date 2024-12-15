@@ -12,16 +12,16 @@ namespace Core.PlayerTablets
         [SerializeField] private ActivatorInstaller _activatorInstaller;
         [SerializeField] private NetworkManagerInstaller _networkManagerInstaller;
 
-        public PlayerTabletList Instance { get; private set; }
+        public PlayerTabletList PlayerTabletList { get; private set; }
 
         public override void InstallBindings()
         {
-            Instance = _playerTabletList.Init(_activatorInstaller.Activator, _networkManagerInstaller.Instance);
-            DontDestroyOnLoad(Instance);
+            PlayerTabletList = _playerTabletList.Init(_activatorInstaller.Activator, _networkManagerInstaller.Instance);
+            DontDestroyOnLoad(PlayerTabletList);
 
             Container
                 .Bind<PlayerTabletList>()
-                .FromInstance(Instance)
+                .FromInstance(PlayerTabletList)
                 .AsSingle();
         }
     }

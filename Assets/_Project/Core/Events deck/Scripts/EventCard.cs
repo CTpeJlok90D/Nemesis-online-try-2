@@ -18,7 +18,7 @@ namespace Core.EventsDeck
 
         [SerializeField] private int _corridorIndex = 1;   
         
-        private NetScriptableObject<EventCard> _net;
+        [SerializeField] private NetScriptableObject<EventCard> _net = new();
 
         public NetScriptableObject<EventCard> Net => _net;
 
@@ -36,12 +36,15 @@ namespace Core.EventsDeck
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
-            _net.Loaded += (result) => 
-            {
-                _aliensTokens = result._aliensTokens.ToArray();
-                _corridorIndex = result._corridorIndex;
-                _action = result._action;
-            };
+            _net.Loaded += OnLoad; 
+        }
+
+        private void OnLoad(EventCard result)
+        {
+            _net.Loaded -= OnLoad;
+            _aliensTokens = result._aliensTokens.ToArray();
+            _corridorIndex = result._corridorIndex;
+            _action = result._action;
         }
     }
 }

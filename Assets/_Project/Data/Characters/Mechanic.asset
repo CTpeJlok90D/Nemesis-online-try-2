@@ -12,23 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be96e329caf718242957082259d70197, type: 3}
   m_Name: Mechanic
   m_EditorClassIdentifier: 
-  <CharacterPawn>k__BackingField:
-    m_AssetGUID: 7c3cc1628c3783c4aa204e67c4c7f0bf
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  <CharacterAvatar>k__BackingField:
-    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
-    m_SubObjectName: character-avatar-machnic
-    m_SubObjectGUID: 
-    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_EditorAssetChanged: 0
-  <CharacterBackground>k__BackingField:
-    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
-    m_SubObjectName: character-background-mechanic
-    m_SubObjectGUID: 
-    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_EditorAssetChanged: 0
+  _id: Mechanic

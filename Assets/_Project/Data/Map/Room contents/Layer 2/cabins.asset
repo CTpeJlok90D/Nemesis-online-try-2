@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f104ffdabdaf094f9c1e6f2d68f92e4, type: 3}
-  m_Name: Test 2
+  m_Name: cabins
   m_EditorClassIdentifier: 
   _loadKey: 70aa1086638e52749ac293832fe9b106
-  <Id>k__BackingField: Default room 2
+  <Id>k__BackingField: cabins
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
   <Layer>k__BackingField: 2

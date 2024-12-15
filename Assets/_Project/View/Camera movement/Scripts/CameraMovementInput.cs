@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +33,10 @@ namespace View
 
         private void Update()
         {
-            _cameraMovement.Move(_inputDirection * Time.deltaTime * _movementSpeed);
+            if (_inputDirection != Vector2.zero)
+            {
+                _cameraMovement.Move(_inputDirection * Time.deltaTime * _movementSpeed);
+            }
         }
 
         private void OnMoveInput(InputAction.CallbackContext context)

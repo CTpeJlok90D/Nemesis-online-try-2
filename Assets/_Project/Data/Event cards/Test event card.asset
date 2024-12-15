@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: Test event card
   m_EditorClassIdentifier: 
   _action: {fileID: 0}
-  _aliensToken: []
+  _aliensTokens: []
   _corridorIndex: 1
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: 44845ecfeb3c09e418026ee69e80399d
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

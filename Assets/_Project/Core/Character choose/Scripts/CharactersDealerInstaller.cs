@@ -16,7 +16,7 @@ namespace Core.CharacterChoose
             LobbyInstaller lobbyInstaller = ProjectContext.Instance.GetComponentInChildren<LobbyInstaller>();
             PlayerTabletListInstaller playerTabletList = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
 
-            _dealer.Init(lobbyInstaller.Lobby, playerTabletList.Instance);
+            _dealer.Init(lobbyInstaller.Lobby, playerTabletList.PlayerTabletList);
 
             Container.Bind<CharactersDealer>().FromInstance(_dealer).AsSingle();
         }

@@ -2,6 +2,9 @@ using Unity.Netcode;
 using UnityEngine;
 using Unity.Netcode.Custom;
 using Core.Map.IntellegenceTokens;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,7 +15,7 @@ namespace Core.Maps
     [Icon("Assets/_Project/Core/Map/Editor/icons8-room-96.png")]
     public class RoomCell : NetworkBehaviour
     {
-        [field: SerializeField] private RoomContent _roomContent;
+        [field: SerializeField] private RoomType _roomContent;
 
         [field: SerializeField] public int Number { get; private set; } = 1;
 
@@ -20,19 +23,34 @@ namespace Core.Maps
 
         [field: SerializeField] public bool GenerateIntellegenceToken { get; private set; } = true;
 
+        private NetworkList<NetworkObjectReference> _roomContentsNet;
+
+        private RoomContent[] _roomContents;
+
         public NetVariable<IntelegenceToken> IntellegenceTokenNet { get; private set; }
         
-        private NetVariable<RoomContent> _roomContentNet;
+        private NetVariable<RoomType> _roomTypeNet;
 
         public NetVariable<bool> IsInitialized { get; private set; }
 
-        public RoomContent RoomContent => _roomContentNet.Value;
+        public RoomType Type => _roomTypeNet.Value;
+
+        public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
+
+        public event NetVariable<RoomType>.OnValueChangedDelegate TypeChanged
+        {
+            add => _roomTypeNet.Changed += value;
+            remove => _roomTypeNet.Changed -= value;
+        }
 
         private void Awake()
         {
             IntellegenceTokenNet = new();
-            _roomContentNet = new();
+            _roomTypeNet = new();
             IsInitialized = new();
+            _roomContentsNet = new();
+
+            _roomContentsNet.OnListChanged += OnListChange;
         }
 
         public override void OnNetworkSpawn()
@@ -42,10 +60,10 @@ namespace Core.Maps
                 return;
             }
 
-            _roomContentNet.Value = _roomContent;
+            _roomTypeNet.Value = _roomContent;
         }
 
-        public RoomCell Init(RoomContent roomContent)
+        public RoomCell Init(RoomType roomContent)
         {
             if (NetworkManager.IsServer == false)
             {
@@ -57,9 +75,74 @@ namespace Core.Maps
                 throw new RoomAlreadyInitializedException();
             }
 
-            _roomContentNet.Value = roomContent;
+            _roomTypeNet.Value = roomContent;
             IsInitialized.Value = true;
             return this;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            _roomContentsNet.OnListChanged -= OnListChange;
+        }
+
+        private void OnListChange(NetworkListEvent<NetworkObjectReference> changeEvent)
+        {
+            List<RoomContent> contents = new();
+            foreach (NetworkObjectReference reference in _roomContentsNet.ToEnumerable())
+            {
+                if (reference.TryGet(out NetworkObject result))
+                {
+                    RoomContent content = result.GetComponent<RoomContent>();
+                    contents.Add(content);
+                    content.Owner = this;
+                }
+            }
+
+            _roomContents = contents.ToArray();
+        }
+
+        public void AddContent(RoomContent content)
+        {
+            RoomCell oldRoom = content.Owner;
+            oldRoom?.RemoveContent(content);
+
+            _roomContentsNet.Add(content.gameObject);
+            if (oldRoom != null)
+            {
+                OnMove_RPC(content.NetworkObject, oldRoom.NetworkObject);
+            }
+            else
+            {
+                OnMove_RPC(content.NetworkObject, new());
+            }
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void OnMove_RPC(NetworkObjectReference roomContent, NetworkObjectReference oldRoomNetReference)
+        {
+            RoomCell oldRoom = null;
+
+            if (oldRoomNetReference.TryGet(out NetworkObject roomCellNetObject))
+            {
+                oldRoom = roomCellNetObject.GetComponent<RoomCell>();
+            }
+
+            NetworkObject roomContentNetObject = roomContent;
+            RoomContent content = roomContentNetObject.GetComponent<RoomContent>();
+
+            content.Owner = this;
+
+            IRoomOwnerChangedHandler[] hadlers = content.GetComponents<IRoomOwnerChangedHandler>();
+            foreach (IRoomOwnerChangedHandler changedHandler in hadlers)
+            {
+                changedHandler.OnRoomMove(oldRoom, this);
+            }
+        }
+
+        private void RemoveContent(RoomContent content)
+        {
+            _roomContentsNet.Remove(content.gameObject);
         }
 
 #if UNITY_EDITOR
@@ -77,9 +160,19 @@ namespace Core.Maps
                 {
                     GUI.enabled = false;
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
-                    EditorGUILayout.ObjectField("Room: " ,RoomCell._roomContentNet.Value, typeof(RoomContent), false);
+                    EditorGUILayout.ObjectField("Room: " ,RoomCell._roomTypeNet.Value, typeof(RoomType), false);
                     EditorGUILayout.ObjectField("Intellegence token: " ,RoomCell.IntellegenceTokenNet.Value, typeof(IntelegenceToken), false);
+                    
+                    if (RoomCell.RoomContents != null)
+                    {
+                        foreach (RoomContent content in RoomCell.RoomContents)
+                        {
+                            EditorGUILayout.ObjectField(content, typeof(RoomContent), false);
+                        }
+                    }
+
                     GUI.enabled = true;
+
                 }
             }
         }
