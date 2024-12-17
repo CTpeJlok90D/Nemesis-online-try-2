@@ -2,7 +2,10 @@
     "name": "UI.WaitOtherPlayers",
     "rootNamespace": "UI.WaitOtherPlayers",
     "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:31976cc9e85bdd9459e856fcb40d0d50",
         "GUID:cf6717f45d6c40949bebbf438fb18221",
+        "GUID:466ba4bee7f3ce546b61b2649f8d7bbd",
         "GUID:fad1a65e62263cb4e8e199c5c4b187f0"
     ],
     "includePlatforms": [],

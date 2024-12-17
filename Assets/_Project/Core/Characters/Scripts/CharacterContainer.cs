@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Core.Characters
 {
-    public class CharacterContainer : MonoBehaviour
+    public class CharacterContainer : MonoBehaviour, IContainsCharacter
     {
         [field: SerializeField] public Character Character { get; private set; }
 

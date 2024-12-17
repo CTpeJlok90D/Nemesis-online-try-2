@@ -9,17 +9,17 @@ namespace Core.LoadObservers
 {
     public class LoadObserver : MonoBehaviour
     {
-        public delegate void StatusChangedListener(ulong clientId, bool oldStatus, bool newStatus);
+        public delegate void StatusChangedListener(ulong clientId, Status oldStatus, Status newStatus);
 
-        private SerializedDictionary<ulong, bool> _loadStatuses = new();
+        private SerializedDictionary<ulong, Status> _loadStatuses = new();
 
         private NetworkManager _networkManager;
 
         public event StatusChangedListener StatusChanged;
 
-        public IReadOnlyDictionary<ulong, bool> LoadStatuses => _loadStatuses;
+        public IReadOnlyDictionary<ulong, Status> LoadStatuses => _loadStatuses;
 
-        public bool EveryoneIsReady => _loadStatuses.Values.All(x => x is true);
+        public bool EveryoneIsReady => _loadStatuses.Values.All(x => x is Status.Ready);
 
         public LoadObserver Instantiate(NetworkManager networkManager)
         {
@@ -33,16 +33,16 @@ namespace Core.LoadObservers
             return result;
         }
 
-        public bool GetClientStatus(ulong clientID)
+        public Status GetClientStatus(ulong clientID)
         {
-            if (_loadStatuses.TryGetValue(clientID, out bool result))
+            if (_loadStatuses.TryGetValue(clientID, out Status result))
             {
                 return result;
             }
 
-            _loadStatuses.Add(clientID, true);
+            _loadStatuses.Add(clientID, Status.Ready);
 
-            return true;
+            return Status.Ready;
         }
 
         private void Awake()
@@ -76,12 +76,12 @@ namespace Core.LoadObservers
         {
             if (_loadStatuses.ContainsKey(clientId) == false)
             {
-                _loadStatuses.Add(clientId, true);
+                _loadStatuses.Add(clientId, Status.Ready);
             }
 
-            bool oldStatus = _loadStatuses[clientId];
+            Status oldStatus = _loadStatuses[clientId];
 
-            _loadStatuses[clientId] = true;
+            _loadStatuses[clientId] = Status.Ready;
             StatusChanged?.Invoke(clientId, oldStatus, _loadStatuses[clientId]);
         }
 
@@ -89,13 +89,19 @@ namespace Core.LoadObservers
         {
             if (_loadStatuses.ContainsKey(clientId) == false)
             {
-                _loadStatuses.Add(clientId, false);
+                _loadStatuses.Add(clientId, Status.NotReady);
             }
 
-            bool oldStatus = _loadStatuses[clientId];
+            Status oldStatus = _loadStatuses[clientId];
 
-            _loadStatuses[clientId] = false;
+            _loadStatuses[clientId] = Status.NotReady;
             StatusChanged?.Invoke(clientId, oldStatus, _loadStatuses[clientId]);
+        }
+
+        public enum Status
+        {
+            Ready,
+            NotReady
         }
     }
 }

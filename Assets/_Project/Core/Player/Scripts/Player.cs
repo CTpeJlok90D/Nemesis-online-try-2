@@ -4,7 +4,7 @@ using Unity.Netcode;
 
 namespace Core.Players
 {
-    public class Player : NetworkBehaviour
+    public class Player : NetworkBehaviour, IContainsPlayer
     {
         private static List<Player> _list = new();
         
@@ -21,6 +21,8 @@ namespace Core.Players
         public static event Action<Player> Left;
 
         public bool IsLocal => this == Local;
+
+        Player IContainsPlayer.Player => this;
 
         public override void OnNetworkSpawn()
         {

@@ -1,12 +1,16 @@
-using Core.PlayerTablets;
+using Core.Characters;
+using Core.Players;
 using UnityEngine;
-using Zenject;
 
 namespace Core.PlayerTablets
 {
-    public class PlayerTabletContainer : MonoBehaviour
+    public class PlayerTabletContainer : MonoBehaviour, IContainsPlayerTablet, IContainsCharacter, IContainsPlayer
     {
         public PlayerTablet PlayerTablet { get; private set; }
+
+        public Character Character => PlayerTablet.Character.Value;
+
+        public Player Player => PlayerTablet.Player;
 
         public PlayerTabletContainer Instantiate(PlayerTablet tablet, Transform parent = null)
         {

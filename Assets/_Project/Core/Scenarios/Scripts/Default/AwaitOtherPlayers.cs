@@ -23,7 +23,7 @@ namespace Core.Scenarios
             _loadObserver.StatusChanged += OnLoadStatusChange;
         }
 
-        private void OnLoadStatusChange(ulong clientId, bool oldStatus, bool newStatus)
+        private void OnLoadStatusChange(ulong clientId, LoadObserver.Status oldStatus, LoadObserver.Status newStatus)
         {
             if (_loadObserver.EveryoneIsReady)
             {

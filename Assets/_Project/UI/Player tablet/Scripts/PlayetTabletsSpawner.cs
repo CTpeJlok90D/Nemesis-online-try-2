@@ -23,8 +23,10 @@ namespace UI.PlayerTablets
         {
             _playetTabletList.ActiveTabletsChanged += OnActiveTabletsChange;
             _networkManager.OnClientStarted += OnClientStart;
-            DestroyCards();
-            SpawnLobbyCards();
+            if (didStart)
+            {
+                UpdateCards();
+            }
         }
 
         private void OnDisable()
@@ -33,10 +35,13 @@ namespace UI.PlayerTablets
             _networkManager.OnClientStarted -= OnClientStart;
         }
 
+        private void Start()
+        {
+            UpdateCards();
+        }
+
         private void OnClientStart() => UpdateCards();
-
         private void OnActiveTabletsChange(NetworkListEvent<NetworkObjectReference> changeEvent) => UpdateCards();
-
         private void UpdateCards()
         {
             DestroyCards();

@@ -27,7 +27,7 @@ namespace UI.WaitOtherPlayers
             _loadObserver.StatusChanged -= OnStatusChange;
         }
 
-        private void OnStatusChange(ulong clientId, bool oldStatus, bool newStatus)
+        private void OnStatusChange(ulong clientId, LoadObserver.Status oldStatus, LoadObserver.Status newStatus)
         {
             UpdateScreen();   
         }

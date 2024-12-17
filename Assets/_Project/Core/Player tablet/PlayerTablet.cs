@@ -13,7 +13,7 @@ using Zenject;
 
 namespace Core.PlayerTablets
 {
-    public class PlayerTablet : NetworkBehaviour
+    public class PlayerTablet : NetworkBehaviour, IContainsPlayer
     {
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
         
@@ -30,6 +30,8 @@ namespace Core.PlayerTablets
         public NetVariable<int> OrderNumber { get; private set; }
 
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
+
+        public Player Player => PlayerReference.Reference;
 
         public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
 

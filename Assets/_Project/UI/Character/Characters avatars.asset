@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3837645148537b141ab6f3b5476a277e, type: 3}
+  m_Name: Characters avatars
+  m_EditorClassIdentifier: 
+  _assets:
+    _serializedList:
+    - Key: Capitan
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-capitan
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Key: Mechanic
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-machnic
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Key: Pilot
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-pilot
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Key: Scientist
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-scientist
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Key: Scout
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-scout
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+    - Key: Soldier
+      Value:
+        m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+        m_SubObjectName: character-avatar-soldier
+        m_SubObjectGUID: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_EditorAssetChanged: 0
+  _errorValue:
+    m_AssetGUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
+    m_SubObjectName: character-avatar-psychologist
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
