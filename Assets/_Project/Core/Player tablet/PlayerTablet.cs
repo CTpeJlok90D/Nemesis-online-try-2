@@ -33,6 +33,8 @@ namespace Core.PlayerTablets
 
         public NetVariable<int> ActionCount { get; private set; }
 
+        public NetVariable<bool> IsPassed { get; private set; }
+
         public NetVariable<int> OrderNumber { get; private set; }
 
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
@@ -48,6 +50,7 @@ namespace Core.PlayerTablets
             OrderNumber = new();
             Missions = new();
             ActionCount = new();
+            IsPassed = new();
         }
 
         private void OnEnable()
@@ -110,6 +113,16 @@ namespace Core.PlayerTablets
             }
         }
 
+        public void Pass()
+        {
+            Pass_RPC();
+        }
+
+        [Rpc(SendTo.Server)]
+        private void Pass_RPC()
+        {
+            IsPassed.Value = true;
+        }
 
         [Rpc(SendTo.Server)]
         private void ToBookItFor_RPC(NetworkObjectReference playerReference)

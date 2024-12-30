@@ -21,6 +21,10 @@ namespace Core.ActionsCards
 
         [Inject] private Config _config;
 
+        public async Task<IReadOnlyCollection<ActionCard>> GetHand() => await _hand.GetElements();
+        public async Task<IReadOnlyCollection<ActionCard>> GetDiscard() => await _discard.GetElements();
+        public async Task<IReadOnlyCollection<ActionCard>> GetMainDeck() => await _mainDeck.GetElements();
+
         private void Awake()
         {
             _mainDeck = new();
