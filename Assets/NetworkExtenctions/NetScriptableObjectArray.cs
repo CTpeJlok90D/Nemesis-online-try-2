@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -16,8 +17,12 @@ namespace Unity.Netcode.Custom
         public delegate void ListChangedListener(NetScriptableObjectList4096<T> sender);
 
         private const string SEPARATOR = "_|_";
-        
-        private List<T> _cashedElements;
+       
+        private List<T> _cashedElements = new();
+
+        public bool IsSyncing { get; private set; }
+
+        private int _cashIndex = 0;
 
         private Dictionary<string, AsyncOperationHandle<T>> _loadedValues = new();
 
@@ -27,24 +32,7 @@ namespace Unity.Netcode.Custom
             set => throw new Exception("Cant change value. Use elements property to change array"); 
         }
 
-        public T[] Elements
-        {
-            get 
-            {
-                return _cashedElements.ToArray();
-            } 
-            set
-            {
-                string result = "";
-                foreach (T v in value)
-                {
-                    result += v.Net.RuntimeLoadKey;
-                }
-                base.Value = result;
-            }
-        }
-
-        public int Count => _cashedElements.Count;
+        public int Count => Keys.Length;
 
         public string[] Keys 
         {
@@ -81,6 +69,38 @@ namespace Unity.Netcode.Custom
 
         public event ListChangedListener ListChanged;
 
+        public async Task Sync()
+        {
+            while (IsSyncing)
+            {
+                await Awaitable.NextFrameAsync();
+            }
+        }
+
+        public async Task<T[]> GetElements()
+        {
+            try
+            {
+                await Sync();
+                return _cashedElements.ToArray();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                return null;
+            }
+        }
+
+        public void SetElements(T[] values)
+        {
+            List<string> keys = new();
+            foreach (T key in values)
+            {
+                keys.Add(key.Net.RuntimeLoadKey);
+            }
+            base.Value = string.Join(SEPARATOR, keys);
+        }
+
         protected override void OnValueChange(FixedString4096Bytes previousValue, FixedString4096Bytes newValue)
         {
             base.OnValueChange(previousValue, newValue);
@@ -89,16 +109,23 @@ namespace Unity.Netcode.Custom
 
         private void CashValues()
         {
+            _cashIndex++;
+            int linkedCashIndex = _cashIndex;
+
             List<T> result = new();
 
             int keysToLoadCount = Keys.Length;
+            IsSyncing = true;
+
             if (keysToLoadCount == 0)
             {
                 _cashedElements = new List<T>();
+                IsSyncing = false;
             }
 
             foreach (string loadKey in Keys)
             {
+                string loadKeyCopy = loadKey;
                 AsyncOperationHandle<T> handle;
                 if (_loadedValues.ContainsKey(loadKey))
                 {
@@ -114,48 +141,65 @@ namespace Unity.Netcode.Custom
                 if (handle.IsDone)
                 {
                     result.Add(handle.Result);
-                    keysToLoadCount--;
-                    if (keysToLoadCount <= 0)
-                    {
-                        _cashedElements = result.ToList();
-                        ListChanged?.Invoke(this);
-                    }
+                    RemoveKey(ref keysToLoadCount, result);
                     continue;
                 }
 
                 handle.Completed += (loadedHandle) => 
                 {
-                    result.Add(loadedHandle.Result);
-                    keysToLoadCount--;
-                    if (keysToLoadCount <= 0)
+                    if (linkedCashIndex != _cashIndex)
                     {
-                        _cashedElements = result.ToList();
-                        ListChanged?.Invoke(this);
+                        return;
                     }
+
+                    result.Add(loadedHandle.Result);
+                    RemoveKey(ref keysToLoadCount, result);
                 };
+            }
+        }
+
+        private void RemoveKey(ref int keysToLoadCount, List<T> result)
+        {
+            keysToLoadCount--;
+            if (keysToLoadCount <= 0)
+            {
+                _cashedElements = result.ToList();
+                IsSyncing = false;
+                ListChanged?.Invoke(this);
             }
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T element in _cashedElements)
+            if (IsSyncing)
             {
-                yield return element;
+                throw new InvalidOperationException("Can not get enumerator while list is syncing");
             }
+
+            return _cashedElements.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (T element in _cashedElements)
+            if (IsSyncing)
             {
-                yield return element;
+                throw new InvalidOperationException("Can not get enumerator while list is syncing");
             }
+
+            return _cashedElements.GetEnumerator();
         }
 
         public void Add(T value)
         {
             List<string> keys = Keys.ToList();
             keys.Add(value.Net.RuntimeLoadKey);
+            base.Value = string.Join(SEPARATOR, keys);
+        }
+
+        public void AddRange(IEnumerable<T> values)
+        {
+            List<string> keys = Keys.ToList(); 
+            keys.AddRange(from x in values select x.Net.RuntimeLoadKey);
             base.Value = string.Join(SEPARATOR, keys);
         }
 
@@ -203,6 +247,18 @@ namespace Unity.Netcode.Custom
             Regex regex = new Regex(Regex.Escape(item.Net.RuntimeLoadKey));
             base.Value = regex.Replace(base.Value.ToString(), "", 1);
             return true;
+        }
+
+        public void RemoveRange(IEnumerable<T> values)
+        {
+            List<string> keys = Keys.ToList();
+
+            foreach (T value in values)
+            {
+                keys.Remove(value.Net.RuntimeLoadKey);
+            }
+
+            base.Value = string.Join(SEPARATOR, keys);
         }
     }
 }

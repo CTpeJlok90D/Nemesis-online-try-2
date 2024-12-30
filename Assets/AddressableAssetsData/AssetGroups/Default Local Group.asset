@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a8649247c95c8647b0758ea30c2cdb4
+    m_Address: Assets/_Project/Data/Action cards/Action card test effect.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c9a999f843a73b47a2e0b7d0dd641e2
     m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 3.asset
     m_ReadOnly: 0
@@ -60,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2539834e570f2fd47bcff150a66f026b
+    m_Address: Assets/_Project/Data/Action cards/Test action card 4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 291eacc0adf5e414b87687648d15a19c
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 3.asset
     m_ReadOnly: 0
@@ -75,8 +85,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 370a8de2906d5824fb1864faa8a1cb93
+    m_Address: Assets/_Project/Data/Action cards/Test action card 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 385542f880d787840834b5eaedc6daef
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39ad341349db7cf48b5200f863c84ab5
+    m_Address: Assets/_Project/Data/Action cards/Test action card 2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -221,6 +241,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acc27a94956c6424fa7c796c1ae9442f
+    m_Address: Assets/_Project/Data/Action cards/Test action card 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acd38d54311ad5e4b8234350e491770e
     m_Address: Assets/_Project/Data/Map/Control point/Destinations/Venus.asset
     m_ReadOnly: 0
@@ -258,6 +283,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfc0091eea6bc4f47afb2cf2dc7878e0
     m_Address: Assets/_Project/Data/Map/Control point/Coordinats/C.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0e5df6e6e8419946b1d61cfb639dfc9
+    m_Address: Assets/_Project/Data/Action cards/Test action card.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

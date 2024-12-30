@@ -1,4 +1,5 @@
 using System;
+using Core.ActionsCards;
 using Core.Characters;
 using Core.EventsDeck;
 using Core.Maps.Generation;
@@ -13,6 +14,8 @@ namespace Core.Lobbies
         public int PlayersCount;   
 
         public int ChooseCharactersCount;
+
+        public ActionCardsDeck.Config ActionCardsDeckConfiguration;
         
         public Character[] Characters;
 
@@ -30,6 +33,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref MapGeneratorConfiguration);
             serializer.SerializeValue(ref DealMissionsConfiguration);
             serializer.SerializeValue(ref EventDeckConfiguration);
+            serializer.SerializeValue(ref ActionCardsDeckConfiguration);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Core.Aliens
 {
     [CreateAssetMenu(menuName = "Game/Aliens/Token")]
     [Icon("Assets/_Project/Core/Alien/Editor/token-adult.png")]
-    public class AlienToken : ScriptableObject, INetworkSerializable, IEquatable<AlienToken>
+    public class AlienToken : ScriptableObject, INetworkSerializable, IEquatable<AlienToken>, INetScriptableObjectArrayElement<AlienToken>
     {
         [field: SerializeField] private NetScriptableObject<AlienToken> _self = new();
         
@@ -17,6 +17,8 @@ namespace Core.Aliens
 
         public string LoadKey => _self.SelfAssetReference.RuntimeKey.ToString();
 
+        public NetScriptableObject<AlienToken> Net => _self;
+
         public bool Equals(AlienToken other)
         {
             return 
@@ -25,13 +27,13 @@ namespace Core.Aliens
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            _self.Loaded += OnLoad;
+            _self.Preloaded += OnLoad;
             _self.OnNetworkSerialize(serializer, this);
         }
 
         private void OnLoad(AlienToken result)
         {
-            _self.Loaded -= OnLoad;
+            _self.Preloaded -= OnLoad;
             Id = result.Id;
             AttackReaction = result.AttackReaction;
         }

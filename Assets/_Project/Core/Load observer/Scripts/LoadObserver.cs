@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
+using Mono.Cecil;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Core.LoadObservers
 {
-    public class LoadObserver : MonoBehaviour
+    [RequireComponent(typeof(NetworkObject))]
+    public class LoadObserver : NetworkBehaviour
     {
         public delegate void StatusChangedListener(ulong clientId, Status oldStatus, Status newStatus);
 
@@ -15,11 +18,13 @@ namespace Core.LoadObservers
 
         private NetworkManager _networkManager;
 
+        private NetworkVariable<bool> _everyOneIsReady;
+
         public event StatusChangedListener StatusChanged;
 
         public IReadOnlyDictionary<ulong, Status> LoadStatuses => _loadStatuses;
 
-        public bool EveryoneIsReady => _loadStatuses.Values.All(x => x is Status.Ready);
+        public bool EveryoneIsReady => _everyOneIsReady.Value;
 
         public LoadObserver Instantiate(NetworkManager networkManager)
         {
@@ -35,24 +40,32 @@ namespace Core.LoadObservers
 
         public Status GetClientStatus(ulong clientID)
         {
+            if (EveryoneIsReady)
+            {
+                return Status.Ready;
+            }
+
             if (_loadStatuses.TryGetValue(clientID, out Status result))
             {
                 return result;
             }
 
             _loadStatuses.Add(clientID, Status.Ready);
+            StatusChanged?.Invoke(clientID, Status.Ready, Status.Ready);
 
             return Status.Ready;
         }
 
         private void Awake()
         {
+            _everyOneIsReady = new(true);
             _networkManager.OnClientStarted += OnClientStart;
             _networkManager.OnClientStopped += OnClientStop;
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
             _networkManager.OnClientStarted -= OnClientStart;
             _networkManager.OnClientStopped -= OnClientStop;
         }
@@ -74,31 +87,57 @@ namespace Core.LoadObservers
 
         private void OnLoadComplete(ulong clientId, string sceneName, LoadSceneMode loadSceneMode)
         {
-            if (_loadStatuses.ContainsKey(clientId) == false)
+            if (NetworkManager.IsServer == false)
             {
-                _loadStatuses.Add(clientId, Status.Ready);
+                return;
             }
 
+            ValidateClients();
             Status oldStatus = _loadStatuses[clientId];
 
             _loadStatuses[clientId] = Status.Ready;
-            StatusChanged?.Invoke(clientId, oldStatus, _loadStatuses[clientId]);
+            _everyOneIsReady.Value = _loadStatuses.Values.All(x => x is Status.Ready);
+            StatusChanged_RPC(clientId, oldStatus, _loadStatuses[clientId]);
         }
 
         private void OnLoadStart(ulong clientId, string sceneName, LoadSceneMode loadSceneMode, AsyncOperation asyncOperation)
         {
-            if (_loadStatuses.ContainsKey(clientId) == false)
+            if (NetworkManager.IsServer == false)
             {
-                _loadStatuses.Add(clientId, Status.NotReady);
+                return;
             }
 
+            ValidateClients();
             Status oldStatus = _loadStatuses[clientId];
 
             _loadStatuses[clientId] = Status.NotReady;
+            _everyOneIsReady.Value = _loadStatuses.Values.All(x => x is Status.Ready);
+            StatusChanged_RPC(clientId, oldStatus, _loadStatuses[clientId]);
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void StatusChanged_RPC(ulong clientId, Status oldStatus, Status newStatus)
+        {
+            if (_loadStatuses.ContainsKey(clientId) == false)
+            {
+                _loadStatuses.Add(clientId, newStatus);
+            }
+
             StatusChanged?.Invoke(clientId, oldStatus, _loadStatuses[clientId]);
         }
 
-        public enum Status
+        private void ValidateClients()
+        {
+            foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+            {
+                if (_loadStatuses.ContainsKey(clientId) == false)
+                {
+                    _loadStatuses.Add(clientId, Status.NotReady);
+                }
+            }
+        }
+
+            public enum Status
         {
             Ready,
             NotReady

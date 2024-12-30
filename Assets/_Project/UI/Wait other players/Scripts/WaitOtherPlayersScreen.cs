@@ -1,6 +1,4 @@
-using System.Linq;
 using Core.LoadObservers;
-using UI.Loading;
 using UnityEngine;
 using Zenject;
 
@@ -16,10 +14,12 @@ namespace UI.WaitOtherPlayers
 
         [Inject] private LoadObserver _loadObserver;
 
+        private bool _lastValue;
+
         private void OnEnable()
         {
             _loadObserver.StatusChanged += OnStatusChange;
-            UpdateScreen();
+            _animator.SetTrigger(_showTrigger);
         }
 
         private void OnDisable()
@@ -34,7 +34,9 @@ namespace UI.WaitOtherPlayers
 
         private void UpdateScreen()
         {
-            if (_loadObserver.EveryoneIsReady == false)
+            _lastValue = _loadObserver.EveryoneIsReady;
+
+            if (_lastValue == false)
             {
                 _animator.SetTrigger(_showTrigger);
             }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9007745118306120659}
   - component: {fileID: 3579841921263101233}
   - component: {fileID: 6401198425793500036}
+  - component: {fileID: 1706955814582900642}
   - component: {fileID: 5548865125843845878}
   m_Layer: 0
   m_Name: Player tablet
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1660468298
+  GlobalObjectIdHash: 2669052696
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -69,6 +70,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72e8744618192fd4f95d58aa194f36c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <ActionCardsDeck>k__BackingField: {fileID: 1706955814582900642}
+--- !u!114 &1706955814582900642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362443353141989831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1279d38c95df04486403c562194e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1

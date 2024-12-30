@@ -13,3 +13,22 @@ MonoBehaviour:
   m_Name: Mechanic
   m_EditorClassIdentifier: 
   _id: Mechanic
+  _actionCards:
+  - {fileID: 11400000, guid: c0e5df6e6e8419946b1d61cfb639dfc9, type: 2}
+  - {fileID: 11400000, guid: acc27a94956c6424fa7c796c1ae9442f, type: 2}
+  - {fileID: 11400000, guid: 39ad341349db7cf48b5200f863c84ab5, type: 2}
+  - {fileID: 11400000, guid: 370a8de2906d5824fb1864faa8a1cb93, type: 2}
+  - {fileID: 11400000, guid: 2539834e570f2fd47bcff150a66f026b, type: 2}
+  - {fileID: 11400000, guid: c0e5df6e6e8419946b1d61cfb639dfc9, type: 2}
+  - {fileID: 11400000, guid: acc27a94956c6424fa7c796c1ae9442f, type: 2}
+  - {fileID: 11400000, guid: 39ad341349db7cf48b5200f863c84ab5, type: 2}
+  - {fileID: 11400000, guid: 370a8de2906d5824fb1864faa8a1cb93, type: 2}
+  - {fileID: 11400000, guid: 2539834e570f2fd47bcff150a66f026b, type: 2}
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: 1149afd990674364fa4bd0314f477a20
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _isLoaded: 1

@@ -1,15 +1,19 @@
 using System;
 using Unity.Collections;
 using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEngine;
 
 namespace Core.Characters
 {
     [Icon("Assets/_Project/Core/Characters/Editor/icons8-person-96.png")]
     [CreateAssetMenu(menuName = "Game/Character")]
-    public class Character : ScriptableObject, INetworkSerializable, IEquatable<Character>
+    public class Character : ScriptableObject, INetworkSerializable, IEquatable<Character>, INetScriptableObjectArrayElement<Character>
     {
-        [SerializeField] private string _id;
+        [field: SerializeField] private string _id;
+        [field: SerializeField] private NetScriptableObject<Character> _net = new();
+
+        public NetScriptableObject<Character> Net => _net;
 
         public string Id => _id;
 
@@ -21,16 +25,18 @@ namespace Core.Characters
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            FixedString64Bytes id = new();
+            FixedString128Bytes characterID = new();
             if (serializer.IsWriter)
             {
-                id = new(_id);
+                characterID = _id;
             }
-            serializer.SerializeValue(ref id);
+            serializer.SerializeValue(ref characterID);
             if (serializer.IsReader)
             {
-                _id = id.ToString();
+                _id = characterID.ToString();
             }
+
+            _net.OnNetworkSerialize(serializer, this);
 
             if (string.IsNullOrEmpty(name))
             {

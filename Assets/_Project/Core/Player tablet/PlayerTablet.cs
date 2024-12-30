@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
+using Core.ActionsCards;
 using Core.Characters;
 using Core.Missions;
 using Core.Players;
@@ -15,9 +15,13 @@ namespace Core.PlayerTablets
 {
     public class PlayerTablet : NetworkBehaviour, IContainsPlayer
     {
+        [field: SerializeField] public ActionCardsDeck ActionCardsDeck { get; private set; }
+
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
         
         [Inject] private PlayerTabletList _playetTabletList;
+
+        [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
 
         private bool _haveResult;
 
@@ -26,6 +30,8 @@ namespace Core.PlayerTablets
         public bool IsEmpty => PlayerReference.Reference == null;
 
         public NetVariable<Character> Character { get; private set; }
+
+        public NetVariable<int> ActionCount { get; private set; }
 
         public NetVariable<int> OrderNumber { get; private set; }
 
@@ -41,16 +47,29 @@ namespace Core.PlayerTablets
             PlayerReference = new();
             OrderNumber = new();
             Missions = new();
+            ActionCount = new();
         }
 
         private void OnEnable()
         {
             Player.Left += OnPlayerLeft;
+            Character.Changed += OnCharacterChange;
         }
 
         private void OnDisable()
         {
             Player.Left -= OnPlayerLeft;
+            Character.Changed -= OnCharacterChange;
+        }
+
+        private void OnCharacterChange(Character previousValue, Character newValue)
+        {
+            if (NetworkManager.IsServer == false)
+            {
+                return;
+            }
+            
+            ActionCardsDeck.InitializeDeck(_actionCardsDecksDictionary[newValue.Id]);
         }
 
         private void OnPlayerLeft(Player player)
@@ -128,6 +147,7 @@ namespace Core.PlayerTablets
         {
             PlayerReference.Reference = null;
         }
+
     #if UNITY_EDITOR
         [CustomEditor(typeof(PlayerTablet))]
         private class CEditor : Editor

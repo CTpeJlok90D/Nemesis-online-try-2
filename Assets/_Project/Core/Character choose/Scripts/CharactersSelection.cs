@@ -99,6 +99,12 @@ namespace Core.CharacterChoose
         {
             _choosedCharacter = character;
             _characters.Clear();
+            CharacterChoosedInvokeEvent_RPC();
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void CharacterChoosedInvokeEvent_RPC()
+        {
             CharacterChoosed?.Invoke();
         }
 

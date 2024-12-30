@@ -1,4 +1,5 @@
 using Core.Scenarios;
+using Unity.Netcode;
 
 namespace Core.Maps.Generation.Chapter
 {
@@ -12,8 +13,13 @@ namespace Core.Maps.Generation.Chapter
             _mapGenerator = mapGenerator;
         }
 
-    public void Begin()
+        public void Begin()
         {
+            if (NetworkManager.Singleton.IsServer == false)
+            {
+                return;
+            }
+
             _mapGenerator.Generate();
             Ended?.Invoke(this);
         }

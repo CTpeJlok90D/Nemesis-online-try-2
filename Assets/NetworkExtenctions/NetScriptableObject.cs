@@ -13,17 +13,21 @@ using UnityEditor.UIElements;
 namespace Unity.Netcode.Custom
 {
     [Serializable]
-    public class NetScriptableObject<T> where T : UnityEngine.Object, INetworkSerializable, IEquatable<T>
+    public class NetScriptableObject<T> where T : UnityEngine.Object, INetworkSerializable, IEquatable<T>, INetScriptableObjectArrayElement<T>
     {
         public delegate void LoadedListener(T result);
 
         [SerializeField] private AssetReferenceT<T> _selfAssetReference;
+        [SerializeField] private bool _isLoaded;
 
+        public event LoadedListener Preloaded;
         public event LoadedListener Loaded;
 
         public AssetReferenceT<T> SelfAssetReference => _selfAssetReference;
 
         public string RuntimeLoadKey => _selfAssetReference.RuntimeKey.ToString();
+
+        public bool IsLoaded => _isLoaded;
         
         public void OnNetworkSerialize<T1>(BufferSerializer<T1> serializer, ScriptableObject sender) where T1 : IReaderWriter
         {
@@ -48,6 +52,8 @@ namespace Unity.Netcode.Custom
                 {
                     sender.name = $"{handle.Result.name} (net loaded)";
                 }
+                Preloaded?.Invoke(handle.Result);
+                handle.Result.Net._isLoaded = true;
                 Loaded?.Invoke(handle.Result);
             };
         }
@@ -61,13 +67,15 @@ namespace Unity.Netcode.Custom
         {
             VisualElement root = new();
 
-            SerializedProperty serializedProperty = property.FindPropertyRelative("_selfAssetReference");
-            ValidateAssetReference(serializedProperty);
+            SerializedProperty selfAssetReferenceSerializedProperty = property.FindPropertyRelative("_selfAssetReference");
+            ValidateAssetReference(selfAssetReferenceSerializedProperty);
+            ValidateLoadBoolean(property);
 
 
-            PropertyField assetReferenceField = new(serializedProperty, "Net key");
+            PropertyField assetReferenceField = new(selfAssetReferenceSerializedProperty, "Net key");
             assetReferenceField.enabledSelf = false;
             root.Add(assetReferenceField);
+            EditorUtility.SetDirty(property.serializedObject.targetObject);
             return root;
         }
 
@@ -80,6 +88,13 @@ namespace Unity.Netcode.Custom
                 assetGUIDProperty.stringValue = guid;
                 assetGUIDProperty.serializedObject.ApplyModifiedProperties();
             }
+        }
+
+        private void ValidateLoadBoolean(SerializedProperty property)
+        {
+            SerializedProperty isLoadedProperty = property.FindPropertyRelative("_isLoaded");
+            isLoadedProperty.boolValue = true;
+            isLoadedProperty.serializedObject.ApplyModifiedProperties();
         }
     }
 #endif

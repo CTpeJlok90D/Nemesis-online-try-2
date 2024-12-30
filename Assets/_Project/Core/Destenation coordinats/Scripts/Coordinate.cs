@@ -7,9 +7,11 @@ namespace Core.DestinationCoordinats
 {
     [CreateAssetMenu(menuName = "Game/Maps/Control point/Coordinate")]
     [Icon("Assets/_Project/Core/Destenation coordinats/Editor/icons8-navigate-96.png")]
-    public class Coordinate : ScriptableObject, INetworkSerializable, IEquatable<Coordinate>
+    public class Coordinate : ScriptableObject, INetworkSerializable, IEquatable<Coordinate>, INetScriptableObjectArrayElement<Coordinate>
     {
         [field: SerializeField] public NetScriptableObject<Coordinate> _net = new();
+
+        public NetScriptableObject<Coordinate> Net => _net;
 
         public bool Equals(Coordinate other)
         {

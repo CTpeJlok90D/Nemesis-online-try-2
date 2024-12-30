@@ -59,6 +59,7 @@ namespace Core.Maps.Generation
 
             if (serializer.IsReader)
             {
+                BagsOfRooms ??= new();
                 BagsOfRooms.Clear();
             }
 

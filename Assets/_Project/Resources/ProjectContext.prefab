@@ -126,6 +126,8 @@ Transform:
   - {fileID: 6329915968608259915}
   - {fileID: 1476254844385819155}
   - {fileID: 5530104701527847249}
+  - {fileID: 7785771961076978582}
+  - {fileID: 7538380468688443637}
   m_Father: {fileID: 969355304065189613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3827944835764114232
@@ -363,6 +365,8 @@ MonoBehaviour:
   - {fileID: 7099646986286635750}
   - {fileID: 83948384500575135}
   - {fileID: 4591592920677460511}
+  - {fileID: 608360353616057442}
+  - {fileID: 2948928929127423999}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -424,6 +428,51 @@ MonoBehaviour:
   _lobby_PREFAB: {fileID: 464830446943839950, guid: 513c96f3db9a5874db1056f2ba8a77c6, type: 3}
   _playetTabletListInstaller: {fileID: 7099646986286635750}
   _networkManagerInstaller: {fileID: 8576925943480459143}
+--- !u!1 &7650786535610442643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7785771961076978582}
+  - component: {fileID: 608360353616057442}
+  m_Layer: 0
+  m_Name: Action deck configuration installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7785771961076978582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650786535610442643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2472517959088604098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608360353616057442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650786535610442643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3bf3068dce5ea44894dff75920ea51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lobbyInstaller: {fileID: 83948384500575135}
 --- !u!1 &8346858012776726870
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +520,51 @@ MonoBehaviour:
   _playerTabletList: {fileID: 2755397330679078840}
   _activatorInstaller: {fileID: 7337797486557246042}
   _networkManagerInstaller: {fileID: 8576925943480459143}
+--- !u!1 &8579304532085425880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7538380468688443637}
+  - component: {fileID: 2948928929127423999}
+  m_Layer: 0
+  m_Name: Action cards installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7538380468688443637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579304532085425880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2472517959088604098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2948928929127423999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579304532085425880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dd696cd2a193142b80e1a7a1fdfe37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionCardsDeck: {fileID: 11400000, guid: b217d9f4608bac6469ab3ad81e3a6eaa, type: 2}
 --- !u!1001 &7191649709675387308
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ namespace Unity.Netcode.Custom
 {
     public class ServerObject : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
         {
             NetworkManager.Singleton.OnClientStarted += OnClientStart;
             NetworkManager.Singleton.OnClientStopped += OnClientStop;

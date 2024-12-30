@@ -36,12 +36,12 @@ namespace Core.EventsDeck
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
-            _net.Loaded += OnLoad; 
+            _net.Preloaded += OnLoad; 
         }
 
         private void OnLoad(EventCard result)
         {
-            _net.Loaded -= OnLoad;
+            _net.Preloaded -= OnLoad;
             _aliensTokens = result._aliensTokens.ToArray();
             _corridorIndex = result._corridorIndex;
             _action = result._action;

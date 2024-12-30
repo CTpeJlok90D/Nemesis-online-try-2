@@ -20,12 +20,12 @@ namespace Core.Missions
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
-            _net.Loaded += OnLoad;
+            _net.Preloaded += OnLoad;
         }
 
         private void OnLoad(Mission result)
         {
-            _net.Loaded -= OnLoad;
+            _net.Preloaded -= OnLoad;
             MinPlayerCount = result.MinPlayerCount;
             if (string.IsNullOrEmpty(name))
             {

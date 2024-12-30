@@ -8,11 +8,15 @@ namespace Core.AliensTablets
 {
     [Icon("Assets/_Project/Core/Aliens tablet/Editor/icons8-weakness-cards-96.png")]
     [CreateAssetMenu(menuName = "Game/Aliens/Alient weakness card")]
-    public class AlienWeaknessCard : ScriptableObject, INetworkSerializable, IEquatable<AlienWeaknessCard>
+    public class AlienWeaknessCard : ScriptableObject, INetworkSerializable, IEquatable<AlienWeaknessCard>, INetScriptableObjectArrayElement<AlienWeaknessCard>
     {
         [field: SerializeField] private AlienWeakness _alienWeakness;
+        
         [field: SerializeField] private NetScriptableObject<AlienWeaknessCard> _net = new();
+
         public AssetReferenceT<AlienWeaknessCard> LoadAssetReference => _net.SelfAssetReference;
+
+        public NetScriptableObject<AlienWeaknessCard> Net => _net;
 
         private bool _isActive;
 
