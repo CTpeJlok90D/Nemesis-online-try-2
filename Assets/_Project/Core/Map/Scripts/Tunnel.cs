@@ -71,7 +71,7 @@ namespace Core.Maps
         }
 
 #if UNITY_EDITOR
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             foreach (RoomCell roomCell in _linkedCells)
