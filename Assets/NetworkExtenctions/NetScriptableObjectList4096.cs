@@ -26,11 +26,17 @@ namespace Unity.Netcode.Custom
 
         private Dictionary<string, AsyncOperationHandle<T>> _loadedValues = new();
 
+        public NetScriptableObjectList4096(NetworkVariableReadPermission readPermission = NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission writePermission = NetworkVariableWritePermission.Server) : base(string.Empty, readPermission, writePermission)
+        {
+
+        }
+
         public override FixedString4096Bytes Value 
         {
             get => throw new Exception("Cant change value. Use elements property to change array"); 
             set => throw new Exception("Cant change value. Use elements property to change array"); 
         }
+
 
         public int Count => Keys.Length;
 

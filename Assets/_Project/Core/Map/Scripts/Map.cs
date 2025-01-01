@@ -18,6 +18,8 @@ namespace Core.Maps
 
         [SerializeField] private RoomCell[] _roomCells;
 
+        [SerializeField] private Tunnel[] _tunnels;
+
         [SerializeField] private ShipEngine[] _shipEngines;
 
         [SerializeField] private List<EscapePod> _escapePods;
@@ -30,13 +32,15 @@ namespace Core.Maps
 
         public IReadOnlyCollection<ShipEngine> ShipEngies => _shipEngines;
 
+        public IReadOnlyCollection<RoomCell> RoomCells => _roomCells;
+
+        public IReadOnlyCollection<Tunnel> Tunnels => _tunnels;
+
         private void Awake()
         {
             DestinationCoordinatsCard = new();
             Cordinates = new(_defaultCordinats);
         }
-
-        public IReadOnlyCollection<RoomCell> RoomCells => _roomCells;
 
         public IEnumerator<RoomCell> GetEnumerator()
         {

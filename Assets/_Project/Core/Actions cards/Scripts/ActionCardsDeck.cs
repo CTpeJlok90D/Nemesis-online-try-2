@@ -46,6 +46,22 @@ namespace Core.ActionsCards
             _ = ShuffleActionDeck();
         }
 
+        public void DiscardCards(IEnumerable<ActionCard> actionCards)
+        {
+            foreach (ActionCard card in actionCards)
+            {
+                DiscardCard(card);
+            }
+        }
+
+        public void DiscardCard(ActionCard actionCard)
+        {
+            if (_hand.Remove(actionCard))
+            {
+                _discard.Add(actionCard);
+            }
+        }
+
         public async Task DrawCards()
         {
             try

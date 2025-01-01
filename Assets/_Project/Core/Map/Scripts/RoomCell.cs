@@ -3,8 +3,10 @@ using UnityEngine;
 using Unity.Netcode.Custom;
 using Core.Map.IntellegenceTokens;
 using System.Collections.Generic;
-using System;
+using AYellowpaper;
 using System.Linq;
+
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,6 +17,8 @@ namespace Core.Maps
     [Icon("Assets/_Project/Core/Map/Editor/icons8-room-96.png")]
     public class RoomCell : NetworkBehaviour
     {
+        public const int NOISE_CONTAINERS_COUNT = 4;
+
         [field: SerializeField] private RoomType _roomContent;
 
         [field: SerializeField] public int Number { get; private set; } = 1;
@@ -22,6 +26,8 @@ namespace Core.Maps
         [field: SerializeField] public int Layer { get; private set; } = 1;
 
         [field: SerializeField] public bool GenerateIntellegenceToken { get; private set; } = true;
+
+        [field: SerializeField] private InterfaceReference<INoiseContainer>[] _linkedTunnels = new InterfaceReference<INoiseContainer>[NOISE_CONTAINERS_COUNT];
 
         private NetworkList<NetworkObjectReference> _roomContentsNet;
 
@@ -45,6 +51,16 @@ namespace Core.Maps
 
         private void Awake()
         {
+            if (_linkedTunnels.Contains(null))
+            {
+                throw new System.Exception("Room cell contains null noiseContainer");
+            }
+
+            if (_linkedTunnels.Length != NOISE_CONTAINERS_COUNT)
+            {
+                throw new System.Exception($"Every room cell must have {NOISE_CONTAINERS_COUNT} tunnels");
+            }
+
             IntellegenceTokenNet = new();
             _roomTypeNet = new();
             IsInitialized = new();
