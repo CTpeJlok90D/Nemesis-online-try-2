@@ -1,4 +1,5 @@
 using Core.LoadObservers;
+using Core.Players;
 using UnityEngine;
 using Zenject;
 
@@ -12,17 +13,22 @@ namespace UI.WaitOtherPlayers
 
         [SerializeField] private string _showTrigger = "Show";
 
+        [SerializeField] private string _loadingAnimationStateName = "Loading";
+
         [Inject] private LoadObserver _loadObserver;
 
         private bool _lastValue;
 
-        private void OnEnable()
+        private void Start()
         {
             _loadObserver.StatusChanged += OnStatusChange;
-            _animator.SetTrigger(_showTrigger);
+            if (Player.List.Count > 1)
+            {
+                _animator.Play(_loadingAnimationStateName);
+            }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _loadObserver.StatusChanged -= OnStatusChange;
         }

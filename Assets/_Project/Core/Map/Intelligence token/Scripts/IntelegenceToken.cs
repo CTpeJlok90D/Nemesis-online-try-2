@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Core.Map.IntellegenceTokens
+namespace Core.Maps.IntellegenceTokens
 {
     [Icon("Assets/_Project/Core/Map/Editor/intellegence-token.png")]
     [CreateAssetMenu(menuName = "Game/Maps/Intelegence token")]

@@ -75,6 +75,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ae9b9df514898e42b9644299ae5cece
+    m_Address: Assets/_Project/View/Characters/action-card-shert.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35de4af51585ba14ea7df8f8149f7014
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 2.asset
     m_ReadOnly: 0
@@ -178,6 +183,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70aa1086638e52749ac293832fe9b106
     m_Address: Assets/_Project/Data/Room contents/Default room 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71cf9e5032c16c34cb2d05dff4a2106b
+    m_Address: Assets/_Project/View/Characters/_Sprites/defualt-characters-action-cards.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

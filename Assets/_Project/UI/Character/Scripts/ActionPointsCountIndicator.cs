@@ -19,6 +19,15 @@ namespace UI.Characters
         private void OnEnable()
         {
             PlayerTablet.ActionCount.Changed += OnActionCountChange;
+            if (didStart)
+            {
+                UpdatePoints();
+            }
+        }
+
+        private void Start()
+        {
+            UpdatePoints();
         }
 
         private void OnDisable()

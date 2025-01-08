@@ -1,4 +1,3 @@
-using System;
 using Core.PlayerTablets;
 using UnityEngine;
 using Zenject;
@@ -13,6 +12,7 @@ namespace Core.Scenarios.PlayersPhase
         {
             PlayerTabletListInstaller playerTabletListInstaller = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
             PlayerTabletList playerTabletList = playerTabletListInstaller.PlayerTabletList;
+            Delay delay = new(1);
 
             IChapter[] chapters = new IChapter[]
             {

@@ -5,6 +5,7 @@ using Core.ActionsCards;
 using Core.Characters;
 using Core.Missions;
 using Core.Players;
+using Core.Maps.CharacterPawns;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -17,8 +18,6 @@ namespace Core.PlayerTablets
     {
         [field: SerializeField] public ActionCardsDeck ActionCardsDeck { get; private set; }
 
-        public NetBehaviourReference<Player> PlayerReference { get; private set; }
-        
         [Inject] private PlayerTabletList _playetTabletList;
 
         [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
@@ -27,7 +26,9 @@ namespace Core.PlayerTablets
 
         private ToBookResult _result;
 
-        public bool IsEmpty => PlayerReference.Reference == null;
+        private NetVariable<NetworkObjectReference> _linkedCharacterPawn;
+
+        public NetBehaviourReference<Player> PlayerReference { get; private set; }
 
         public NetVariable<Character> Character { get; private set; }
 
@@ -41,16 +42,38 @@ namespace Core.PlayerTablets
 
         public Player Player => PlayerReference.Reference;
 
-        public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
+        public bool IsEmpty => PlayerReference.Reference == null;
+
+        public CharacterPawn CharacterPawn
+        {
+            get
+            {
+                CharacterPawn result = null;
+                if (_linkedCharacterPawn.Value.TryGet(out NetworkObject netObject))
+                {
+                    result = netObject.GetComponent<CharacterPawn>();
+                }
+
+                return result;
+            }
+        }
 
         private void Awake()
         {
-            Character = new();
+            _linkedCharacterPawn = new();
             PlayerReference = new();
-            OrderNumber = new();
-            Missions = new();
+            Character = new();
             ActionCount = new();
             IsPassed = new();
+            OrderNumber = new();
+            Missions = new();
+        }
+
+        public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
+
+        public void LinkPawn(CharacterPawn characterPawn)
+        {
+            _linkedCharacterPawn.Value = characterPawn.NetworkObject;
         }
 
         private void OnEnable()

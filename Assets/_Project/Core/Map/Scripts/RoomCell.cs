@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 using Unity.Netcode.Custom;
-using Core.Map.IntellegenceTokens;
+using Core.Maps.IntellegenceTokens;
 using System.Collections.Generic;
 using AYellowpaper;
 using System.Linq;
@@ -43,6 +43,8 @@ namespace Core.Maps
 
         public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
 
+        public IReadOnlyCollection<INoiseContainer> NoiseContainers => _linkedTunnels.Select(x => x.Value).ToArray();
+
         public event NetVariable<RoomType>.OnValueChangedDelegate TypeChanged
         {
             add => _roomTypeNet.Changed += value;
@@ -67,6 +69,12 @@ namespace Core.Maps
             _roomContentsNet = new();
 
             _roomContentsNet.OnListChanged += OnListChange;
+        }
+
+        public INoiseContainer[] GetPassagesTo(RoomCell other)
+        {
+            INoiseContainer[] noiseContainers = NoiseContainers.Intersect(other.NoiseContainers).ToArray();
+            return noiseContainers;
         }
 
         public override void OnNetworkSpawn()

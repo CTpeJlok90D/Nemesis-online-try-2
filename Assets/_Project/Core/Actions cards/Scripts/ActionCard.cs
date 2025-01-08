@@ -1,6 +1,7 @@
 using System;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
+using Unity.Collections;
 using UnityEngine;
 
 
@@ -11,14 +12,15 @@ namespace Core.ActionsCards
     public class ActionCard : ScriptableObject, INetworkSerializable, IEquatable<ActionCard>, INetScriptableObjectArrayElement<ActionCard>
     {
         [field: SerializeField] public int Cost = 0;
-        [field: SerializeField] public ActionCardEffect Effect;
+        [field: SerializeField] public ActionCardEffect Effect { get; private set; }
         [field: SerializeField] private NetScriptableObject<ActionCard> _actionCard = new();
+        [field: SerializeField] public string ID { get; private set; }
 
         public NetScriptableObject<ActionCard> Net => _actionCard;
 
         public bool Equals(ActionCard other)
         {
-            return _actionCard.SelfAssetReference.Asset == other._actionCard.SelfAssetReference.Asset;
+            return _actionCard.SelfAssetReference.RuntimeKey == other._actionCard.SelfAssetReference.RuntimeKey;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -32,6 +34,14 @@ namespace Core.ActionsCards
             _actionCard.Preloaded -= OnCardLoaded;
             Effect = result.Effect;
             Cost = result.Cost;
+            ID = result.ID;
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            ID = name;
+        }
+#endif
     }
 }

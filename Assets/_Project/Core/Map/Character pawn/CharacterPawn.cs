@@ -1,9 +1,8 @@
 using Core.Characters;
-using Core.Maps;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Core.Map.CharacterPawns
+namespace Core.Maps.CharacterPawns
 {
     [RequireComponent(typeof(RoomContent))]
     [Icon("Assets/_Project/Core/Map/Editor/icons8-pawn-96.png")]

@@ -1,7 +1,7 @@
 using System;
 using AYellowpaper.SerializedCollections;
 using Core.Characters;
-using Core.Map.CharacterPawns;
+using Core.Maps.CharacterPawns;
 
 namespace Core.Scenarios
 {

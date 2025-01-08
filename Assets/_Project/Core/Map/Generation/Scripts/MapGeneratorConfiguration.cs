@@ -6,7 +6,7 @@ using AYellowpaper.SerializedCollections;
 using Core.Aliens;
 using Core.AliensTablets;
 using Core.DestinationCoordinats;
-using Core.Map.IntellegenceTokens;
+using Core.Maps.IntellegenceTokens;
 using Core.TabletopRandom;
 using Unity.Netcode;
 

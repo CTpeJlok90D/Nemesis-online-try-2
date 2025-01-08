@@ -2,6 +2,7 @@
     "name": "UI.Characters",
     "rootNamespace": "UI.Characters",
     "references": [
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:303bb8bdcd1a0af43a595cb2c9a042d2",

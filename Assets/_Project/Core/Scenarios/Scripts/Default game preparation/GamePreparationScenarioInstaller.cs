@@ -39,7 +39,7 @@ namespace Core.Scenarios
 
             GenerateMapChapter generateMapChapter = new(_map);
             LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
-            Delay delay = new(3f);
+            Delay delay = new(1.5f);
 
             IChapter[] chapters =
             {

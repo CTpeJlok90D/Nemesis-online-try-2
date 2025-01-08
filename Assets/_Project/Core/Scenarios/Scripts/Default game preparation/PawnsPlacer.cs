@@ -1,4 +1,4 @@
-using Core.Map.CharacterPawns;
+using Core.Maps.CharacterPawns;
 using Core.Maps;
 using Core.PlayerTablets;
 using UnityEngine;

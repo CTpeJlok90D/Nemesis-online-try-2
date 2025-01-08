@@ -23,9 +23,12 @@ namespace Core.Scenarios.PlayersPhase
 
         private bool _isFistMove;
 
+        public PlayerTablet ActiveTablet => _playerTabletsList.ElementAt(_activePlayerIndex.Value);
+
         private void Awake()
         {
             _firstPlayerIndex = new();
+            _activePlayerIndex = new();
         }
 
         public void Give()
@@ -60,10 +63,8 @@ namespace Core.Scenarios.PlayersPhase
 
         private void OnActivePlayerPass(bool previousValue, bool newValue)
         {
-            PlayerTablet activeTablet = _playerTabletsList.ElementAt(_activePlayerIndex.Value);
-
-            activeTablet.ActionCount.Changed -= OnActionPointsCountChange;
-            activeTablet.IsPassed.Changed -= OnActivePlayerPass;
+            ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
+            ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
 
             _activePlayerIndex.Value++;
             Give();
@@ -73,16 +74,14 @@ namespace Core.Scenarios.PlayersPhase
         {
             if (newValue == 0)
             {
-                PlayerTablet activeTablet = _playerTabletsList.ElementAt(_activePlayerIndex.Value);
+                ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
+                ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
 
-                activeTablet.ActionCount.Changed -= OnActionPointsCountChange;
-                activeTablet.IsPassed.Changed -= OnActivePlayerPass;
-
-                IReadOnlyCollection<ActionCard> hand = await activeTablet.ActionCardsDeck.GetHand();
+                IReadOnlyCollection<ActionCard> hand = await ActiveTablet.ActionCardsDeck.GetHand();
 
                 if (hand.IsEmpty())
                 {
-                    activeTablet.IsPassed.Value = true;
+                    ActiveTablet.IsPassed.Value = true;
                 }
 
                 _activePlayerIndex.Value++;

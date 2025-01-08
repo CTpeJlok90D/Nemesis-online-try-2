@@ -1,11 +1,18 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unity.Netcode.Custom
 {
     public class NetVariable<T> : NetworkVariable<T>
     {
-        public event OnValueChangedDelegate Changed;
+        private List<OnValueChangedDelegate> _listeners = new();
+
+        public event OnValueChangedDelegate Changed
+        {
+            add => _listeners.Add(value);
+            remove => _listeners.Remove(value);
+        }
 
         public NetVariable() : base()
         {
@@ -22,13 +29,16 @@ namespace Unity.Netcode.Custom
 
         protected virtual void OnValueChange(T previousValue, T newValue)
         {
-            try
+            foreach (OnValueChangedDelegate listener in _listeners.ToArray())
             {
-                Changed?.Invoke(previousValue, newValue);
-            }
-            catch (Exception e) 
-            {
-                Debug.LogException(e);
+                try
+                {
+                    listener?.Invoke(previousValue, newValue);   
+                }
+                catch (Exception e) 
+                {
+                    Debug.LogException(e);
+                }
             }
         }
     }

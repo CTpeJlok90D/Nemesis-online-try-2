@@ -1,6 +1,6 @@
 {
     "name": "Core.Map.CharacterPawns",
-    "rootNamespace": "Core.Map.CharacterPawns",
+    "rootNamespace": "Core.Maps.CharacterPawns",
     "references": [
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:3f53ad91522fc224cb06cfa8fb9ebf95",

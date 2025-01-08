@@ -1,7 +1,5 @@
 using System;
 using Core.Maps;
-using Core.PlayerActions;
-using Core.PlayerTablets;
 using UnityEngine;
 
 namespace Data.Maps
@@ -12,11 +10,6 @@ namespace Data.Maps
         public bool Equals(EmptyRoomAction other)
         {
             return true;
-        }
-
-        public override void Execute(PlayerTablet execoter, IPayment[] payments, GameObject[] targets)
-        {
-            Debug.Log($"{this} was executed");
         }
     }
 }

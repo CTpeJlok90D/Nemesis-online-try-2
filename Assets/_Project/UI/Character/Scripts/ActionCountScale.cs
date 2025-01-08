@@ -1,14 +1,13 @@
-using System;
-using AYellowpaper;
 using Core.PlayerTablets;
 using DG.Tweening;
+using TNRD;
 using UnityEngine;
 
 namespace UI.Characters
 {
     public class ActionCountScale : MonoBehaviour
     {
-        [SerializeField] private InterfaceReference<IContainsPlayerTablet> _playerTablet;
+        [SerializeField] private SerializableInterface<IContainsPlayerTablet> _playerTablet;
         [SerializeField] private Vector2 _noActionsSize = new(75,75);
         [SerializeField] private Vector2 _haveActionsSize = new(100,100);
         [SerializeField] private RectTransform _target;
@@ -19,21 +18,22 @@ namespace UI.Characters
 
         private void OnEnable()
         {
-            PlayerTablet.ActionCount.Changed += OnActionCountChange;
             if (didStart)
             {
+                PlayerTablet.ActionCount.Changed += OnActionCountChange;
                 _target.sizeDelta = TargetSize;
             }
         }
 
         private void Start()
         {
+            PlayerTablet.ActionCount.Changed += OnActionCountChange;
             _target.sizeDelta = TargetSize;
         }
 
         private void OnDisable()
         {
-            PlayerTablet.ActionCount.Changed += OnActionCountChange;
+            PlayerTablet.ActionCount.Changed -= OnActionCountChange;
         }
 
         private void OnActionCountChange(int previousValue, int newValue) => UpdateSize();

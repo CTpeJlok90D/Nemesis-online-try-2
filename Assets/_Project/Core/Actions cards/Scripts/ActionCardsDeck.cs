@@ -25,6 +25,24 @@ namespace Core.ActionsCards
         public async Task<IReadOnlyCollection<ActionCard>> GetDiscard() => await _discard.GetElements();
         public async Task<IReadOnlyCollection<ActionCard>> GetMainDeck() => await _mainDeck.GetElements();
 
+        public event NetScriptableObjectList4096<ActionCard>.ListChangedListener HandChanged
+        {
+            add => _hand.ListChanged += value;
+            remove => _hand.ListChanged += value;
+        }
+
+        public event NetScriptableObjectList4096<ActionCard>.ListChangedListener DiscardChanged
+        {
+            add => _discard.ListChanged += value;
+            remove => _discard.ListChanged += value;
+        }
+
+        public event NetScriptableObjectList4096<ActionCard>.ListChangedListener MainChanged
+        {
+            add => _mainDeck.ListChanged += value;
+            remove => _mainDeck.ListChanged += value;
+        }
+
         private void Awake()
         {
             _mainDeck = new();

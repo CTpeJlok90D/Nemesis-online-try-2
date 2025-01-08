@@ -4,7 +4,7 @@ using Core.AliensTablets;
 using Core.DestinationCoordinats;
 using Core.Engines;
 using Core.EscapePods;
-using Core.Map.IntellegenceTokens;
+using Core.Maps.IntellegenceTokens;
 using Core.PlayerTablets;
 using Core.TabletopRandom;
 using Core.AliensBags;

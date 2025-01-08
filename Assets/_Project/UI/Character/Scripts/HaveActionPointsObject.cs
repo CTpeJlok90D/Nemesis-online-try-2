@@ -1,15 +1,22 @@
-using AYellowpaper;
 using Core.PlayerTablets;
+using TNRD;
 using UnityEngine;
 
 namespace UI.Characters
 {
     public class HaveActionPointsObject : MonoBehaviour
     {
-        [SerializeField] private InterfaceReference<IContainsPlayerTablet> _playerTablet;
+        [SerializeField] private SerializableInterface<IContainsPlayerTablet> _playerTablet;
+        
         [SerializeField] private GameObject _target;
 
-        public PlayerTablet PlayerTablet => _playerTablet.Value.PlayerTablet;
+        public PlayerTablet PlayerTablet 
+        {
+            get
+            {
+                return _playerTablet.Value.PlayerTablet;
+            }
+        }
 
         private bool TargetActive => PlayerTablet.ActionCount.Value > 0;
 
@@ -29,7 +36,7 @@ namespace UI.Characters
 
         private void OnDisable()
         {
-            PlayerTablet.ActionCount.Changed += OnActionCountChange;
+            PlayerTablet.ActionCount.Changed -= OnActionCountChange;
         }
 
         private void OnActionCountChange(int previousValue, int newValue) => UpdateSize();

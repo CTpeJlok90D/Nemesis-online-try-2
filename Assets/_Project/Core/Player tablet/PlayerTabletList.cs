@@ -21,6 +21,8 @@ namespace Core.PlayerTablets
 
         public PlayerTablet[] ActiveTablets => _activeTablets.ToEnumerable<PlayerTablet>().ToArray();
 
+        public PlayerTablet Local => _activeTablets.ToEnumerable<PlayerTablet>().FirstOrDefault(x => x.Player.IsLocalPlayer);
+
         private event NetworkList<NetworkObjectReference>.OnListChangedDelegate _activeTabletsSynced;
 
         public event NetworkList<NetworkObjectReference>.OnListChangedDelegate ActiveTabletsChanged
