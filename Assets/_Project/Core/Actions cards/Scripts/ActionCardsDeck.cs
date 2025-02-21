@@ -80,19 +80,22 @@ namespace Core.ActionsCards
             }
         }
 
-        public async Task DrawCards()
+        public async Task DrawCards(int count = -1)
         {
             try
             {
-                int cardsToTake = _config.MaxHandSize - _hand.Count;
+                if (count == -1)
+                {
+                    count = _config.MaxHandSize - _hand.Count;
+                }
 
-                if (_mainDeck.Count < cardsToTake)
+                if (_mainDeck.Count < count)
                 {
                     await ShuffleActionDeck();
                 }
 
                 ActionCard[] mainDeckCards = await _mainDeck.GetElements();
-                ActionCard[] cards = mainDeckCards.Take(cardsToTake).ToArray();
+                ActionCard[] cards = mainDeckCards.Take(count).ToArray();
                 _mainDeck.RemoveRange(cards);
                 _hand.AddRange(cards);
             }
@@ -153,6 +156,17 @@ namespace Core.ActionsCards
                 GUILayout.Label($"Discard: {ActionCardsDeck._discard.Count}");
                 DisaplayCards(ActionCardsDeck._discard);
                 GUI.enabled = true;
+
+                if (GUILayout.Button("Remove card"))
+                {
+                    ActionCard actionCard = ActionCardsDeck._hand.ElementAt(0);
+                    ActionCardsDeck.DiscardCard(actionCard);
+                }
+
+                if (GUILayout.Button("Draw card"))
+                {
+                    _ = ActionCardsDeck.DrawCards(1);
+                }
             }
 
             private void DisaplayCards(IEnumerable<ActionCard> cards)

@@ -1,38 +1,20 @@
 using System.Linq;
-using System.Threading.Tasks;
 using Core.Maps;
+using Core.Selection.Rooms;
 
 namespace Core.PlayerActions
 {
     public interface IGameActionWithRoomsSelection
     {
         public int RequredRoomsCount { get; }
-        public bool CanAddRoomToSelection(RoomCell roomCell);
+        public RoomCell[] Selection { get; set; }
     }
 
-    public static class AdderToRoomCellSelection
+    public static class IGameActionWithRoomsSelectionExcentions
     {
-        public static void AddToSelection(this IGameActionWithRoomsSelection gameActionWithSelection, RoomCell objectToAdd)
+        public static void Initialize(this IGameActionWithRoomsSelection gameActionWithSelection, RoomSelection roomSelection)
         {
-            if (gameActionWithSelection.CanAddRoomToSelection(objectToAdd))
-            {
-                PlayerActionExecutor.Instance.AddRoomToSelection(objectToAdd);
-            }
-        }
-
-        public static bool RemoveFromSelection(this IGameActionWithPayment gameActionWithSelection, RoomCell objectToRemove)
-        {
-            return PlayerActionExecutor.Instance.RemoveRoomFromSelection(objectToRemove);
-        }
-
-        public static int GetSelectedCount(this IGameActionWithPayment gameActionWithSelection)
-        {
-            return PlayerActionExecutor.Instance.RoomSelection.Length;
-        }
-
-        public static RoomCell[] GetSelectedRooms(this IGameActionWithPayment gameActionWithSelection)
-        {
-            return PlayerActionExecutor.Instance.RoomSelection;
+            gameActionWithSelection.Selection = roomSelection.ToArray();
         }
     }
 }

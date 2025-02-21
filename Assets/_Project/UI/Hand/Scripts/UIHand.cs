@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.ActionsCards;
 using Core.PlayerTablets;
+using UI.Common;
 using Unity.Netcode.Custom;
 using UnityEngine;
 using Zenject;
@@ -62,6 +63,16 @@ namespace UI.Hands
 
                 foreach ((ActionCard actionCard, List<ActionCardContainer> uIActionCard) in _displayedActionCards)
                 {
+                    Debug.Log(_displayedActionCards.ContainsKey(actionCard));
+
+                    if (_displayedActionCards.ContainsKey(actionCard) == false)
+                    {
+                        _displayedActionCards.Add(actionCard, new());
+                    }
+
+                    Debug.Log(_displayedActionCards.ContainsKey(actionCard));
+                    Debug.Log(_displayedActionCards[actionCard]);
+
                     while (newHand.Count(x => x == actionCard) < _displayedActionCards[actionCard].Count)
                     {
                         RemoveCardFromDisplay(actionCard);
@@ -70,7 +81,6 @@ namespace UI.Hands
 
                 foreach (ActionCard actionCard in newHand)
                 {
-
                     if (_displayedActionCards.ContainsKey(actionCard) == false)
                     {
                         _displayedActionCards.Add(actionCard, new());
@@ -92,7 +102,14 @@ namespace UI.Hands
         {
             ActionCardContainer uIActionCard = _displayedActionCards[actionCard].First();
             _displayedActionCards.Remove(actionCard);
-            Destroy(uIActionCard.gameObject);
+            if (uIActionCard.TryGetComponent(out IDestroyable component))
+            {
+                component.Destroy();
+            }
+            else
+            {
+                Destroy(uIActionCard.gameObject);
+            }
         }
 
         private void AddCardToDisplay(ActionCard actionCard)

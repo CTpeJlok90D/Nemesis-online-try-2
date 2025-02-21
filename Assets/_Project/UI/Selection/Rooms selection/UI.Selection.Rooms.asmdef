@@ -1,0 +1,19 @@
+{
+    "name": "UI.Selection.Rooms",
+    "rootNamespace": "UI.Selection.Rooms",
+    "references": [
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:9cb17471feb381841a257297ad9e1a95",
+        "GUID:b333b5a5fde3844428bbfac02f556511",
+        "GUID:deead63c09dfb414680d988c3a4f6b80"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

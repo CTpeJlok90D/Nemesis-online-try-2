@@ -4,6 +4,6 @@ namespace Core.PlayerActions
 {
     public interface INeedMap
     {
-        public void Init(Map map);
+        public void Initialzie(Map map);
     }
 }

@@ -55,6 +55,10 @@ namespace Unity.Netcode.Custom
                 }
                 return keys;
             }
+            private set
+            {
+                base.Value = string.Join(SEPARATOR, value);
+            }
         }
 
         public bool IsReadOnly => false;
@@ -69,7 +73,7 @@ namespace Unity.Netcode.Custom
             {
                 List<string> keys = Keys.ToList();
                 keys[i] = value.Net.RuntimeLoadKey;
-                base.Value = string.Join(SEPARATOR, keys);
+                Keys = keys.ToArray();
             }
         }
 
@@ -104,7 +108,7 @@ namespace Unity.Netcode.Custom
             {
                 keys.Add(key.Net.RuntimeLoadKey);
             }
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
 
         protected override void OnValueChange(FixedString4096Bytes previousValue, FixedString4096Bytes newValue)
@@ -199,14 +203,14 @@ namespace Unity.Netcode.Custom
         {
             List<string> keys = Keys.ToList();
             keys.Add(value.Net.RuntimeLoadKey);
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
 
         public void AddRange(IEnumerable<T> values)
         {
             List<string> keys = Keys.ToList(); 
             keys.AddRange(from x in values select x.Net.RuntimeLoadKey);
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
 
         public int IndexOf(T item)
@@ -218,14 +222,14 @@ namespace Unity.Netcode.Custom
         {
             List<string> keys = Keys.ToList();
             keys.Insert(index, item.Net.RuntimeLoadKey);
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
 
         public void RemoveAt(int index)
         {
             List<string> keys = Keys.ToList();
             keys.RemoveAt(index);
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
 
         public void Clear()
@@ -250,8 +254,9 @@ namespace Unity.Netcode.Custom
                 return false;
             }
 
-            Regex regex = new Regex(Regex.Escape(item.Net.RuntimeLoadKey));
-            base.Value = regex.Replace(base.Value.ToString(), "", 1);
+            List<string> keys = Keys.ToList();
+            keys.Remove(item.Net.RuntimeLoadKey);
+            Keys = keys.ToArray();
             return true;
         }
 
@@ -264,7 +269,7 @@ namespace Unity.Netcode.Custom
                 keys.Remove(value.Net.RuntimeLoadKey);
             }
 
-            base.Value = string.Join(SEPARATOR, keys);
+            Keys = keys.ToArray();
         }
     }
 }

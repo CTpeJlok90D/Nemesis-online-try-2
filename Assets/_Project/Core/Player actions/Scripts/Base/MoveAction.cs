@@ -21,6 +21,8 @@ namespace Core.PlayerActions
 
         public RoomCell RoomWithExecuter => _map.First(x => x.RoomContents.Contains(_executer.CharacterPawn.RoomContent));
 
+        public RoomCell[] Selection { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public bool CanAddPaymentToSelection(ActionCard paymentCard)
         {
             return true;
@@ -41,7 +43,7 @@ namespace Core.PlayerActions
         public IGameAction.CanExecuteCheckResult CanExecute()
         {
             bool boolResult;
-            RoomCell[] selectedRooms = this.GetSelectedRooms(); 
+            RoomCell[] selectedRooms = Selection; 
 
             if (_executer.ActionCount.Value <= 0)
             {
@@ -87,18 +89,23 @@ namespace Core.PlayerActions
                 throw chekResult.Error;
             }
 
-            RoomCell selectedRoom = this.GetSelectedRooms().First();
+            ForceExecute();
+        }
+
+        public void ForceExecute()
+        {
+            RoomCell selectedRoom = Selection.First();
 
             _executer.ActionCount.Value--;
             selectedRoom.AddContent(_executer.CharacterPawn.RoomContent);
         }
 
-        public void Init(Map map)
+        public void Initialzie(Map map)
         {
             _map = map;
         }
 
-        public void Init(PlayerTablet executer)
+        public void Inititalize(PlayerTablet executer)
         {
             _executer = executer;
         }

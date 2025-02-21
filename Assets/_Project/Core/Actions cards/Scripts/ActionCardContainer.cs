@@ -12,7 +12,7 @@ namespace Core.ActionsCards
         {
             gameObject.SetActive(false);
             ActionCardContainer actionCardContainer = Instantiate(this, parent);
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
 
             actionCardContainer.ActionCard = actionCard;
             actionCardContainer.gameObject.SetActive(true);

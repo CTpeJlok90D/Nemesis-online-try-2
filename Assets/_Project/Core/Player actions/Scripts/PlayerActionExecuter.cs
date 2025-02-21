@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.ActionsCards;
 using Core.Maps;
 using Core.PlayerTablets;
+using Core.Selection.Rooms;
 using Unity.Netcode;
-using Unity.Netcode.Custom;
 using UnityEngine;
 using Zenject;
 
@@ -20,19 +16,9 @@ namespace Core.PlayerActions
 
         [SerializeField] private Map _map;
 
-        [Inject] private PlayerTabletList _playerTabletList;
-
-        private NetScriptableObjectList4096<ActionCard> _paymentNet;
-
-        private NetworkList<NetworkObjectReference> _roomSelection;
+        [Inject] private RoomSelection _roomSelection;
 
         private PlayerTablet _executer;
-
-        public async Task<IReadOnlyCollection<ActionCard>> GetPayment() => await _paymentNet.GetElements();
-
-        public int PaymentCount => _paymentNet.Count;
-
-        public event RoomsSelectionChangedHandler RoomSelectionChanged;
 
         public PlayerTablet Executer
         {
@@ -49,67 +35,6 @@ namespace Core.PlayerActions
             }
         }
 
-        public event NetScriptableObjectList4096<ActionCard>.ListChangedListener PaymentChanged
-        {
-            add => _paymentNet.ListChanged += value;
-            remove => _paymentNet.ListChanged -= value;
-        }
-
-        public RoomCell[] RoomSelection
-        {
-            get
-            {
-                List<RoomCell> roomCells = new();
-                foreach (NetworkObjectReference networkObjectReference in _roomSelection)
-                {
-                    if (networkObjectReference.TryGet(out NetworkObject netObj) && netObj.TryGetComponent(out RoomCell roomCell))
-                    {
-                        roomCells.Add(roomCell);
-                    }
-                }
-
-                return roomCells.ToArray();
-            }
-        }
-
-        public void AddPaymentToSelection(ActionCard objectToAdd)
-        {
-            if (CanAddPaymentToSelection(objectToAdd))
-            {
-                _paymentNet.Add(objectToAdd);
-            }
-        }
-
-        public bool RemovePaymentFromSelection(ActionCard objectToAdd)
-        {
-            return _paymentNet.Remove(objectToAdd);
-        }
-
-        public bool CanAddPaymentToSelection(ActionCard actionCard)
-        {
-            return _paymentNet.Contains(actionCard) == false;
-        }
-
-        public bool CanAddRoomToSelection(RoomCell roomCell)
-        {
-            return RoomSelection.Contains(roomCell) == false;
-        }
-
-        public void AddRoomToSelection(RoomCell roomCell)
-        {
-            if (CanAddRoomToSelection(roomCell) == false)
-            {
-                throw new Exception("Selection already contains this room cell");
-            }
-
-            _roomSelection.Add(roomCell.NetworkObject);
-        }
-
-        public bool RemoveRoomFromSelection(RoomCell roomCell)
-        {
-            return _roomSelection.Remove(roomCell.NetworkObject);
-        }
-
         private void Awake()
         {
             if (Instance != null)
@@ -118,24 +43,6 @@ namespace Core.PlayerActions
                 throw new Exception($"{nameof(PlayerActionExecutor)} is already instantiated!");
             }
             Instance = this;
-
-            _paymentNet = new(NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-            _roomSelection = new(null, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-        }
-
-        private void OnEnable()
-        {
-            _roomSelection.OnListChanged += OnListChange;
-        }
-
-        private void OnDisable()
-        {
-            _roomSelection.OnListChanged -= OnListChange;
-        }
-
-        private void OnListChange(NetworkListEvent<NetworkObjectReference> changeEvent)
-        {
-            RoomSelectionChanged?.Invoke(this);
         }
 
         public void Execute(GameActionContainer gameActionContainer)
@@ -143,6 +50,16 @@ namespace Core.PlayerActions
             if (IsOwner == false)
             {
                 throw new Exception("Only object owner can execute actions");
+            }
+
+            IGameAction gameAction = gameActionContainer.GameAction.Value;
+            
+            int selectedRoomCount = _roomSelection.Count;
+
+            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection 
+                && gameActionWithRoomsSelection.RequredRoomsCount != selectedRoomCount)
+            {
+                throw new Exception("Invalid selected rooms count");
             }
 
             Execute_RPC(gameActionContainer);
@@ -153,11 +70,16 @@ namespace Core.PlayerActions
         {
             IGameAction gameAction = gameActionContainer.GameAction.Value;
 
-            gameAction.Init(_executer);
+            gameAction.Inititalize(_executer);
 
             if (gameAction is INeedMap gameActionWithMap)
             {
-                gameActionWithMap.Init(_map);
+                gameActionWithMap.Initialzie(_map);
+            }
+
+            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+            {
+                gameActionWithRoomsSelection.Initialize(_roomSelection);
             }
 
             gameAction.Execute();

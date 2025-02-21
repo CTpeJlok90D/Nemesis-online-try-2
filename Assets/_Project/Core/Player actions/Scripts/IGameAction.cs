@@ -5,9 +5,10 @@ namespace Core.PlayerActions
 {
     public interface IGameAction
     {
-        public void Init(PlayerTablet executor);
+        public void Inititalize(PlayerTablet executor);
         public CanExecuteCheckResult CanExecute();
         public void Execute();
+        public void ForceExecute();
 
         public struct CanExecuteCheckResult
         {
