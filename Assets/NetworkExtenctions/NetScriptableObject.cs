@@ -4,6 +4,8 @@ using UnityEngine.AddressableAssets;
 using Unity.Collections;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UIElements;
+using System.Threading.Tasks;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -56,6 +58,14 @@ namespace Unity.Netcode.Custom
                 handle.Result.Net._isLoaded = true;
                 Loaded?.Invoke(handle.Result);
             };
+        }
+
+        public async Task AwaitForLoad()
+        {
+            while (IsLoaded == false)
+            {
+                await Awaitable.NextFrameAsync();
+            }
         }
     }
 

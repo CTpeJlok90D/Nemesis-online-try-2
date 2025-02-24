@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Core.Maps;
 using Core.Selection.Rooms;
+using Core.SelectionBase;
 using UnityEngine;
 using Zenject;
 
@@ -25,7 +26,7 @@ namespace UI.Selection.Rooms
             _roomSelection.SelectionChanged -= OnSelectionChanged;
         }
 
-        private void OnSelectionChanged()
+        private void OnSelectionChanged(ISelection sender)
         {
             UpdateSelectionView();
         }

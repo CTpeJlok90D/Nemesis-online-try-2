@@ -11,17 +11,13 @@ namespace Core.PlayerActions
     [CreateAssetMenu(menuName = "Game/Actions/Move action")]
     public class MoveAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomsSelection, INeedMap
     {
-        [field: SerializeField] public int RequredRoomsCount { get; private set; }
-
-        [field: SerializeField] public int RequredPaymentCount { get; private set; }
+        [field: SerializeField] public int RequredPaymentCount { get; private set; } = 1;
+        public int RequredRoomsCount { get; private set; } = 1;
 
         private Map _map;
-
         private PlayerTablet _executer;
-
         public RoomCell RoomWithExecuter => _map.First(x => x.RoomContents.Contains(_executer.CharacterPawn.RoomContent));
-
-        public RoomCell[] Selection { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public RoomCell[] Selection { get; set; }
 
         public bool CanAddPaymentToSelection(ActionCard paymentCard)
         {
@@ -83,6 +79,7 @@ namespace Core.PlayerActions
 
         public void Execute()
         {
+            Debug.Log("Move action executing");
             IGameAction.CanExecuteCheckResult chekResult = CanExecute();
             if (chekResult == false)
             {
@@ -98,6 +95,7 @@ namespace Core.PlayerActions
 
             _executer.ActionCount.Value--;
             selectedRoom.AddContent(_executer.CharacterPawn.RoomContent);
+            Debug.Log("Move action executed");
         }
 
         public void Initialzie(Map map)

@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f8c95da7a724524992ccf57d39ecc39
+    m_Address: Assets/_Project/Core/Player actions/Move action.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1149afd990674364fa4bd0314f477a20
     m_Address: Assets/_Project/Data/Characters/Mechanic.asset
     m_ReadOnly: 0
@@ -127,6 +132,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 49d1611b13264b146ab9aeeaad9364eb
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/laboratory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d941375d9de76841bf39ffabc5c7875
+    m_Address: Assets/_Project/Core/Player actions/Action container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

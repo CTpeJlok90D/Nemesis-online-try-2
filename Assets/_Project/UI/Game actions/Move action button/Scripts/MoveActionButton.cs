@@ -1,18 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Core.PlayerActions;
-using Core.Selection.Rooms;
 using UI.Common;
-using Zenject;
 
 namespace UI.SelectionBase
 {
     [RequireComponent(typeof(PointerEvents))]
     public class MoveActionButton : MonoBehaviour
     {
-        [SerializeField] private MoveAction _moveAction;
-        [Inject] private RoomSelection _roomSelection;
-
+        [SerializeField] private GameActionContainer _moveAction;
         private PointerEvents _pointerEvents;
 
         private void Awake()
@@ -32,7 +28,12 @@ namespace UI.SelectionBase
 
         private void OnPointerClick(PointerEvents pointerEvents, PointerEventData eventData)
         {
-            _roomSelection.MaxCount = 1;
+            ExecuteMoveAction();
+        }
+
+        private void ExecuteMoveAction()
+        {
+            PlayerActionExecutor.Instance.Execute(_moveAction);
         }
     }
 }

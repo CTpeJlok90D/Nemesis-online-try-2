@@ -1,6 +1,9 @@
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Core.Maps;
 using Core.Selection.Rooms;
+using UnityEngine;
 
 namespace Core.PlayerActions
 {
@@ -8,13 +11,5 @@ namespace Core.PlayerActions
     {
         public int RequredRoomsCount { get; }
         public RoomCell[] Selection { get; set; }
-    }
-
-    public static class IGameActionWithRoomsSelectionExcentions
-    {
-        public static void Initialize(this IGameActionWithRoomsSelection gameActionWithSelection, RoomSelection roomSelection)
-        {
-            gameActionWithSelection.Selection = roomSelection.ToArray();
-        }
     }
 }

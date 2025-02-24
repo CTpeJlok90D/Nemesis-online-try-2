@@ -5,7 +5,7 @@ namespace UI.Common
 {
     public class PointerEvents : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IPointerDownHandler
     {
-        public delegate void PointerEventListener(PointerEvents pointerEvents, PointerEventData eventData);
+        public delegate void PointerEventListener(PointerEvents sender, PointerEventData eventData);
 
         public event PointerEventListener PointerClicked;
         public event PointerEventListener PointerUp;

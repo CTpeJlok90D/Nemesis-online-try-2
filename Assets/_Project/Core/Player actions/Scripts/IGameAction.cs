@@ -1,5 +1,6 @@
 using System;
 using Core.PlayerTablets;
+using Unity.Netcode;
 
 namespace Core.PlayerActions
 {

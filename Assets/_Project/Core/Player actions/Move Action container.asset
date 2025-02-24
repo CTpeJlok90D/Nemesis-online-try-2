@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df65f421797c614c928b9c492324194, type: 3}
+  m_Name: Move Action container
+  m_EditorClassIdentifier: 
+  <GameAction>k__BackingField:
+    _underlyingValue: {fileID: 11400000, guid: 0f8c95da7a724524992ccf57d39ecc39, type: 2}
+  <Net>k__BackingField:
+    _selfAssetReference:
+      m_AssetGUID: 4d941375d9de76841bf39ffabc5c7875
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _isLoaded: 1

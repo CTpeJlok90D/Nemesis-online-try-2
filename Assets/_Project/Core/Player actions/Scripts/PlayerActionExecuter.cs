@@ -1,8 +1,10 @@
 using System;
+using System.Linq;
 using Core.Maps;
 using Core.PlayerTablets;
 using Core.Selection.Rooms;
 using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +19,8 @@ namespace Core.PlayerActions
         [SerializeField] private Map _map;
 
         [Inject] private RoomSelection _roomSelection;
+
+        private NetworkList<NetworkObjectReference> _roomsSelectionNet;
 
         private PlayerTablet _executer;
 
@@ -43,46 +47,75 @@ namespace Core.PlayerActions
                 throw new Exception($"{nameof(PlayerActionExecutor)} is already instantiated!");
             }
             Instance = this;
+            _roomsSelectionNet = new();
         }
 
-        public void Execute(GameActionContainer gameActionContainer)
+        public async void Execute(GameActionContainer gameActionContainer)
         {
-            if (IsOwner == false)
+            try
             {
-                throw new Exception("Only object owner can execute actions");
+                if (IsOwner == false)
+                {
+                    throw new Exception("Only object owner can execute actions");
+                }
+
+                IGameAction gameAction = gameActionContainer.GameAction.Value;
+
+                if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+                {
+                    RoomCell[] selectedRooms = await _roomSelection.Select(gameActionWithRoomsSelection.RequredRoomsCount);
+
+                    _roomsSelectionNet.Clear();
+                    foreach (RoomCell roomCell in selectedRooms)
+                    {
+                        _roomsSelectionNet.Add(roomCell.NetworkObject);
+                    }
+                }
+
+                Execute_RPC(gameActionContainer);
             }
-
-            IGameAction gameAction = gameActionContainer.GameAction.Value;
-            
-            int selectedRoomCount = _roomSelection.Count;
-
-            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection 
-                && gameActionWithRoomsSelection.RequredRoomsCount != selectedRoomCount)
+            catch (Exception e)
             {
-                throw new Exception("Invalid selected rooms count");
+                Debug.LogError(e);
             }
-
-            Execute_RPC(gameActionContainer);
         }
 
         [Rpc(SendTo.Server)]
         private void Execute_RPC(GameActionContainer gameActionContainer)
         {
-            IGameAction gameAction = gameActionContainer.GameAction.Value;
+            ExecuteAsync_Server(gameActionContainer);
+        }
 
-            gameAction.Inititalize(_executer);
-
-            if (gameAction is INeedMap gameActionWithMap)
+        private async void ExecuteAsync_Server(GameActionContainer gameActionContainer)
+        {
+            try
             {
-                gameActionWithMap.Initialzie(_map);
-            }
+                await gameActionContainer.Net.AwaitForLoad();
 
-            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+                IGameAction gameAction = gameActionContainer.GameAction.Value;
+
+                if (gameAction is INeedMap gameActionWithMap)
+                {
+                    gameActionWithMap.Initialzie(_map);
+                }
+
+                if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+                {
+                    gameActionWithRoomsSelection.Selection = _roomsSelectionNet.ToEnumerable().Select(x => 
+                    {
+                        x.TryGet(out NetworkObject value);
+                        return value.GetComponent<RoomCell>();
+                    }).ToArray();
+                }
+
+                gameAction.Inititalize(_executer);
+                
+                gameAction.Execute();
+            }
+            catch (Exception e)
             {
-                gameActionWithRoomsSelection.Initialize(_roomSelection);
+                Debug.LogError(e);
             }
-
-            gameAction.Execute();
         }
     }
 }
