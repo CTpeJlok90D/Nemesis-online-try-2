@@ -64,7 +64,8 @@ namespace Core.SelectionBase
                 await Awaitable.NextFrameAsync();
             }
 
-            T[] result =  _selection.ToArray();;
+            T[] result =  _selection.ToArray();
+            
             Clear();
             return result;
         }

@@ -72,6 +72,7 @@ namespace Core.PlayerActions
                     }
                 }
 
+                Debug.Log(gameActionContainer.name);
                 Execute_RPC(gameActionContainer);
             }
             catch (Exception e)
@@ -90,12 +91,21 @@ namespace Core.PlayerActions
         {
             try
             {
+                Debug.Log("server test 1");
+
                 await gameActionContainer.Net.AwaitForLoad();
+
+                Debug.Log("server test 2");
+
+                Debug.Log(gameActionContainer.name);
 
                 IGameAction gameAction = gameActionContainer.GameAction.Value;
 
+                Debug.Log(_map);
+
                 if (gameAction is INeedMap gameActionWithMap)
                 {
+                    Debug.Log(gameActionWithMap);
                     gameActionWithMap.Initialzie(_map);
                 }
 
@@ -111,6 +121,8 @@ namespace Core.PlayerActions
                 gameAction.Inititalize(_executer);
                 
                 gameAction.Execute();
+
+                Debug.Log("server test 3");
             }
             catch (Exception e)
             {

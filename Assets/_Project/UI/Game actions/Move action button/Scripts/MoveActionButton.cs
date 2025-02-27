@@ -33,6 +33,7 @@ namespace UI.SelectionBase
 
         private void ExecuteMoveAction()
         {
+            Debug.Log("test");
             PlayerActionExecutor.Instance.Execute(_moveAction);
         }
     }

@@ -29,6 +29,7 @@ namespace Core.Scenarios.Default
                 CharacterPawn characterPawn_PREFAB = _config.PawnsForCharacters[tablet.Character.Value.Id];
                 CharacterPawn characterInstance = Object.Instantiate(characterPawn_PREFAB);
                 characterInstance.NetworkObject.Spawn();
+                tablet.LinkPawn(characterInstance);
                 _startRoom.AddContent(characterInstance.RoomContent);
             }
             Ended?.Invoke(this);

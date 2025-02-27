@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
+using Core.PlayerActions;
 using Core.PlayerTablets;
 using ModestTree;
 using Unity.Netcode;
@@ -51,6 +52,8 @@ namespace Core.Scenarios.PlayersPhase
 
                 _activePlayerIndex.Value = index;
 
+                PlayerActionExecutor.Instance.Executer = tablet;
+
                 tablet.ActionCount.Value = _actionPointsToGive;
                 tablet.ActionCount.Changed += OnActionPointsCountChange;
                 tablet.IsPassed.Changed += OnActivePlayerPass;
@@ -85,9 +88,9 @@ namespace Core.Scenarios.PlayersPhase
                 }
 
                 _activePlayerIndex.Value++;
+                Give();
             }
 
-            Give();
         }
 
         public void MoveFirstPlayer()

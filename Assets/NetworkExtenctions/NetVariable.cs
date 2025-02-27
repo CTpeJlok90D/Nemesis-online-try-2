@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Unity.Netcode.Custom
 {
+    [Serializable]
     public class NetVariable<T> : NetworkVariable<T>
     {
         private List<OnValueChangedDelegate> _listeners = new();

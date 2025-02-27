@@ -5,6 +5,8 @@ using Core.Maps.IntellegenceTokens;
 using System.Collections.Generic;
 using AYellowpaper;
 using System.Linq;
+using System;
+
 
 
 
@@ -67,6 +69,7 @@ namespace Core.Maps
             _roomTypeNet = new();
             IsInitialized = new();
             _roomContentsNet = new();
+            _roomContents = Array.Empty<RoomContent>();
 
             _roomContentsNet.OnListChanged += OnListChange;
         }

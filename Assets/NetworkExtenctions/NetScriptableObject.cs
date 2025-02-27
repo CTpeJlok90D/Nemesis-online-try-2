@@ -54,8 +54,11 @@ namespace Unity.Netcode.Custom
                 {
                     sender.name = $"{handle.Result.name} (net loaded)";
                 }
+
+                INetScriptableObjectArrayElement<T> element = sender as INetScriptableObjectArrayElement<T>;
+
                 Preloaded?.Invoke(handle.Result);
-                handle.Result.Net._isLoaded = true;
+                element.Net._isLoaded = true;
                 Loaded?.Invoke(handle.Result);
             };
         }

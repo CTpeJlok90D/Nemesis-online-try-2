@@ -16,7 +16,19 @@ namespace Core.PlayerActions
 
         private Map _map;
         private PlayerTablet _executer;
-        public RoomCell RoomWithExecuter => _map.First(x => x.RoomContents.Contains(_executer.CharacterPawn.RoomContent));
+        public RoomCell RoomWithExecuter 
+        {
+            get
+            {
+                Debug.Log(_map);
+                return _map.First(x => 
+                {
+                    Debug.Log(x.RoomContents);
+                    Debug.Log(_executer.CharacterPawn);
+                    return x.RoomContents.Contains(_executer.CharacterPawn.RoomContent);
+                });
+            }
+        } 
         public RoomCell[] Selection { get; set; }
 
         public bool CanAddPaymentToSelection(ActionCard paymentCard)
@@ -40,6 +52,8 @@ namespace Core.PlayerActions
         {
             bool boolResult;
             RoomCell[] selectedRooms = Selection; 
+
+            Debug.Log(_executer);
 
             if (_executer.ActionCount.Value <= 0)
             {

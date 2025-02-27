@@ -136,7 +136,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d941375d9de76841bf39ffabc5c7875
-    m_Address: Assets/_Project/Core/Player actions/Action container.asset
+    m_Address: Assets/_Project/Core/Player actions/Move Action container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
