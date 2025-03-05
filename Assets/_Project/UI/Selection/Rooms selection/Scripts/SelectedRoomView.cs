@@ -4,6 +4,7 @@ using Core.Maps;
 using Core.Selection.Rooms;
 using Core.SelectionBase;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace UI.Selection.Rooms
@@ -11,29 +12,33 @@ namespace UI.Selection.Rooms
     public class SelectedRoomView : MonoBehaviour
     {
         [SerializeField] private RoomCell _roomCell;
-        [SerializeField] private GameObject _target;
+        [SerializeField] private GameObject _selected;
+        [SerializeField] private GameObject _canBeSelected;
 
-        [Inject] private RoomSelection _roomSelection;
+        [Inject] private RoomsSelection _roomSelection;
 
         private void OnEnable()
         {
-            _roomSelection.SelectionChanged += OnSelectionChanged;
+            _roomSelection.SelectionChanged += UpdateSelectionView;
+            _roomSelection.SelectionStarted += UpdateSelectionView;
+            _roomSelection.SelectionConfirmed += UpdateSelectionView;
+            _roomSelection.SelectionCanceled += UpdateSelectionView;
             UpdateSelectionView();
         }
 
         private void OnDisable()
         {
-            _roomSelection.SelectionChanged -= OnSelectionChanged;
+            _roomSelection.SelectionStarted -= UpdateSelectionView;
+            _roomSelection.SelectionConfirmed -= UpdateSelectionView;
+            _roomSelection.SelectionChanged -= UpdateSelectionView;
+            _roomSelection.SelectionCanceled -= UpdateSelectionView;
         }
 
-        private void OnSelectionChanged(ISelection sender)
-        {
-            UpdateSelectionView();
-        }
-
+        private void UpdateSelectionView(ISelection sender) => UpdateSelectionView();
         private void UpdateSelectionView()
         {
-            _target.SetActive(_roomSelection.Contains(_roomCell));
+            _selected.SetActive(_roomSelection.Contains(_roomCell));
+            _canBeSelected.SetActive(_roomSelection.CanSelect(_roomCell));
         }
     }
 }

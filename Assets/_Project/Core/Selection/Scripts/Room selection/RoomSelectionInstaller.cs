@@ -6,7 +6,8 @@ namespace Core.Selection.Rooms
     {
         public override void InstallBindings()
         {
-            Container.Bind<RoomSelection>().FromNew().AsSingle();
+            RoomsSelection selectionInstance = new();
+            Container.Bind<RoomsSelection>().FromInstance(selectionInstance).AsSingle();
         }
     }
 }

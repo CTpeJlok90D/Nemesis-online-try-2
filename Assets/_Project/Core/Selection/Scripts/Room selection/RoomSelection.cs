@@ -3,7 +3,7 @@ using Core.SelectionBase;
 
 namespace Core.Selection.Rooms
 {
-    public class RoomSelection : Selection<RoomCell>
+    public class RoomsSelection : Selection<RoomCell>
     {
 
     }

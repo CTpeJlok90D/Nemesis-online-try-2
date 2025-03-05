@@ -52,7 +52,10 @@ namespace Core.Maps
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _roomCells.GetEnumerator();
+            foreach (RoomCell cell in _roomCells)
+            {
+                yield return cell;
+            }
         }
 
         public void RemoveEscapePod(EscapePod escapePod)

@@ -1,58 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Readme.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/URP.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Layout.wlt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Action cards.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Action cards.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Editor/icons8-empty-cards-96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Editor/icons8-empty-cards-96.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCard.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardTestEffect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardTestEffect.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsDeck.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsDeck.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsDecksDictionary.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsDecksDictionary.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/ActionCardsInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/Core.ActionsCards.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards/Scripts/Core.ActionsCards.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Core.Lobbies.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Core.Lobbies.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Selection view.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Selection view.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Move Action container.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Move Action container.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/Core.PlayerActions.Base.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/Core.PlayerActions.Base.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Core.PlayerActions.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Core.PlayerActions.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/GameActionContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/GameActionContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameAction.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameAction.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameActionWithPayment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameActionWithPayment.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameActionWithRoomsSelection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/IGameActionWithRoomsSelection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/INeedMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/INeedMap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/PlayerActionExecuter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/PlayerActionExecuter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/Core.PlayerTablet.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/Core.PlayerTablet.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/Core.Scenarios.PlayersPhase.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/Core.Scenarios.PlayersPhase.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Action cards selection.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Action cards selection/ActionCardsSelection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Action cards selection/ActionCardsSelection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Action cards selection/UI.Selection.ActionCards.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Action cards selection/UI.Selection.ActionCards.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/ISelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/ISelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Room selection/RoomSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Room selection/RoomSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Room selection/RoomSelectionInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Room selection/RoomSelectionInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Selection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Selection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/MoveActionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/MoveActionButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/UI.Hands.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/UI.Hands.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/RoomSelectionInstanceInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/RoomSelectionInstanceInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/SelectedRoomView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/SelectedRoomView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/ToogleRoomSelectionTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Rooms selection/Scripts/ToogleRoomSelectionTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/SelectionCount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/SelectionCount.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Card selection/CardsSelectionInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Cards selection/Scripts/CardsSelectionInstanceInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Cards selection/Scripts/CardsSelectionSource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/CanSelectObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/IsSelectedObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/SelectionIsActiveObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/0224e1ee036c4320be425d24db4ee5c3.SourceCodeCombined.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2nelzwPHrpBMczLqnRu41jBJLNK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:/Builds/Nemesis online\Nemesis-online.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Builds\Nemesis online" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Unity projects\Nemesis-online-try-2&quot; -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Unity projects\Nemesis-online-try-2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.40f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Unity projects\Nemesis-online-try-2&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Unity projects\Nemesis-online-try-2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -63,6 +157,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
@@ -78,8 +175,18 @@
       <option name="presentableId" value="Default" />
       <updated>1729341750391</updated>
       <workItem from="1729341750392" duration="42000" />
+      <workItem from="1741192178404" duration="5749000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">

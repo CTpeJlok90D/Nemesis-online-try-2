@@ -8,7 +8,7 @@ namespace UI.Selection.Rooms
     {
         public override void InstallBindings()
         {
-            RoomSelection roomSelection = Container.Resolve<RoomSelection>();
+            RoomsSelection roomSelection = Container.Resolve<RoomsSelection>();
             Container.Bind<ISelection>().FromInstance(roomSelection).AsSingle();
         }
     }

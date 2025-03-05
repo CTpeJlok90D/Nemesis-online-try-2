@@ -1,0 +1,20 @@
+{
+    "name": "UI.Selection.Cards",
+    "rootNamespace": "SelectionStarted",
+    "references": [
+        "GUID:84e2613a44cef654f883606506f03002",
+        "GUID:987e13335a7c43346ac90dd2248a6fbb",
+        "GUID:b333b5a5fde3844428bbfac02f556511",
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

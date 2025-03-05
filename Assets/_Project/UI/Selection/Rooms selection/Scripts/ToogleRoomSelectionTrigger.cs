@@ -14,7 +14,7 @@ namespace UI.Selection.Rooms
     {
         [SerializeField] private RoomCell _roomCell;
 
-        [Inject] private RoomSelection _roomSelection;
+        [Inject] private RoomsSelection _roomSelection;
 
         private PointerEvents _pointerEvents;
 
@@ -36,6 +36,11 @@ namespace UI.Selection.Rooms
 
         private void OnClick(PointerEvents pointerEvents, PointerEventData eventData)
         {
+            if (_roomSelection.CanSelect(_roomCell) == false)
+            {
+                return;
+            }
+            
             if (_roomSelection.Contains(_roomCell))
             {
                 _roomSelection.Remove(_roomCell);

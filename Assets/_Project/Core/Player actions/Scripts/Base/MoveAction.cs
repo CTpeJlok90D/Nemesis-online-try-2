@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
@@ -20,16 +21,19 @@ namespace Core.PlayerActions
         {
             get
             {
-                Debug.Log(_map);
-                return _map.First(x => 
-                {
-                    Debug.Log(x.RoomContents);
-                    Debug.Log(_executer.CharacterPawn);
-                    return x.RoomContents.Contains(_executer.CharacterPawn.RoomContent);
-                });
+                return _map.First(x => x.RoomContents.Contains(_executer.CharacterPawn.RoomContent));
             }
         } 
         public RoomCell[] Selection { get; set; }
+
+        public RoomCell[] SelectionSource
+        {
+            get
+            {
+                IEnumerable<RoomCell> possibleRooms = GetPossibleRooms();
+                return possibleRooms.ToArray();
+            }  
+        } 
 
         public bool CanAddPaymentToSelection(ActionCard paymentCard)
         {
@@ -45,15 +49,14 @@ namespace Core.PlayerActions
         public IEnumerable<RoomCell> GetPossibleRooms()
         {
             RoomCell roomWithExecuter = RoomWithExecuter;
-            return from x in _map where x.GetPassagesTo(roomWithExecuter).Length != 0 select x;
+            IEnumerable<RoomCell> result = from x in _map where x.GetPassagesTo(roomWithExecuter).Length != 0 select x;
+            return result;
         }
 
         public IGameAction.CanExecuteCheckResult CanExecute()
         {
             bool boolResult;
             RoomCell[] selectedRooms = Selection; 
-
-            Debug.Log(_executer);
 
             if (_executer.ActionCount.Value <= 0)
             {
@@ -93,7 +96,6 @@ namespace Core.PlayerActions
 
         public void Execute()
         {
-            Debug.Log("Move action executing");
             IGameAction.CanExecuteCheckResult chekResult = CanExecute();
             if (chekResult == false)
             {
@@ -109,7 +111,6 @@ namespace Core.PlayerActions
 
             _executer.ActionCount.Value--;
             selectedRoom.AddContent(_executer.CharacterPawn.RoomContent);
-            Debug.Log("Move action executed");
         }
 
         public void Initialzie(Map map)

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Move Action container
   m_EditorClassIdentifier: 
   <GameAction>k__BackingField:
-    _underlyingValue: {fileID: 11400000, guid: 0f8c95da7a724524992ccf57d39ecc39, type: 2}
+    mode: 0
+    unityReference: {fileID: 11400000, guid: 0f8c95da7a724524992ccf57d39ecc39, type: 2}
+    rawReference:
+      rid: -2
   <Net>k__BackingField:
     _selfAssetReference:
       m_AssetGUID: 4d941375d9de76841bf39ffabc5c7875
@@ -22,3 +25,8 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

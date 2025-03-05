@@ -13,17 +13,22 @@ namespace Core.SelectionBase
 
         private void OnEnable()
         {
-            _selection.SelectionChanged += OnSelectionChanged;
+            _selection.SelectionChanged += UpdateText;
+            _selection.SelectionConfirmed += UpdateText;
+            _selection.SelectionCanceled += UpdateText;
         }
 
         private void OnDisable()
         {
-            _selection.SelectionChanged -= OnSelectionChanged;
+            _selection.SelectionChanged -= UpdateText;
+            _selection.SelectionConfirmed += UpdateText;
+            _selection.SelectionCanceled += UpdateText;
         }
 
-        private void OnSelectionChanged(ISelection sender)
+        private void UpdateText(ISelection sender) => UpdateText();
+        private void UpdateText()
         {
-            _caption.text = string.Format(_format, sender.SelectedCount, sender.CountToSelect);
+            _caption.text = string.Format(_format, _selection.SelectedCount, _selection.CountToSelect);
         }
     }
 }

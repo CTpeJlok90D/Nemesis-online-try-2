@@ -2,13 +2,17 @@
     "name": "Core.PlayerActions.Base",
     "rootNamespace": "Core.PlayerActions.Base",
     "references": [
-        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
         "GUID:1491147abca9d7d4bb7105af628b223e",
-        "GUID:466bb92f01017fc4ba0c510be91d648f",
-        "GUID:abeed9924bcb1ad458fff652f1a603b7",
+        "GUID:d525ad6bd40672747bde77962f1c401e",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7",
         "GUID:c3afef91c40c7744aae8455e2bd7be6a",
-        "GUID:eb0339a6deb657b4a9c74c0e77d4ebdd",
-        "GUID:53c5fe4773e53d44aa875a6b89faf3e6"
+        "GUID:9cb17471feb381841a257297ad9e1a95",
+        "GUID:b333b5a5fde3844428bbfac02f556511",
+        "GUID:466ba4bee7f3ce546b61b2649f8d7bbd",
+        "GUID:abeed9924bcb1ad458fff652f1a603b7"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

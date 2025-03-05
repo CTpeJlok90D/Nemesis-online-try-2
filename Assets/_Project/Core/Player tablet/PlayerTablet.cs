@@ -49,14 +49,10 @@ namespace Core.PlayerTablets
             get
             {
                 CharacterPawn result = null;
-
-                Debug.Log(_linkedCharacterPawn.Value);
-
+                
                 if (_linkedCharacterPawn.Value.TryGet(out NetworkObject netObject))
                 {
-                    Debug.Log(netObject, netObject);
                     result = netObject.GetComponent<CharacterPawn>();
-                    Debug.Log(result, result);
                 }
 
                 return result;
