@@ -19,6 +19,8 @@ namespace UI.Hands
 
         [Inject] private PlayerTabletList _playerTabletList;
 
+        [Inject] private DiContainer _diContainer;
+
         private int _handSyncIndex;
 
         public PlayerTablet ActiveTablet { get; private set; }
@@ -63,15 +65,10 @@ namespace UI.Hands
 
                 foreach ((ActionCard actionCard, List<ActionCardContainer> uIActionCard) in _displayedActionCards)
                 {
-                    Debug.Log(_displayedActionCards.ContainsKey(actionCard));
-
                     if (_displayedActionCards.ContainsKey(actionCard) == false)
                     {
                         _displayedActionCards.Add(actionCard, new());
                     }
-
-                    Debug.Log(_displayedActionCards.ContainsKey(actionCard));
-                    Debug.Log(_displayedActionCards[actionCard]);
 
                     while (newHand.Count(x => x == actionCard) < _displayedActionCards[actionCard].Count)
                     {
@@ -101,7 +98,8 @@ namespace UI.Hands
         private void RemoveCardFromDisplay(ActionCard actionCard)
         {
             ActionCardContainer uIActionCard = _displayedActionCards[actionCard].First();
-            _displayedActionCards.Remove(actionCard);
+            _displayedActionCards[actionCard].Remove(uIActionCard);
+            
             if (uIActionCard.TryGetComponent(out IDestroyable component))
             {
                 component.Destroy();
@@ -114,7 +112,7 @@ namespace UI.Hands
 
         private void AddCardToDisplay(ActionCard actionCard)
         {
-            ActionCardContainer actionCardInstance = _uiActionCard_PREFAB.Instantiate(actionCard, _parent);
+            ActionCardContainer actionCardInstance = _uiActionCard_PREFAB.Instantiate(actionCard, _diContainer, _parent);
             _displayedActionCards[actionCard].Add(actionCardInstance);
         }
     }

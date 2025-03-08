@@ -15,6 +15,8 @@ namespace UI.Selection.Cards
         private List<ActionCardContainer> _instanses = new();
 
         [Inject] private CardsSelection _cardsSelection;
+
+        [Inject] private DiContainer _diContainer;
         
         private void Awake()
         {
@@ -26,10 +28,10 @@ namespace UI.Selection.Cards
 
         private void OnEnable()
         {
+            UpdateSelectionSource();
             _cardsSelection.SelectionStarted += OnSelectionStart;
             _cardsSelection.SelectionConfirmed += OnSelectionConfirm;
             _cardsSelection.SelectionCanceled += OnSelectionCancel;
-            UpdateSelectionSource();
         }
 
         private void OnDisable()
@@ -70,9 +72,10 @@ namespace UI.Selection.Cards
 
         private void InstantiateCards()
         {
-            foreach (ActionCard actionCard in _cardsSelection)
+            foreach (ActionCard actionCard in _cardsSelection.SelectionSource)
             {
-                _actionCardContainer_PREFAB.Instantiate(actionCard, _root);
+                ActionCardContainer instance = _actionCardContainer_PREFAB.Instantiate(actionCard, _diContainer, _root);
+                _instanses.Add(instance);
             }
         }
     }

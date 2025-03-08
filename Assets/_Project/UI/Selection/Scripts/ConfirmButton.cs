@@ -9,7 +9,7 @@ namespace UI.Selection
     {
         [SerializeField] private Button _button;
         [Inject] private ISelection _selection;
-
+        
         private void OnEnable()
         {
             _button.onClick.AddListener(OnButtonClick);

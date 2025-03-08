@@ -6,8 +6,6 @@ namespace Core.PlayerActions
 {
     public interface IGameActionWithPayment
     {
-        public int RequredPaymentCount { get; }
-
-        public bool CanAddPaymentToSelection(ActionCard roomCell);
+        public int RequaredPaymentCount { get; }
     }
 }

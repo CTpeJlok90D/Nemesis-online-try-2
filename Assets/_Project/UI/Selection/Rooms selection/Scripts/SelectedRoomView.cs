@@ -1,10 +1,7 @@
-using System;
 using System.Linq;
 using Core.Maps;
 using Core.Selection.Rooms;
-using Core.SelectionBase;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace UI.Selection.Rooms
@@ -17,24 +14,11 @@ namespace UI.Selection.Rooms
 
         [Inject] private RoomsSelection _roomSelection;
 
-        private void OnEnable()
+        private void Update()
         {
-            _roomSelection.SelectionChanged += UpdateSelectionView;
-            _roomSelection.SelectionStarted += UpdateSelectionView;
-            _roomSelection.SelectionConfirmed += UpdateSelectionView;
-            _roomSelection.SelectionCanceled += UpdateSelectionView;
             UpdateSelectionView();
         }
-
-        private void OnDisable()
-        {
-            _roomSelection.SelectionStarted -= UpdateSelectionView;
-            _roomSelection.SelectionConfirmed -= UpdateSelectionView;
-            _roomSelection.SelectionChanged -= UpdateSelectionView;
-            _roomSelection.SelectionCanceled -= UpdateSelectionView;
-        }
-
-        private void UpdateSelectionView(ISelection sender) => UpdateSelectionView();
+        
         private void UpdateSelectionView()
         {
             _selected.SetActive(_roomSelection.Contains(_roomCell));

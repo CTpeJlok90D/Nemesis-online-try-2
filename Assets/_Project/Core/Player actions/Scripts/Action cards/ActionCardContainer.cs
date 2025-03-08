@@ -1,5 +1,7 @@
+using System;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 
 namespace Core.ActionsCards
@@ -8,10 +10,11 @@ namespace Core.ActionsCards
     {
         public ActionCard ActionCard { get; private set; }
 
-        public ActionCardContainer Instantiate(ActionCard actionCard, Transform parent = null)
+        public ActionCardContainer Instantiate(ActionCard actionCard, DiContainer diContainer, Transform parent = null)
         {
             gameObject.SetActive(false);
             ActionCardContainer actionCardContainer = Instantiate(this, parent);
+            diContainer.InjectGameObject(actionCardContainer.gameObject);
             gameObject.SetActive(true);
 
             actionCardContainer.ActionCard = actionCard;

@@ -8,8 +8,8 @@ namespace SelectionStarted
     {
         public override void InstallBindings()
         {
-            CardsSelection roomSelection = Container.Resolve<CardsSelection>();
-            Container.Bind<ISelection>().FromInstance(roomSelection).AsSingle();
+            CardsSelection cardsSelection = Container.Resolve<CardsSelection>();
+            Container.Bind<ISelection>().FromInstance(cardsSelection).AsSingle();
         }
     }
 }

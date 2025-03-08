@@ -43,12 +43,21 @@ namespace Core.Scenarios.PlayersPhase
 
                 PlayerTablet tablet = null;
                 int index = _activePlayerIndex.Value;
-
+                
+                Debug.Log(_playerTabletsList.Count());
+                
                 do 
                 {
-                    tablet = _playerTabletsList.ElementAt(index);
                     index++;
+                    if (index >= _playerTabletsList.Count())
+                    {
+                        index = 0;
+                    }
+                    
+                    tablet = _playerTabletsList.ElementAt(index);
                 } while (tablet.IsPassed.Value);
+                
+                Debug.Log(index);
 
                 _activePlayerIndex.Value = index;
 
@@ -68,27 +77,32 @@ namespace Core.Scenarios.PlayersPhase
         {
             ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
             ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
-
-            _activePlayerIndex.Value++;
+            
             Give();
         }
 
         private async void OnActionPointsCountChange(int previousValue, int newValue)
         {
-            if (newValue == 0)
+            try
             {
-                ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
-                ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
-
-                IReadOnlyCollection<ActionCard> hand = await ActiveTablet.ActionCardsDeck.GetHand();
-
-                if (hand.IsEmpty())
+                if (newValue == 0)
                 {
-                    ActiveTablet.IsPassed.Value = true;
-                }
+                    ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
+                    ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
 
-                _activePlayerIndex.Value++;
-                Give();
+                    IReadOnlyCollection<ActionCard> hand = await ActiveTablet.ActionCardsDeck.GetHand();
+
+                    if (hand.IsEmpty())
+                    {
+                        ActiveTablet.IsPassed.Value = true;
+                    }
+                    
+                    Give();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
             }
 
         }

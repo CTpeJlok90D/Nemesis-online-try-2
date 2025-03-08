@@ -12,7 +12,7 @@ namespace Core.PlayerActions
     [CreateAssetMenu(menuName = "Game/Actions/Move action")]
     public class MoveAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomsSelection, INeedMap
     {
-        [field: SerializeField] public int RequredPaymentCount { get; private set; } = 1;
+        [field: SerializeField] public int RequaredPaymentCount { get; private set; } = 1;
         public int RequredRoomsCount { get; private set; } = 1;
 
         private Map _map;
@@ -49,7 +49,9 @@ namespace Core.PlayerActions
         public IEnumerable<RoomCell> GetPossibleRooms()
         {
             RoomCell roomWithExecuter = RoomWithExecuter;
-            IEnumerable<RoomCell> result = from x in _map where x.GetPassagesTo(roomWithExecuter).Length != 0 select x;
+            IEnumerable<RoomCell> result =
+                _map.Where(x => x.GetPassagesTo(roomWithExecuter).Length != 0 && x != roomWithExecuter);
+            
             return result;
         }
 
@@ -64,7 +66,7 @@ namespace Core.PlayerActions
                 IGameAction.CanExecuteCheckResult result = new()
                 {
                     Result = false,
-                    Error = new InvalidOperationException($"Not enoth action points to execute action"),
+                    Error = new InvalidOperationException($"Not enough action points to execute action"),
                 };
 
                 return result;
@@ -87,6 +89,7 @@ namespace Core.PlayerActions
             IEnumerable<RoomCell> possibleRooms = GetPossibleRooms();
             
             boolResult = possibleRooms.Contains(selectedRoom);
+            
             return new()
             {
                 Result = boolResult,

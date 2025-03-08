@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using Codice.CM.Client.Differences.Graphic;
+using Core.ActionsCards;
 using Core.Maps;
+using Core.Players;
 using Core.PlayerTablets;
+using Core.Selection.Cards;
 using Core.Selection.Rooms;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
@@ -20,7 +25,13 @@ namespace Core.PlayerActions
 
         [Inject] private RoomsSelection _roomSelection;
 
+        [Inject] private CardsSelection _cardsSelection;
+
+        [Inject] private PlayerTabletList _playerTabletList;
+
         private NetworkList<NetworkObjectReference> _roomsSelectionNet;
+
+        private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
         private PlayerTablet _executer;
 
@@ -47,7 +58,14 @@ namespace Core.PlayerActions
                 throw new Exception($"{nameof(PlayerActionExecutor)} is already instantiated!");
             }
             Instance = this;
-            _roomsSelectionNet = new();
+            _roomsSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
+            _selectionActionCards = new(writePermission: NetworkVariableWritePermission.Owner);
+        }
+
+        protected override void OnOwnershipChanged(ulong previous, ulong current)
+        {
+            base.OnOwnershipChanged(previous, current);
+            _executer = _playerTabletList.First(x => x.Player.OwnerClientId == current);
         }
 
         public async void Execute(GameActionContainer gameActionContainer)
@@ -68,11 +86,19 @@ namespace Core.PlayerActions
                     iNeedMap.Initialzie(_map);
                 }
 
+                if (gameAction is IGameActionWithPayment gameActionWithPayment)
+                {
+                    int requaredPaymentCount = gameActionWithPayment.RequaredPaymentCount;
+                    IReadOnlyCollection<ActionCard> hand = await _executer.ActionCardsDeck.GetHand();
+
+                    ActionCard[] selectedCards = await _cardsSelection.SelectFrom(hand, requaredPaymentCount);
+                    _selectionActionCards.SetElements(selectedCards);
+                }
+
                 if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
                 {
                     RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.SelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
-                    Debug.Log(selectedRooms.Length);
-
+                    
                     _roomsSelectionNet.Clear();
                     foreach (RoomCell roomCell in selectedRooms)
                     {
@@ -100,33 +126,56 @@ namespace Core.PlayerActions
             {
                 await gameActionContainer.Net.AwaitForLoad();
                 
-                Debug.Log(gameActionContainer);
-                
                 IGameAction gameAction = gameActionContainer.GameAction.Value;
                 
                 gameAction.Inititalize(_executer);
 
                 if (gameAction is INeedMap gameActionWithMap)
                 {
-                    Debug.Log(gameActionWithMap);
                     gameActionWithMap.Initialzie(_map);
+                }
+
+                if (gameAction is IGameActionWithPayment gameActionWithPayment)
+                {
+                    while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
+                    {
+                        await Awaitable.NextFrameAsync();
+                    }
+                    
+                    ActionCard[] cards = await _selectionActionCards.GetElements();
+                    _executer.ActionCardsDeck.DiscardCards(cards);
                 }
 
                 if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
                 {
-                    gameActionWithRoomsSelection.Selection = _roomsSelectionNet.ToEnumerable().Select(x => 
+                    while (_roomsSelectionNet.Count != gameActionWithRoomsSelection.RequredRoomsCount)
+                    {
+                        await Awaitable.NextFrameAsync();
+                    }
+                    
+                    RoomCell[] selection = _roomsSelectionNet.ToEnumerable().Select(x => 
                     {
                         x.TryGet(out NetworkObject value);
                         return value.GetComponent<RoomCell>();
                     }).ToArray();
+                    
+                    gameActionWithRoomsSelection.Selection = selection;
                 }
                 
                 gameAction.Execute();
+                OnExecuted_RPC();
             }
             catch (Exception e)
             {
                 Debug.LogError(e);
             }
+        }
+
+        [Rpc(SendTo.Owner)]
+        private void OnExecuted_RPC()
+        {
+            _roomsSelectionNet.Clear();
+            _selectionActionCards.Clear();
         }
     }
 }
