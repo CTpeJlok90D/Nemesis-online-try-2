@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -17,6 +18,12 @@ namespace Core.Maps
         private NetVariable<DoorState> _doorStateNet;
 
         public DoorState DoorState => _doorStateNet.Value;
+
+        public event IReadOnlyReactiveField<DoorState>.ChangedListener DoorStateChanged
+        {
+            add => _doorStateNet.Changed += value;
+            remove => _doorStateNet.Changed -= value;
+        }
 
         public IReadOnlyCollection<RoomCell> RoomCells => _linkedCells;
 
@@ -74,7 +81,7 @@ namespace Core.Maps
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            foreach (RoomCell roomCell in _linkedCells)
+            foreach (RoomCell roomCell in _linkedCells.Where(x => x != null))
             {
                 Gizmos.DrawLine(transform.position, roomCell.transform.position);
             }

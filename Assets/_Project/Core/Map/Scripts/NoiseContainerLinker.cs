@@ -5,7 +5,7 @@ namespace Core.Maps
     public class NoiseContainerLinker : MonoBehaviour, INoiseContainer
     {
         [SerializeField] private SimpleNoiseContainer _linkedContainer;
-        public bool IsNoised => _linkedContainer.IsNoised.Value;
+        public IReadOnlyReactiveField<bool> IsNoised => _linkedContainer.IsNoised;
 
         public void Clear()
         {

@@ -47,7 +47,7 @@ namespace Core.Maps
 
         public IReadOnlyCollection<INoiseContainer> NoiseContainers => _linkedTunnels.Select(x => x.Value).ToArray();
 
-        public event NetVariable<RoomType>.OnValueChangedDelegate TypeChanged
+        public event IReadOnlyReactiveField<RoomType>.ChangedListener TypeChanged
         {
             add => _roomTypeNet.Changed += value;
             remove => _roomTypeNet.Changed -= value;

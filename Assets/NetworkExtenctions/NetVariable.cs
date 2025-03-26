@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace Unity.Netcode.Custom
 {
     [Serializable]
-    public class NetVariable<T> : NetworkVariable<T>
+    public class NetVariable<T> : NetworkVariable<T>, IReadOnlyReactiveField<T>
     {
-        private List<OnValueChangedDelegate> _listeners = new();
+        private List<IReadOnlyReactiveField<T>.ChangedListener> _listeners = new();
 
-        public event OnValueChangedDelegate Changed
+        public event IReadOnlyReactiveField<T>.ChangedListener Changed
         {
             add => _listeners.Add(value);
             remove => _listeners.Remove(value);
@@ -30,7 +31,7 @@ namespace Unity.Netcode.Custom
 
         protected virtual void OnValueChange(T previousValue, T newValue)
         {
-            foreach (OnValueChangedDelegate listener in _listeners.ToArray())
+            foreach (IReadOnlyReactiveField<T>.ChangedListener listener in _listeners.ToArray())
             {
                 try
                 {

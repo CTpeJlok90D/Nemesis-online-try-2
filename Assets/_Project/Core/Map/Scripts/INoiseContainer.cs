@@ -2,7 +2,7 @@ namespace Core.Maps
 {
     public interface INoiseContainer
     {
-        public bool IsNoised { get; }
+        public IReadOnlyReactiveField<bool> IsNoised { get; }
 
         public void Noise();
 

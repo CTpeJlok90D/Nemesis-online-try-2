@@ -1,14 +1,10 @@
 {
-    "name": "UI.CharacterSelection",
-    "rootNamespace": "UI.CharacterSelection",
+    "name": "View.Tunnels",
+    "rootNamespace": "View.Tunnels",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:58946ea638f53f54d9ccaa0cb6215515",
         "GUID:d525ad6bd40672747bde77962f1c401e",
-        "GUID:1491147abca9d7d4bb7105af628b223e",
-        "GUID:570275ac2bfab034382af5afc723a913",
-        "GUID:3f53ad91522fc224cb06cfa8fb9ebf95",
-        "GUID:466ba4bee7f3ce546b61b2649f8d7bbd",
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
         "GUID:e74d2f5357f23d044a37333c8efba8f2"
     ],
     "includePlatforms": [],

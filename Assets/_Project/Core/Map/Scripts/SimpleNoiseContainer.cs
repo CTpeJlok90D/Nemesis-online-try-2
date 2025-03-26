@@ -9,9 +9,9 @@ namespace Core.Maps
     {
         public NetVariable<bool> IsNoised { get; private set; }
 
-        bool INoiseContainer.IsNoised => IsNoised.Value;
+        IReadOnlyReactiveField<bool> INoiseContainer.IsNoised => IsNoised;
 
-        public event NetVariable<bool>.OnValueChangedDelegate NoiseStatusChanged
+        public event IReadOnlyReactiveField<bool>.ChangedListener NoiseStatusChanged
         {
             add => IsNoised.Changed += value;
             remove => IsNoised.Changed -= value;
