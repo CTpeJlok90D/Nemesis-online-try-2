@@ -70,6 +70,33 @@ namespace Core.Maps
             _escapePods = _escapePods.Where(x => x != null).ToList();
         }
 
+        public void NoiseInRoom(RoomCell roomCell, NoiseDice.Result noiseDiceResult)
+        {
+            if (noiseDiceResult == NoiseDice.Result.Silence)
+            {
+                return;
+            }
+
+            if (noiseDiceResult == NoiseDice.Result.Dangerous)
+            {
+                foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
+                {
+                    if (noiseContainer.IsNoised.Value == false)
+                    {
+                        noiseContainer.Noise();
+                    }
+                }
+            }
+
+            int tunnelIndex = (int)noiseDiceResult;
+            roomCell.NoiseContainers.ElementAt(tunnelIndex).Noise();
+        }
+        
+        public void NoiseInRoom(RoomCell roomCell)
+        {
+            NoiseInRoom(roomCell ,NoiseDice.Roll());
+        }
+
 #if UNITY_EDITOR
         [CustomEditor(typeof(Map))]
         private class CEditor : Editor

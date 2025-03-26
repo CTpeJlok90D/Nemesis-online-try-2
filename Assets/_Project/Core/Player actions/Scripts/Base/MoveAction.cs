@@ -114,6 +114,8 @@ namespace Core.PlayerActions
 
             _executer.ActionCount.Value--;
             selectedRoom.AddContent(_executer.CharacterPawn.RoomContent);
+            
+            _map.NoiseInRoom(selectedRoom);
         }
 
         public void Initialzie(Map map)

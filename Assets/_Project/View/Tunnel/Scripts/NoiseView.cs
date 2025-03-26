@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace View.Tunnels
 {
+    [DefaultExecutionOrder(1)]
     public class NoiseView : MonoBehaviour
     {
         [SerializeField] private SerializableInterface<INoiseContainer> _noiseContainer;
@@ -14,6 +15,12 @@ namespace View.Tunnels
         private void OnEnable()
         {
             IsNoised.Changed += OnInNoisedChange;
+            UpdateView();
+        }
+
+        private void Start()
+        {
+            UpdateView();
         }
 
         private void OnDisable()
@@ -23,7 +30,12 @@ namespace View.Tunnels
 
         private void OnInNoisedChange(bool oldvalue, bool newvalue)
         {
-            _target.SetActive(newvalue);
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            _target.SetActive(IsNoised.Value);
         }
     }
 }

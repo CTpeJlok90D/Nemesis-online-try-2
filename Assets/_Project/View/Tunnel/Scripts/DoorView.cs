@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace View.Tunnels
 {
+    [DefaultExecutionOrder(1)]
     public class DoorView : MonoBehaviour
     {
         [SerializeField] private Tunnel _tunnel;
@@ -14,6 +15,12 @@ namespace View.Tunnels
         private void OnEnable()
         {
             _tunnel.DoorStateChanged += OnDoorStateChange;
+            UpdateDoorState();
+        }
+        
+        private void Start()
+        {
+            UpdateDoorState();
         }
 
         private void OnDisable()

@@ -15,6 +15,7 @@ namespace Core.Maps
 
         [SerializeField] private DoorState _doorState;
 
+        public SimpleNoiseContainer NoiseContainer { get; private set; }
         private NetVariable<DoorState> _doorStateNet;
 
         public DoorState DoorState => _doorStateNet.Value;
@@ -29,6 +30,7 @@ namespace Core.Maps
 
         private void Awake()
         {
+            NoiseContainer = GetComponent<SimpleNoiseContainer>();
             _doorStateNet = new(_doorState);
         }
 
