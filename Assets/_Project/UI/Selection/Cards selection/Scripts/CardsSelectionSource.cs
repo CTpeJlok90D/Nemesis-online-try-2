@@ -68,6 +68,7 @@ namespace UI.Selection.Cards
             {
                 Destroy(instance.gameObject);
             }
+            _instanses.Clear();
         }
 
         private void InstantiateCards()

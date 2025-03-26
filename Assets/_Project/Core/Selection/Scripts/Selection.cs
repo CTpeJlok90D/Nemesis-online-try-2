@@ -24,6 +24,7 @@ namespace Core.SelectionBase
         public bool CanConfirmSelection => _selection.Count == CountToSelect && _isSelectionInProgress;
         public bool IsActive => _isSelectionInProgress;
         public IEnumerable<T> SelectionSource => _whiteList;
+        public virtual bool OnlyUniqueItems => true; 
 
         public event IReadOnlyReactiveField<int>.ChangedListener MaxCountChanged
         {
@@ -77,7 +78,7 @@ namespace Core.SelectionBase
                 throw new InvalidOperationException($"Cant add {value} to selection: {value} was not found in source");
             }
             
-            if (_selection.Contains(value))
+            if (_selection.Contains(value) && OnlyUniqueItems)
             {
                 throw new InvalidOperationException($"Cant add {value} to selection: {value} already selected");
             }
@@ -117,6 +118,7 @@ namespace Core.SelectionBase
 
             _isSelectionInProgress = false;
             _whiteList.Clear();
+            Clear();
             SelectionCanceled?.Invoke(this);
         }
 
@@ -129,7 +131,7 @@ namespace Core.SelectionBase
             return result;
         }
 
-        public void Comfirm()
+        public void Confirm()
         {
             if (_isSelectionInProgress == false)
             {

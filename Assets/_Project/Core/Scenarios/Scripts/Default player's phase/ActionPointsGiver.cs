@@ -44,8 +44,6 @@ namespace Core.Scenarios.PlayersPhase
                 PlayerTablet tablet = null;
                 int index = _activePlayerIndex.Value;
                 
-                Debug.Log(_playerTabletsList.Count());
-                
                 do 
                 {
                     index++;
@@ -56,8 +54,6 @@ namespace Core.Scenarios.PlayersPhase
                     
                     tablet = _playerTabletsList.ElementAt(index);
                 } while (tablet.IsPassed.Value);
-                
-                Debug.Log(index);
 
                 _activePlayerIndex.Value = index;
 

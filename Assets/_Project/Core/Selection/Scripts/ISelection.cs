@@ -8,7 +8,8 @@ namespace Core.SelectionBase
         public bool IsActive { get; }
         public int CountToSelect { get; }
         public int SelectedCount { get; }
-        public void Comfirm();
+        public void Confirm();
+        public void Cancel();
 
         public delegate void SelectionChangedHandler(ISelection sender);
         public event SelectionChangedHandler SelectionChanged;

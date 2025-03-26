@@ -8,6 +8,7 @@ using Core.Players;
 using Core.PlayerTablets;
 using Core.Selection.Cards;
 using Core.Selection.Rooms;
+using PlasticPipe.PlasticProtocol.Client.Proxies;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace Core.PlayerActions
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
         private PlayerTablet _executer;
+        private bool _actionIsExecuting;
 
         public PlayerTablet Executer
         {
@@ -72,6 +74,12 @@ namespace Core.PlayerActions
         {
             try
             {
+                if (_actionIsExecuting)
+                {
+                    throw new InvalidOperationException("Cant execute action: other action is executing");
+                }
+
+                _actionIsExecuting = true;
                 if (IsOwner == false)
                 {
                     throw new Exception("Only object owner can execute actions");
@@ -92,12 +100,25 @@ namespace Core.PlayerActions
                     IReadOnlyCollection<ActionCard> hand = await _executer.ActionCardsDeck.GetHand();
 
                     ActionCard[] selectedCards = await _cardsSelection.SelectFrom(hand, requaredPaymentCount);
+
+                    if (selectedCards.Length != requaredPaymentCount)
+                    {
+                        _actionIsExecuting = false;
+                        return;
+                    }
+                    
                     _selectionActionCards.SetElements(selectedCards);
                 }
 
                 if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
                 {
                     RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.SelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
+
+                    if (selectedRooms.Length != gameActionWithRoomsSelection.RequredRoomsCount)
+                    {
+                        _actionIsExecuting = false;
+                        return;
+                    }
                     
                     _roomsSelectionNet.Clear();
                     foreach (RoomCell roomCell in selectedRooms)
@@ -107,6 +128,7 @@ namespace Core.PlayerActions
                 }
                 
                 Execute_RPC(gameActionContainer);
+                _actionIsExecuting = false;
             }
             catch (Exception e)
             {

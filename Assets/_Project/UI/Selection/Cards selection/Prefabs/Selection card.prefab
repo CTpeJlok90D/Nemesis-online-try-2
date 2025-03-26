@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e3e5ed6ea283a4fb3a3e274e206946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionCardContainer: {fileID: 3439190848232032638}
+  _selectedCardView: {fileID: 203460097897477115}
 --- !u!114 &203460097897477115
 MonoBehaviour:
   m_ObjectHideFlags: 0

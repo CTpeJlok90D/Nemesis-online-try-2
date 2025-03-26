@@ -1,22 +1,46 @@
-using System;
 using System.Linq;
 using Core.ActionsCards;
-using Core.Selection.Cards;
+using Core.SelectionBase;
 using UnityEngine;
 using Zenject;
 
 namespace SelectionStarted
 {
+    [DefaultExecutionOrder(1)]
     public class SelectedCardView : MonoBehaviour
     {
         [SerializeField] private GameObject _target;
         [SerializeField] private ActionCardContainer _actionCardContainer;
+        
+        [Inject] private CardsSelectionView _cardsSelectionView;
 
-        [Inject] private CardsSelection _cardsSelection;
+        public ActionCard ActionCard => _actionCardContainer.ActionCard; 
+        
+        public string ActionCardID => ActionCard.ID;
 
-        private void Update()
+        private void Awake()
         {
-            _target.SetActive(_cardsSelection.Contains(_actionCardContainer.ActionCard));
+            UpdateIsSelected();
+        }
+
+        private void OnEnable()
+        {
+            _cardsSelectionView.SelectionChanged += OnSelectionChange;
+        }
+
+        private void OnDisable()
+        {
+            _cardsSelectionView.SelectionChanged -= OnSelectionChange;
+        }
+
+        private void OnSelectionChange(ISelection sender)
+        {
+            UpdateIsSelected();
+        }
+
+        private void UpdateIsSelected()
+        {
+            _target.SetActive(_cardsSelectionView.Contains(this));
         }
     }
 }

@@ -1,6 +1,3 @@
-using System.Linq;
-using Core.ActionsCards;
-using Core.Selection.Cards;
 using UI.Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,14 +8,12 @@ namespace SelectionStarted
     [RequireComponent(typeof(PointerEvents))]
     public class CardSelectionToggle : MonoBehaviour
     {
-        [SerializeField] private ActionCardContainer _actionCardContainer;
+        [SerializeField] private SelectedCardView _selectedCardView;
         
-        [Inject] private CardsSelection _cardsSelection;
+        [Inject] private CardsSelectionView _cardsSelection;
 
         private PointerEvents _pointerEvents;
-
-        public ActionCard ActionCard => _actionCardContainer.ActionCard;
-
+        
         private void Awake()
         {
             _pointerEvents = GetComponent<PointerEvents>();
@@ -36,13 +31,13 @@ namespace SelectionStarted
 
         private void OnPointerClick(PointerEvents sender, PointerEventData eventData)
         {
-            if (_cardsSelection.Contains(ActionCard))
+            if (_cardsSelection.Contains(_selectedCardView))
             {
-                _cardsSelection.Remove(ActionCard);
+                _cardsSelection.Remove(_selectedCardView);
             }
             else
             {
-                _cardsSelection.Add(ActionCard);
+                _cardsSelection.Add(_selectedCardView);
             }
         }
     }
