@@ -1,3 +1,5 @@
+using Unity.Netcode;
+
 namespace Core.Maps
 {
     public interface INoiseContainer
@@ -7,5 +9,7 @@ namespace Core.Maps
         public void Noise();
 
         public void Clear();
+        
+        public NetworkObject NetworkObject { get; }
     }
 }

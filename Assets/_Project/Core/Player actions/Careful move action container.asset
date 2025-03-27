@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df65f421797c614c928b9c492324194, type: 3}
-  m_Name: Move action container
+  m_Name: Careful move action container
   m_EditorClassIdentifier: 
   <GameAction>k__BackingField:
     mode: 0
-    unityReference: {fileID: 11400000, guid: 0f8c95da7a724524992ccf57d39ecc39, type: 2}
+    unityReference: {fileID: 11400000, guid: 7b84a22f70b782f45a14dd792dfd9af7, type: 2}
     rawReference:
       rid: -2
   <Net>k__BackingField:
     _selfAssetReference:
-      m_AssetGUID: 4d941375d9de76841bf39ffabc5c7875
+      m_AssetGUID: ad11c328c9783714ca3133b94b209ca8
       m_SubObjectName: 
       m_SubObjectGUID: 
       m_SubObjectType: 

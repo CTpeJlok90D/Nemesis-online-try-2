@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Codice.CM.Client.Differences.Graphic;
 using Core.ActionsCards;
 using Core.Maps;
-using Core.Players;
 using Core.PlayerTablets;
 using Core.Selection.Cards;
 using Core.Selection.Rooms;
-using PlasticPipe.PlasticProtocol.Client.Proxies;
+using Core.Selection.Tunnels;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -28,14 +26,19 @@ namespace Core.PlayerActions
 
         [Inject] private CardsSelection _cardsSelection;
 
+        [Inject] private NoiseContainerSelection _noiseContainerSelection;
+
         [Inject] private PlayerTabletList _playerTabletList;
 
         private NetworkList<NetworkObjectReference> _roomsSelectionNet;
+        
+        private NetworkList<NetworkObjectReference> _noiseContainerSelectionNet;
 
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
         private PlayerTablet _executer;
-        private bool _actionIsExecuting;
+        
+        private NetVariable<bool> _actionIsExecuting;
 
         public PlayerTablet Executer
         {
@@ -62,6 +65,8 @@ namespace Core.PlayerActions
             Instance = this;
             _roomsSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _selectionActionCards = new(writePermission: NetworkVariableWritePermission.Owner);
+            _noiseContainerSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
+            _actionIsExecuting = new(writePerm: NetworkVariableWritePermission.Owner);
         }
 
         protected override void OnOwnershipChanged(ulong previous, ulong current)
@@ -74,12 +79,12 @@ namespace Core.PlayerActions
         {
             try
             {
-                if (_actionIsExecuting)
+                if (_actionIsExecuting.Value)
                 {
                     throw new InvalidOperationException("Cant execute action: other action is executing");
                 }
 
-                _actionIsExecuting = true;
+                _actionIsExecuting.Value = true;
                 if (IsOwner == false)
                 {
                     throw new Exception("Only object owner can execute actions");
@@ -103,7 +108,7 @@ namespace Core.PlayerActions
 
                     if (selectedCards.Length != requaredPaymentCount)
                     {
-                        _actionIsExecuting = false;
+                        _actionIsExecuting.Value = false;
                         return;
                     }
                     
@@ -112,11 +117,11 @@ namespace Core.PlayerActions
 
                 if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
                 {
-                    RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.SelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
+                    RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.RoomSelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
 
                     if (selectedRooms.Length != gameActionWithRoomsSelection.RequredRoomsCount)
                     {
-                        _actionIsExecuting = false;
+                        _actionIsExecuting.Value = false;
                         return;
                     }
                     
@@ -125,14 +130,28 @@ namespace Core.PlayerActions
                     {
                         _roomsSelectionNet.Add(roomCell.NetworkObject);
                     }
+                    gameActionWithRoomsSelection.RoomSelection = selectedRooms;
+                }
+
+                if (gameAction is INeedNoiseContainers needTunnels)
+                {
+                    INoiseContainer[] selection = await _noiseContainerSelection.SelectFrom(needTunnels.NoiseContainerSelectionSource, needTunnels.RequiredNoiseContainerCount);
+                    needTunnels.SelectedNoiseContainers = selection;
+
+                    _noiseContainerSelectionNet.Clear();
+                    foreach (INoiseContainer noiseContainer in selection)
+                    {
+                        _noiseContainerSelectionNet.Add(noiseContainer.NetworkObject);
+                    }
                 }
                 
                 Execute_RPC(gameActionContainer);
-                _actionIsExecuting = false;
+                _actionIsExecuting.Value = false;
             }
             catch (Exception e)
             {
                 Debug.LogError(e);
+                _actionIsExecuting.Value = false;
             }
         }
 
@@ -161,6 +180,11 @@ namespace Core.PlayerActions
                 {
                     while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
                     {
+                        if (_actionIsExecuting.Value == false)
+                        {
+                            return;
+                        }
+                        
                         await Awaitable.NextFrameAsync();
                     }
                     
@@ -172,6 +196,11 @@ namespace Core.PlayerActions
                 {
                     while (_roomsSelectionNet.Count != gameActionWithRoomsSelection.RequredRoomsCount)
                     {
+                        if (_actionIsExecuting.Value == false)
+                        {
+                            return;
+                        }
+                        
                         await Awaitable.NextFrameAsync();
                     }
                     
@@ -181,7 +210,26 @@ namespace Core.PlayerActions
                         return value.GetComponent<RoomCell>();
                     }).ToArray();
                     
-                    gameActionWithRoomsSelection.Selection = selection;
+                    gameActionWithRoomsSelection.RoomSelection = selection;
+                }
+
+                if (gameAction is INeedNoiseContainers needTunnels)
+                {
+                    while (_noiseContainerSelectionNet.Count != needTunnels.RequiredNoiseContainerCount)
+                    {
+                        if (_actionIsExecuting.Value == false)
+                        {
+                            return;
+                        }
+                        
+                        await Awaitable.NextFrameAsync();
+                    }
+                    
+                    needTunnels.SelectedNoiseContainers = _noiseContainerSelectionNet.ToEnumerable().Select(x => 
+                    {
+                        x.TryGet(out NetworkObject value);
+                        return value.GetComponent<INoiseContainer>();
+                    }).ToArray();
                 }
                 
                 gameAction.Execute();

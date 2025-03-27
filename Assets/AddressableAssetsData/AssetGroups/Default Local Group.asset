@@ -216,6 +216,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b84a22f70b782f45a14dd792dfd9af7
+    m_Address: Assets/_Project/Core/Player actions/Careful move action.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c3cc1628c3783c4aa204e67c4c7f0bf
     m_Address: Assets/_Project/View/Characters/Mechanic/Prefabs/Mechanic view.prefab
     m_ReadOnly: 0
@@ -268,6 +273,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: acd38d54311ad5e4b8234350e491770e
     m_Address: Assets/_Project/Data/Map/Control point/Destinations/Venus.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad11c328c9783714ca3133b94b209ca8
+    m_Address: Assets/_Project/Core/Player actions/Careful move action container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -10,7 +10,7 @@ namespace Core.PlayerActions
     public interface IGameActionWithRoomsSelection
     {
         public int RequredRoomsCount { get; }
-        public RoomCell[] Selection { get; set; }
-        public RoomCell[] SelectionSource { get; }
+        public RoomCell[] RoomSelection { get; set; }
+        public RoomCell[] RoomSelectionSource { get; }
     }
 }

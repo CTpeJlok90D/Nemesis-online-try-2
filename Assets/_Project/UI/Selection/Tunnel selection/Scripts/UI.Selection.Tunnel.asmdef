@@ -1,15 +1,12 @@
 {
-    "name": "View.Tunnels",
-    "rootNamespace": "View.Tunnels",
+    "name": "UI.Selection.Tunnel",
+    "rootNamespace": "UI.Selection.Tunnel",
     "references": [
-        "GUID:1491147abca9d7d4bb7105af628b223e",
-        "GUID:d525ad6bd40672747bde77962f1c401e",
-        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
-        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
-        "GUID:e74d2f5357f23d044a37333c8efba8f2",
+        "GUID:deead63c09dfb414680d988c3a4f6b80",
         "GUID:fd1fea8054a2c124195f016aa84c3a5f",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
         "GUID:b333b5a5fde3844428bbfac02f556511",
-        "GUID:deead63c09dfb414680d988c3a4f6b80"
+        "GUID:1491147abca9d7d4bb7105af628b223e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

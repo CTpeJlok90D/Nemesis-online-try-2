@@ -6,61 +6,36 @@ using Core.ActionsCards;
 using Core.Maps;
 using Core.PlayerTablets;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.PlayerActions
 {
     [CreateAssetMenu(menuName = "Game/Actions/Move action")]
     public class MoveAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomsSelection, INeedMap
     {
-        [field: SerializeField] public int RequaredPaymentCount { get; private set; } = 1;
-        public int RequredRoomsCount { get; private set; } = 1;
+        public Map Map { get; private set; }
+        public PlayerTablet Executor { get; private set; }
+        public RoomCell[] RoomSelection { get; set; }
+        public virtual int RequaredPaymentCount => 1;
+        public int RequredRoomsCount => 1;
+        public RoomCell RoomWithExecutor => Map.First(x => x.RoomContents.Contains(Executor.CharacterPawn.RoomContent));
+        public RoomCell[] RoomSelectionSource => GetPossibleRooms().ToArray();
 
-        private Map _map;
-        private PlayerTablet _executer;
-        public RoomCell RoomWithExecuter 
+        public virtual IEnumerable<RoomCell> GetPossibleRooms()
         {
-            get
-            {
-                return _map.First(x => x.RoomContents.Contains(_executer.CharacterPawn.RoomContent));
-            }
-        } 
-        public RoomCell[] Selection { get; set; }
-
-        public RoomCell[] SelectionSource
-        {
-            get
-            {
-                IEnumerable<RoomCell> possibleRooms = GetPossibleRooms();
-                return possibleRooms.ToArray();
-            }  
-        } 
-
-        public bool CanAddPaymentToSelection(ActionCard paymentCard)
-        {
-            return true;
-        }
-
-        public bool CanAddRoomToSelection(RoomCell roomCell)
-        {
-            INoiseContainer[] containers = RoomWithExecuter.GetPassagesTo(roomCell);
-            return containers.Length != 0;
-        }
-
-        public IEnumerable<RoomCell> GetPossibleRooms()
-        {
-            RoomCell roomWithExecuter = RoomWithExecuter;
+            RoomCell roomWithExecuter = RoomWithExecutor;
             IEnumerable<RoomCell> result =
-                _map.Where(x => x.GetPassagesTo(roomWithExecuter).Length != 0 && x != roomWithExecuter);
+                Map.Where(x => x.GetPassagesTo(roomWithExecuter).Length != 0 && x != roomWithExecuter);
             
             return result;
         }
 
-        public IGameAction.CanExecuteCheckResult CanExecute()
+        public virtual IGameAction.CanExecuteCheckResult CanExecute()
         {
             bool boolResult;
-            RoomCell[] selectedRooms = Selection; 
+            RoomCell[] selectedRooms = RoomSelection; 
 
-            if (_executer.ActionCount.Value <= 0)
+            if (Executor.ActionCount.Value <= 0)
             {
                 boolResult = false;
                 IGameAction.CanExecuteCheckResult result = new()
@@ -97,7 +72,7 @@ namespace Core.PlayerActions
             };
         }
 
-        public void Execute()
+        public virtual void Execute()
         {
             IGameAction.CanExecuteCheckResult chekResult = CanExecute();
             if (chekResult == false)
@@ -108,24 +83,24 @@ namespace Core.PlayerActions
             ForceExecute();
         }
 
-        public void ForceExecute()
+        public virtual void ForceExecute()
         {
-            RoomCell selectedRoom = Selection.First();
+            RoomCell selectedRoom = RoomSelection.First();
 
-            _executer.ActionCount.Value--;
-            selectedRoom.AddContent(_executer.CharacterPawn.RoomContent);
+            Executor.ActionCount.Value--;
+            selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
             
-            _map.NoiseInRoom(selectedRoom);
+            Map.NoiseInRoom(selectedRoom);
         }
 
         public void Initialzie(Map map)
         {
-            _map = map;
+            Map = map;
         }
 
         public void Inititalize(PlayerTablet executer)
         {
-            _executer = executer;
+            Executor = executer;
         }
     }
 }

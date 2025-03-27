@@ -2,13 +2,14 @@
     "name": "UI.GameActions.MoveActionButtons",
     "rootNamespace": "UI.GameActions.MoveActionButtons",
     "references": [
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
         "GUID:b333b5a5fde3844428bbfac02f556511",
         "GUID:9cb17471feb381841a257297ad9e1a95",
         "GUID:e4bbb787809e36348a4ae9c2360166dd",
-        "GUID:466bb92f01017fc4ba0c510be91d648f",
         "GUID:c3afef91c40c7744aae8455e2bd7be6a",
         "GUID:deead63c09dfb414680d988c3a4f6b80",
-        "GUID:1491147abca9d7d4bb7105af628b223e"
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

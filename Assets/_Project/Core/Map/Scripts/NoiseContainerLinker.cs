@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Core.Maps
@@ -11,6 +12,8 @@ namespace Core.Maps
         {
             _linkedContainer.Clear();
         }
+
+        public NetworkObject NetworkObject => _linkedContainer.NetworkObject;
 
         public void Noise()
         {
