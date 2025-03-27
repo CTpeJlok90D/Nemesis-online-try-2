@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Maps;
@@ -15,6 +16,10 @@ namespace Core.PlayerActions.Base
         {
             get
             {
+                if (_selectedNoiseContainer == null)
+                {
+                    return Array.Empty<INoiseContainer>();
+                }
                 return new [] { _selectedNoiseContainer };
             }
             set
@@ -38,7 +43,7 @@ namespace Core.PlayerActions.Base
             get
             {
                 RoomCell selectedRoomCell = RoomSelection.First();
-                return selectedRoomCell.NoiseContainers.ToArray();
+                return selectedRoomCell.NoiseContainers.Where(x => x.IsNoised.Value == false).ToArray();
             }
         }
 

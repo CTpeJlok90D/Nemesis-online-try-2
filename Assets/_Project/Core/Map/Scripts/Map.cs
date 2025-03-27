@@ -86,6 +86,7 @@ namespace Core.Maps
                         noiseContainer.Noise();
                     }
                 }
+                return;
             }
 
             int tunnelIndex = (int)noiseDiceResult;

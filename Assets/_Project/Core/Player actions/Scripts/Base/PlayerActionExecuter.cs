@@ -233,7 +233,7 @@ namespace Core.PlayerActions
                 }
                 
                 gameAction.Execute();
-                OnExecuted_RPC();
+                ClearData_RPC();
             }
             catch (Exception e)
             {
@@ -242,10 +242,11 @@ namespace Core.PlayerActions
         }
 
         [Rpc(SendTo.Owner)]
-        private void OnExecuted_RPC()
+        private void ClearData_RPC()
         {
             _roomsSelectionNet.Clear();
             _selectionActionCards.Clear();
+            _noiseContainerSelectionNet.Clear();
         }
     }
 }
