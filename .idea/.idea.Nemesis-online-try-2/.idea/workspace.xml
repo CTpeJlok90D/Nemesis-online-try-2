@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/EnemiesConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/EnemiesConfig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetScriptableObjectList4096.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetScriptableObjectList4096.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/AliensBag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/AliensBag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/Core.AliensBag.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/Core.AliensBag.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/LobbyConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/LobbyConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/Core.Maps.Generation.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/Core.Maps.Generation.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Generation/Scripts/MapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Core.Maps.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Core.Maps.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/INoiseContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/INoiseContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/NoiseContainerLinker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/NoiseContainerLinker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/SimpleNoiseContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/SimpleNoiseContainer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Resources/ProjectContext.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Resources/ProjectContext.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Tunnel selection/Scripts/TunnelToggleButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Tunnel selection/Scripts/TunnelToggleButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Tunnel selection/Scripts/UI.Selection.Tunnel.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Selection/Tunnel selection/Scripts/UI.Selection.Tunnel.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/View/Tunnel/Prefabs/Tunnel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/View/Tunnel/Prefabs/Tunnel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/TunnelSelectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/TunnelSelectionView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +37,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/Unity projects/Nemesis-online-try-2/Assets/_Project/Core/Aliens bag/Scripts/AliensBag.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Noise dice/NoiseDice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Card selection/CardsSelectionInstaller.cs" root0="FORCE_HIGHLIGHTING" />
@@ -38,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/NoiseView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/TunnelSelectionView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@b2e7bffab772/Editor/PropertyDrawers/NoiseSettingsPropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd5b7db87b58/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd5b7db87b58/Runtime/NetworkVariable/Collections/NetworkList.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd5b7db87b58/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@481f548ebf36/Tests/Editor/SimpleSpeedTreeDots.shader" root0="SKIP_HIGHLIGHTING" />
@@ -135,7 +151,10 @@
       <workItem from="1742995436256" duration="8018000" />
       <workItem from="1743004768352" duration="9795000" />
       <workItem from="1743021172654" duration="3138000" />
-      <workItem from="1743059361710" duration="4498000" />
+      <workItem from="1743059361710" duration="5336000" />
+      <workItem from="1743074563747" duration="847000" />
+      <workItem from="1743086002825" duration="619000" />
+      <workItem from="1743148463741" duration="2882000" />
     </task>
     <servers />
   </component>

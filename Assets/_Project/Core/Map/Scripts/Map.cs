@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Core.Maps
 
         public IReadOnlyCollection<EscapePod> EscapePods => _escapePods;
 
-        public IReadOnlyCollection<ShipEngine> ShipEngies => _shipEngines;
+        public IReadOnlyCollection<ShipEngine> ShipEngines => _shipEngines;
 
         public IReadOnlyCollection<RoomCell> RoomCells => _roomCells;
 
@@ -90,12 +91,49 @@ namespace Core.Maps
             }
 
             int tunnelIndex = (int)noiseDiceResult;
-            roomCell.NoiseContainers.ElementAt(tunnelIndex).Noise();
+            INoiseContainer iNoiseContainer = roomCell.NoiseContainers.ElementAt(tunnelIndex);
+            
+            if (iNoiseContainer.IsNoised.Value)
+            {
+                ClearNoiseInRoom(roomCell);
+                SummonEnemyIn(roomCell);
+                return;
+            }
+            
+            iNoiseContainer.Noise();
+        }
+
+        public void CarefulNoiseInTunnel(INoiseContainer tunnel)
+        {
+            if (tunnel == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (tunnel.IsNoised.Value)
+            {
+                throw new InvalidOperationException("Can't careful noise in noised tunnel");
+            }
+            
+            tunnel.Noise();
         }
         
         public void NoiseInRoom(RoomCell roomCell)
         {
             NoiseInRoom(roomCell ,NoiseDice.Roll());
+        }
+
+        public void ClearNoiseInRoom(RoomCell roomCell)
+        {
+            foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
+            {
+                noiseContainer.Clear();
+            }
+        }
+
+        public void SummonEnemyIn(RoomCell roomCell)
+        {
+            
         }
 
 #if UNITY_EDITOR

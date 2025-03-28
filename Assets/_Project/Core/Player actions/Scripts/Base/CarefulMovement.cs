@@ -60,7 +60,7 @@ namespace Core.PlayerActions.Base
             Executor.ActionCount.Value--;
             selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
             
-            _selectedNoiseContainer.Noise();
+            Map.CarefulNoiseInTunnel(_selectedNoiseContainer);
         }
     }
 }

@@ -1,3 +1,4 @@
+using TNRD;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -5,19 +6,19 @@ namespace Core.Maps
 {
     public class NoiseContainerLinker : MonoBehaviour, INoiseContainer
     {
-        [SerializeField] private SimpleNoiseContainer _linkedContainer;
-        public IReadOnlyReactiveField<bool> IsNoised => _linkedContainer.IsNoised;
+        [SerializeField] private SerializableInterface<INoiseContainer> _linkedContainer;
+        public IReadOnlyReactiveField<bool> IsNoised => _linkedContainer.Value.IsNoised;
 
         public void Clear()
         {
-            _linkedContainer.Clear();
+            _linkedContainer.Value.Clear();
         }
 
-        public NetworkObject NetworkObject => _linkedContainer.NetworkObject;
+        public NetworkObject NetworkObject => _linkedContainer.Value.NetworkObject;
 
-        public void Noise()
+        void INoiseContainer.Noise()
         {
-            _linkedContainer.Noise();
+            _linkedContainer.Value.Noise();
         }
     }
 }

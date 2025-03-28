@@ -24,6 +24,8 @@ namespace Core.Lobbies
         public MissionsDealerConfiguration DealMissionsConfiguration;
 
         public EventDeckConfiguration EventDeckConfiguration;
+        
+        public EnemiesConfig EnemiesConfig;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -34,6 +36,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref DealMissionsConfiguration);
             serializer.SerializeValue(ref EventDeckConfiguration);
             serializer.SerializeValue(ref ActionCardsDeckConfiguration);
+            serializer.SerializeValue(ref EnemiesConfig);
         }
     }
 }

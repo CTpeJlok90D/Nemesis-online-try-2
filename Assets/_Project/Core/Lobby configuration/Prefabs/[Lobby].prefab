@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2013087557
+  GlobalObjectIdHash: 1339229321
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -135,3 +135,41 @@ MonoBehaviour:
       Deck:
       - {fileID: 11400000, guid: 44845ecfeb3c09e418026ee69e80399d, type: 2}
       - {fileID: 11400000, guid: 1c0cbcedf15b21b46af76125676e54d6, type: 2}
+    EnemiesConfig:
+      TypeOfEnemies:
+        _serializedList:
+        - Key: {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
+          Value:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectGUID: 
+            m_SubObjectType: 
+            m_EditorAssetChanged: 0
+        - Key: {fileID: 11400000, guid: 510f3d8b68a1e6343b7bc54bcecd25b7, type: 2}
+          Value:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectGUID: 
+            m_SubObjectType: 
+            m_EditorAssetChanged: 0
+        - Key: {fileID: 11400000, guid: 069110f25be01644fb6d0fbc6b9f83de, type: 2}
+          Value:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectGUID: 
+            m_SubObjectType: 
+            m_EditorAssetChanged: 0
+        - Key: {fileID: 11400000, guid: 36d160c84370af646b944d1ed74a9f97, type: 2}
+          Value:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectGUID: 
+            m_SubObjectType: 
+            m_EditorAssetChanged: 0
+        - Key: {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+          Value:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectGUID: 
+            m_SubObjectType: 
+            m_EditorAssetChanged: 0

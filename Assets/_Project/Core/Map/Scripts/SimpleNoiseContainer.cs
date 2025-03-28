@@ -22,7 +22,7 @@ namespace Core.Maps
             IsNoised = new();
         }
 
-        public void Noise()
+        void INoiseContainer.Noise()
         {
             IsNoised.Value = true;
         }

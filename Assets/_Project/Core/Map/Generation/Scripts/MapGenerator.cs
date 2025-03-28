@@ -76,7 +76,7 @@ namespace Core.Maps.Generation
 
         private void GenerateShipEngines()
         {
-            foreach (ShipEngine shipEngine in _map.ShipEngies)
+            foreach (ShipEngine shipEngine in _map.ShipEngines)
             {
                 shipEngine.IsWorking.Value = Random.Range(0,2) == 0;
             }

@@ -19,6 +19,8 @@ namespace Unity.Netcode.Custom
         private const string SEPARATOR = "_|_";
        
         private List<T> _cashedElements = new();
+        
+        public IReadOnlyList<T> CashedElements => _cashedElements;
 
         public bool IsSyncing { get; private set; }
 
@@ -101,7 +103,7 @@ namespace Unity.Netcode.Custom
             }
         }
 
-        public void SetElements(T[] values)
+        public void SetElements(IEnumerable<T> values)
         {
             List<string> keys = new();
             foreach (T key in values)

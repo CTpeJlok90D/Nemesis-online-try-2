@@ -268,7 +268,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde222a3a50b4ae4f8cc18ff5ae3b459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tunnel: {fileID: 2943133719568471790}
+  _noiseContainer:
+    mode: 0
+    unityReference: {fileID: 7174143052952603197}
+    rawReference:
+      rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &3878761737801273009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,9 +1466,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4351c817defa03f4c8e6a210fbb314bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tunnel: {fileID: 2943133719568471790}
+  _tunnel:
+    mode: 0
+    unityReference: {fileID: 7174143052952603197}
+    rawReference:
+      rid: -2
   _canSelectView: {fileID: 4222592945205094728}
   _selectedView: {fileID: 8991017287988185396}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &8991017287988185396
 GameObject:
   m_ObjectHideFlags: 0

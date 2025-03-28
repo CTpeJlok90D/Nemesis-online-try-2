@@ -1,3 +1,4 @@
+using System;
 using Unity.Netcode;
 
 namespace Core.Maps
@@ -6,7 +7,7 @@ namespace Core.Maps
     {
         public IReadOnlyReactiveField<bool> IsNoised { get; }
 
-        public void Noise();
+        internal void Noise();
 
         public void Clear();
         
