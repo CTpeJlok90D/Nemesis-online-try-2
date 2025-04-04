@@ -65,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c8f3d3461c9614449b811c05ad86aa4
+    m_Address: Assets/_Project/Data/Aliens/Prefabs/Adult intruder.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
     m_Address: Assets/_Project/Data/Aliens/Default/Empty.asset
     m_ReadOnly: 0
@@ -112,6 +117,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3cb6a8b3beaa1404789678cd004bf6fc
     m_Address: Assets/_Project/View/Characters/Capitan/Prefabs/Capitan view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cccbadbd7d1c5f49a3c6c4bbdcaa0e3
+    m_Address: Assets/_Project/Data/Aliens/Prefabs/Creeper.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -201,6 +211,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 754f2e46c825e964ca87d09f728b109c
+    m_Address: Assets/_Project/Data/Aliens/Prefabs/Queen.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75ff028630961fe418a8865735bab297
     m_Address: Assets/_Project/Data/Characters/Capitan.asset
     m_ReadOnly: 0
@@ -253,6 +268,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99e0489f2723f5d49912959d59369013
     m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fc5fe5342c648442826ed3f491960a5
+    m_Address: Assets/_Project/Data/Aliens/Prefabs/Breeder.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -348,6 +368,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ebd530ce5048ba244b5670e5b103241c
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/cabins.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee7ec93ce5c7dad4aa3ce24c88d213a7
+    m_Address: Assets/_Project/Data/Aliens/Prefabs/Larvae.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

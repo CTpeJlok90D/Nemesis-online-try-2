@@ -14,6 +14,8 @@ namespace Core.Aliens
         [field: SerializeField] public string Id { get; private set; }
 
         [field: SerializeField] public int AttackReaction { get; private set; }
+        
+        [field: SerializeField] public bool IsEmpty { get; private set; }
 
         public string LoadKey => _self.SelfAssetReference.RuntimeKey.ToString();
 
@@ -35,6 +37,7 @@ namespace Core.Aliens
         {
             _self.Preloaded -= OnLoad;
             Id = result.Id;
+            IsEmpty = result.IsEmpty;
             AttackReaction = result.AttackReaction;
         }
     }

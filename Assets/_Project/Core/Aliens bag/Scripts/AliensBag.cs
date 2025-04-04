@@ -11,6 +11,8 @@ namespace Core.AliensBags
 {
     public class AliensBag : NetworkBehaviour
     {
+        [SerializeField] private AlienToken _emptyToken;
+        
         private NetScriptableObjectList4096<AlienToken> _contentNet;
         public async UniTask<IReadOnlyCollection<AlienToken>> GetAlienTokens() => await _contentNet.GetElements();
 
@@ -39,8 +41,11 @@ namespace Core.AliensBags
                 throw new NotServerException("Only server can pick random alien token");
             }
 
-            AlienToken randomToken = _contentNet.ElementAt(UnityEngine.Random.Range(0, _contentNet.Count));
-            _contentNet.Remove(randomToken);
+            AlienToken randomToken = _contentNet.ElementAt(Random.Range(0, _contentNet.Count));
+            if (randomToken.IsEmpty == false)
+            {
+                _contentNet.Remove(randomToken);
+            }
 
             return randomToken;
         }

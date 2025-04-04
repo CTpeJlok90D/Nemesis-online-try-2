@@ -5,6 +5,8 @@ using System.Linq;
 using Core.DestinationCoordinats;
 using Core.Engines;
 using Core.EscapePods;
+using Cysharp.Threading.Tasks;
+using TNRD;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -25,6 +27,10 @@ namespace Core.Maps
 
         [SerializeField] private List<EscapePod> _escapePods;
 
+        [SerializeField] private SerializableInterface<IEnemySummoner> _enemySummner;
+        
+        private NetworkList<NetworkObjectReference> _enemies;
+        
         public NetVariable<DestinationCoordinatsCard> DestinationCoordinatsCard { get; private set; }
 
         public NetVariable<Coordinate> Cordinates { get; private set; }
@@ -39,6 +45,7 @@ namespace Core.Maps
 
         private void Awake()
         {
+            _enemies = new(writePerm: NetworkVariableWritePermission.Server);
             DestinationCoordinatsCard = new();
             Cordinates = new(_defaultCordinats);
         }
@@ -120,7 +127,7 @@ namespace Core.Maps
         
         public void NoiseInRoom(RoomCell roomCell)
         {
-            NoiseInRoom(roomCell ,NoiseDice.Roll());
+            NoiseInRoom(roomCell, NoiseDice.Roll());
         }
 
         public void ClearNoiseInRoom(RoomCell roomCell)
@@ -131,9 +138,14 @@ namespace Core.Maps
             }
         }
 
-        public void SummonEnemyIn(RoomCell roomCell)
+        public async UniTask SummonEnemyIn(RoomCell roomCell)
         {
-            
+            RoomContent result = await _enemySummner.Value.SummonIn(roomCell);
+            Debug.Log($"Enemy: {result}");
+            if (result != null)
+            {
+                _enemies.Add(result.NetworkObject);
+            }
         }
 
 #if UNITY_EDITOR

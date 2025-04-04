@@ -2,6 +2,7 @@
     "name": "Core.Maps",
     "rootNamespace": "Core.Maps",
     "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:23eed6c2401dca1419d1ebd180e58c5a",
         "GUID:31976cc9e85bdd9459e856fcb40d0d50",
         "GUID:69448af7b92c7f342b298e06a37122aa",

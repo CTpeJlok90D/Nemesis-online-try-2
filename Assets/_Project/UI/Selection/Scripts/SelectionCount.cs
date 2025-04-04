@@ -13,6 +13,7 @@ namespace Core.SelectionBase
 
         private void OnEnable()
         {
+            UpdateText();
             _selection.SelectionChanged += UpdateText;
             _selection.SelectionConfirmed += UpdateText;
             _selection.SelectionCanceled += UpdateText;

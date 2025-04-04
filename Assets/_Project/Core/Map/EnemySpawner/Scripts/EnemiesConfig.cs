@@ -2,17 +2,17 @@
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using Core.Aliens;
-using Unity.Collections;
 using Unity.Netcode;
+using Unity.Collections;
 using UnityEngine.AddressableAssets;
 
-namespace Core.Maps.Generation
+namespace Core.Maps
 {
     [Serializable]
     public struct EnemiesConfig : INetworkSerializable
     {
         [SerializedDictionary("Alien token", "Enemy prefab")]
-        public SerializedDictionary<AlienToken, AssetReferenceT<RoomContent>> TypeOfEnemies;
+        public SerializedDictionary<AlienToken, AssetReference> TypeOfEnemies;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
