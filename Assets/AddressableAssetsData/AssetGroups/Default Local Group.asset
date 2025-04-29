@@ -286,6 +286,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f7e6193f1e035a45ad35f3cea93eedf
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/Unexplored
+      room layer 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fe97d5cde2c625469b9c2cd20bd6112
     m_Address: Assets/_Project/Core/Player actions/Attack action container.asset
     m_ReadOnly: 0
@@ -386,6 +392,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b815646be81b77c49b5f7d00447127a8
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Unexplored room error.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b98f25c575d5a7c4ba8535d610c1fe9e
     m_Address: Assets/_Project/View/Characters/Scout/Prefabs/Scout view.prefab
     m_ReadOnly: 0
@@ -433,6 +444,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1075b25542b8f54e93a61e1d8d5e5f6
     m_Address: Assets/_Project/View/Characters/Soldier/Prefabs/Soldier view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e26b66a04ce062f48b90cac906da99c5
+    m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/Unexplored
+      room layer 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -7,9 +7,6 @@ using AYellowpaper;
 using System.Linq;
 using System;
 
-
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -39,9 +36,13 @@ namespace Core.Maps
         
         private NetVariable<RoomType> _roomTypeNet;
 
+        private NetVariable<bool> _isExplored;
+
         public NetVariable<bool> IsInitialized { get; private set; }
 
         public RoomType Type => _roomTypeNet.Value;
+
+        public IReadOnlyReactiveField<bool> IsExplored => _isExplored;
 
         public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
 
@@ -69,6 +70,7 @@ namespace Core.Maps
             _roomTypeNet = new();
             IsInitialized = new();
             _roomContentsNet = new();
+            _isExplored = new();
             _roomContents = Array.Empty<RoomContent>();
 
             _roomContentsNet.OnListChanged += OnListChange;
@@ -143,6 +145,16 @@ namespace Core.Maps
             {
                 OnMove_RPC(content.NetworkObject, new());
             }
+        }
+
+        public void Explore()
+        {
+            if (NetworkManager.IsServer == false)
+            {
+                throw new NotServerException("Only server can explore rooms");
+            }
+            
+            _isExplored.Value = true;
         }
 
         [Rpc(SendTo.Everyone)]

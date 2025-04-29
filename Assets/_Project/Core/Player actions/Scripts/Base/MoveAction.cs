@@ -87,6 +87,11 @@ namespace Core.PlayerActions
 
             Executor.ActionCount.Value--;
             selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
+
+            if (selectedRoom.IsExplored.Value == false)
+            {
+                selectedRoom.Explore();
+            }
             
             Map.NoiseInRoom(selectedRoom);
         }

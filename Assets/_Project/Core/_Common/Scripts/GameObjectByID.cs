@@ -3,8 +3,8 @@ using UnityEngine.AddressableAssets;
 
 namespace Core.Common
 {
-    [CreateAssetMenu(menuName = "Dictionaries/Game objects dictionary")]
-    public class GameObjectsDictionary : SODictionary<string, AssetReferenceGameObject>
+    [CreateAssetMenu(menuName = "Dictionaries/Game objects by id dictionary")]
+    public class GameObjectByID : SODictionary<string, AssetReferenceGameObject>
     {
 
     }

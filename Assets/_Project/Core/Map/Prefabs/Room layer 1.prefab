@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedRoomCell: {fileID: 3746418630500354156}
+  _roomsDictionary: {fileID: 11400000, guid: bbade5e39fea38547931ae78838dac5f, type: 2}
+  _unexploredRoomsView: {fileID: 11400000, guid: b9e16944a53ad2f4f82509dac3cb0b8a, type: 2}
 --- !u!1 &4869548034171616440
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2644285388
+  GlobalObjectIdHash: 3566299712
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
