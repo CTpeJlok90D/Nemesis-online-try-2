@@ -1,6 +1,7 @@
 using Core.Characters;
 using Core.Players;
 using UnityEngine;
+using Zenject;
 
 namespace Core.PlayerTablets
 {
@@ -12,13 +13,14 @@ namespace Core.PlayerTablets
 
         public Player Player => PlayerTablet.Player;
 
-        public PlayerTabletContainer Instantiate(PlayerTablet tablet, Transform parent = null)
+        public PlayerTabletContainer Instantiate(PlayerTablet tablet, DiContainer diContainer = null, Transform parent = null)
         {
             gameObject.SetActive(false);
             PlayerTabletContainer result = Instantiate(this, parent);
             gameObject.SetActive(true);
 
             result.PlayerTablet = tablet;
+            diContainer?.InjectGameObject(result.gameObject);
             result.gameObject.SetActive(true);
 
             return result;

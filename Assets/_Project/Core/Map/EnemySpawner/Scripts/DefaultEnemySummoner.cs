@@ -10,12 +10,19 @@ namespace MyNamespace
 {
     public class DefaultEnemySummoner : MonoBehaviour, IEnemySummoner
     {
+        private bool _logs = true;
+        
         [Inject] private EnemiesConfig _enemiesConfig;
         [Inject] private AliensBag _aliensBag;
         
         public async UniTask<RoomContent> SummonIn(RoomCell roomCell)
         {
             AlienToken randomToken = _aliensBag.PickRandom();
+
+            if (_logs)
+            {
+                Debug.Log($"Summoning enemy: {randomToken}. Room: {roomCell}");
+            }
             
             if (randomToken.IsEmpty)
             {
@@ -23,9 +30,26 @@ namespace MyNamespace
             }
 
             AssetReference enemyAssetReference = _enemiesConfig.TypeOfEnemies[randomToken];
-            GameObject loadHandle = await enemyAssetReference.LoadAssetAsync<GameObject>().ToUniTask();
-            Enemy enemy = loadHandle.GetComponent<Enemy>();
+            Enemy enemy;
+
+            if (enemyAssetReference.OperationHandle.IsValid())
+            {
+                if (enemyAssetReference.OperationHandle.IsDone)
+                {
+                    await enemyAssetReference.OperationHandle.ToUniTask();
+                }
+                
+                GameObject loadResult = (GameObject)enemyAssetReference.OperationHandle.Result;
+                enemy = loadResult.GetComponent<Enemy>();
+            }
+            else
+            {
+                GameObject loadResult = await enemyAssetReference.LoadAssetAsync<GameObject>().ToUniTask();
+                enemy = loadResult.GetComponent<Enemy>();
+            }
+            
             enemy = enemy.Instantiate();
+            
             roomCell.AddContent(enemy.RoomContent);
 
             return enemy.RoomContent;

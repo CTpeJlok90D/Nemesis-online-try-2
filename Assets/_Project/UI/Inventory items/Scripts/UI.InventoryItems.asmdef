@@ -1,0 +1,28 @@
+{
+    "name": "UI.InventoryItems",
+    "rootNamespace": "UI.InventoryItems",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:593a5b492d29ac6448b1ebf7f035ef33",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
+        "GUID:d7d30211bd81779429266c9bea72a2b5",
+        "GUID:e89a1199f41611396c6fc50d65b140fd",
+        "GUID:c0fbd097f89c76245ba7c48d9991d967",
+        "GUID:8d53cdc02a021ea428201c8116b6e8f6",
+        "GUID:e74d2f5357f23d044a37333c8efba8f2",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:deead63c09dfb414680d988c3a4f6b80"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

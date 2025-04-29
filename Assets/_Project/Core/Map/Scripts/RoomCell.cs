@@ -133,8 +133,8 @@ namespace Core.Maps
         {
             RoomCell oldRoom = content.Owner;
             oldRoom?.RemoveContent(content);
-
             _roomContentsNet.Add(content.gameObject);
+
             if (oldRoom != null)
             {
                 OnMove_RPC(content.NetworkObject, oldRoom.NetworkObject);
@@ -170,6 +170,11 @@ namespace Core.Maps
         private void RemoveContent(RoomContent content)
         {
             _roomContentsNet.Remove(content.gameObject);
+        }
+
+        public override string ToString()
+        {
+            return $"{_roomTypeNet.Value}:{Number}";
         }
 
 #if UNITY_EDITOR

@@ -2,6 +2,7 @@ using Core.Maps.CharacterPawns;
 using Core.Maps;
 using Core.PlayerTablets;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Scenarios.Default
 {
@@ -27,8 +28,14 @@ namespace Core.Scenarios.Default
             foreach (PlayerTablet tablet in _playerTabletList)
             {
                 CharacterPawn characterPawn_PREFAB = _config.PawnsForCharacters[tablet.Character.Value.Id];
+                
+                characterPawn_PREFAB.gameObject.SetActive(false);
                 CharacterPawn characterInstance = Object.Instantiate(characterPawn_PREFAB);
+                characterPawn_PREFAB.gameObject.SetActive(true);
+                
+                characterInstance.gameObject.SetActive(true);
                 characterInstance.NetworkObject.Spawn();
+                
                 tablet.LinkPawn(characterInstance);
                 _startRoom.AddContent(characterInstance.RoomContent);
             }

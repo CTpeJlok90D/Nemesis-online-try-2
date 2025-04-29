@@ -29,7 +29,7 @@ namespace Core.SelectionBase
         private void UpdateText(ISelection sender) => UpdateText();
         private void UpdateText()
         {
-            _caption.text = string.Format(_format, _selection.SelectedCount, _selection.CountToSelect);
+            _caption.text = string.Format(_format, _selection.SelectedCount, _selection.RequiredCount);
         }
     }
 }

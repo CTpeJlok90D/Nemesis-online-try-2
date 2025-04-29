@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -340669095513984516, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      propertyPath: _damageHandler.unityReference
+      value: 
+      objectReference: {fileID: 79826100264168765}
     - target: {fileID: 466656045141841432, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2712117275
+      value: 2496998485
       objectReference: {fileID: 0}
     - target: {fileID: 534800274102066738, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
       propertyPath: m_Name
@@ -62,13 +66,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3596107127547264054, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3156506787727599347}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 534800274102066738, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 79826100264168765}
   m_SourcePrefab: {fileID: 100100000, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
 --- !u!4 &1915482296690337315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3596107127547264054, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
   m_PrefabInstance: {fileID: 3130803702356679189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3177614327499719719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 534800274102066738, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+  m_PrefabInstance: {fileID: 3130803702356679189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &79826100264168765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177614327499719719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d3da0ce3864c647afa8aa13f7ee52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  <CardCount>k__BackingField: 1
+  <Damage>k__BackingField:
+    m_InternalValue: 0
 --- !u!1001 &8882350836149261776
 PrefabInstance:
   m_ObjectHideFlags: 0

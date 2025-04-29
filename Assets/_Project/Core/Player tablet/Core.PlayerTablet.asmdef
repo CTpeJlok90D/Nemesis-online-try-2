@@ -2,6 +2,8 @@
     "name": "Core.PlayerTablet",
     "rootNamespace": "Core.PlayerTablet",
     "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:d525ad6bd40672747bde77962f1c401e",
         "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",
@@ -14,7 +16,8 @@
         "GUID:e74d2f5357f23d044a37333c8efba8f2",
         "GUID:abeed9924bcb1ad458fff652f1a603b7",
         "GUID:c3afef91c40c7744aae8455e2bd7be6a",
-        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7"
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7",
+        "GUID:8d53cdc02a021ea428201c8116b6e8f6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

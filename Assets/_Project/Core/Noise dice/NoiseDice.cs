@@ -4,26 +4,23 @@ namespace Core
 {
     public static class NoiseDice
     {
+        private static Result[] _sides =
+        {
+            Result.Dangerous,
+            Result.Silence,
+            Result.Four,
+            Result.Four,
+            Result.Three,
+            Result.Three,
+            Result.Two,
+            Result.Two,
+            Result.One,
+            Result.One,
+        };
+        
         public static Result Roll()
         {
-            int intResult = Random.Range(0, 10+1);
-
-            if (intResult == 10)
-            {
-                return Result.Silence;
-            }
-
-            if (intResult == 9)
-            {
-                return Result.Dangerous;
-            }
-
-            if (intResult >= 4)
-            {
-                intResult -= 4;
-            }
-            
-            return (Result)intResult;
+            return _sides[Random.Range(0, _sides.Length)];
         } 
         
         public enum Result

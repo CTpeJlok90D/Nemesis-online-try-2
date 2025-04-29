@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 9fc5fe5342c648442826ed3f491960a5
+labels:
+- Alien
 PrefabImporter:
   externalObjects: {}
   userData: 

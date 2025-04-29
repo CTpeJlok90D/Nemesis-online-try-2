@@ -1,5 +1,4 @@
 using System.Linq;
-using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,6 +27,11 @@ namespace Unity.Netcode.Custom
         [ContextMenu(nameof(Validate))]
         private void Validate()
         {
+            if (EditorApplication.isUpdating)
+            {
+                return;
+            }
+            
             SerializedObject serializedSelf = new(this);
             SerializedProperty serializedList = serializedSelf.FindProperty("List");
             serializedList.arraySize = 0;

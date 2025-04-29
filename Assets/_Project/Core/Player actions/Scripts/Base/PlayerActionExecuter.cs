@@ -2,11 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
+using Core.CharacterInventorys;
 using Core.Maps;
+using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using Core.Selection.Cards;
+using Core.Selection.InventoryItems;
+using Core.Selection.RoomContentSelections;
 using Core.Selection.Rooms;
 using Core.Selection.Tunnels;
+using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -29,10 +34,18 @@ namespace Core.PlayerActions
         [Inject] private NoiseContainerSelection _noiseContainerSelection;
 
         [Inject] private PlayerTabletList _playerTabletList;
+        
+        [Inject] private RoomContentSelection _roomContentSelection;
+        
+        [Inject] private InventoryItemsSelection _inventoryItemsSelection;
 
         private NetworkList<NetworkObjectReference> _roomsSelectionNet;
         
         private NetworkList<NetworkObjectReference> _noiseContainerSelectionNet;
+        
+        private NetworkList<NetworkObjectReference> _roomContentSelectionNet;
+
+        private NetworkList<InventoryItemInstance> _inventoryItemsSelectionNet;
 
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
@@ -67,6 +80,8 @@ namespace Core.PlayerActions
             _selectionActionCards = new(writePermission: NetworkVariableWritePermission.Owner);
             _noiseContainerSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _actionIsExecuting = new(writePerm: NetworkVariableWritePermission.Owner);
+            _roomContentSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
+            _inventoryItemsSelectionNet = new (writePerm: NetworkVariableWritePermission.Owner);
         }
 
         protected override void OnOwnershipChanged(ulong previous, ulong current)
@@ -101,22 +116,33 @@ namespace Core.PlayerActions
 
                 if (gameAction is IGameActionWithPayment gameActionWithPayment)
                 {
-                    int requaredPaymentCount = gameActionWithPayment.RequaredPaymentCount;
-                    IReadOnlyCollection<ActionCard> hand = await _executer.ActionCardsDeck.GetHand();
-
-                    ActionCard[] selectedCards = await _cardsSelection.SelectFrom(hand, requaredPaymentCount);
-
-                    if (selectedCards.Length != requaredPaymentCount)
+                    _selectionActionCards.SetElements(await gameActionWithPayment.GetSelectionLocal(_executer, _cardsSelection, _actionIsExecuting));
+                    
+                    if (_actionIsExecuting.Value == false)
                     {
-                        _actionIsExecuting.Value = false;
+                        return;
+                    }
+                }
+                
+                if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
+                {
+                    _inventoryItemsSelectionNet.Clear();
+                    InventoryItemInstance[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection, _actionIsExecuting);
+
+                    if (_actionIsExecuting.Value == false)
+                    {
                         return;
                     }
                     
-                    _selectionActionCards.SetElements(selectedCards);
+                    foreach (InventoryItemInstance instance in selection)
+                    {
+                        _inventoryItemsSelectionNet.Add(instance);
+                    }
                 }
 
                 if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
                 {
+                    _roomsSelectionNet.Clear();
                     RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.RoomSelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
 
                     if (selectedRooms.Length != gameActionWithRoomsSelection.RequredRoomsCount)
@@ -125,7 +151,6 @@ namespace Core.PlayerActions
                         return;
                     }
                     
-                    _roomsSelectionNet.Clear();
                     foreach (RoomCell roomCell in selectedRooms)
                     {
                         _roomsSelectionNet.Add(roomCell.NetworkObject);
@@ -135,13 +160,25 @@ namespace Core.PlayerActions
 
                 if (gameAction is INeedNoiseContainers needTunnels)
                 {
+                    _noiseContainerSelectionNet.Clear();
                     INoiseContainer[] selection = await _noiseContainerSelection.SelectFrom(needTunnels.NoiseContainerSelectionSource, needTunnels.RequiredNoiseContainerCount);
                     needTunnels.SelectedNoiseContainers = selection;
 
-                    _noiseContainerSelectionNet.Clear();
                     foreach (INoiseContainer noiseContainer in selection)
                     {
                         _noiseContainerSelectionNet.Add(noiseContainer.NetworkObject);
+                    }
+                }
+
+                if (gameAction is IGameActionWithRoomContentSelection gameActionWithRoomContentSelection)
+                {
+                    _roomContentSelectionNet.Clear();
+                    RoomContent[] selection = await _roomContentSelection.SelectFrom(gameActionWithRoomContentSelection.RoomContentSelectionSource, gameActionWithRoomContentSelection.RequiredRoomContentCount);
+                    gameActionWithRoomContentSelection.RoomContentSelection = selection;
+                    
+                    foreach (RoomContent roomContent in selection)
+                    {
+                        _roomContentSelectionNet.Add(roomContent.NetworkObject);
                     }
                 }
                 
@@ -158,87 +195,114 @@ namespace Core.PlayerActions
         [Rpc(SendTo.Server)]
         private void Execute_RPC(GameActionContainer gameActionContainer)
         {
-            ExecuteAsync_Server(gameActionContainer);
+            _ = ExecuteAsync_Server(gameActionContainer);
         }
 
-        private async void ExecuteAsync_Server(GameActionContainer gameActionContainer)
+        private async UniTask ExecuteAsync_Server(GameActionContainer gameActionContainer)
         {
-            try
+            await gameActionContainer.Net.AwaitForLoad();
+                
+            IGameAction gameAction = gameActionContainer.GameAction.Value;
+            
+            gameAction.Inititalize(_executer);
+
+            if (gameAction is INeedMap gameActionWithMap)
             {
-                await gameActionContainer.Net.AwaitForLoad();
-                
-                IGameAction gameAction = gameActionContainer.GameAction.Value;
-                
-                gameAction.Inititalize(_executer);
-
-                if (gameAction is INeedMap gameActionWithMap)
-                {
-                    gameActionWithMap.Initialzie(_map);
-                }
-
-                if (gameAction is IGameActionWithPayment gameActionWithPayment)
-                {
-                    while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
-                    {
-                        if (_actionIsExecuting.Value == false)
-                        {
-                            return;
-                        }
-                        
-                        await Awaitable.NextFrameAsync();
-                    }
-                    
-                    ActionCard[] cards = await _selectionActionCards.GetElements();
-                    _executer.ActionCardsDeck.DiscardCards(cards);
-                }
-
-                if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
-                {
-                    while (_roomsSelectionNet.Count != gameActionWithRoomsSelection.RequredRoomsCount)
-                    {
-                        if (_actionIsExecuting.Value == false)
-                        {
-                            return;
-                        }
-                        
-                        await Awaitable.NextFrameAsync();
-                    }
-                    
-                    RoomCell[] selection = _roomsSelectionNet.ToEnumerable().Select(x => 
-                    {
-                        x.TryGet(out NetworkObject value);
-                        return value.GetComponent<RoomCell>();
-                    }).ToArray();
-                    
-                    gameActionWithRoomsSelection.RoomSelection = selection;
-                }
-
-                if (gameAction is INeedNoiseContainers needTunnels)
-                {
-                    while (_noiseContainerSelectionNet.Count != needTunnels.RequiredNoiseContainerCount)
-                    {
-                        if (_actionIsExecuting.Value == false)
-                        {
-                            return;
-                        }
-                        
-                        await Awaitable.NextFrameAsync();
-                    }
-                    
-                    needTunnels.SelectedNoiseContainers = _noiseContainerSelectionNet.ToEnumerable().Select(x => 
-                    {
-                        x.TryGet(out NetworkObject value);
-                        return value.GetComponent<INoiseContainer>();
-                    }).ToArray();
-                }
-                
-                gameAction.Execute();
-                ClearData_RPC();
+                gameActionWithMap.Initialzie(_map);
             }
-            catch (Exception e)
+
+            if (gameAction is IGameActionWithPayment gameActionWithPayment)
             {
-                Debug.LogError(e);
+                while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                ActionCard[] cards = await _selectionActionCards.GetElements();
+                _executer.ActionCardsDeck.DiscardCards(cards);
             }
+            
+            if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
+            {
+                while (_inventoryItemsSelectionNet.Count != gameActionWithInventoryItem.RequiredItemsAmount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                gameActionWithInventoryItem.InventoryItemsSelection = _inventoryItemsSelectionNet.ToEnumerable().ToArray();
+            }
+
+            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+            {
+                while (_roomsSelectionNet.Count != gameActionWithRoomsSelection.RequredRoomsCount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                RoomCell[] selection = _roomsSelectionNet.ToEnumerable().Select(x => 
+                {
+                    x.TryGet(out NetworkObject value);
+                    return value.GetComponent<RoomCell>();
+                }).ToArray();
+                
+                gameActionWithRoomsSelection.RoomSelection = selection;
+            }
+
+            if (gameAction is INeedNoiseContainers needTunnels)
+            {
+                while (_noiseContainerSelectionNet.Count != needTunnels.RequiredNoiseContainerCount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                needTunnels.SelectedNoiseContainers = _noiseContainerSelectionNet.ToEnumerable().Select(x => 
+                {
+                    x.TryGet(out NetworkObject value);
+                    return value.GetComponent<INoiseContainer>();
+                }).ToArray();
+            }
+
+            if (gameAction is IGameActionWithRoomContentSelection gameActionWithRoomContentSelection)
+            {
+                while (gameActionWithRoomContentSelection.RequiredRoomContentCount != _roomContentSelectionNet.Count)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                gameActionWithRoomContentSelection.RoomContentSelection = _roomContentSelectionNet.ToEnumerable().Select(x =>
+                {
+                    x.TryGet(out NetworkObject value);
+                    return value.GetComponent<RoomContent>();
+                }).ToArray();
+            }
+
+            gameAction.Execute();
+            ClearData_RPC();
         }
 
         [Rpc(SendTo.Owner)]
@@ -247,6 +311,7 @@ namespace Core.PlayerActions
             _roomsSelectionNet.Clear();
             _selectionActionCards.Clear();
             _noiseContainerSelectionNet.Clear();
+            _roomContentSelectionNet.Clear();
         }
     }
 }

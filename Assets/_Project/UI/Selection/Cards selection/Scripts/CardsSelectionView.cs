@@ -35,7 +35,7 @@ namespace SelectionStarted
 
         public bool CanConfirmSelection => _cardsSelection.CanConfirmSelection;
         public bool IsActive => _cardsSelection.IsActive;
-        public int CountToSelect => _cardsSelection.CountToSelect;
+        public int RequiredCount => _cardsSelection.RequiredCount;
         public int SelectedCount => _cardsSelection.SelectedCount;
 
         private void OnSelectionChange(ISelection sender)
@@ -70,7 +70,7 @@ namespace SelectionStarted
         
         public new void Add(SelectedCardView value)
         {
-            if (Count+1 > _cardsSelection.CountToSelect)
+            if (Count+1 > _cardsSelection.RequiredCount)
             {
                 Remove(this.First());
             }

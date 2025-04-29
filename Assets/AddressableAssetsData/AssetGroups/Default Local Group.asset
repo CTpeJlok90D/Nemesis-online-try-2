@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f2523d0343852a64d9bddf5e76466612
   m_SerializeEntries:
+  - m_GUID: 02b8109eb0df2204fa76e33f103463f8
+    m_Address: Scientist pistol
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 05f621b2eb9afa2479c80e0375d09b03
     m_Address: Assets/_Project/Data/Map/Control point/Destinations/Deep space.asset
     m_ReadOnly: 0
@@ -25,8 +30,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07c579a228af1594798b622ff80b87dc
+    m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/hands.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0a8649247c95c8647b0758ea30c2cdb4
     m_Address: Assets/_Project/Data/Action cards/Action card test effect.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c7568e796a358a4db16220c22737f2b
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -80,6 +95,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 268521267ac50184782ec54b330e0d10
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2704486a46755ca48ba5e9152376e206
+    m_Address: Scout rifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 291eacc0adf5e414b87687648d15a19c
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 3.asset
     m_ReadOnly: 0
@@ -92,6 +117,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35de4af51585ba14ea7df8f8149f7014
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36ce9ebdffa528641a39ba13184d1513
+    m_Address: Hands
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -191,6 +221,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 618dbfd2f374cc8449ed4851f6c7ac76
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 640e60c0966db1842814e773dfa2aa1c
     m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2.asset
     m_ReadOnly: 0
@@ -231,6 +266,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79564ffef084d7c4cbaa3a84c0339014
+    m_Address: Capitan revolver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7b84a22f70b782f45a14dd792dfd9af7
     m_Address: Assets/_Project/Core/Player actions/Careful move action.asset
     m_ReadOnly: 0
@@ -246,6 +286,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fe97d5cde2c625469b9c2cd20bd6112
+    m_Address: Assets/_Project/Core/Player actions/Attack action container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 810823e78f3b3d34a920582a30fd2f08
+    m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/characters-spec-items-sherts.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83f5b8842394f7440b33a2952623c61b
     m_Address: Assets/_Project/Data/Map/Control point/Coordinats/B.asset
     m_ReadOnly: 0
@@ -253,6 +303,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c469b25e4ab46d44be5eeb72ec96f7b
     m_Address: Assets/_Project/Data/Aliens/Default/Larvae.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ed00b6299b2c3243a3c71a5d9a34484
+    m_Address: Mechanic shotgun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -311,6 +366,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b12eaf79a4577884b91f0191414fd44e
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b2a8bb2e2636b9a4c96f47c0359ca1f1
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/dining room.prefab
     m_ReadOnly: 0
@@ -341,6 +401,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c81964fa89f76c74a9cb2272e4065f10
+    m_Address: Soldier rifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8e3f96c1b20f7f4b9facf277d986484
+    m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/item-card-sherts.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9a8f08b51d9e924093c07abbc33f18f
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1529cc6b3b018643b1074eb87920257
     m_Address: Assets/_Project/Data/Characters/Pilot.asset
     m_ReadOnly: 0
@@ -361,6 +436,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e551438867e72d04aaffbf84bcac06e5
+    m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5da97f43490fc643a6867c3dcbcf362
+    m_Address: Assets/_Project/Core/Player actions/Attack Action.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e92ce2550ea83b64ea5f133f8407e865
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
     m_ReadOnly: 0
@@ -378,6 +463,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f45563ac563f9d74b9d7314b880c47b6
     m_Address: Assets/_Project/Data/Aliens/Default/Adult intruder.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f505ae05af6bde945a7e85b3381c5476
+    m_Address: Pilot shotgun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd18af760e38e394c8194ab95e447375
+    m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/character-spec-items.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

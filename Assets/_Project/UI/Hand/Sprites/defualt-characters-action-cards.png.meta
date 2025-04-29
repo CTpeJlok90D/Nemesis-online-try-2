@@ -1,0 +1,1398 @@
+fileFormatVersion: 2
+guid: 71cf9e5032c16c34cb2d05dff4a2106b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14e1e51f44c99d442b479cbe0d6263bd
+      internalID: 1644266571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fede3a296bdaf45953af0fa4768e9b
+      internalID: -508932105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8210a035d0c8d1340bdfde9b0a24977f
+      internalID: 1189527709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df3635e2aa2ca641a475a709539fe6f
+      internalID: -145218391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8e83f045d375f49a0b410dda8b8a1c
+      internalID: -1861576473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63ee681206bdc548a813dc6cef4b502
+      internalID: 1276081104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce9b748caeed1f429e69918327585ee
+      internalID: 775523494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b89b1ffee2bc046ac585bea12121f0
+      internalID: 1509922450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-capitan-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 7460
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3178f8db7c9dcd4fb1ca8b289167ab9
+      internalID: -173700548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa395f3b919ed154d93574acd0e5986a
+      internalID: 2123330807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dca6dde2f959ed43af18a27b25eafdd
+      internalID: 797551915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b4c93307a7b334dbedf5e1a97b3dae
+      internalID: -1414944079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a3211b7478afc43a65810239974f8f
+      internalID: 814747387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261e69bf6c19d2e43bd32a164b3373d3
+      internalID: -87855993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaab5e911f326b3499e6ecec8d1d8f76
+      internalID: 756957838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 5973
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b3d05ccdb837b45b69bcb432b0af1f
+      internalID: 1373068282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76b973cae1dced4a940f9b4d2b4878e
+      internalID: 957503330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-mechanic-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 5968
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416834f997b33954aba3425c0b980d1a
+      internalID: -1750731977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ee3403c217e2848ae22de7ca752d99
+      internalID: 247980929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a6c8b0bdd12b144bf065bcc0e5fc1c
+      internalID: 724408721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8f07e957fe1804bb2993436b7d034d
+      internalID: -1856744169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4042968262f2d9746ac8746580dea887
+      internalID: 1875253460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee32b24a86c093a4189a6c4c8ee6e125
+      internalID: -861392173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55c74bb94cdb104d87ad05ae6e3209e
+      internalID: 1495773572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f7c449bf50a1d46b886db876225e19
+      internalID: 1673173436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7539a4179597ac84ea8401ff69312fe2
+      internalID: -1928991294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-pilot-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 4476
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039b8ec4d923aac44baf148eb3d44a99
+      internalID: 241468834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd59ab0d2d66174ab61258f411a51b3
+      internalID: -667968089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b08d821ef7daf439eeb5410fa19a3a
+      internalID: -465142177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a369fb662d2f7a41b87bbaac96c33e1
+      internalID: 1164219952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9af0b89c431c944b68e73db96a86fe
+      internalID: -1205041496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20388933a329eab4daec08af8bc743a9
+      internalID: 950555537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8c2b05ae9331747a397f96ba09363f
+      internalID: 412129793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15005bf9fb637e74b8113c193007235b
+      internalID: 1577960958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdf690e15a55954e990318c592ecdf9
+      internalID: -1626533835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scientist-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 2984
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a032feb278c91404a8843d42874bde47
+      internalID: 2035397943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19d03afc63866e4492bc7d90ae69eeb
+      internalID: 1179985578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4465a7f889f8d4f489a07834ef088cd2
+      internalID: -548655382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90cc92d5236e15942aa8c6b3c77df651
+      internalID: -14424551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2e4a7ab1605684ba18c5f7cc81fb6e
+      internalID: 1883758101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ad125def7051d64281bdedcee9e9ddd
+      internalID: -2098499442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32f3e523588e7c4d9d72a899d08f3d3
+      internalID: 151526313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb21a6d63b986840b1a35c631f5240b
+      internalID: 1094688088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e840ba83e74df47ad05fbb97675785
+      internalID: 397190422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-scout-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 1492
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ddd0b506f03fbb42a66a5ab94d707b2
+      internalID: 713632160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f867bc36cdc15ee49a60213af183d9e7
+      internalID: -423022227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-2
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62046270cce54fd4faeed8c5baeb6506
+      internalID: -1380028358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-3
+      rect:
+        serializedVersion: 2
+        x: 2138
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8770f9af2a202b74c99d6b6d24273bcc
+      internalID: -881612460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-4
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeae41180420e90479befedb165e1094
+      internalID: 334891476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-5
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3cece4d9046a94680adccf7275344d
+      internalID: -1641674843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-6
+      rect:
+        serializedVersion: 2
+        x: 5345
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47367de3f1f16664786fecc6de0199ff
+      internalID: 1707474357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-7
+      rect:
+        serializedVersion: 2
+        x: 6414
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ae4501a57db45c49a4c530dc43d689f
+      internalID: -1043111797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-8
+      rect:
+        serializedVersion: 2
+        x: 7483
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c7177e8d78f024e8f887a18e6b60b0
+      internalID: -330008261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: defualt-characters-action-cards-soldier-9
+      rect:
+        serializedVersion: 2
+        x: 8552
+        y: 0
+        width: 1069
+        height: 1492
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43cc53f1f9fe5a4458221bb43d943567
+      internalID: 1150298721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: adee41a332b64d04289d4fef423e4bf4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      defualt-characters-action-cards-capitan-1: 1644266571
+      defualt-characters-action-cards-capitan-2: -508932105
+      defualt-characters-action-cards-capitan-3: 1189527709
+      defualt-characters-action-cards-capitan-4: -145218391
+      defualt-characters-action-cards-capitan-5: -1861576473
+      defualt-characters-action-cards-capitan-6: 1276081104
+      defualt-characters-action-cards-capitan-7: 775523494
+      defualt-characters-action-cards-capitan-8: 1509922450
+      defualt-characters-action-cards-capitan-9: -173700548
+      defualt-characters-action-cards-mechanic-1: 2123330807
+      defualt-characters-action-cards-mechanic-2: 797551915
+      defualt-characters-action-cards-mechanic-3: -1414944079
+      defualt-characters-action-cards-mechanic-4: 814747387
+      defualt-characters-action-cards-mechanic-5: -87855993
+      defualt-characters-action-cards-mechanic-6: 756957838
+      defualt-characters-action-cards-mechanic-7: 1373068282
+      defualt-characters-action-cards-mechanic-8: 957503330
+      defualt-characters-action-cards-mechanic-9: -1750731977
+      defualt-characters-action-cards-pilot-1: 247980929
+      defualt-characters-action-cards-pilot-2: 724408721
+      defualt-characters-action-cards-pilot-3: -1856744169
+      defualt-characters-action-cards-pilot-4: 1875253460
+      defualt-characters-action-cards-pilot-5: -861392173
+      defualt-characters-action-cards-pilot-6: 1495773572
+      defualt-characters-action-cards-pilot-7: 1673173436
+      defualt-characters-action-cards-pilot-8: -1928991294
+      defualt-characters-action-cards-pilot-9: 241468834
+      defualt-characters-action-cards-scientist-1: -667968089
+      defualt-characters-action-cards-scientist-2: -465142177
+      defualt-characters-action-cards-scientist-3: 1164219952
+      defualt-characters-action-cards-scientist-4: -1205041496
+      defualt-characters-action-cards-scientist-5: 950555537
+      defualt-characters-action-cards-scientist-6: 412129793
+      defualt-characters-action-cards-scientist-7: 1577960958
+      defualt-characters-action-cards-scientist-8: -1626533835
+      defualt-characters-action-cards-scientist-9: 2035397943
+      defualt-characters-action-cards-scout-1: 1179985578
+      defualt-characters-action-cards-scout-2: -548655382
+      defualt-characters-action-cards-scout-3: -14424551
+      defualt-characters-action-cards-scout-4: 1883758101
+      defualt-characters-action-cards-scout-5: -2098499442
+      defualt-characters-action-cards-scout-6: 151526313
+      defualt-characters-action-cards-scout-7: 1094688088
+      defualt-characters-action-cards-scout-8: 397190422
+      defualt-characters-action-cards-scout-9: 713632160
+      defualt-characters-action-cards-soldier-1: -423022227
+      defualt-characters-action-cards-soldier-2: -1380028358
+      defualt-characters-action-cards-soldier-3: -881612460
+      defualt-characters-action-cards-soldier-4: 334891476
+      defualt-characters-action-cards-soldier-5: -1641674843
+      defualt-characters-action-cards-soldier-6: 1707474357
+      defualt-characters-action-cards-soldier-7: -1043111797
+      defualt-characters-action-cards-soldier-8: -330008261
+      defualt-characters-action-cards-soldier-9: 1150298721
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

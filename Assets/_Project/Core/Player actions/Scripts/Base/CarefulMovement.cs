@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Core.PlayerActions.Base
 {
-    [CreateAssetMenu(menuName = "Game/Actions/Careful move action")]
+    [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Careful move action")]
     public class CarefulMovement : MoveAction, INeedNoiseContainers
     {
         public override int RequaredPaymentCount => 2;

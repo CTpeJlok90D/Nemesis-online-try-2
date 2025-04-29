@@ -14,6 +14,8 @@ namespace UI.CharacterSelection
         [SerializeField] private Transform _cardsParent;
 
         [Inject] private CharactersDealer _characterDealer;
+        
+        [Inject] private DiContainer _diContainer;
 
         private List<CharacterContainer> _cardInstances = new();
 
@@ -64,7 +66,7 @@ namespace UI.CharacterSelection
         {
             foreach (Character character in _characterDealer.Selection)
             {
-                CharacterContainer characterContainer = _characterCard_PREFAB.Instantiate(character, _cardsParent);
+                CharacterContainer characterContainer = _characterCard_PREFAB.Instantiate(character, _diContainer, _cardsParent);
                 _cardInstances.Add(characterContainer);
             }
         }

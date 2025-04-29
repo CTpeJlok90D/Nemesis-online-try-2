@@ -142,34 +142,63 @@ MonoBehaviour:
           Value:
             m_AssetGUID: 754f2e46c825e964ca87d09f728b109c
             m_SubObjectName: 
-            m_SubObjectGUID: 
             m_SubObjectType: 
+            m_SubObjectGUID: 
             m_EditorAssetChanged: 0
         - Key: {fileID: 11400000, guid: 510f3d8b68a1e6343b7bc54bcecd25b7, type: 2}
           Value:
             m_AssetGUID: 9fc5fe5342c648442826ed3f491960a5
             m_SubObjectName: 
-            m_SubObjectGUID: 
             m_SubObjectType: 
+            m_SubObjectGUID: 
             m_EditorAssetChanged: 0
         - Key: {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
           Value:
             m_AssetGUID: 1c8f3d3461c9614449b811c05ad86aa4
             m_SubObjectName: 
-            m_SubObjectGUID: 
             m_SubObjectType: 
+            m_SubObjectGUID: 
             m_EditorAssetChanged: 0
         - Key: {fileID: 11400000, guid: 069110f25be01644fb6d0fbc6b9f83de, type: 2}
           Value:
             m_AssetGUID: 3cccbadbd7d1c5f49a3c6c4bbdcaa0e3
             m_SubObjectName: 
-            m_SubObjectGUID: 
             m_SubObjectType: 
+            m_SubObjectGUID: 
             m_EditorAssetChanged: 0
         - Key: {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
           Value:
             m_AssetGUID: ee7ec93ce5c7dad4aa3ce24c88d213a7
             m_SubObjectName: 
-            m_SubObjectGUID: 
             m_SubObjectType: 
+            m_SubObjectGUID: 
             m_EditorAssetChanged: 0
+    AliensAttackDeckConfig:
+      Cards:
+      - {fileID: 11400000, guid: 268521267ac50184782ec54b330e0d10, type: 2}
+      - {fileID: 11400000, guid: 0c7568e796a358a4db16220c22737f2b, type: 2}
+      - {fileID: 11400000, guid: e551438867e72d04aaffbf84bcac06e5, type: 2}
+      - {fileID: 11400000, guid: 618dbfd2f374cc8449ed4851f6c7ac76, type: 2}
+      - {fileID: 11400000, guid: c9a8f08b51d9e924093c07abbc33f18f, type: 2}
+      - {fileID: 11400000, guid: b12eaf79a4577884b91f0191414fd44e, type: 2}
+    KitStartConfig:
+      StartItems:
+        _serializedList:
+        - Key: {fileID: 11400000, guid: 75ff028630961fe418a8865735bab297, type: 2}
+          Value:
+          - {fileID: 11400000, guid: 79564ffef084d7c4cbaa3a84c0339014, type: 2}
+        - Key: {fileID: 11400000, guid: 1149afd990674364fa4bd0314f477a20, type: 2}
+          Value:
+          - {fileID: 11400000, guid: 8ed00b6299b2c3243a3c71a5d9a34484, type: 2}
+        - Key: {fileID: 11400000, guid: d1529cc6b3b018643b1074eb87920257, type: 2}
+          Value:
+          - {fileID: 11400000, guid: f505ae05af6bde945a7e85b3381c5476, type: 2}
+        - Key: {fileID: 11400000, guid: dd74b7ca7aa245b4398fbb45316925cc, type: 2}
+          Value:
+          - {fileID: 11400000, guid: 02b8109eb0df2204fa76e33f103463f8, type: 2}
+        - Key: {fileID: 11400000, guid: 5b7d72e4813b48a469029336e2cf8841, type: 2}
+          Value:
+          - {fileID: 11400000, guid: 2704486a46755ca48ba5e9152376e206, type: 2}
+        - Key: {fileID: 11400000, guid: a81491d41131a4540840ea690f7058a8, type: 2}
+          Value:
+          - {fileID: 11400000, guid: c81964fa89f76c74a9cb2272e4065f10, type: 2}

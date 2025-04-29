@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
 using Core.Maps;
+using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Core.PlayerActions
 {
-    [CreateAssetMenu(menuName = "Game/Actions/Move action")]
+    [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Move action")]
     public class MoveAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomsSelection, INeedMap
     {
         public Map Map { get; private set; }
@@ -32,12 +33,10 @@ namespace Core.PlayerActions
 
         public virtual IGameAction.CanExecuteCheckResult CanExecute()
         {
-            bool boolResult;
             RoomCell[] selectedRooms = RoomSelection; 
 
             if (Executor.ActionCount.Value <= 0)
             {
-                boolResult = false;
                 IGameAction.CanExecuteCheckResult result = new()
                 {
                     Result = false,
@@ -49,7 +48,6 @@ namespace Core.PlayerActions
 
             if (selectedRooms.Length != 1)
             {
-                boolResult = false;
                 IGameAction.CanExecuteCheckResult result = new()
                 {
                     Result = false,
@@ -63,7 +61,7 @@ namespace Core.PlayerActions
 
             IEnumerable<RoomCell> possibleRooms = GetPossibleRooms();
             
-            boolResult = possibleRooms.Contains(selectedRoom);
+            bool boolResult = possibleRooms.Contains(selectedRoom);
             
             return new()
             {

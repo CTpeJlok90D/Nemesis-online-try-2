@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.ActionsCards;
+using Core.CharacterInventorys;
 using Core.Characters;
 using Core.Missions;
 using Core.Players;
@@ -16,11 +17,15 @@ namespace Core.PlayerTablets
 {
     public class PlayerTablet : NetworkBehaviour, IContainsPlayer
     {
+        [field: SerializeField] public Inventory SmallItemsInventory { get; private set; }
+        [field: SerializeField] public Inventory BigItemsInventory { get; private set; }
         [field: SerializeField] public ActionCardsDeck ActionCardsDeck { get; private set; }
 
         [Inject] private PlayerTabletList _playetTabletList;
 
         [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
+        
+        [Inject] private KitStartConfig _kitStartConfig;
 
         private bool _haveResult;
 
@@ -75,6 +80,11 @@ namespace Core.PlayerTablets
         public void LinkPawn(CharacterPawn characterPawn)
         {
             _linkedCharacterPawn.Value = characterPawn.NetworkObject;
+            Character character = characterPawn.LinkedCharacter;
+            
+            InventoryItem[] startItems = _kitStartConfig.StartItems[character];
+            SmallItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Small));
+            BigItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Big));
         }
 
         private void OnEnable()

@@ -29,8 +29,6 @@ namespace Core.Maps
 
         [SerializeField] private SerializableInterface<IEnemySummoner> _enemySummner;
         
-        private NetworkList<NetworkObjectReference> _enemies;
-        
         public NetVariable<DestinationCoordinatsCard> DestinationCoordinatsCard { get; private set; }
 
         public NetVariable<Coordinate> Cordinates { get; private set; }
@@ -45,7 +43,6 @@ namespace Core.Maps
 
         private void Awake()
         {
-            _enemies = new(writePerm: NetworkVariableWritePermission.Server);
             DestinationCoordinatsCard = new();
             Cordinates = new(_defaultCordinats);
         }
@@ -78,7 +75,7 @@ namespace Core.Maps
             _escapePods = _escapePods.Where(x => x != null).ToList();
         }
 
-        public void NoiseInRoom(RoomCell roomCell, NoiseDice.Result noiseDiceResult)
+        public async void NoiseInRoom(RoomCell roomCell, NoiseDice.Result noiseDiceResult)
         {
             if (noiseDiceResult == NoiseDice.Result.Silence)
             {
@@ -103,7 +100,13 @@ namespace Core.Maps
             if (iNoiseContainer.IsNoised.Value)
             {
                 ClearNoiseInRoom(roomCell);
-                SummonEnemyIn(roomCell);
+                RoomContent result = await SummonEnemyIn(roomCell);
+                
+                if (result == null)
+                {
+                    NoiseInAllTunnelsFromRoom(roomCell);
+                }
+                
                 return;
             }
             
@@ -138,14 +141,17 @@ namespace Core.Maps
             }
         }
 
-        public async UniTask SummonEnemyIn(RoomCell roomCell)
+        public void NoiseInAllTunnelsFromRoom(RoomCell roomCell)
         {
-            RoomContent result = await _enemySummner.Value.SummonIn(roomCell);
-            Debug.Log($"Enemy: {result}");
-            if (result != null)
+            foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
             {
-                _enemies.Add(result.NetworkObject);
+                noiseContainer.Noise();
             }
+        }
+
+        public async UniTask<RoomContent> SummonEnemyIn(RoomCell roomCell)
+        {
+            return await _enemySummner.Value.SummonIn(roomCell);
         }
 
 #if UNITY_EDITOR

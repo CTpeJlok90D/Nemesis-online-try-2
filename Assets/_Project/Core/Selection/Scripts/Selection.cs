@@ -21,7 +21,7 @@ namespace Core.SelectionBase
         public int Count => _selection.Count;
         public int SelectedCount => Count;
         public IReadOnlyCollection<T> Elements => _selection;
-        public bool CanConfirmSelection => _selection.Count == CountToSelect && _isSelectionInProgress;
+        public bool CanConfirmSelection => _selection.Count == RequiredCount && _isSelectionInProgress;
         public bool IsActive => _isSelectionInProgress;
         public IEnumerable<T> SelectionSource => _whiteList;
         public virtual bool OnlyUniqueItems => true; 
@@ -33,7 +33,7 @@ namespace Core.SelectionBase
         }
 
 
-        public int CountToSelect 
+        public int RequiredCount 
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Core.SelectionBase
             }
             
             _selection.Add(value);
-            if (_selection.Count > CountToSelect)
+            if (_selection.Count > RequiredCount)
             {
                 T element = _selection.ElementAt(0);
                 Remove(element);
@@ -95,7 +95,7 @@ namespace Core.SelectionBase
 
         internal async Task<T[]> Select(int count)
         {
-            CountToSelect = count;
+            RequiredCount = count;
             _isSelectionInProgress = true;
             while (_isSelectionInProgress)
             {
@@ -138,7 +138,7 @@ namespace Core.SelectionBase
                 throw new Exception("Can't confirm selection. Selection is not in progress");
             }
 
-            if (_selection.Count == CountToSelect)
+            if (_selection.Count == RequiredCount)
             {
                 _isSelectionInProgress = false;
             }

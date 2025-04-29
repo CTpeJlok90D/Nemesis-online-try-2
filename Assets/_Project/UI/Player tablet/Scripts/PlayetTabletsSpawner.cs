@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Players;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace UI.PlayerTablets
         [Inject] private PlayerTabletList _playetTabletList;
 
         [Inject] private NetworkManager _networkManager;
+        
+        [Inject] private DiContainer _diContainer;
 
         private Dictionary<PlayerTablet, PlayerTabletContainer> _playerTabletInstances = new();
 
@@ -62,7 +65,7 @@ namespace UI.PlayerTablets
         {
             foreach (PlayerTablet tablet in _playetTabletList.ActiveTablets.OrderBy(x => x.OrderNumber.Value))
             {
-                PlayerTabletContainer instance = _card_PREFAB.Instantiate(tablet, _cardsParent);
+                PlayerTabletContainer instance = _card_PREFAB.Instantiate(tablet, _diContainer, _cardsParent);
                 _playerTabletInstances.Add(tablet, instance);
             }
         }

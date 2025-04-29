@@ -1,0 +1,20 @@
+{
+    "name": "Devtools.Maps",
+    "rootNamespace": "Devtools.Maps",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:3de88c88fbbb8f944b9210d496af9762",
+        "GUID:77a95e666ef809040bfa8a723f9b3fd2",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

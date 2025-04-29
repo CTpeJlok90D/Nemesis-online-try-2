@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3837645148537b141ab6f3b5476a277e, type: 3}
+  m_Name: Item main sprites
+  m_EditorClassIdentifier: 
+  _assets:
+    _serializedList:
+    - Key: Capitan revolver
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-capitan-revolver
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Mechanic shotgun
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-mechanic-shotgun
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Pilot shotgun
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-pilot-shotgun
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Scientist pistol
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-scientist-pistol
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Scout rifle
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-scout-rifle
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Soldier rifle
+      Value:
+        m_AssetGUID: fd18af760e38e394c8194ab95e447375
+        m_SubObjectName: character-soldier-rifle
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Hands
+      Value:
+        m_AssetGUID: 07c579a228af1594798b622ff80b87dc
+        m_SubObjectName: 
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+  _errorValue:
+    m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+    m_SubObjectName: item-card-sherts-craft
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

@@ -334,7 +334,6 @@ GameObject:
   - component: {fileID: 3045242069611125870}
   - component: {fileID: 8146297468628986734}
   - component: {fileID: 4091857295716877724}
-  - component: {fileID: 6130001078827901652}
   - component: {fileID: 9133239453071001235}
   m_Layer: 5
   m_Name: Player card
@@ -384,19 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c9eb32261b68f4b856b142cbcdc293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6130001078827901652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170396979217256604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _containerSource: 2
 --- !u!114 &9133239453071001235
 MonoBehaviour:
   m_ObjectHideFlags: 0

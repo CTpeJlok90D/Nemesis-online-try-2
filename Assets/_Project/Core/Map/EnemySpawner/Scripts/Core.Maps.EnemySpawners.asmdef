@@ -2,17 +2,20 @@
     "name": "Core.Maps.EnemySpawners",
     "rootNamespace": "Core.Maps.EnemySpawner",
     "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:d525ad6bd40672747bde77962f1c401e",
         "GUID:e0cd26848372d4e5c891c569017e11f1",
         "GUID:84651a3751eca9349aac36a66bba901b",
         "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
         "GUID:593a5b492d29ac6448b1ebf7f035ef33",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
         "GUID:77a95e666ef809040bfa8a723f9b3fd2",
         "GUID:c3afef91c40c7744aae8455e2bd7be6a",
-        "GUID:58946ea638f53f54d9ccaa0cb6215515"
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16",
+        "GUID:0e6589339fff75b42b1846f64d4c86c0"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

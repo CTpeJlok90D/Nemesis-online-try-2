@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df65f421797c614c928b9c492324194, type: 3}
+  m_Name: Attack action container
+  m_EditorClassIdentifier: 
+  <GameAction>k__BackingField:
+    mode: 0
+    unityReference: {fileID: 11400000, guid: e5da97f43490fc643a6867c3dcbcf362, type: 2}
+    rawReference:
+      rid: -2
+  <Net>k__BackingField:
+    _selfAssetReference:
+      m_AssetGUID: 7fe97d5cde2c625469b9c2cd20bd6112
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _isLoaded: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

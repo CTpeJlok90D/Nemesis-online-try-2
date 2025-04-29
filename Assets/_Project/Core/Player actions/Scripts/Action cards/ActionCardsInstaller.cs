@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +10,14 @@ namespace Core.ActionsCards
 
         public override void InstallBindings()
         {
-            Container.Bind<ActionCardsDecksDictionary>().FromInstance(ActionCardsDeck).AsSingle();
+            try
+            {
+                Container.Bind<ActionCardsDecksDictionary>().FromInstance(ActionCardsDeck).AsSingle();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
         }
     }
 }
