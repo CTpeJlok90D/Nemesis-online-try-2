@@ -17,7 +17,9 @@
         "GUID:e74d2f5357f23d044a37333c8efba8f2",
         "GUID:af098b1f33f2cb74b8bbe96b7ee1343b",
         "GUID:b7b6c6c9f68695f4fa7cef8b0c0c912f",
-        "GUID:8d53cdc02a021ea428201c8116b6e8f6"
+        "GUID:8d53cdc02a021ea428201c8116b6e8f6",
+        "GUID:d19caaf46d78fa64c91f14801b1f8d84",
+        "Core.Character.Health"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

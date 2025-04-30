@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Core.CharacterInventorys;
 using Core.Players;
@@ -23,29 +24,27 @@ namespace Devtools.Maps
         
         private async UniTask GiveItemAsync(string item, string playerName)
         {
-            PlayerTablet tablet = _playerTabletList.ActiveTablets.FirstOrDefault(x => x.Player.GetComponent<NicknameContainer>().Value == playerName);
-
-            if (tablet == null)
-            {
-                Debug.LogError($"Player {playerName} not found");
-                return;
-            }
+            Target target = new(playerName, _playerTabletList);
             
             AsyncOperationHandle<InventoryItem> handle = Addressables.LoadAssetAsync<InventoryItem>(item);
             await handle.ToUniTask();
             
             InventoryItem inventoryItem = handle.Result;
-            if (inventoryItem.ItemType == ItemType.Big)
-            {
-                tablet.BigItemsInventory.AddItem(inventoryItem);
-            }
 
-            if (inventoryItem.ItemType == ItemType.Small)
+            foreach (PlayerTablet playerTablet in target)
             {
-                tablet.SmallItemsInventory.AddItem(inventoryItem);
+                if (inventoryItem.ItemType == ItemType.Big)
+                {
+                    playerTablet.BigItemsInventory.AddItem(inventoryItem);
+                }
+
+                if (inventoryItem.ItemType == ItemType.Small)
+                {
+                    playerTablet.SmallItemsInventory.AddItem(inventoryItem);
+                }
             }
             
-            Debug.Log($"Item {inventoryItem.ID} was given to {playerName}");
+            Debug.Log($"Item {inventoryItem.ID} was given to {target}");
         }
     }
 }

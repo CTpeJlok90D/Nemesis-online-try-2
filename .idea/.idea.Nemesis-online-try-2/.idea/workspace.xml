@@ -5,19 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/GameObjectByNumber.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/GameObjectByNumber.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Room layer 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Room layer 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Room layer 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Prefabs/Room layer 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomCell.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/GameObjectByID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/GameObjectByID.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Actions cards.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/Network manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/Network manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/Player tablet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/Player tablet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Lobby].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Lobby].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Core.Lobbies.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Core.Lobbies.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Lobby.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Lobby.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/LobbyConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/LobbyConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/CharacterPawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/CharacterPawn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/Core.Map.CharacterPawn.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/Core.Map.CharacterPawn.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/Prefabs/Pawn base.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Character pawn/Prefabs/Pawn base.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Action cards/ActionCardsDeck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Action cards/ActionCardsDeck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IGameActionWithPayment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IGameActionWithPayment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IRequireInventoryItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IRequireInventoryItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/Core.PlayerTablet.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/Core.PlayerTablet.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTabletList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTabletList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player/Scripts/Core.Players.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player/Scripts/Core.Players.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/Core.Scenarios.Default.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/Core.Scenarios.Default.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/GamePreparationScenarioInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/GamePreparationScenarioInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/PlayersPhaseScenarioInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/PlayersPhaseScenarioInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Tabletop random/Scripts/Bag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Tabletop random/Scripts/Bag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Adult intruder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Adult intruder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Breeder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Breeder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Creeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Creeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Larvae.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Larvae.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Queen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Aliens/Prefabs/Queen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Characters/Capitan.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Characters/Capitan.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Default map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/View/Room/Scripts/RoomPrefabSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/View/Room/Scripts/RoomPrefabSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/View/Room/Scripts/RoomsDictionaryInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/View/Room/Scripts/RoomsDictionaryInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/Main menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/DevTools.Inventory.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/DevTools.Inventory.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/InventoryCheats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/InventoryCheats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/UIHand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/UIHand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/LocalPlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/LocalPlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/UI.InventoryItems.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/UI.InventoryItems.asmdef" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +56,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1e74f08236fb4c1791a523c0bf197e6c1df600/e4/a90dce43/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9c2967a135e648bdb993c5397a44991b573620/5e/7396f990/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/feebb6ba3b8642f68cab1044548dad4c4fc800/b8/bb7fd7ac/Map.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -41,6 +69,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Aliens attack deck/Scripts/AlienCardsHealthHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Aliens attack deck/Scripts/IAlienAttack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Attack dice/Scripts/AttackDice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character health/Scripts/CharacterHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character health/Scripts/HeavyDamageDeck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character inventory/Scripts/IContainsInventoryItemInstance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character inventory/Scripts/IItemData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character inventory/Scripts/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -52,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character weapons/Scripts/MagazineSize.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Character weapons/Scripts/WeaponDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/EnemiesConfigInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/HeavyDamageDeckInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Map/EnemySpawner/Scripts/DefaultEnemySummoner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/IEnemySummoner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Noise dice/NoiseDice.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,6 +99,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Tunnel selection/TunnelSelectionInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/InventoryCheats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/Map cheats/MapCheats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/_Common/Target.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ActionPrice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/ItemCardImage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/LocalPlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -100,6 +132,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd5b7db87b58/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@bd5b7db87b58/Runtime/Serialization/NetworkObjectReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@b1fa9fba9fd6/Runtime/GPUDriven/AABB.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@39bda2df468a/Editor/Converter/PPv2/EffectConverters/ChromaticAberrationConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@e7b9f7939c7c/Editor/Matchmaker/Authoring/Core/Deploy/MatchmakerDeployHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@e7b9f7939c7c/Editor/Multiplay/Authoring/YamlDotNet/Core/Events/AnchorAlias.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@e7b9f7939c7c/Editor/Multiplay/Authoring/YamlDotNet/Serialization/IAliasProvider.cs" root0="SKIP_HIGHLIGHTING" />
@@ -217,7 +250,8 @@
       <workItem from="1745822731901" duration="3733000" />
       <workItem from="1745826502241" duration="18671000" />
       <workItem from="1745916364509" duration="6795000" />
-      <workItem from="1745929618477" duration="989000" />
+      <workItem from="1745929618477" duration="5568000" />
+      <workItem from="1745999317991" duration="9721000" />
     </task>
     <servers />
   </component>

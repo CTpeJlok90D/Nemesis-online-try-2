@@ -60,6 +60,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ecb2497197fb84478aa94579e8fc4ae
+    m_Address: Wrist damage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f8c95da7a724524992ccf57d39ecc39
     m_Address: Assets/_Project/Core/Player actions/Move action.asset
     m_ReadOnly: 0
@@ -187,6 +192,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4edd818cfd2048f4c9354c0a494008ab
     m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fea7bbca043dd84abd6e1f7e5d6d39b
+    m_Address: Leg damage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -437,6 +447,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df1e2e31807561b478634001a5c64f0c
+    m_Address: Hand damage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df5a9e02a7771b841a217fa69774a345
     m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 2.asset
     m_ReadOnly: 0
@@ -485,6 +500,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f505ae05af6bde945a7e85b3381c5476
     m_Address: Pilot shotgun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6e35cb8274a76a45904b8a7952dea20
+    m_Address: Bleeding
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f89950464d9a2e845a3370cc86df1328
+    m_Address: Spine damage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

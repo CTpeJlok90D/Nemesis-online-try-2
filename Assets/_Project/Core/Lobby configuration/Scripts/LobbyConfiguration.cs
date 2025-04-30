@@ -1,6 +1,7 @@
 using System;
 using Core.ActionsCards;
 using Core.AlienAttackDecks;
+using Core.Characters.Health;
 using Core.CharacterInventorys;
 using Core.Characters;
 using Core.EventsDeck;
@@ -33,6 +34,8 @@ namespace Core.Lobbies
         public AlienAttackDeckConfig AliensAttackDeckConfig;
         
         public KitStartConfig KitStartConfig;
+        
+        public HeavyDamageDeck.Config HeavyDamageDeckConfig;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -46,6 +49,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref EnemiesConfig);
             serializer.SerializeValue(ref AliensAttackDeckConfig);  
             serializer.SerializeValue(ref KitStartConfig);
+            serializer.SerializeValue(ref HeavyDamageDeckConfig);
         }
     }
 }

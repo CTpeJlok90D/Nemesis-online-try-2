@@ -116,21 +116,25 @@ namespace Core.PlayerActions
 
                 if (gameAction is IGameActionWithPayment gameActionWithPayment)
                 {
-                    _selectionActionCards.SetElements(await gameActionWithPayment.GetSelectionLocal(_executer, _cardsSelection, _actionIsExecuting));
+                    ActionCard[] selection = await gameActionWithPayment.GetSelectionLocal(_executer, _cardsSelection);
                     
-                    if (_actionIsExecuting.Value == false)
+                    if (selection.Length != gameActionWithPayment.RequaredPaymentCount)
                     {
+                        _actionIsExecuting.Value = false;
                         return;
                     }
+                    
+                    _selectionActionCards.SetElements(selection);
                 }
                 
                 if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
                 {
                     _inventoryItemsSelectionNet.Clear();
-                    InventoryItemInstance[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection, _actionIsExecuting);
+                    InventoryItemInstance[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection);
 
-                    if (_actionIsExecuting.Value == false)
+                    if (selection.Length != gameActionWithInventoryItem.RequiredItemsAmount)
                     {
+                        _actionIsExecuting.Value = false;
                         return;
                     }
                     

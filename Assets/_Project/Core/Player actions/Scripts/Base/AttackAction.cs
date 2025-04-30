@@ -164,7 +164,12 @@ namespace Core.PlayerActions.Base
             
             if (enemy.AttacksToHit.Contains(rollResult))
             {
+                Debug.Log($"Damage: {damage} to {enemy}. Roll Result: {rollResult}");
                 enemy.Damage(damage);
+            }
+            else
+            {
+                Debug.Log($"Miss! Roll result: {rollResult}. Required to hit: {string.Join(", ", enemy.AttacksToHit)}");
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Core.TabletopRandom
     [System.Serializable]
     public class Bag<T>
     {
-        [SerializeField] private List<T> _items;
+        [SerializeField] protected List<T> _items;
 
         public IReadOnlyCollection<T> Items => _items;
 
@@ -15,7 +15,7 @@ namespace Core.TabletopRandom
             _items = new(items);
         }
 
-        public T PickOne()
+        public virtual T PickOne()
         {
             if (_items.Count == 0)
             {
@@ -25,7 +25,16 @@ namespace Core.TabletopRandom
             T result = _items[Random.Range(0, _items.Count)];
             _items.Remove(result);
             return result;
-        }  
+        }
+
+        public virtual IEnumerable<T> Pick(int count)
+        {
+            while (count > 0)
+            {
+                yield return PickOne();
+                count--;
+            }
+        }
 
         public Bag<T> Clone()
         {

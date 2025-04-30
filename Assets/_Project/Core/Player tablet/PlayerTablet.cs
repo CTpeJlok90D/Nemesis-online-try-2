@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Core.ActionsCards;
 using Core.CharacterInventorys;
 using Core.Characters;
+using Core.Characters.Health;
 using Core.Missions;
 using Core.Players;
 using Core.Maps.CharacterPawns;
@@ -17,15 +18,15 @@ namespace Core.PlayerTablets
 {
     public class PlayerTablet : NetworkBehaviour, IContainsPlayer
     {
-        [field: SerializeField] public Inventory SmallItemsInventory { get; private set; }
-        [field: SerializeField] public Inventory BigItemsInventory { get; private set; }
-        [field: SerializeField] public ActionCardsDeck ActionCardsDeck { get; private set; }
+        public Inventory SmallItemsInventory { get; private set; }
+        public Inventory BigItemsInventory { get; private set; }
+        public ActionCardsDeck ActionCardsDeck { get; private set; }
+        public NicknameContainer NicknameContainer { get; private set; }
+        public CharacterHealth Health { get; private set; }
 
-        [Inject] private PlayerTabletList _playetTabletList;
+        [Inject] private PlayerTabletList _playerTabletList;
 
         [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
-        
-        [Inject] private KitStartConfig _kitStartConfig;
 
         private bool _haveResult;
 
@@ -34,20 +35,18 @@ namespace Core.PlayerTablets
         private NetVariable<NetworkObjectReference> _linkedCharacterPawn;
 
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
-
         public NetVariable<Character> Character { get; private set; }
-
         public NetVariable<int> ActionCount { get; private set; }
-
         public NetVariable<bool> IsPassed { get; private set; }
-
         public NetVariable<int> OrderNumber { get; private set; }
-
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
-
+        
         public Player Player => PlayerReference.Reference;
-
         public bool IsEmpty => PlayerReference.Reference == null;
+        public string Nickname => NicknameContainer.Value;
+        
+        public delegate void LinkPawnHandler(PlayerTablet sender);
+        public event LinkPawnHandler PawnLinked;
 
         public CharacterPawn CharacterPawn
         {
@@ -75,38 +74,41 @@ namespace Core.PlayerTablets
             Missions = new();
         }
 
-        public bool CanBookIt(Player player) => IsEmpty && _playetTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
+        public bool CanBookIt(Player player) => IsEmpty && _playerTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
 
         public void LinkPawn(CharacterPawn characterPawn)
         {
             _linkedCharacterPawn.Value = characterPawn.NetworkObject;
-            Character character = characterPawn.LinkedCharacter;
             
-            InventoryItem[] startItems = _kitStartConfig.StartItems[character];
-            SmallItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Small));
-            BigItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Big));
+            SmallItemsInventory = characterPawn.SmallItemsInventory;
+            BigItemsInventory = characterPawn.BigItemsInventory;
+            ActionCardsDeck = characterPawn.ActionCardsDeck;
+            
+            ActionCardsDeck.InitializeDeck(_actionCardsDecksDictionary[characterPawn.LinkedCharacter.Id]);
+
+            if (Health != null)
+            {
+                Health.Dead -= OnPawnDeath;
+            }
+            Health = characterPawn.Health;
+            Health.Dead += OnPawnDeath;
+            
+            PawnLinked?.Invoke(this);
+        }
+
+        private void OnPawnDeath(CharacterHealth characterHealth)
+        {
+            _playerTabletList.Remove(this);
         }
 
         private void OnEnable()
         {
             Player.Left += OnPlayerLeft;
-            Character.Changed += OnCharacterChange;
         }
 
         private void OnDisable()
         {
             Player.Left -= OnPlayerLeft;
-            Character.Changed -= OnCharacterChange;
-        }
-
-        private void OnCharacterChange(Character previousValue, Character newValue)
-        {
-            if (NetworkManager.IsServer == false)
-            {
-                return;
-            }
-            
-            ActionCardsDeck.InitializeDeck(_actionCardsDecksDictionary[newValue.Id]);
         }
 
         private void OnPlayerLeft(Player player)
@@ -170,6 +172,7 @@ namespace Core.PlayerTablets
             if (IsEmpty)
             {
                 PlayerReference.Reference = player;
+                NicknameContainer = player.GetComponent<NicknameContainer>();
                 SendResult_RPC(ToBookResult.Success, RpcTarget.Single(player.OwnerClientId, RpcTargetUse.Persistent));
 
                 return;

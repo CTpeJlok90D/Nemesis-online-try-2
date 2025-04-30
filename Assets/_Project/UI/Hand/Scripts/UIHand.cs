@@ -11,6 +11,7 @@ using Zenject;
 
 namespace UI.Hands
 {
+    [DefaultExecutionOrder(5)]
     public class UIHand : MonoBehaviour
     {
         [field: SerializeField] private ActionCardContainer _uiActionCard_PREFAB;
@@ -22,6 +23,8 @@ namespace UI.Hands
         [Inject] private DiContainer _diContainer;
 
         private int _handSyncIndex;
+
+        private ActionCardsDeck _oldActionCards;
 
         public PlayerTablet ActiveTablet { get; private set; }
 
@@ -36,13 +39,34 @@ namespace UI.Hands
 
         private void OnEnable()
         {
+            ActiveTablet.PawnLinked += OnPawnLink;
+
+            if (ActionsCardsDeck != null)
+            {
+                ActionsCardsDeck.HandChanged += OnHandChange;
+                _ = SyncHand();
+            }
+        }
+
+        private void OnPawnLink(PlayerTablet sender)
+        {
+            if (_oldActionCards != null)
+            {
+                _oldActionCards.HandChanged -= OnHandChange;
+            }
+            
             ActionsCardsDeck.HandChanged += OnHandChange;
+            _oldActionCards = ActionsCardsDeck;
             _ = SyncHand();
         }
 
         private void OnDisable()
         {
-            ActionsCardsDeck.HandChanged -= OnHandChange;
+            ActiveTablet.PawnLinked -= OnPawnLink;
+            if (ActionsCardsDeck != null)
+            {
+                ActionsCardsDeck.HandChanged -= OnHandChange;
+            }
         }
 
         private void OnHandChange(NetScriptableObjectList4096<ActionCard> sender)

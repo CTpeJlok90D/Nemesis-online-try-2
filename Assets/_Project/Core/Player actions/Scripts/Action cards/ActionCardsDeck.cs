@@ -144,7 +144,7 @@ namespace Core.ActionsCards
                 base.OnInspectorGUI();
                 if (Application.isPlaying == false)
                 {
-                    EditorGUILayout.HelpBox("This ui works in play mode only", MessageType.Info);
+                    EditorGUILayout.HelpBox("This UI works in play mode only", MessageType.Info);
                     return;
                 }
 

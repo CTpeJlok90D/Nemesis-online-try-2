@@ -12,10 +12,8 @@ namespace Core.Scenarios.PlayersPhase
         {
             PlayerTabletListInstaller playerTabletListInstaller = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
             PlayerTabletList playerTabletList = playerTabletListInstaller.PlayerTabletList;
-            Delay delay = new(1);
 
-            IChapter[] chapters = new IChapter[]
-            {
+            IChapter[] chapters = {
                 new DrawCardsChapter(playerTabletList),
                 new MoveFirstPlayer(_actionPointsGiver),
                 new PlayersActionPhase(playerTabletList, _actionPointsGiver),

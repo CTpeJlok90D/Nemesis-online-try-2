@@ -95,13 +95,13 @@ namespace Core.Lobbies
 
             while (_playerTabletList.ActiveTablets.Length > _configuration.Value.PlayersCount)
             {
-                PlayerTablet removedTablet = _playerTabletList.RemoveTablet();
+                PlayerTablet removedTablet = _playerTabletList.Remove();
                 removedTablets.Add(removedTablet);
             }
 
             while (_playerTabletList.ActiveTablets.Length < _configuration.Value.PlayersCount)
             {
-                PlayerTablet playerTablet = _playerTabletList.AddTablet();
+                PlayerTablet playerTablet = _playerTabletList.Add();
                 addedTablets.Add(playerTablet);
             }
 

@@ -14,16 +14,9 @@ namespace Core.PlayerActions.Base
         
         public InventoryItemInstance[] InventoryItemsSelection { get; set; }
 
-        internal async UniTask<InventoryItemInstance[]> GetSelectionLocal(InventoryItemsSelection selection, NetVariable<bool> actionIsExecuting)
+        internal async UniTask<InventoryItemInstance[]> GetSelectionLocal(InventoryItemsSelection selection)
         {
             InventoryItemInstance[] selected = await selection.SelectFrom(InventoryItemsSource, RequiredItemsAmount);
-            
-            if (selected.Length != RequiredItemsAmount)
-            {
-                actionIsExecuting.Value = false;
-                InventoryItemsSelection = Array.Empty<InventoryItemInstance>(); 
-                return Array.Empty<InventoryItemInstance>();
-            }
 
             InventoryItemsSelection = selected;
             return selected;

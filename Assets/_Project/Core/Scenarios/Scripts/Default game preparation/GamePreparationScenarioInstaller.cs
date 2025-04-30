@@ -1,4 +1,5 @@
 using Core.CharacterChoose;
+using Core.CharacterInventorys;
 using Core.LoadObservers;
 using Core.Maps;
 using Core.Maps.Generation;
@@ -36,6 +37,7 @@ namespace Core.Scenarios
         {
             LoadObserverInstaller loadObserverInstaller = ProjectContext.Instance.GetComponentInChildren<LoadObserverInstaller>();
             PlayerTabletListInstaller playerTabletListInstaller = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
+            KitStartConfig kitStartConfig = Container.Resolve<KitStartConfig>();
 
             GenerateMapChapter generateMapChapter = new(_map);
             LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
@@ -50,7 +52,7 @@ namespace Core.Scenarios
                 new AwaitOtherPlayers(loadObserver),
                 delay,
                 new DealCharactersChapter(_charactersDealer),
-                new PawnsPlacer(playerTabletListInstaller.PlayerTabletList, _pawnPlacerConfig, _startRoom),
+                new PawnsPlacer(playerTabletListInstaller.PlayerTabletList, _pawnPlacerConfig, _startRoom, kitStartConfig),
                 new LaunchScenarioChapter(_scenarioLauncher),
                 _cameraChapter,
             };

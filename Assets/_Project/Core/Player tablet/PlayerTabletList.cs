@@ -25,6 +25,17 @@ namespace Core.PlayerTablets
 
         private event NetworkList<NetworkObjectReference>.OnListChangedDelegate _activeTabletsSynced;
 
+        public PlayerTablet FindTabletByPlayerNickname(string playerName)
+        {
+            PlayerTablet tablet = ActiveTablets.Where(x => x.Player != null).FirstOrDefault(x => x.NicknameContainer.Value == playerName);
+            if (tablet == null)
+            {
+                throw new InvalidOperationException($"Player {playerName} not found");
+            }
+            
+            return tablet;
+        } 
+
         public event NetworkList<NetworkObjectReference>.OnListChangedDelegate ActiveTabletsChanged
         {
             add 
@@ -92,7 +103,7 @@ namespace Core.PlayerTablets
             _activeTabletsSynced?.Invoke(args);   
         }
 
-        public PlayerTablet AddTablet()
+        public PlayerTablet Add()
         {
             PlayerTablet prefabInstance = Instantiate(_playerTablet_PREFAB);
             DontDestroyOnLoad(prefabInstance);
@@ -103,14 +114,27 @@ namespace Core.PlayerTablets
             return prefabInstance;
         }
 
-        public PlayerTablet RemoveTablet()
+        public PlayerTablet Remove()
         {
             PlayerTablet playerTablet = _activeTablets.ToEnumerable<PlayerTablet>().First();
 
             _activeTablets.Remove(playerTablet.NetworkObject);
-            playerTablet.NetworkObject.Despawn(true);
+            playerTablet.NetworkObject.Despawn();
 
             return playerTablet;
+        }
+
+        public bool Remove(PlayerTablet playerTablet)
+        {
+            bool result = _activeTablets.Remove(playerTablet.NetworkObject);
+            
+            if (result)
+            {
+                playerTablet.Pass();
+                playerTablet.NetworkObject.Despawn();
+            }
+
+            return result;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

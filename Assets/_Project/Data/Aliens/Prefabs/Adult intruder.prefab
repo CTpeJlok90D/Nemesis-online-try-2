@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -340669095513984516, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      propertyPath: _attacksToHit.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -340669095513984516, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      propertyPath: '_attacksToHit.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -340669095513984516, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      propertyPath: '_attacksToHit.Array.data[2]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -340669095513984516, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
       propertyPath: _damageHandler.unityReference
       value: 
       objectReference: {fileID: 5268129559022098422}

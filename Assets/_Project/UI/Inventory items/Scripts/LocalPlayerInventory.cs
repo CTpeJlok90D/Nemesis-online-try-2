@@ -9,6 +9,7 @@ using Zenject;
 
 namespace UI.InventoryItems
 {
+    [DefaultExecutionOrder(5)]
     public class LocalPlayerInventory : MonoBehaviour
     {
         [SerializeField] private ItemType _inventoryType;
@@ -16,6 +17,8 @@ namespace UI.InventoryItems
         [SerializeField] private Transform _parent;
 
         [Inject] private PlayerTabletList _playerTabletList;
+
+        private PlayerTablet localTablet => _playerTabletList.Local;
         
         private Inventory _inventory;
         private List<InventoryItemInstanceContainer> _instances;
@@ -23,34 +26,59 @@ namespace UI.InventoryItems
         private void Awake()
         {
             _instances = new();
-            
+        }
+
+        private void UpdateLinkedInventory()
+        {
             if (_inventoryType is ItemType.Big)
             {
-                _inventory = _playerTabletList.Local.BigItemsInventory;
+                _inventory = localTablet.BigItemsInventory;
             }
 
             if (_inventoryType is ItemType.Small)
             {
-                _inventory = _playerTabletList.Local.SmallItemsInventory;
+                _inventory = localTablet.SmallItemsInventory;
             }
         }
 
         private void OnEnable()
         {
-            _inventory.ItemsListChanged += OnItemListChange;
+            localTablet.PawnLinked += OnPawnLink;
+            if (localTablet.CharacterPawn != null)
+            {
+                UpdateLinkedInventory();
+                _inventory.ItemsListChanged += OnItemListChange;
+                SyncInventory();
+            }
         }
 
         private void OnDisable()
         {
-            _inventory.ItemsListChanged -= OnItemListChange;
+            if (localTablet.CharacterPawn != null)
+            {
+                localTablet.PawnLinked -= OnPawnLink;
+                _inventory.ItemsListChanged -= OnItemListChange;
+            }
+        }
+
+        private void OnPawnLink(PlayerTablet sender)
+        {
+            if (_inventory != null)
+            {
+                _inventory.ItemsListChanged -= OnItemListChange;
+            }
+            UpdateLinkedInventory();
+            _inventory.ItemsListChanged += OnItemListChange;
+            
+            SyncInventory();
         }
 
         private void OnItemListChange(Inventory sender)
         {
-            ValidateInventory();
+            SyncInventory();
         }
 
-        private void ValidateInventory()
+        private void SyncInventory()
         {
             foreach (InventoryItemInstance item in _inventory.ToArray())
             {

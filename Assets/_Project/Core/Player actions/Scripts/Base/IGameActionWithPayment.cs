@@ -13,18 +13,12 @@ namespace Core.PlayerActions
     {
         public int RequaredPaymentCount { get; }
 
-        internal async UniTask<ActionCard[]> GetSelectionLocal(PlayerTablet executor, CardsSelection cardsSelection, NetVariable<bool> actionIsExecuting)
+        internal async UniTask<ActionCard[]> GetSelectionLocal(PlayerTablet executor, CardsSelection cardsSelection)
         {
             int requiredPaymentCount = RequaredPaymentCount;
             IReadOnlyCollection<ActionCard> hand = await executor.ActionCardsDeck.GetHand();
 
             ActionCard[] selectedCards = await cardsSelection.SelectFrom(hand, requiredPaymentCount);
-
-            if (selectedCards.Length != requiredPaymentCount)
-            {
-                actionIsExecuting.Value = false;
-                return Array.Empty<ActionCard>();
-            }
                     
             return selectedCards;
         }

@@ -71,6 +71,11 @@ namespace Core.Scenarios.PlayersPhase
 
         private void OnActivePlayerPass(bool previousValue, bool newValue)
         {
+            if (_playerTabletsList.Any() == false)
+            {
+                return;
+            }
+            
             ActiveTablet.ActionCount.Changed -= OnActionPointsCountChange;
             ActiveTablet.IsPassed.Changed -= OnActivePlayerPass;
             

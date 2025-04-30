@@ -202,3 +202,20 @@ MonoBehaviour:
         - Key: {fileID: 11400000, guid: a81491d41131a4540840ea690f7058a8, type: 2}
           Value:
           - {fileID: 11400000, guid: c81964fa89f76c74a9cb2272e4065f10, type: 2}
+    HeavyDamageDeckConfig:
+      DamageCards:
+      - {fileID: 6762958138727210857, guid: f6e35cb8274a76a45904b8a7952dea20, type: 3}
+      - {fileID: 6762958138727210857, guid: f6e35cb8274a76a45904b8a7952dea20, type: 3}
+      - {fileID: 6762958138727210857, guid: f6e35cb8274a76a45904b8a7952dea20, type: 3}
+      - {fileID: 6762958138727210857, guid: df1e2e31807561b478634001a5c64f0c, type: 3}
+      - {fileID: 6762958138727210857, guid: df1e2e31807561b478634001a5c64f0c, type: 3}
+      - {fileID: 6762958138727210857, guid: df1e2e31807561b478634001a5c64f0c, type: 3}
+      - {fileID: 6762958138727210857, guid: 4fea7bbca043dd84abd6e1f7e5d6d39b, type: 3}
+      - {fileID: 6762958138727210857, guid: 4fea7bbca043dd84abd6e1f7e5d6d39b, type: 3}
+      - {fileID: 6762958138727210857, guid: 4fea7bbca043dd84abd6e1f7e5d6d39b, type: 3}
+      - {fileID: 6762958138727210857, guid: 0ecb2497197fb84478aa94579e8fc4ae, type: 3}
+      - {fileID: 6762958138727210857, guid: 0ecb2497197fb84478aa94579e8fc4ae, type: 3}
+      - {fileID: 6762958138727210857, guid: 0ecb2497197fb84478aa94579e8fc4ae, type: 3}
+      - {fileID: 6762958138727210857, guid: f89950464d9a2e845a3370cc86df1328, type: 3}
+      - {fileID: 6762958138727210857, guid: f89950464d9a2e845a3370cc86df1328, type: 3}
+      - {fileID: 6762958138727210857, guid: f89950464d9a2e845a3370cc86df1328, type: 3}
