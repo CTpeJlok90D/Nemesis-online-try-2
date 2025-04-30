@@ -13,7 +13,7 @@ namespace UI.Common
         [Inject] private LoadScreen _loadScreen;
         public void OnPointerClick(PointerEventData eventData)
         {
-            Task loadTask = _activator.StartGame();
+            _ = _activator.StartGame();
         }
     }
 }

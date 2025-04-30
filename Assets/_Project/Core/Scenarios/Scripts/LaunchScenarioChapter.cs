@@ -1,6 +1,6 @@
 namespace Core.Scenarios
 {
-    internal class LaunchScenarioChapter : IChapter
+    public class LaunchScenarioChapter : IChapter
     {
         private ScenarioLauncher _scenarioLauncher;
         public LaunchScenarioChapter(ScenarioLauncher scenarioLancher)

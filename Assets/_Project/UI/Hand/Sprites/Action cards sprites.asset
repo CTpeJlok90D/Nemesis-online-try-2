@@ -14,50 +14,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _assets:
     _serializedList:
+    - Key: Infection
+      Value:
+        m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
+        m_SubObjectName: defualt-characters-action-cards-capitan-3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Fake infection
+      Value:
+        m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
+        m_SubObjectName: defualt-characters-action-cards-capitan-3
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     - Key: Destruction
       Value:
         m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
         m_SubObjectName: defualt-characters-action-cards-capitan-3
-        m_SubObjectGUID: 
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     - Key: Repair
       Value:
         m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
         m_SubObjectName: defualt-characters-action-cards-capitan-5
-        m_SubObjectGUID: 
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     - Key: Rest
       Value:
         m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
         m_SubObjectName: defualt-characters-action-cards-capitan-2
-        m_SubObjectGUID: 
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     - Key: Search
       Value:
         m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
         m_SubObjectName: defualt-characters-action-cards-capitan-1
-        m_SubObjectGUID: 
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     - Key: Set aside
       Value:
         m_AssetGUID: 71cf9e5032c16c34cb2d05dff4a2106b
         m_SubObjectName: defualt-characters-action-cards-capitan-4
-        m_SubObjectGUID: 
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
         m_EditorAssetChanged: 0
   _errorValue:
     m_AssetGUID: 2ae9b9df514898e42b9644299ae5cece
     m_SubObjectName: action-card-shert
-    m_SubObjectGUID: 
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 0

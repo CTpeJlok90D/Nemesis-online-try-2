@@ -54,11 +54,12 @@ namespace UI.InventoryItems
 
         private void OnDisable()
         {
-            if (localTablet.CharacterPawn != null)
-            {
-                localTablet.PawnLinked -= OnPawnLink;
-                _inventory.ItemsListChanged -= OnItemListChange;
-            }
+            // if (localTablet != null && localTablet.CharacterPawn != null)
+            // {
+            //     localTablet.PawnLinked -= OnPawnLink;
+            //     _inventory.ItemsListChanged -= OnItemListChange;
+            // throwing error for now.
+            // }
         }
 
         private void OnPawnLink(PlayerTablet sender)

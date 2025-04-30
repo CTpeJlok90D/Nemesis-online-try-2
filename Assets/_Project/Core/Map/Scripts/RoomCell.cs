@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using AYellowpaper;
 using System.Linq;
 using System;
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -14,7 +15,7 @@ using UnityEditor;
 namespace Core.Maps
 {
     [Icon("Assets/_Project/Core/Map/Editor/icons8-room-96.png")]
-    public class RoomCell : NetworkBehaviour
+    public class RoomCell : NetworkBehaviour, IEnumerable<RoomContent>
     {
         public const int NOISE_CONTAINERS_COUNT = 4;
 
@@ -184,9 +185,19 @@ namespace Core.Maps
             _roomContentsNet.Remove(content.gameObject);
         }
 
+        public IEnumerator<RoomContent> GetEnumerator()
+        {
+            return (IEnumerator<RoomContent>)_roomContents.GetEnumerator();
+        }
+
         public override string ToString()
         {
             return $"{_roomTypeNet.Value}:{Number}";
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _roomContents.GetEnumerator();
         }
 
 #if UNITY_EDITOR

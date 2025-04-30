@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameSceneName: Default map
+  _lobbySceneName: Main menu
 --- !u!1 &2139480582891123771
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +174,7 @@ Transform:
   - {fileID: 7785771961076978582}
   - {fileID: 7538380468688443637}
   - {fileID: 9152507571286327180}
+  - {fileID: 4177574467574308780}
   m_Father: {fileID: 969355304065189613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3827944835764114232
@@ -543,6 +545,7 @@ MonoBehaviour:
   - {fileID: 608360353616057442}
   - {fileID: 2948928929127423999}
   - {fileID: 388445214987516629}
+  - {fileID: 1839915616848961946}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -741,6 +744,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionCardsDeck: {fileID: 11400000, guid: b217d9f4608bac6469ab3ad81e3a6eaa, type: 2}
+--- !u!1 &9145308310311814615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4177574467574308780}
+  - component: {fileID: 1839915616848961946}
+  m_Layer: 0
+  m_Name: Infection deck config installer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4177574467574308780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145308310311814615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2472517959088604098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839915616848961946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145308310311814615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e81dfa251f95148bcd21e5e7723e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7191649709675387308
 PrefabInstance:
   m_ObjectHideFlags: 0

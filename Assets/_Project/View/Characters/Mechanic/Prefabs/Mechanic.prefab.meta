@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 guid: 84195690149736d4b9628be525cfae20
 labels:
+- Character
 - Pawn
 PrefabImporter:
   externalObjects: {}

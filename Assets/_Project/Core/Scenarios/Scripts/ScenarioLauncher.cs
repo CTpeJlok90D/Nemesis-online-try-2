@@ -1,6 +1,6 @@
-using ModestTree;
+using System.Linq;
+using TNRD;
 using UnityEngine;
-using Zenject;
 
 namespace Core.Scenarios
 {
@@ -10,13 +10,16 @@ namespace Core.Scenarios
 
         [SerializeField] private bool _launchOnStart;
 
-        [Inject] private Scenario _scenario;
+        [SerializeField] private SerializableInterface<IContainsScenario> _scenario;
 
-        private int _currenctChapterIndex = 0;
+        private int _currentChapterIndex = 0;
 
         private bool _isLaunched;
 
-        public IChapter ActiveChapter => _scenario.Chapters[_currenctChapterIndex];
+        public IChapter ActiveChapter
+        {
+            get { return _scenario.Value.Scenario.Chapters[_currentChapterIndex]; }
+        }
 
         public event ScenarioCompletedListener ScenarioCompleted;
 
@@ -32,12 +35,12 @@ namespace Core.Scenarios
         {
             if (_isLaunched)
             {
-                new ScenarioException("Scenario is already launched");
+                throw new ScenarioException("Scenario is already launched");
             }
 
-            if (_scenario.Chapters.IsEmpty())
+            if (_scenario.Value.Scenario.Chapters.Any() == false)
             {
-                new ScenarioException("Scenario is empty");
+                throw new ScenarioException("Scenario is empty");
             }
 
             ActiveChapter.Ended += OnActiveChapterEnd;
@@ -48,9 +51,9 @@ namespace Core.Scenarios
         {
             ActiveChapter.Ended -= OnActiveChapterEnd;
 
-            _currenctChapterIndex++;
+            _currentChapterIndex++;
 
-            if (_currenctChapterIndex < _scenario.Chapters.Length)
+            if (_currentChapterIndex < _scenario.Value.Scenario.Chapters.Length)
             {
                 ActiveChapter.Ended += OnActiveChapterEnd;
                 ActiveChapter.Begin();

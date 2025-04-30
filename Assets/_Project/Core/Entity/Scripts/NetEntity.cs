@@ -7,8 +7,11 @@ namespace Core.Entity
     {
         private static List<T> _instances = new();
         
-        public static IReadOnlyList<T> Instances => _instances;
-        
+        public static IReadOnlyList<T> Instances
+        {
+            get { return _instances; }
+        }
+
         protected abstract T Instance { get; }
 
         protected virtual void OnEnable()

@@ -16,7 +16,7 @@ namespace Unity.Netcode.Custom
     {
         public delegate void ListChangedListener(NetScriptableObjectList4096<T> sender);
 
-        private const string SEPARATOR = "_|_";
+        private const string Separator = "_|_";
        
         private List<T> _cashedElements = new();
         
@@ -33,14 +33,17 @@ namespace Unity.Netcode.Custom
 
         }
 
-        public override FixedString4096Bytes Value 
+        public override FixedString4096Bytes Value
         {
-            get => throw new Exception("Cant change value. Use elements property to change array"); 
-            set => throw new Exception("Cant change value. Use elements property to change array"); 
+            get { throw new Exception("Cant change value. Use elements property to change array"); }
+            set { throw new Exception("Cant change value. Use elements property to change array"); }
         }
 
 
-        public int Count => Keys.Length;
+        public int Count
+        {
+            get { return Keys.Length; }
+        }
 
         public string[] Keys 
         {
@@ -49,17 +52,18 @@ namespace Unity.Netcode.Custom
                 string[] keys;
                 if (string.IsNullOrEmpty(base.Value.ToString()))
                 {
-                    keys = new string[0];
+                    keys = Array.Empty<string>();
                 }
                 else
                 {
-                    keys = base.Value.ToString().Split(SEPARATOR).ToArray();
+                    keys = base.Value.ToString().Split(Separator).ToArray();
                 }
                 return keys;
             }
             private set
             {
-                base.Value = string.Join(SEPARATOR, value);
+                base.Value = string.Join(Separator, value);
+                ListChanged?.Invoke(this);
             }
         }
 
@@ -111,6 +115,7 @@ namespace Unity.Netcode.Custom
                 keys.Add(key.Net.RuntimeLoadKey);
             }
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
 
         protected override void OnValueChange(FixedString4096Bytes previousValue, FixedString4096Bytes newValue)
@@ -206,6 +211,7 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Add(value.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
 
         public void AddRange(IEnumerable<T> values)
@@ -213,6 +219,7 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList(); 
             keys.AddRange(from x in values select x.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
 
         public int IndexOf(T item)
@@ -225,6 +232,7 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Insert(index, item.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
 
         public void RemoveAt(int index)
@@ -232,11 +240,13 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.RemoveAt(index);
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
 
         public void Clear()
         {
             base.Value = new();
+            ListChanged?.Invoke(this);
         }
 
         public bool Contains(T item)
@@ -259,6 +269,7 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Remove(item.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
             return true;
         }
 
@@ -272,6 +283,7 @@ namespace Unity.Netcode.Custom
             }
 
             Keys = keys.ToArray();
+            ListChanged?.Invoke(this);
         }
     }
 }

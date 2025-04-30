@@ -2,6 +2,7 @@
     "name": "Core.TimeTracks",
     "rootNamespace": "Core.TimeTrack",
     "references": [
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16",
         "GUID:e74d2f5357f23d044a37333c8efba8f2",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",
         "GUID:1491147abca9d7d4bb7105af628b223e",

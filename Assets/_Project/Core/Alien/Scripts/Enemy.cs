@@ -1,21 +1,30 @@
 using System.Collections.Generic;
+using Core.Entity;
 using Core.Maps;
 using TNRD;
-using Unity.Netcode;
 using UnityEngine;
-using Zenject;
 
 namespace Core.Aliens
 {
     [Icon("Assets/_Project/Core/Alien/Editor/monster.png")]
     [RequireComponent(typeof(RoomContent))]
-    public class Enemy : NetworkBehaviour
+    public class Enemy : NetEntity<Enemy>
     {
-        [SerializeField] private SerializableInterface<IAlienDamageHandler> _damageHandler;
-        [SerializeField] private AttackDice.Result[] _attacksToHit;
+        [field: SerializeField] private SerializableInterface<IAlienDamageHandler> _damageHandler;
+        [field: SerializeField] public AlienToken LinkedToken { get; private set; }
+        [field: SerializeField] private AttackDice.Result[] _attacksToHit;
+        
         public RoomContent RoomContent { get; private set; }
         
-        public AttackDice.Result[] AttacksToHit => _attacksToHit;
+        protected override Enemy Instance
+        {
+            get { return this; }
+        }
+        
+        public IReadOnlyCollection<AttackDice.Result> AttacksToHit
+        {
+            get { return _attacksToHit; }
+        }
 
         public Enemy Instantiate()
         {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Core.ActionsCards;
 using Core.Common;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -19,6 +20,7 @@ namespace UI.Hands
 
         private void OnEnable()
         {
+            _image.color = new  Color(1, 1, 1, 0);
             AsyncOperationHandle<Sprite> spriteLoadHandle;
             object runtimeKey = _cardImages[_actionCardContainer.ActionCard.ID].RuntimeKey;
             if (_loadHandles.ContainsKey(runtimeKey))
@@ -56,6 +58,7 @@ namespace UI.Hands
         {
             _image.sprite = handle.Result;
             _image.gameObject.SetActive(true);
+            _image.DOColor(Color.white, 0.5f);
         }
     }
 }

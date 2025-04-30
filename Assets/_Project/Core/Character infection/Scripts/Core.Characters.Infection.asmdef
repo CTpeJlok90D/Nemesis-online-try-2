@@ -1,0 +1,20 @@
+{
+    "name": "Core.Characters.Infection",
+    "rootNamespace": "Core.Characters.Infection",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:e4bbb787809e36348a4ae9c2360166dd",
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -12,18 +12,16 @@ namespace Core.PlayerTablets
     public class PlayerTabletList : NetworkBehaviour, IEnumerable<PlayerTablet>
     {
         [SerializeField] private PlayerTablet _playerTablet_PREFAB;
-
         private NetworkList<NetworkObjectReference> _activeTablets;
-
         private Starter.Activator _activator;
-
         private NetworkManager _networkManager;
 
         public PlayerTablet[] ActiveTablets => _activeTablets.ToEnumerable<PlayerTablet>().ToArray();
-
         public PlayerTablet Local => _activeTablets.ToEnumerable<PlayerTablet>().FirstOrDefault(x => x.Player.IsLocalPlayer);
+        private event NetworkList<NetworkObjectReference>.OnListChangedDelegate ActiveTabletsSynced;
 
-        private event NetworkList<NetworkObjectReference>.OnListChangedDelegate _activeTabletsSynced;
+        public delegate void TabletRemovedHandler(PlayerTabletList sender, PlayerTablet tablet);
+        public event TabletRemovedHandler TabletRemoved;
 
         public PlayerTablet FindTabletByPlayerNickname(string playerName)
         {
@@ -40,12 +38,12 @@ namespace Core.PlayerTablets
         {
             add 
             {
-                _activeTabletsSynced += value;
+                ActiveTabletsSynced += value;
                  _activeTablets.OnListChanged += value;
             }
             remove 
             {
-                _activeTabletsSynced -= value;
+                ActiveTabletsSynced -= value;
                  _activeTablets.OnListChanged -= value;
             }
         }
@@ -100,7 +98,7 @@ namespace Core.PlayerTablets
         protected override void OnNetworkPostSpawn()
         {
             NetworkListEvent<NetworkObjectReference> args = new();
-            _activeTabletsSynced?.Invoke(args);   
+            ActiveTabletsSynced?.Invoke(args);   
         }
 
         public PlayerTablet Add()
@@ -127,10 +125,11 @@ namespace Core.PlayerTablets
         public bool Remove(PlayerTablet playerTablet)
         {
             bool result = _activeTablets.Remove(playerTablet.NetworkObject);
-            
             if (result)
             {
                 playerTablet.Pass();
+                TabletRemoved?.Invoke(this, playerTablet);
+                
                 playerTablet.NetworkObject.Despawn();
             }
 

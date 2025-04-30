@@ -13,9 +13,9 @@ using Zenject;
 
 namespace Core.Scenarios
 {
-    public class GamePreparationScenarioInstaller : MonoInstaller
+    public class GamePreparationScenarioInstaller : MonoBehaviour, IContainsScenario
     {
-        [SerializeField] private OrderNumberDestributor _orderNumberDestributor;
+        [SerializeField] private OrderNumberDestributor _orderNumberDistributor;
 
         [SerializeField] private CharactersDealer _charactersDealer;
 
@@ -29,39 +29,34 @@ namespace Core.Scenarios
 
         [SerializeField] private ToggleGameObjectChapter _cameraChapter;
 
-        [SerializeField] private ScenarioLauncher _scenarioLauncher;
+        [SerializeField] private ScenarioLauncher _playersPhaseScenarioLauncher;
 
-        private Scenario _scenario;
+        [Inject] private KitStartConfig _kitStartConfig;
+        [Inject] private PlayerTabletList _playerTabletList;
+        [Inject] private LoadObserver _loadObserver;
         
-        public override void InstallBindings()
+        public Scenario Scenario { get; private set; }
+        
+        public void Awake()
         {
-            LoadObserverInstaller loadObserverInstaller = ProjectContext.Instance.GetComponentInChildren<LoadObserverInstaller>();
-            PlayerTabletListInstaller playerTabletListInstaller = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
-            KitStartConfig kitStartConfig = Container.Resolve<KitStartConfig>();
-
             GenerateMapChapter generateMapChapter = new(_map);
-            LoadObserver loadObserver = loadObserverInstaller.CharacterDealer;    
             Delay delay = new(1.5f);
 
             IChapter[] chapters =
             {
                 _cameraChapter,
                 generateMapChapter,
-                _orderNumberDestributor,
+                _orderNumberDistributor,
                 _missionDealer,
-                new AwaitOtherPlayers(loadObserver),
+                new AwaitOtherPlayers(_loadObserver),
                 delay,
                 new DealCharactersChapter(_charactersDealer),
-                new PawnsPlacer(playerTabletListInstaller.PlayerTabletList, _pawnPlacerConfig, _startRoom, kitStartConfig),
-                new LaunchScenarioChapter(_scenarioLauncher),
+                new PawnsPlacer(_playerTabletList, _pawnPlacerConfig, _startRoom, _kitStartConfig),
+                new LaunchScenarioChapter(_playersPhaseScenarioLauncher),
                 _cameraChapter,
             };
 
-            _scenario = new(chapters);
-
-            Container
-                .Bind<Scenario>()
-                .FromInstance(_scenario);
+            Scenario = new(chapters);
         }
     }
 }

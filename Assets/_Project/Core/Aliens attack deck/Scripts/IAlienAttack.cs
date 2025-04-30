@@ -1,10 +1,10 @@
 using Core.Aliens;
-using Core.Maps.CharacterPawns;
+using Core.PlayerTablets;
 
 namespace Core.AlienAttackDecks
 {
     public interface IAlienAttack
     {
-        public void Attack(Enemy executor, CharacterPawn target);
+        public void Attack(Enemy executor, PlayerTablet target);
     }
 }

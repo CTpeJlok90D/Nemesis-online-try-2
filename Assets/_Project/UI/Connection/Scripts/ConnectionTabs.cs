@@ -1,3 +1,4 @@
+using System;
 using Unity.Netcode;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,11 @@ namespace UI.Connection
             ValidateTabs();
             _networkManager.OnClientStarted += OnClientStart;
             _networkManager.OnClientStopped += OnClientStop;
+        }
+
+        private void Start()
+        {
+            ValidateTabs();
         }
 
         private void OnDisable()

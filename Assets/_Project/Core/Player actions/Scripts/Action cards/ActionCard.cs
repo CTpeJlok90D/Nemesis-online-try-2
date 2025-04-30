@@ -12,6 +12,7 @@ namespace Core.ActionsCards
         [field: SerializeField] public int Cost = 0;
         [field: SerializeField] private NetScriptableObject<ActionCard> _actionCard = new();
         [field: SerializeField] public string ID { get; private set; }
+        [field: SerializeField] public InfectionType Type { get; private set; }
 
         public NetScriptableObject<ActionCard> Net => _actionCard;
 
@@ -31,6 +32,13 @@ namespace Core.ActionsCards
             _actionCard.Preloaded -= OnCardLoaded;
             Cost = result.Cost;
             ID = result.ID;
+        }
+
+        public enum InfectionType
+        {
+            Basic,
+            FakeInfection,
+            Infection,
         }
 
 #if UNITY_EDITOR

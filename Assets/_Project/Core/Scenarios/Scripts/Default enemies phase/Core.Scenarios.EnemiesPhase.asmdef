@@ -1,0 +1,28 @@
+{
+    "name": "Core.Scenarios.EnemiesPhase",
+    "rootNamespace": "Core.Scenarios.EnemiesPhase",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:df2d1e4d4892f8b40bb4850d9f6be01e",
+        "GUID:3831e96cc44463d4e9b815bf7d538a7c",
+        "GUID:b7b6c6c9f68695f4fa7cef8b0c0c912f",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16",
+        "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:abeed9924bcb1ad458fff652f1a603b7",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:e4bbb787809e36348a4ae9c2360166dd",
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

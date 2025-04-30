@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Core.ActionsCards;
 using Core.Maps;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core.PlayerActions
 {
@@ -24,9 +21,9 @@ namespace Core.PlayerActions
 
         public virtual IEnumerable<RoomCell> GetPossibleRooms()
         {
-            RoomCell roomWithExecuter = RoomWithExecutor;
+            RoomCell roomWithExecutor = RoomWithExecutor;
             IEnumerable<RoomCell> result =
-                Map.Where(x => x.GetPassagesTo(roomWithExecuter).Length != 0 && x != roomWithExecuter);
+                Map.Where(x => x.GetPassagesTo(roomWithExecutor).Length != 0 && x != roomWithExecutor);
             
             return result;
         }

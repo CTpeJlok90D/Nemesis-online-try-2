@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Set aside
   m_EditorClassIdentifier: 
   Cost: 4
-  <Effect>k__BackingField: {fileID: 11400000, guid: 0a8649247c95c8647b0758ea30c2cdb4, type: 2}
   _actionCard:
     _selfAssetReference:
       m_AssetGUID: 2539834e570f2fd47bcff150a66f026b
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
   <ID>k__BackingField: Set aside
+  <Type>k__BackingField: 0

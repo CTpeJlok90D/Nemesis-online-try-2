@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -21,26 +22,26 @@ namespace Core.ActionsCards
 
         [Inject] private Config _config;
 
-        public async Task<IReadOnlyCollection<ActionCard>> GetHand() => await _hand.GetElements();
-        public async Task<IReadOnlyCollection<ActionCard>> GetDiscard() => await _discard.GetElements();
-        public async Task<IReadOnlyCollection<ActionCard>> GetMainDeck() => await _mainDeck.GetElements();
+        public async UniTask<IReadOnlyCollection<ActionCard>> GetHand() => await _hand.GetElements();
+        public async UniTask<IReadOnlyCollection<ActionCard>> GetDiscard() => await _discard.GetElements();
+        public async UniTask<IReadOnlyCollection<ActionCard>> GetMainDeck() => await _mainDeck.GetElements();
 
         public event NetScriptableObjectList4096<ActionCard>.ListChangedListener HandChanged
         {
-            add => _hand.ListChanged += value;
-            remove => _hand.ListChanged += value;
+            add { _hand.ListChanged += value; }
+            remove { _hand.ListChanged -= value; }
         }
 
         public event NetScriptableObjectList4096<ActionCard>.ListChangedListener DiscardChanged
         {
-            add => _discard.ListChanged += value;
-            remove => _discard.ListChanged += value;
+            add { _discard.ListChanged += value; }
+            remove { _discard.ListChanged -= value; }
         }
 
         public event NetScriptableObjectList4096<ActionCard>.ListChangedListener MainChanged
         {
-            add => _mainDeck.ListChanged += value;
-            remove => _mainDeck.ListChanged += value;
+            add { _mainDeck.ListChanged += value; }
+            remove { _mainDeck.ListChanged -= value; }
         }
 
         private void Awake()
@@ -80,29 +81,27 @@ namespace Core.ActionsCards
             }
         }
 
-        public async Task DrawCards(int count = -1)
+        public void AddCardToDiscard(ActionCard actionCard)
         {
-            try
-            {
-                if (count == -1)
-                {
-                    count = _config.MaxHandSize - _hand.Count;
-                }
+            _discard.Add(actionCard);
+        }
 
-                if (_mainDeck.Count < count)
-                {
-                    await ShuffleActionDeck();
-                }
-
-                ActionCard[] mainDeckCards = await _mainDeck.GetElements();
-                ActionCard[] cards = mainDeckCards.Take(count).ToArray();
-                _mainDeck.RemoveRange(cards);
-                _hand.AddRange(cards);
-            }
-            catch (Exception e)
+        public async UniTask DrawCards(int count = -1)
+        {
+            if (count == -1)
             {
-                Debug.LogException(e);
+                count = _config.MaxHandSize - _hand.Count;
             }
+
+            if (_mainDeck.Count < count)
+            {
+                await ShuffleActionDeck();
+            }
+
+            ActionCard[] mainDeckCards = await _mainDeck.GetElements();
+            ActionCard[] cards = mainDeckCards.Take(count).ToArray();
+            _mainDeck.RemoveRange(cards);
+            _hand.AddRange(cards);
         }
 
         public async Task ShuffleActionDeck()
@@ -150,11 +149,11 @@ namespace Core.ActionsCards
 
                 GUI.enabled = false;
                 GUILayout.Label($"Hand: {ActionCardsDeck._hand.Count}");
-                DisaplayCards(ActionCardsDeck._hand);
+                DisplayCards(ActionCardsDeck._hand);
                 GUILayout.Label($"Main deck: {ActionCardsDeck._mainDeck.Count}");
-                DisaplayCards(ActionCardsDeck._mainDeck);
+                DisplayCards(ActionCardsDeck._mainDeck);
                 GUILayout.Label($"Discard: {ActionCardsDeck._discard.Count}");
-                DisaplayCards(ActionCardsDeck._discard);
+                DisplayCards(ActionCardsDeck._discard);
                 GUI.enabled = true;
 
                 if (GUILayout.Button("Remove card"))
@@ -169,7 +168,7 @@ namespace Core.ActionsCards
                 }
             }
 
-            private void DisaplayCards(IEnumerable<ActionCard> cards)
+            private void DisplayCards(IEnumerable<ActionCard> cards)
             {
                 foreach (ActionCard actionCard in cards)
                 {

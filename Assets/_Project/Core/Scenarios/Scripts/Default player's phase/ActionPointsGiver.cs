@@ -4,7 +4,6 @@ using System.Linq;
 using Core.ActionsCards;
 using Core.PlayerActions;
 using Core.PlayerTablets;
-using ModestTree;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -93,7 +92,7 @@ namespace Core.Scenarios.PlayersPhase
 
                     IReadOnlyCollection<ActionCard> hand = await ActiveTablet.ActionCardsDeck.GetHand();
 
-                    if (hand.IsEmpty())
+                    if (hand.Any() == false)
                     {
                         ActiveTablet.IsPassed.Value = true;
                     }

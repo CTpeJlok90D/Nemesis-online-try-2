@@ -99,11 +99,12 @@ namespace Core.PlayerActions
                     throw new InvalidOperationException("Cant execute action: other action is executing");
                 }
 
-                _actionIsExecuting.Value = true;
                 if (IsOwner == false)
                 {
                     throw new Exception("Only object owner can execute actions");
                 }
+                
+                _actionIsExecuting.Value = true;
 
                 IGameAction gameAction = gameActionContainer.GameAction.Value;
                 
@@ -166,6 +167,13 @@ namespace Core.PlayerActions
                 {
                     _noiseContainerSelectionNet.Clear();
                     INoiseContainer[] selection = await _noiseContainerSelection.SelectFrom(needTunnels.NoiseContainerSelectionSource, needTunnels.RequiredNoiseContainerCount);
+
+                    if (selection.Length != needTunnels.RequiredNoiseContainerCount)
+                    {
+                        _actionIsExecuting.Value = false;
+                        return;
+                    }
+                    
                     needTunnels.SelectedNoiseContainers = selection;
 
                     foreach (INoiseContainer noiseContainer in selection)
@@ -178,6 +186,13 @@ namespace Core.PlayerActions
                 {
                     _roomContentSelectionNet.Clear();
                     RoomContent[] selection = await _roomContentSelection.SelectFrom(gameActionWithRoomContentSelection.RoomContentSelectionSource, gameActionWithRoomContentSelection.RequiredRoomContentCount);
+                    
+                    if (selection.Length != gameActionWithRoomContentSelection.RequiredRoomContentCount)
+                    {
+                        _actionIsExecuting.Value = false;
+                        return;
+                    }
+                    
                     gameActionWithRoomContentSelection.RoomContentSelection = selection;
                     
                     foreach (RoomContent roomContent in selection)
@@ -186,8 +201,8 @@ namespace Core.PlayerActions
                     }
                 }
                 
-                Execute_RPC(gameActionContainer);
                 _actionIsExecuting.Value = false;
+                Execute_RPC(gameActionContainer);
             }
             catch (Exception e)
             {
@@ -316,6 +331,7 @@ namespace Core.PlayerActions
             _selectionActionCards.Clear();
             _noiseContainerSelectionNet.Clear();
             _roomContentSelectionNet.Clear();
+            _actionIsExecuting.Value = false;
         }
     }
 }

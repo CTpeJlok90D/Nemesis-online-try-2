@@ -12,7 +12,7 @@ namespace Core.EventsDeck
     public class EventsDeck : NetworkBehaviour
     {
         public delegate void EventCardPlayedListener(EventsDeck sender, EventCard card);
-        [Header("Nulleble")]
+        
         [SerializeField] private List<EventCard> _deck;
 
         [SerializeField] private List<EventCard> _discard;

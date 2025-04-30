@@ -1,0 +1,19 @@
+{
+    "name": "Core.ResultEvaluators",
+    "rootNamespace": "Core.ResultEvaluators",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:3231e794d69047f44af3464dcbc2e6ca",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

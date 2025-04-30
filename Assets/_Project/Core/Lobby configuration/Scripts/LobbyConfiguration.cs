@@ -4,6 +4,7 @@ using Core.AlienAttackDecks;
 using Core.Characters.Health;
 using Core.CharacterInventorys;
 using Core.Characters;
+using Core.Characters.Infection;
 using Core.EventsDeck;
 using Core.Maps;
 using Core.Maps.Generation;
@@ -36,6 +37,8 @@ namespace Core.Lobbies
         public KitStartConfig KitStartConfig;
         
         public HeavyDamageDeck.Config HeavyDamageDeckConfig;
+        
+        public InfectionDeck.Config InfectionDeckConfiguration;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -50,6 +53,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref AliensAttackDeckConfig);  
             serializer.SerializeValue(ref KitStartConfig);
             serializer.SerializeValue(ref HeavyDamageDeckConfig);
+            serializer.SerializeValue(ref InfectionDeckConfiguration);
         }
     }
 }

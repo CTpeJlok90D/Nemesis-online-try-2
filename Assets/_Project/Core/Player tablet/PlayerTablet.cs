@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.ActionsCards;
@@ -8,6 +9,8 @@ using Core.Characters.Health;
 using Core.Missions;
 using Core.Players;
 using Core.Maps.CharacterPawns;
+using Cysharp.Threading.Tasks;
+using ModestTree;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -32,7 +35,7 @@ namespace Core.PlayerTablets
 
         private ToBookResult _result;
 
-        private NetVariable<NetworkObjectReference> _linkedCharacterPawn;
+        private NetBehaviourReference<CharacterPawn> _linkedCharacterPawn;
 
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
         public NetVariable<Character> Character { get; private set; }
@@ -80,18 +83,7 @@ namespace Core.PlayerTablets
         {
             _linkedCharacterPawn.Value = characterPawn.NetworkObject;
             
-            SmallItemsInventory = characterPawn.SmallItemsInventory;
-            BigItemsInventory = characterPawn.BigItemsInventory;
-            ActionCardsDeck = characterPawn.ActionCardsDeck;
-            
             ActionCardsDeck.InitializeDeck(_actionCardsDecksDictionary[characterPawn.LinkedCharacter.Id]);
-
-            if (Health != null)
-            {
-                Health.Dead -= OnPawnDeath;
-            }
-            Health = characterPawn.Health;
-            Health.Dead += OnPawnDeath;
             
             PawnLinked?.Invoke(this);
         }
@@ -104,11 +96,49 @@ namespace Core.PlayerTablets
         private void OnEnable()
         {
             Player.Left += OnPlayerLeft;
+            _linkedCharacterPawn.ReferenceChanged += OnCharacterPawnChange;
         }
 
         private void OnDisable()
         {
             Player.Left -= OnPlayerLeft;
+            _linkedCharacterPawn.ReferenceChanged -= OnCharacterPawnChange;
+        }
+
+        private void OnCharacterPawnChange(CharacterPawn oldValue, CharacterPawn newValue)
+        {
+            SmallItemsInventory = newValue.SmallItemsInventory;
+            BigItemsInventory = newValue.BigItemsInventory;
+
+            if (ActionCardsDeck != null)
+            {
+                ActionCardsDeck.HandChanged -= OnHandChange;
+            }
+            
+            ActionCardsDeck = newValue.ActionCardsDeck;
+            ActionCardsDeck.HandChanged += OnHandChange;
+            
+            if (Health != null)
+            {
+                Health.Dead -= OnPawnDeath;
+            }
+            Health = newValue.Health;
+            Health.Dead += OnPawnDeath;
+        }
+
+        private void OnHandChange(NetScriptableObjectList4096<ActionCard> sender)
+        {
+            _ = TryPass();
+        }
+
+        private async UniTask TryPass()
+        {
+            IReadOnlyCollection<ActionCard> hand = await ActionCardsDeck.GetHand();
+            if (hand.IsEmpty())
+            {
+                Pass();
+                Debug.Log($"{Player} is passed");
+            }
         }
 
         private void OnPlayerLeft(Player player)

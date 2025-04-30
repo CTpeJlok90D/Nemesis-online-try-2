@@ -1,9 +1,12 @@
+using System;
 using Core.ActionsCards;
 using Core.CharacterInventorys;
 using Core.Characters;
 using Core.Characters.Health;
 using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Core.Maps.CharacterPawns
 {
@@ -18,6 +21,15 @@ namespace Core.Maps.CharacterPawns
         [field: SerializeField] public Character LinkedCharacter { get; private set; }
         
         [field: SerializeField, HideInInspector] public RoomContent RoomContent { get; private set; }
+        
+        public NetVariable<bool> IsSignalSent { get; private set; }
+        public NetVariable<bool> IsHaveSlime { get; private set; }
+
+        private void Awake()
+        {
+            IsSignalSent = new NetVariable<bool>();
+            IsHaveSlime = new NetVariable<bool>();
+        }
 
         public CharacterPawn Instantiate()
         {
