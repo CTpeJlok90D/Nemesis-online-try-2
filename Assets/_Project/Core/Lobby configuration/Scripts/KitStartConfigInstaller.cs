@@ -1,5 +1,5 @@
 using System;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using UnityEngine;
 using Zenject;
 

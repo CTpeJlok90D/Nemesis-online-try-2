@@ -55,7 +55,12 @@ namespace Core.Scenarios.EnemiesPhase
                 return;
             }
             
-            RoomCell hiveRoom = _map.RoomCells.First(x => x.Type == _hiveRoomType);
+            RoomCell hiveRoom = _map.RoomCells.FirstOrDefault(x => x.Type == _hiveRoomType);
+
+            if (hiveRoom == null)
+            {
+                throw new InvalidOperationException($"Hive room was not found");
+            }
             
             HiveDevelopment hiveDevelopment = new(_hiveDevelopment, hiveRoom, _defaultEnemySummoner);
             _diContainer.Inject(hiveDevelopment);

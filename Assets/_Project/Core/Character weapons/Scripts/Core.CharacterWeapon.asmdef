@@ -2,9 +2,15 @@
     "name": "Core.CharacterWeapons",
     "rootNamespace": "Core.CharacterWeapons",
     "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:d525ad6bd40672747bde77962f1c401e",
         "GUID:8d53cdc02a021ea428201c8116b6e8f6",
-        "GUID:0e6589339fff75b42b1846f64d4c86c0"
+        "GUID:0e6589339fff75b42b1846f64d4c86c0",
+        "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:d19caaf46d78fa64c91f14801b1f8d84"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

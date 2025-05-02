@@ -1,15 +1,15 @@
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using UnityEngine;
 
 namespace UI.Selection.InventoryItemsSelections
 {
     public class InventoryItemSelectionItem : MonoBehaviour, IContainsInventoryItemInstance
     {
-        public InventoryItemInstance Item { get; private set; }
+        public InventoryItem Item { get; private set; }
         
         public InventoryItemsSelectionItemsSpawner Spawner { get; private set; }
 
-        public InventoryItemSelectionItem Instantiate(InventoryItemInstance item, InventoryItemsSelectionItemsSpawner itemsSpawner, Transform parent)
+        public InventoryItemSelectionItem Instantiate(InventoryItem item, InventoryItemsSelectionItemsSpawner itemsSpawner, Transform parent)
         {
             gameObject.SetActive(false);
             InventoryItemSelectionItem result = Instantiate(this, parent);
@@ -18,7 +18,7 @@ namespace UI.Selection.InventoryItemsSelections
             return result.Init(item, itemsSpawner);
         }
 
-        public InventoryItemSelectionItem Init(InventoryItemInstance item, InventoryItemsSelectionItemsSpawner itemsSpawner)
+        public InventoryItemSelectionItem Init(InventoryItem item, InventoryItemsSelectionItemsSpawner itemsSpawner)
         {
             Item = item;
             Spawner = itemsSpawner;

@@ -1,5 +1,5 @@
 using System;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Selection.InventoryItems;
 using Cysharp.Threading.Tasks;
 using Unity.Netcode.Custom;
@@ -10,13 +10,13 @@ namespace Core.PlayerActions.Base
     {
         public int RequiredItemsAmount { get; }
         
-        public InventoryItemInstance[] InventoryItemsSource { get; }
+        public InventoryItem[] InventoryItemsSource { get; }
         
-        public InventoryItemInstance[] InventoryItemsSelection { get; set; }
+        public InventoryItem[] InventoryItemsSelection { get; set; }
 
-        internal async UniTask<InventoryItemInstance[]> GetSelectionLocal(InventoryItemsSelection selection)
+        internal async UniTask<InventoryItem[]> GetSelectionLocal(InventoryItemsSelection selection)
         {
-            InventoryItemInstance[] selected = await selection.SelectFrom(InventoryItemsSource, RequiredItemsAmount);
+            InventoryItem[] selected = await selection.SelectFrom(InventoryItemsSource, RequiredItemsAmount);
 
             InventoryItemsSelection = selected;
             return selected;

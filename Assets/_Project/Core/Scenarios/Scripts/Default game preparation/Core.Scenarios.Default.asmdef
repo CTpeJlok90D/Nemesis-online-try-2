@@ -2,6 +2,10 @@
     "name": "Core.Scenarios.Default",
     "rootNamespace": "Core.Scenarios.Default",
     "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
         "GUID:d525ad6bd40672747bde77962f1c401e",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",

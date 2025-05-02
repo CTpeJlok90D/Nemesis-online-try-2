@@ -12,7 +12,7 @@ namespace Core.Maps
     public struct EnemiesConfig : INetworkSerializable
     {
         [SerializedDictionary("Alien token", "Enemy prefab")]
-        public SerializedDictionary<AlienToken, AssetReference> TypeOfEnemies;
+        public SerializedDictionary<string, AssetReference> TypeOfEnemies;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -38,12 +38,12 @@ namespace Core.Maps
 
             for (int i = 0; i < count; i++)
             {
-                AlienToken alienToken = null;
+                FixedString128Bytes alienType = string.Empty;
                 if (serializer.IsWriter)
                 {
-                    alienToken = TypeOfEnemies.Keys.ElementAt(i);
+                    alienType = TypeOfEnemies.Keys.ElementAt(i);
                 }
-                serializer.SerializeValue(ref alienToken);
+                serializer.SerializeValue(ref alienType);
 
                 FixedString128Bytes addressableKey = new();
                 if (serializer.IsWriter)
@@ -56,7 +56,7 @@ namespace Core.Maps
 
                 if (serializer.IsReader)
                 {
-                    TypeOfEnemies.Add(alienToken, enemy);
+                    TypeOfEnemies.Add(alienType.ToString(), enemy);
                 }
             }
         }

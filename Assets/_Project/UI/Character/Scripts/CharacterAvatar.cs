@@ -58,17 +58,19 @@ namespace UI.Characters
             }
 
             AssetReferenceT<Sprite> avatarReference = _avatars[_character.Id];
-            AsyncOperationHandle<Sprite> assetReferenceHandle = avatarReference.LoadAssetAsync();
+            AsyncOperationHandle<Sprite> assetReferenceHandle = Addressables.LoadAssetAsync<Sprite>(avatarReference.RuntimeKey);
             assetReferenceHandle.Completed += OnHandleLoad;
 
             _avatarLoadHandles.Add(_character.Id, assetReferenceHandle);
             _image.color = new Color(1,1,1,0);
-
-            
         }
 
         private void OnHandleLoad(AsyncOperationHandle<Sprite> handle)
         {
+            if (_image == null)
+            {
+                return;
+            }
             _image.sprite = handle.Result;
             _image.DOColor(Color.white, 0.5f);
         }

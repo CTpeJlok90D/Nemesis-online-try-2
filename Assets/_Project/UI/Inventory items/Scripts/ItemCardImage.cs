@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Common;
 using OdinSerializer;
 using TNRD;

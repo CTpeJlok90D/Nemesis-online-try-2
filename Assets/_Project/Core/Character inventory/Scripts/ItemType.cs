@@ -1,4 +1,4 @@
-namespace Core.CharacterInventorys
+namespace Core.CharacterInventories
 {
     public enum ItemType
     {

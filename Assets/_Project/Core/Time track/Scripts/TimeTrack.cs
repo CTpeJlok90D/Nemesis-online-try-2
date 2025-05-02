@@ -18,11 +18,6 @@ namespace Core.TimeTracks
         public NetVariable<bool> IsActive { get; private set; }
 
         public event TimeOutListener TimeOut;
-
-        protected override TimeTrack Instance
-        {
-            get { return this; }
-        }
         
         protected virtual void Awake()
         {

@@ -2,14 +2,15 @@ using System;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using Core.Characters;
+using Unity.Collections;
 using Unity.Netcode;
 
-namespace Core.CharacterInventorys
+namespace Core.CharacterInventories
 {
     [Serializable]
     public struct KitStartConfig : INetworkSerializable
     {
-        public SerializedDictionary<Character, InventoryItem[]> StartItems;
+        public SerializedDictionary<Character, string[]> StartItems;
         
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -37,16 +38,33 @@ namespace Core.CharacterInventorys
                 }
                 serializer.SerializeValue(ref character);
 
-                InventoryItem[] characterStartItems = {};
+                FixedString128Bytes[] characterStartItems = {};
                 if (serializer.IsWriter)
                 {
-                    characterStartItems = StartItems[character];
+                    characterStartItems = StartItems[character].Select(x => new FixedString128Bytes(x)).ToArray();
                 }
-                serializer.SerializeValue(ref characterStartItems);
+
+                int itemsCount = 0;
+                if (serializer.IsWriter)
+                {
+                    itemsCount = StartItems.Count;
+                }
 
                 if (serializer.IsReader)
                 {
-                    StartItems.Add(character, characterStartItems);
+                    characterStartItems = new FixedString128Bytes[itemsCount];
+                }
+                
+                serializer.SerializeValue(ref itemsCount);
+
+                for (int j = 0; j < itemsCount; j++)
+                {
+                    serializer.SerializeValue(ref characterStartItems[i]);
+                }
+
+                if (serializer.IsReader)
+                {
+                    StartItems.Add(character, characterStartItems.Select(x => x.ToString()).ToArray());
                 }
             }
         }

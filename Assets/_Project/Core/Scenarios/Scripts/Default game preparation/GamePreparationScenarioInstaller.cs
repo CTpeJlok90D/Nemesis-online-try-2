@@ -1,5 +1,5 @@
 using Core.CharacterChoose;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.LoadObservers;
 using Core.Maps;
 using Core.Maps.Generation;

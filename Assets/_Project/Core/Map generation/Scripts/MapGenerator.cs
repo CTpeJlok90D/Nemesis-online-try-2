@@ -130,15 +130,15 @@ namespace Core.Maps.Generation
 
             foreach (RoomCell roomCell in _map)
             {
-                if (_runtimeBags.TryGetValue(roomCell.Layer, out Bag<RoomType> bagOfRooms) == false)
+                if (_runtimeBags.ContainsKey(roomCell.Layer) == false)
                 {
                     continue;   
                 }
 
-                RoomType content = bagOfRooms.PickOne();
+                RoomType content = _runtimeBags[roomCell.Layer].PickOne();
                 roomCell.Init(content);
 
-                if (bagOfRooms.Items.Count == 0)
+                if (_runtimeBags[roomCell.Layer].Items.Count == 0)
                 {
                     _runtimeBags[roomCell.Layer] = new(_mapGeneratorConfiguration.BagsOfRooms[roomCell.Layer].Items);
                     roomsIsOut = true;

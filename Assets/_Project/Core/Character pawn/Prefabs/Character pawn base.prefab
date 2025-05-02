@@ -338,6 +338,7 @@ MonoBehaviour:
   <ActionCardsDeck>k__BackingField: {fileID: 8065952492010974330}
   <Health>k__BackingField: {fileID: 3896466769294103816}
   <LinkedCharacter>k__BackingField: {fileID: 0}
+  _hands_PREFAB: {fileID: 6539736198452144749, guid: 3d6d9eee0381cb249a49265be4969c74, type: 3}
   <RoomContent>k__BackingField: {fileID: 7221685528939834980}
 --- !u!114 &5339736004703658927
 MonoBehaviour:

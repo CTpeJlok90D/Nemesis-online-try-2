@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f2523d0343852a64d9bddf5e76466612
   m_SerializeEntries:
-  - m_GUID: 02b8109eb0df2204fa76e33f103463f8
-    m_Address: Scientist pistol
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 05f621b2eb9afa2479c80e0375d09b03
     m_Address: Assets/_Project/Data/Map/Control point/Destinations/Deep space.asset
     m_ReadOnly: 0
@@ -75,6 +70,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17ff339965d9ae04b9e4b069593c323b
+    m_Address: Capitan revolver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a93bb2c9fcb782448e5417e395a6047
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/hive.prefab
     m_ReadOnly: 0
@@ -105,11 +105,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2704486a46755ca48ba5e9152376e206
-    m_Address: Scout rifle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 291eacc0adf5e414b87687648d15a19c
     m_Address: Assets/_Project/Data/Map/Room contents/Default room 3.asset
     m_ReadOnly: 0
@@ -122,11 +117,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35de4af51585ba14ea7df8f8149f7014
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 36ce9ebdffa528641a39ba13184d1513
-    m_Address: Hands
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -160,13 +150,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d6d9eee0381cb249a49265be4969c74
+    m_Address: Hands
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ef1b9b652711244fb59d7055caa27d5
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/armory.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 420e8a2fdd0bceb4db9f4f84418ea94a
+    m_Address: Pilot shotgun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 44845ecfeb3c09e418026ee69e80399d
     m_Address: Assets/_Project/Data/Event cards/Test event card.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44fbc4e9467039f4fa93cbabf343fcda
+    m_Address: Mechanic shotgun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -286,8 +291,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 79564ffef084d7c4cbaa3a84c0339014
-    m_Address: Capitan revolver
+  - m_GUID: 790bf6854d7e71845a8e7324bd04207a
+    m_Address: Scientist pistol
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -337,13 +342,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8ed00b6299b2c3243a3c71a5d9a34484
-    m_Address: Mechanic shotgun
+  - m_GUID: 90d47e4cd9977024c9e30a414f5d14d8
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Fire intellegence token.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 90d47e4cd9977024c9e30a414f5d14d8
-    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Fire intellegence token.asset
+  - m_GUID: 91942d36fad6b6943a4ec96ecea5cb65
+    m_Address: Scout rifle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -437,11 +442,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c81964fa89f76c74a9cb2272e4065f10
-    m_Address: Soldier rifle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8e3f96c1b20f7f4b9facf277d986484
     m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/item-card-sherts.png
     m_ReadOnly: 0
@@ -459,6 +459,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dd74b7ca7aa245b4398fbb45316925cc
     m_Address: Assets/_Project/Data/Characters/Scientist.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de2f395e80e419d49ae76f47476f05c2
+    m_Address: Soldier rifle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -515,11 +520,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f45563ac563f9d74b9d7314b880c47b6
     m_Address: Adult intruter alien token
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f505ae05af6bde945a7e85b3381c5476
-    m_Address: Pilot shotgun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

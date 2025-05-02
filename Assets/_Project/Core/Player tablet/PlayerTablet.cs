@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.ActionsCards;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Health;
 using Core.Missions;

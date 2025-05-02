@@ -1,9 +1,10 @@
 using System;
 using Core.ActionsCards;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Health;
 using Core.Characters.Tokens;
+using Core.Entity;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -13,17 +14,19 @@ namespace Core.Maps.CharacterPawns
 {
     [RequireComponent(typeof(RoomContent))]
     [Icon("Assets/_Project/Core/Map/Editor/icons8-pawn-96.png")]
-    public class CharacterPawn : NetworkBehaviour
+    public class CharacterPawn : NetEntity<CharacterPawn>
     {
         [field: SerializeField] public Inventory SmallItemsInventory { get; private set; }
         [field: SerializeField] public Inventory BigItemsInventory { get; private set; }
         [field: SerializeField] public ActionCardsDeck ActionCardsDeck { get; private set; }
         [field: SerializeField] public CharacterHealth Health { get; private set; }
         [field: SerializeField] public Character LinkedCharacter { get; private set; }
-        
+        [field: SerializeField] private InventoryItem _hands_PREFAB;
         [field: SerializeField, HideInInspector] public RoomContent RoomContent { get; private set; }
         
         public NetScriptableObjectList4096<CharacterToken> Tokens { get; private set; }
+        
+        public static InventoryItem Hands { get; private set; }
 
         public CharacterPawn Instantiate()
         {
@@ -35,6 +38,13 @@ namespace Core.Maps.CharacterPawns
             
             characterInstance.gameObject.SetActive(true);
             characterInstance.NetworkObject.Spawn();
+            
+            if (Hands == null)
+            {
+                Hands = Instantiate(_hands_PREFAB);
+                Hands.NetworkObject.Spawn();
+            }
+            
             return characterInstance;
         }
         

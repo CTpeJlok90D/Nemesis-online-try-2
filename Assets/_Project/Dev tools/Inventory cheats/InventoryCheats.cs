@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Players;
 using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;

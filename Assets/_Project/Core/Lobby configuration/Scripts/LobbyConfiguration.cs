@@ -2,7 +2,7 @@ using System;
 using Core.ActionsCards;
 using Core.AlienAttackDecks;
 using Core.Characters.Health;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Infection;
 using Core.EventsDecks;

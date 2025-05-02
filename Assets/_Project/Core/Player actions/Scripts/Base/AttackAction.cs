@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AYellowpaper.SerializedCollections;
 using Core.Aliens;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.CharacterWeapons;
 using Core.Maps;
+using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
-using Unity.Collections;
+using UnityEditor.Android;
 using UnityEngine;
 
 namespace Core.PlayerActions.Base
@@ -15,23 +15,31 @@ namespace Core.PlayerActions.Base
     [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Attack action")]
     public class AttackAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomContentSelection, IRequireInventoryItems
     {
-        [SerializeField] private InventoryItem _hands;
-        
         private InventoryItem _attackItem;
         
         private PlayerTablet _executor;
+        private InventoryItem _handsInstance;
         public int RequaredPaymentCount => 1;
         public int RequiredItemsAmount => 1;
         public RoomContent[] RoomContentSelection { get; set; } = Array.Empty<RoomContent>();
-        public InventoryItemInstance[] InventoryItemsSelection { get; set; } = Array.Empty<InventoryItemInstance>();
+        public InventoryItem[] InventoryItemsSelection { get; set; } = Array.Empty<InventoryItem>();
 
-        public InventoryItemInstance[] InventoryItemsSource
+        public InventoryItem[] InventoryItemsSource
         {
             get
-            { 
-                List<InventoryItemInstance> itemsWithDamage = _executor.BigItemsInventory.GetItems().Where(x => x.DataJson.ToString().Contains(WeaponDamage.DAMAGE_DATA_NAME)).ToList();
-                InventoryItemInstance handsInstance = new(_hands);
-                itemsWithDamage.Add(handsInstance);
+            {
+                List<InventoryItem> itemsWithDamage = _executor.BigItemsInventory.GetItems()
+                    .Where(x => 
+                        x.TryGetComponent(out WeaponDamage weaponDamage) 
+                        && 
+                            (
+                                x.TryGetComponent(out MagazineSize magazineSize) == false 
+                                || 
+                                magazineSize.AmmoCount.Value > 0)
+                            )
+                    .ToList();
+                
+                itemsWithDamage.Add(CharacterPawn.Hands);
                 
                 return itemsWithDamage.ToArray();
             }
@@ -74,19 +82,19 @@ namespace Core.PlayerActions.Base
                 };
             }
             
-            InventoryItemInstance selectedWeapon = InventoryItemsSelection.First();
-            string weaponDataJson = selectedWeapon.DataJson.ToString();
-            SerializedDictionary<string, object> weaponData = JsonUtility.FromJson<SerializedDictionary<string, object>>(weaponDataJson);
+            InventoryItem selectedWeapon = InventoryItemsSelection.First();
+            WeaponDamage weaponDamage = selectedWeapon.GetComponent<WeaponDamage>();
+            MagazineSize magazineSize = selectedWeapon.GetComponent<MagazineSize>();
 
-            if (weaponData.TryGetValue(WeaponDamage.DAMAGE_DATA_NAME, out object value) == false)
+            if (weaponDamage == null || magazineSize != null && magazineSize.AmmoCount.Value == 0)
             {
                 return new()
                 {
                     Result = false,
-                    Error = new InvalidOperationException("Selected inventory item doesn't have a damage property.")
+                    Error = new InvalidOperationException("Selected weapon is invalid")
                 };
             }
-
+            
             RoomContent roomContent = RoomContentSelection.First();
             Enemy enemy = roomContent.GetComponent<Enemy>();
 
@@ -132,44 +140,31 @@ namespace Core.PlayerActions.Base
             RoomContent roomContent = RoomContentSelection.First();
             Enemy enemy = roomContent.GetComponent<Enemy>();
 
-            InventoryItemInstance selectedWeapon = InventoryItemsSelection.First();
-            string weaponDataJson = selectedWeapon.DataJson.ToString();
-            SerializedDictionary<string, string> weaponData = JsonUtility.FromJson<SerializedDictionary<string, string>>(weaponDataJson);
+            InventoryItem selectedWeapon = InventoryItemsSelection.First();
 
-            _executor.ActionCount.Value--;
+            WeaponDamage weaponDamage = selectedWeapon.GetComponent<WeaponDamage>();
+            
             AttackDice.Result rollResult = AttackDice.Roll();
+            int damage = weaponDamage.GetDamageFor(rollResult, enemy);
 
-            int damage = 0;
-            string value = "";
-
-            if (weaponData.TryGetValue(WeaponDamage.DAMAGE_DATA_NAME, out value))
+            if (selectedWeapon.TryGetComponent(out MagazineSize magazineSize))
             {
-                damage = Convert.ToInt32(value);
-            }
-
-            if (weaponData.TryGetValue(WeaponDamage.CONST_DAMAGE_DATA_NAME, out value))
-            {
-                damage += Convert.ToInt32(value);
-            }
-
-            if (weaponData.TryGetValue(WeaponDamage.ADDITIONAL_DAMAGE_DATA_NAME, out value))
-            {
-                SerializedDictionary<AttackDice.Result, int> additionalDamage = JsonUtility.FromJson<SerializedDictionary<AttackDice.Result, int>>(value);
-
-                if (additionalDamage.ContainsKey(rollResult))
-                {
-                    damage += additionalDamage[rollResult];
-                }
+                magazineSize.AmmoCount.Value--;
             }
             
+            enemy.Damage(damage);
             if (enemy.AttacksToHit.Contains(rollResult))
             {
                 Debug.Log($"Damage: {damage} to {enemy}. Roll Result: {rollResult}");
-                enemy.Damage(damage);
             }
             else
             {
                 Debug.Log($"Miss! Roll result: {rollResult}. Required to hit: {string.Join(", ", enemy.AttacksToHit)}");
+            }
+
+            foreach (IAttackPostProcessor postProcessor in selectedWeapon.GetComponents<IAttackPostProcessor>())
+            {
+                postProcessor.PostProcessAttack(_executor, enemy, rollResult);
             }
         }
     }

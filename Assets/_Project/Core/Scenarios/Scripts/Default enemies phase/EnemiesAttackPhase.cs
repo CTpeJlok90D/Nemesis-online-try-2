@@ -33,7 +33,7 @@ namespace Core.Scenarios.EnemiesPhase
         {
             IReadOnlyCollection<Enemy> enemies = NetEntity<Enemy>.Instances;
 
-            foreach (Enemy enemy in enemies)
+            foreach (Enemy enemy in enemies.ToArray())
             {
                 List<CharacterPawn> characterPawns = enemy.RoomContent.Owner.GetContentWith<CharacterPawn>().ToList();
                 

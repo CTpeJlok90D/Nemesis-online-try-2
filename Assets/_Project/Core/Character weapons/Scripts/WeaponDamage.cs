@@ -1,18 +1,17 @@
 using System.Collections.Generic;
-using Core.CharacterInventorys;
+using System.Linq;
+using Core.CharacterInventories;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
+using Core.Aliens;
+using Unity.Netcode;
 
 namespace Core.CharacterWeapons
 {
     [Icon("Assets/_Project/Core/Character weapons/Editor/icons8-hate-96.png")]
     [CreateAssetMenu(menuName = "Game/Inventory/Weapon damage")]
-    public class WeaponDamage : ScriptableObject, IItemData
+    public class WeaponDamage : NetworkBehaviour
     {
-        public const string DAMAGE_DATA_NAME = "Damage";
-        public const string CONST_DAMAGE_DATA_NAME = "Const damage";
-        public const string ADDITIONAL_DAMAGE_DATA_NAME = "Additional damage";
-        
         [SerializeField] private SerializedDictionary<AttackDice.Result, int> _additionalDamagePerAttackTypes;
         [SerializeField] private int _baseDamage = 1;
         [SerializeField] private int _constantDamage = 0;
@@ -21,19 +20,20 @@ namespace Core.CharacterWeapons
         public int BaseDamage => _baseDamage;
         public int ConstantDamage => _constantDamage;
 
-        SerializedDictionary<string, string> IItemData.StartItemData
+        public int GetDamageFor(AttackDice.Result rollResult, Enemy enemy)
         {
-            get
-            {
-                SerializedDictionary<string, string> result = new()
-                {
-                    { DAMAGE_DATA_NAME, _baseDamage.ToString() },
-                    { CONST_DAMAGE_DATA_NAME, _constantDamage.ToString() },
-                    { ADDITIONAL_DAMAGE_DATA_NAME, JsonUtility.ToJson(_additionalDamagePerAttackTypes) }
-                };
+            int result = _constantDamage;
 
-                return result;
+            if (enemy.AttacksToHit.Contains(rollResult))
+            {
+                result += _baseDamage;
+                if (AdditionalDamagePerAttackTypes.TryGetValue(rollResult, out int value))
+                {
+                    result += value;
+                }
             }
+            
+            return result;
         }
     }
 }

@@ -12,16 +12,14 @@ namespace Core.Entity
             get { return _instances; }
         }
 
-        protected abstract T Instance { get; }
-
         protected virtual void OnEnable()
         {
-            _instances.Add(Instance);
+            _instances.Add((T)(object)this);
         }
 
         protected virtual void OnDisable()
         {
-            _instances.Remove(Instance);
+            _instances.Remove((T)(object)this);
         }
     }
 }

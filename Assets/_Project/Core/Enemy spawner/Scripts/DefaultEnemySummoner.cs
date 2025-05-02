@@ -27,8 +27,8 @@ namespace MyNamespace
             {
                 return null;
             }
-
-            AssetReference enemyAssetReference = _enemiesConfig.TypeOfEnemies[alienToken];
+            
+            AssetReference enemyAssetReference = _enemiesConfig.TypeOfEnemies[alienToken.AlienType];
             Enemy enemy;
 
             if (enemyAssetReference.OperationHandle.IsValid())

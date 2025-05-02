@@ -15,8 +15,6 @@ namespace Core.Maps
 
         public delegate void DespawnedHandler(RoomContent sender);
         public static event DespawnedHandler Despawned;
-        
-        protected override RoomContent Instance => this;
 
         public override void OnNetworkDespawn()
         {

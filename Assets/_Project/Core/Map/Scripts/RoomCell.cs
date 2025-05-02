@@ -41,7 +41,6 @@ namespace Core.Maps
         public IReadOnlyReactiveField<bool> IsExplored => _isExplored;
         public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
         public IReadOnlyCollection<INoiseContainer> Tunnels => _linkedTunnels.Select(x => x.Value).ToArray();
-        protected override RoomCell Instance => this;
 
         public event IReadOnlyReactiveField<RoomType>.ChangedListener TypeChanged
         {

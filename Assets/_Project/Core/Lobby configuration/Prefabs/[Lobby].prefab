@@ -138,35 +138,35 @@ MonoBehaviour:
     EnemiesConfig:
       TypeOfEnemies:
         _serializedList:
-        - Key: {fileID: 11400000, guid: 36d160c84370af646b944d1ed74a9f97, type: 2}
+        - Key: Queen
           Value:
             m_AssetGUID: 754f2e46c825e964ca87d09f728b109c
             m_SubObjectName: 
             m_SubObjectType: 
             m_SubObjectGUID: 
             m_EditorAssetChanged: 0
-        - Key: {fileID: 11400000, guid: 510f3d8b68a1e6343b7bc54bcecd25b7, type: 2}
+        - Key: Breeder
           Value:
             m_AssetGUID: 9fc5fe5342c648442826ed3f491960a5
             m_SubObjectName: 
             m_SubObjectType: 
             m_SubObjectGUID: 
             m_EditorAssetChanged: 0
-        - Key: {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
+        - Key: Adult intruder
           Value:
             m_AssetGUID: 1c8f3d3461c9614449b811c05ad86aa4
             m_SubObjectName: 
             m_SubObjectType: 
             m_SubObjectGUID: 
             m_EditorAssetChanged: 0
-        - Key: {fileID: 11400000, guid: 069110f25be01644fb6d0fbc6b9f83de, type: 2}
+        - Key: Creeper
           Value:
             m_AssetGUID: 3cccbadbd7d1c5f49a3c6c4bbdcaa0e3
             m_SubObjectName: 
             m_SubObjectType: 
             m_SubObjectGUID: 
             m_EditorAssetChanged: 0
-        - Key: {fileID: 11400000, guid: 8c469b25e4ab46d44be5eeb72ec96f7b, type: 2}
+        - Key: Larvae
           Value:
             m_AssetGUID: ee7ec93ce5c7dad4aa3ce24c88d213a7
             m_SubObjectName: 
@@ -186,22 +186,22 @@ MonoBehaviour:
         _serializedList:
         - Key: {fileID: 11400000, guid: 75ff028630961fe418a8865735bab297, type: 2}
           Value:
-          - {fileID: 11400000, guid: 79564ffef084d7c4cbaa3a84c0339014, type: 2}
+          - Capitan revolver
         - Key: {fileID: 11400000, guid: 1149afd990674364fa4bd0314f477a20, type: 2}
           Value:
-          - {fileID: 11400000, guid: 8ed00b6299b2c3243a3c71a5d9a34484, type: 2}
+          - Mechanic shotgun
         - Key: {fileID: 11400000, guid: d1529cc6b3b018643b1074eb87920257, type: 2}
           Value:
-          - {fileID: 11400000, guid: f505ae05af6bde945a7e85b3381c5476, type: 2}
+          - Pilot shotgun
         - Key: {fileID: 11400000, guid: dd74b7ca7aa245b4398fbb45316925cc, type: 2}
           Value:
-          - {fileID: 11400000, guid: 02b8109eb0df2204fa76e33f103463f8, type: 2}
+          - Scientist pistol
         - Key: {fileID: 11400000, guid: 5b7d72e4813b48a469029336e2cf8841, type: 2}
           Value:
-          - {fileID: 11400000, guid: 2704486a46755ca48ba5e9152376e206, type: 2}
+          - Scout rifle
         - Key: {fileID: 11400000, guid: a81491d41131a4540840ea690f7058a8, type: 2}
           Value:
-          - {fileID: 11400000, guid: c81964fa89f76c74a9cb2272e4065f10, type: 2}
+          - Soldier rifle
     HeavyDamageDeckConfig:
       DamageCards:
       - {fileID: 6762958138727210857, guid: f6e35cb8274a76a45904b8a7952dea20, type: 3}

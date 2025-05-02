@@ -1,8 +1,8 @@
-namespace Core.CharacterInventorys
+namespace Core.CharacterInventories
 {
     public interface IContainsInventoryItemInstance
     {
-        public InventoryItemInstance Item { get; }
+        public InventoryItem Item { get; }
         
         public string ID => Item.ID;
     }

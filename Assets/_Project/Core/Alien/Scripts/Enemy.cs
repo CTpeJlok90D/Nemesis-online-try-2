@@ -17,11 +17,6 @@ namespace Core.Aliens
         public RoomContent RoomContent { get; private set; }
         public NetVariable<AlienToken> LinkedToken { get; private set; }
         
-        protected override Enemy Instance
-        {
-            get { return this; }
-        }
-        
         public IReadOnlyCollection<AttackDice.Result> AttacksToHit
         {
             get { return _attacksToHit; }

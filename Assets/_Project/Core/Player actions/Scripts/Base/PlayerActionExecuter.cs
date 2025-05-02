@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Maps;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
@@ -45,7 +45,7 @@ namespace Core.PlayerActions
         
         private NetworkList<NetworkObjectReference> _roomContentSelectionNet;
 
-        private NetworkList<InventoryItemInstance> _inventoryItemsSelectionNet;
+        private NetworkList<NetworkObjectReference> _inventoryItemsSelectionNet;
 
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
@@ -131,7 +131,7 @@ namespace Core.PlayerActions
                 if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
                 {
                     _inventoryItemsSelectionNet.Clear();
-                    InventoryItemInstance[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection);
+                    InventoryItem[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection);
 
                     if (selection.Length != gameActionWithInventoryItem.RequiredItemsAmount)
                     {
@@ -139,9 +139,9 @@ namespace Core.PlayerActions
                         return;
                     }
                     
-                    foreach (InventoryItemInstance instance in selection)
+                    foreach (InventoryItem instance in selection)
                     {
-                        _inventoryItemsSelectionNet.Add(instance);
+                        _inventoryItemsSelectionNet.Add(instance.NetworkObject);
                     }
                 }
 
@@ -242,7 +242,7 @@ namespace Core.PlayerActions
                     await Awaitable.NextFrameAsync();
                 }
                 
-                gameActionWithInventoryItem.InventoryItemsSelection = _inventoryItemsSelectionNet.ToEnumerable().ToArray();
+                gameActionWithInventoryItem.InventoryItemsSelection = _inventoryItemsSelectionNet.ToEnumerable<InventoryItem>().ToArray();
             }
 
             if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)

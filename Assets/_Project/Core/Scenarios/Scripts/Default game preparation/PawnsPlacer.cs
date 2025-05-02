@@ -1,9 +1,15 @@
+using System.Collections.Generic;
 using System.Linq;
-using Core.CharacterInventorys;
+using System.Net.Sockets;
+using Core.CharacterInventories;
 using Core.Characters;
 using Core.Maps.CharacterPawns;
 using Core.Maps;
 using Core.PlayerTablets;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Core.Scenarios.Default
 {
@@ -29,16 +35,28 @@ namespace Core.Scenarios.Default
 
         public void Begin()
         {
+            _ = PlacePawns();
+        }
+
+        private async UniTask PlacePawns()
+        {
             foreach (PlayerTablet tablet in _playerTabletList)
             {
                 CharacterPawn characterPawn_PREFAB = _config.PawnsForCharacters[tablet.Character.Value.Id];
                 CharacterPawn characterInstance = characterPawn_PREFAB.Instantiate();
                 
                 Character character = characterInstance.LinkedCharacter;
-                InventoryItem[] startItems = _kitStartConfig.StartItems[character];
-            
-                characterInstance.SmallItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Small));
-                characterInstance.BigItemsInventory.AddItemsRange(startItems.Where(x => x.ItemType is ItemType.Big));
+                string[] startItemsIds = _kitStartConfig.StartItems[character];
+                List<InventoryItem> loadedItems = new();
+                foreach (string itemID in startItemsIds)
+                {
+                    AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(itemID);
+                    await handle.ToUniTask();
+                    loadedItems.Add(handle.Result.GetComponent<InventoryItem>());
+                }
+                
+                characterInstance.SmallItemsInventory.AddItemsRange(loadedItems.Where(x => x.ItemType is ItemType.Small));
+                characterInstance.BigItemsInventory.AddItemsRange(loadedItems.Where(x => x.ItemType is ItemType.Big));
                 
                 tablet.LinkPawn(characterInstance);
                 _startRoom.AddContent(characterInstance.RoomContent);

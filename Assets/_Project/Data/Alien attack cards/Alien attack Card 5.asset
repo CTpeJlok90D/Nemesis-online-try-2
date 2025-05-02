@@ -17,13 +17,15 @@ MonoBehaviour:
     unityReference: {fileID: 0}
     rawReference:
       rid: -2
-  Endurance: 5
+  <EnemyIsMoving>k__BackingField: 0
+  <Endurance>k__BackingField: 3
+  _possibleAttackers: []
   _attackCard:
     _selfAssetReference:
       m_AssetGUID: c9a8f08b51d9e924093c07abbc33f18f
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
   references:

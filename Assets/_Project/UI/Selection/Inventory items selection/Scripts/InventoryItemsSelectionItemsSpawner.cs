@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.Selection.InventoryItems;
 using Core.SelectionBase;
 using UnityEngine;
@@ -44,7 +44,7 @@ namespace UI.Selection.InventoryItemsSelections
         {
             foreach (InventoryItemSelectionItem instance in _selectedItems.ToArray())
             {
-                if (_selection.Count(x => x.Equals(instance.Item)) < _selectedItems.Count(x => x.Item.Equals(instance.Item)))
+                if (_selection.Count(x => x.ID == instance.Item.ID) < _selectedItems.Count(x => x.Item.ID == instance.Item.ID))
                 {
                     DeselectItem(instance);
                 }
@@ -62,7 +62,7 @@ namespace UI.Selection.InventoryItemsSelections
         
         private void InstantiateItems()
         {
-            foreach (InventoryItemInstance inventoryItem in _selection.SelectionSource)
+            foreach (InventoryItem inventoryItem in _selection.SelectionSource)
             {
                 InventoryItemSelectionItem instance = _itemSelectionItemPrefab.Instantiate(inventoryItem, this, _parent);
                 _inventoryItemInstances.Add(instance);

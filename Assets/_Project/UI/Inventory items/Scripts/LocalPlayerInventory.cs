@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.CharacterInventorys;
+using Core.CharacterInventories;
 using Core.PlayerTablets;
 using UI.Common;
 using Unity.Netcode;
@@ -65,7 +65,7 @@ namespace UI.InventoryItems
 
         private void SyncInventory()
         {
-            foreach (InventoryItemInstance item in _inventory.ToArray())
+            foreach (InventoryItem item in _inventory.ToArray())
             {
                 while (_instances.Count(x => x.Item == item) > _inventory.Count(x => x == item))
                 {
@@ -84,7 +84,7 @@ namespace UI.InventoryItems
                 
                 while (_instances.Count(x => x.Item == item) < _inventory.Count(x => x == item))
                 {
-                    InventoryItemInstance itemToAdd = _inventory.First(x => x == item);
+                    InventoryItem itemToAdd = _inventory.First(x => x == item);
                     
                     InventoryItemInstanceContainer inventoryItemInstance = _inventoryItemInstance_PREFAB.Instantiate(itemToAdd, _parent);
                     _instances.Add(inventoryItemInstance);

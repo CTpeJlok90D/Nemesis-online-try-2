@@ -1,14 +1,14 @@
 using UnityEngine;
 
-namespace Core.CharacterInventorys
+namespace Core.CharacterInventories
 {
     public class InventoryItemInstanceContainer : MonoBehaviour, IContainsInventoryItemInstance
     {
-        public InventoryItemInstance InventoryItemInstance { get; private set; }
+        public InventoryItem InventoryItemInstance { get; private set; }
 
-        public InventoryItemInstance Item => InventoryItemInstance;
+        public InventoryItem Item => InventoryItemInstance;
         
-        public InventoryItemInstanceContainer Instantiate(InventoryItemInstance inventoryItemInstance, Transform parent)
+        public InventoryItemInstanceContainer Instantiate(InventoryItem inventoryItemInstance, Transform parent)
         {
             gameObject.SetActive(false);
             InventoryItemInstanceContainer instance = Instantiate(this, parent);
@@ -17,7 +17,7 @@ namespace Core.CharacterInventorys
             return instance.Init(inventoryItemInstance);
         }
 
-        public InventoryItemInstanceContainer Init(InventoryItemInstance inventoryItemInstance)
+        public InventoryItemInstanceContainer Init(InventoryItem inventoryItemInstance)
         {
             InventoryItemInstance = inventoryItemInstance;
             gameObject.SetActive(true);

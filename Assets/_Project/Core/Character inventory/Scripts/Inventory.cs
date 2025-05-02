@@ -13,16 +13,16 @@ using UnityEditor;
 using UnityEngine.AddressableAssets;
 #endif
 
-namespace Core.CharacterInventorys
+namespace Core.CharacterInventories
 {
     [Icon("Assets/_Project/Core/Character inventory/Editor/icons8-expedition-backpack-96.png")]
-    public class Inventory : NetworkBehaviour, IEnumerable<InventoryItemInstance>
+    public class Inventory : NetworkBehaviour, IEnumerable<InventoryItem>
     {
         [SerializeField] private int _limit;
         [SerializeField] private ItemType[] _acceptebleItemTypes;
         public IReadOnlyCollection<ItemType> AcceptableItemTypeTypes => _acceptebleItemTypes;
         
-        private NetworkList<InventoryItemInstance> _items;
+        private NetworkList<NetworkObjectReference> _items;
 
         public delegate void ItemsListChangedDelegate(Inventory sender);
         public event ItemsListChangedDelegate ItemsListChanged;
@@ -42,7 +42,7 @@ namespace Core.CharacterInventorys
             _items.OnListChanged -= OnListChange;
         }
 
-        private void OnListChange(NetworkListEvent<InventoryItemInstance> changeEvent)
+        private void OnListChange(NetworkListEvent<NetworkObjectReference> changeEvent)
         {
             OnListChange();
         }
@@ -52,9 +52,9 @@ namespace Core.CharacterInventorys
             ItemsListChanged?.Invoke(this);
         }
 
-        public IReadOnlyCollection<InventoryItemInstance> GetItems()
+        public IReadOnlyCollection<InventoryItem> GetItems()
         {
-            return _items.ToEnumerable().ToArray();
+            return _items.ToEnumerable<InventoryItem>().ToArray();
         }
         
         public bool CanAddItem(InventoryItem item)
@@ -70,38 +70,41 @@ namespace Core.CharacterInventorys
             }
         }
 
-        public void AddItem(InventoryItem item)
+        public void AddItem(InventoryItem item_PREFAB)
         {
-            if (CanAddItem(item) == false)
+            if (CanAddItem(item_PREFAB) == false)
             {
                 throw new Exception("Can't add item");
             }
 
-            InventoryItemInstance instance = new(item);
-            AddItemInstance(instance);
+            InventoryItem item = Instantiate(item_PREFAB);
+            item.NetworkObject.Spawn();
+            AddItemInstance(item);
         }
         
-        public void AddItemsInstancesRange(IEnumerable<InventoryItemInstance> items)
+        public void AddItemsInstancesRange(IEnumerable<InventoryItem> items)
         {
-            foreach (InventoryItemInstance item in items)
+            foreach (InventoryItem item in items)
             {
                 AddItemInstance(item);
             }
         }
 
-        public void AddItemInstance(InventoryItemInstance instance)
+        public void AddItemInstance(InventoryItem instance)
         {
-            _items.Add(instance);
+            _items.Add(instance.NetworkObject);
+            instance.OwnerInventory.Reference = this;
         }
 
-        public void RemoveItem(InventoryItemInstance item)
+        public void RemoveItem(InventoryItem item)
         {
-            _items.Remove(item);
+            _items.Remove(item.NetworkObject);
+            item.OwnerInventory.Reference = null;
         }
         
-        public IEnumerator<InventoryItemInstance> GetEnumerator()
+        public IEnumerator<InventoryItem> GetEnumerator()
         {
-            return _items.ToEnumerable().GetEnumerator();
+            return _items.ToEnumerable<InventoryItem>().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -128,7 +131,7 @@ namespace Core.CharacterInventorys
                 
                 GUILayout.Label("Inventory:");
                 
-                foreach (InventoryItemInstance item in Inventory.GetItems())
+                foreach (InventoryItem item in Inventory.GetItems())
                 {
                     if (_loadedItems.ContainsKey(item.ID) == false)
                     {
@@ -163,10 +166,10 @@ namespace Core.CharacterInventorys
 
             private async UniTask LoadItem(string guiID)
             {
-                AsyncOperationHandle<InventoryItem> handle = Addressables.LoadAssetAsync<InventoryItem>(guiID);
+                AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(guiID);
                 await handle.ToUniTask();
                 
-                InventoryItem item = handle.Result;
+                InventoryItem item = handle.Result.GetComponent<InventoryItem>();
                 _loadedItems[guiID] = item.name;
             }
         }
