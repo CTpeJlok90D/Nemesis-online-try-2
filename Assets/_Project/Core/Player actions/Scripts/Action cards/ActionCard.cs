@@ -18,7 +18,7 @@ namespace Core.ActionsCards
 
         public bool Equals(ActionCard other)
         {
-            return Net.RuntimeLoadKey == other.Net.RuntimeLoadKey;
+            return other != null && Net.RuntimeLoadKey == other.Net.RuntimeLoadKey;
         }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter

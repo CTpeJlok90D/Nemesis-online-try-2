@@ -1,6 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.ActionsCards;
 using Core.PlayerTablets;
+using Cysharp.Threading.Tasks;
 using Unity.Netcode;
+using UnityEngine;
 
 namespace Core.Scenarios.PlayersPhase
 {
@@ -25,11 +29,12 @@ namespace Core.Scenarios.PlayersPhase
             _ = DrawCards();
         }
 
-        private async Task DrawCards()
+        private async UniTask DrawCards()
         {
             foreach (PlayerTablet playerTablet in _playerTablets)
             {
-                await playerTablet.ActionCardsDeck.DrawCards();
+                IReadOnlyCollection<ActionCard> takenCards = await playerTablet.ActionCardsDeck.DrawCards();
+                Debug.Log($"{playerTablet} took cards: {string.Join(", ",takenCards)}");
             }
             Ended?.Invoke(this);
         }

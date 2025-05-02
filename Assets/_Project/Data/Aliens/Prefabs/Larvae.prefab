@@ -116,8 +116,11 @@ PrefabInstance:
       addedObject: {fileID: 8059292415349912202}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 534800274102066738, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 446460254317221337}
+    - targetCorrespondingSourceObject: {fileID: 534800274102066738, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 6117898470633482444}
   m_SourcePrefab: {fileID: 100100000, guid: 51766e36e9713804192ba479cb1deb9f, type: 3}
 --- !u!4 &1915482296690337315 stripped
 Transform:
@@ -142,6 +145,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &6117898470633482444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177614327499719719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8ab951a98e1bf44995c2df174bd106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  _damageHandler:
+    mode: 0
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: -2
+  _larvaeToken: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &8569537827197354784
 PrefabInstance:
   m_ObjectHideFlags: 0

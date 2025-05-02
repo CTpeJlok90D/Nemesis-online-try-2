@@ -9,7 +9,7 @@ namespace Unity.Netcode.Custom
     public class NetVariable<T> : NetworkVariable<T>, IReadOnlyReactiveField<T>
     {
         private List<IReadOnlyReactiveField<T>.ChangedListener> _listeners = new();
-
+        
         public event IReadOnlyReactiveField<T>.ChangedListener Changed
         {
             add => _listeners.Add(value);

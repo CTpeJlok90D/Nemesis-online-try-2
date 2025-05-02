@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Codice.Client.Commands.WkTree;
 using Core.ActionsCards;
 using Core.PlayerTablets;
+using Cysharp.Threading.Tasks;
 using UI.Common;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -15,108 +17,72 @@ namespace UI.Hands
     public class UIHand : MonoBehaviour
     {
         [field: SerializeField] private ActionCardContainer _uiActionCard_PREFAB;
-
         [field: SerializeField] private Transform _parent;
 
         [Inject] private PlayerTabletList _playerTabletList;
-
         [Inject] private DiContainer _diContainer;
 
         private int _handSyncIndex;
-
         private ActionCardsDeck _oldActionCards;
-
+        private bool _handIsSyncing;
         public PlayerTablet ActiveTablet { get; private set; }
-
         public ActionCardsDeck ActionsCardsDeck => ActiveTablet.ActionCardsDeck;
-
-        private Dictionary<ActionCard, List<ActionCardContainer>> _displayedActionCards = new();
+        private readonly Dictionary<ActionCard, List<ActionCardContainer>> _displayedActionCards = new();
         
         private void Awake()
         {
             ActiveTablet = _playerTabletList.Local;
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            ActiveTablet.PawnLinked += OnPawnLink;
-
-            if (ActionsCardsDeck != null)
+            if (_handIsSyncing == false && ActionsCardsDeck != null)
             {
-                ActionsCardsDeck.HandChanged += OnHandChange;
                 _ = SyncHand();
             }
         }
 
-        private void OnPawnLink(PlayerTablet sender)
+        private async UniTask SyncHand()
         {
-            if (_oldActionCards != null)
+            _handIsSyncing = true;
+            _handSyncIndex++;
+            int syncIndex = _handSyncIndex;
+            
+            IReadOnlyCollection<ActionCard> newHand = await ActionsCardsDeck.GetHand();
+
+            if (syncIndex != _handSyncIndex)
             {
-                _oldActionCards.HandChanged -= OnHandChange;
+                _handIsSyncing = false;
+                return;
             }
             
-            ActionsCardsDeck.HandChanged += OnHandChange;
-            _oldActionCards = ActionsCardsDeck;
-            _ = SyncHand();
-        }
-
-        private void OnDisable()
-        {
-            ActiveTablet.PawnLinked -= OnPawnLink;
-            if (ActionsCardsDeck != null)
+            foreach ((ActionCard actionCard, List<ActionCardContainer> uIActionCard) in _displayedActionCards)
             {
-                ActionsCardsDeck.HandChanged -= OnHandChange;
-            }
-        }
-
-        private void OnHandChange(NetScriptableObjectList4096<ActionCard> sender)
-        {
-            _ = SyncHand();
-        }
-
-        private async Task SyncHand()
-        {
-            try
-            {
-                _handSyncIndex++;
-                int syncIndex = _handSyncIndex;
-                IReadOnlyCollection<ActionCard> newHand = await ActionsCardsDeck.GetHand();
-
-                if (syncIndex != _handSyncIndex)
+                if (_displayedActionCards.ContainsKey(actionCard) == false)
                 {
-                    return;
+                    _displayedActionCards.Add(actionCard, new());
                 }
 
-                foreach ((ActionCard actionCard, List<ActionCardContainer> uIActionCard) in _displayedActionCards)
+                while (newHand.Count(x => x == actionCard) < _displayedActionCards[actionCard].Count)
                 {
-                    if (_displayedActionCards.ContainsKey(actionCard) == false)
-                    {
-                        _displayedActionCards.Add(actionCard, new());
-                    }
-
-                    while (newHand.Count(x => x == actionCard) < _displayedActionCards[actionCard].Count)
-                    {
-                        RemoveCardFromDisplay(actionCard);
-                    }
-                }
-
-                foreach (ActionCard actionCard in newHand)
-                {
-                    if (_displayedActionCards.ContainsKey(actionCard) == false)
-                    {
-                        _displayedActionCards.Add(actionCard, new());
-                    }
-
-                    while (newHand.Count(x => x == actionCard) > _displayedActionCards[actionCard].Count)
-                    {
-                        AddCardToDisplay(actionCard);
-                    }
+                    RemoveCardFromDisplay(actionCard);
                 }
             }
-            catch (Exception e)
+
+            foreach (ActionCard actionCard in newHand)
             {
-                Debug.LogException(e);
+                if (_displayedActionCards.ContainsKey(actionCard) == false)
+                {
+                    _displayedActionCards.Add(actionCard, new());
+                }
+
+                while (newHand.Count(x => x == actionCard) > _displayedActionCards[actionCard].Count)
+                {
+                    AddCardToDisplay(actionCard);
+                }
             }
+            
+            _handIsSyncing = false;
         }
 
         private void RemoveCardFromDisplay(ActionCard actionCard)

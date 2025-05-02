@@ -12,6 +12,16 @@ namespace Core.Maps
         [Inject] private Map _map;
         
         public RoomCell Owner { get; internal set; }
+
+        public delegate void DespawnedHandler(RoomContent sender);
+        public static event DespawnedHandler Despawned;
+        
         protected override RoomContent Instance => this;
+
+        public override void OnNetworkDespawn()
+        {
+            base.OnNetworkDespawn();
+            Despawned?.Invoke(this);
+        }
     }
 }

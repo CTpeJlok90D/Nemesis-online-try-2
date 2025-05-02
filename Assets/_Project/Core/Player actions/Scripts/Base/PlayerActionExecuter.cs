@@ -49,21 +49,21 @@ namespace Core.PlayerActions
 
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
-        private PlayerTablet _executer;
+        private PlayerTablet _executor;
         
         private NetVariable<bool> _actionIsExecuting;
 
-        public PlayerTablet Executer
+        public PlayerTablet Executor
         {
             get
             {
-                return _executer;
+                return _executor;
             }
             set
             {
-                _executer = value;
+                _executor = value;
                 
-                ulong playerID = _executer.Player.OwnerClientId;
+                ulong playerID = _executor.Player.OwnerClientId;
                 NetworkObject.ChangeOwnership(playerID);
             }
         }
@@ -87,7 +87,7 @@ namespace Core.PlayerActions
         protected override void OnOwnershipChanged(ulong previous, ulong current)
         {
             base.OnOwnershipChanged(previous, current);
-            _executer = _playerTabletList.First(x => x.Player.OwnerClientId == current);
+            _executor = _playerTabletList.First(x => x.Player.OwnerClientId == current);
         }
 
         public async void Execute(GameActionContainer gameActionContainer)
@@ -108,7 +108,7 @@ namespace Core.PlayerActions
 
                 IGameAction gameAction = gameActionContainer.GameAction.Value;
                 
-                gameAction.Inititalize(_executer);
+                gameAction.Inititalize(_executor);
 
                 if (gameAction is INeedMap iNeedMap)
                 {
@@ -117,7 +117,7 @@ namespace Core.PlayerActions
 
                 if (gameAction is IGameActionWithPayment gameActionWithPayment)
                 {
-                    ActionCard[] selection = await gameActionWithPayment.GetSelectionLocal(_executer, _cardsSelection);
+                    ActionCard[] selection = await gameActionWithPayment.GetSelectionLocal(_executor, _cardsSelection);
                     
                     if (selection.Length != gameActionWithPayment.RequaredPaymentCount)
                     {
@@ -223,27 +223,11 @@ namespace Core.PlayerActions
                 
             IGameAction gameAction = gameActionContainer.GameAction.Value;
             
-            gameAction.Inititalize(_executer);
+            gameAction.Inititalize(_executor);
 
             if (gameAction is INeedMap gameActionWithMap)
             {
                 gameActionWithMap.Initialzie(_map);
-            }
-
-            if (gameAction is IGameActionWithPayment gameActionWithPayment)
-            {
-                while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
-                {
-                    if (_actionIsExecuting.Value == false)
-                    {
-                        return;
-                    }
-                    
-                    await Awaitable.NextFrameAsync();
-                }
-                
-                ActionCard[] cards = await _selectionActionCards.GetElements();
-                _executer.ActionCardsDeck.DiscardCards(cards);
             }
             
             if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
@@ -321,6 +305,23 @@ namespace Core.PlayerActions
             }
 
             gameAction.Execute();
+            
+            if (gameAction is IGameActionWithPayment gameActionWithPayment)
+            {
+                while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+                    
+                    await Awaitable.NextFrameAsync();
+                }
+                
+                ActionCard[] cards = await _selectionActionCards.GetElements();
+                _executor.ActionCardsDeck.DiscardCards(cards);
+            }
+            
             ClearData_RPC();
         }
 

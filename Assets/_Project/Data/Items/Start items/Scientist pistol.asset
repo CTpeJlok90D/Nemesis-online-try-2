@@ -62,8 +62,6 @@ MonoBehaviour:
   m_Name: WeaponDamage
   m_EditorClassIdentifier: 
   _additionalDamagePerAttackTypes:
-    _serializedList:
-    - Key: 0
-      Value: -1
+    _serializedList: []
   _baseDamage: 1
   _constantDamage: 0

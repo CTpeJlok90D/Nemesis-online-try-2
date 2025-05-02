@@ -5,7 +5,7 @@ using Core.Characters.Health;
 using Core.CharacterInventorys;
 using Core.Characters;
 using Core.Characters.Infection;
-using Core.EventsDeck;
+using Core.EventsDecks;
 using Core.Maps;
 using Core.Maps.Generation;
 using Core.Missions.Dealing;

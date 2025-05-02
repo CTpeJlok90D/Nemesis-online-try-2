@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -340669095513984516}
   - component: {fileID: 4860348517629227268}
   - component: {fileID: 7773727027073908676}
+  - component: {fileID: 5927283834192961847}
+  - component: {fileID: 6097356699954827085}
   - component: {fileID: 8863455036052937609}
   m_Layer: 0
   m_Name: Enemy base
@@ -80,6 +82,7 @@ MonoBehaviour:
     unityReference: {fileID: 0}
     rawReference:
       rid: -2
+  _attacksToHit: 
   references:
     version: 2
     RefIds:
@@ -108,6 +111,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b26dafa7ccea7341947825c1ed0503c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _randomPositionRadius: 2.5
+--- !u!114 &5927283834192961847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534800274102066738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dc12c1c3969a645a81ea483c985d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: -340669095513984516}
+--- !u!114 &6097356699954827085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534800274102066738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8585b751c55c284abd3cd2b8fac07f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8863455036052937609

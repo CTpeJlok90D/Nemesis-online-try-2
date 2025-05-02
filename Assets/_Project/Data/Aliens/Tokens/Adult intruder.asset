@@ -16,9 +16,10 @@ MonoBehaviour:
     _selfAssetReference:
       m_AssetGUID: f45563ac563f9d74b9d7314b880c47b6
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
-  <Id>k__BackingField: Adult intruder
+  <AlienType>k__BackingField: Adult intruder
   <AttackReaction>k__BackingField: 3
+  <IsEmpty>k__BackingField: 0

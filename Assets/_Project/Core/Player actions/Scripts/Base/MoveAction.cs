@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Maps;
+using Core.Maps.CharacterPawns;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Core.PlayerActions
@@ -83,14 +85,25 @@ namespace Core.PlayerActions
             RoomCell selectedRoom = RoomSelection.First();
 
             Executor.ActionCount.Value--;
+            MoveNoiseBlocker[] blockers = selectedRoom.GetContentWith<MoveNoiseBlocker>().ToArray();
+            
             selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
 
             if (selectedRoom.IsExplored.Value == false)
             {
                 selectedRoom.Explore();
             }
-            
-            Map.NoiseInRoom(selectedRoom);
+
+            if (blockers.Length == 0)
+            {
+                _ = NoiseAfterMove(selectedRoom);
+            }
+        }
+
+        private async UniTask NoiseAfterMove(RoomCell selectedRoom)
+        {
+            NoiseDice.Result result = await Map.NoiseInRoom(selectedRoom);
+            Debug.Log($"Dice roll move result: {result}");
         }
 
         public void Initialzie(Map map)

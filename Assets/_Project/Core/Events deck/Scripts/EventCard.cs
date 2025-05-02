@@ -5,28 +5,25 @@ using Core.Aliens;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Core.EventsDeck
+namespace Core.EventsDecks
 {
     [Icon("Assets/_Project/Core/Events deck/Editor/icons8-cards-deck-96.png")]
     [CreateAssetMenu(menuName = "Game/Event card")]
     public class EventCard : ScriptableObject, INetworkSerializable, IEquatable<EventCard>, INetScriptableObjectArrayElement<EventCard>
     {
         [SerializeField] private EventCardAction _action;
-
-        [SerializeField] private AlienToken[] _aliensTokens;
-
-        [SerializeField] private int _corridorIndex = 1;   
-        
+        [SerializeField] private AlienToken[] _aliensToMove;
+        [SerializeField] private NoiseDice.Result _tunnelIndex;   
         [SerializeField] private NetScriptableObject<EventCard> _net = new();
+        [SerializeField] private bool _placeCardInDiscardAfterUse = true;
 
         public NetScriptableObject<EventCard> Net => _net;
-
-        public IReadOnlyCollection<AlienToken> AlienTokens => _aliensTokens;
-
-        public int CorridorIndex => _corridorIndex;
-
+        public IReadOnlyCollection<AlienToken> AliensToMove => _aliensToMove;
+        public NoiseDice.Result TunnelIndex => _tunnelIndex;
         public EventCardAction Action => _action;
+        public bool PlaceCardInDiscardAfterUse => _placeCardInDiscardAfterUse;
 
         public bool Equals(EventCard other)
         {
@@ -42,8 +39,8 @@ namespace Core.EventsDeck
         private void OnLoad(EventCard result)
         {
             _net.Preloaded -= OnLoad;
-            _aliensTokens = result._aliensTokens.ToArray();
-            _corridorIndex = result._corridorIndex;
+            _aliensToMove = result._aliensToMove.ToArray();
+            _tunnelIndex = result._tunnelIndex;
             _action = result._action;
         }
     }

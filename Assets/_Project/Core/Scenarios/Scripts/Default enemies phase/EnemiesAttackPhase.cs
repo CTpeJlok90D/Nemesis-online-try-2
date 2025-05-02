@@ -3,8 +3,8 @@ using System.Linq;
 using Core.ActionsCards;
 using Core.AlienAttackDecks;
 using Core.Aliens;
+using Core.Characters.Infection;
 using Core.Entity;
-using Core.Maps;
 using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;
@@ -14,15 +14,13 @@ namespace Core.Scenarios.EnemiesPhase
 {
     public class EnemiesAttackPhase : IChapter
     {
-        private AlienAttackDeck _alienAttackDeck;
-        
-        private PlayerTabletList _playerTabletList;
+        private readonly PlayerTabletList _playerTabletList;
+        private InfectionDeck _infectionDeck;
         
         public event IChapter.EndedListener Ended;
         
-        public EnemiesAttackPhase(AlienAttackDeck deck, PlayerTabletList playerTablets)
+        public EnemiesAttackPhase(PlayerTabletList playerTablets)
         {
-            _alienAttackDeck = deck;
             _playerTabletList = playerTablets;
         }
         
@@ -37,49 +35,42 @@ namespace Core.Scenarios.EnemiesPhase
 
             foreach (Enemy enemy in enemies)
             {
-                List<PlayerTablet> possibleTargets = new(); 
+                List<CharacterPawn> characterPawns = enemy.RoomContent.Owner.GetContentWith<CharacterPawn>().ToList();
                 
-                foreach (RoomContent roomContent in enemy.RoomContent.Owner)
+                if (characterPawns.Any() == false)
                 {
-                    if (roomContent.TryGetComponent(out CharacterPawn characterPawn))
-                    {
-                        PlayerTablet characterOwner = _playerTabletList.First(x => x.CharacterPawn ==  characterPawn);
-                        possibleTargets.Add(characterOwner);
-                    }
-                }
-
-                if (possibleTargets.Any() == false)
-                {
+                    Debug.Log($"Enemies attack phase: No players to attack. Skipping");
                     continue;
                 }
-
-                PlayerTablet target = possibleTargets.First();
-                IReadOnlyCollection<ActionCard> hand = await target.CharacterPawn.ActionCardsDeck.GetHand();
-                int handSize = hand.Count;
-                foreach (PlayerTablet i in possibleTargets)
-                {
-                    hand = await i.CharacterPawn.ActionCardsDeck.GetHand();
-                    if (hand.Count < handSize)
-                    {
-                        target = i;
-                        handSize = hand.Count;
-                    }
-                }
-
-                AlienAttackCard card = _alienAttackDeck.PickOne();
                 
-                if (card.PossibleAttackers.Contains(enemy.LinkedToken))
-                {
-                    card.AlienAttack.Attack(enemy, target);
-                    Debug.Log($"{enemy} is attacking {target} by card: {card}");
-                }
-                else
-                {
-                    Debug.Log($"{enemy} is not attacking {target} by card: {card}");
-                }
-                
-                Ended?.Invoke(this);
+                List<PlayerTablet> possibleTargets = characterPawns
+                    .Select(c => _playerTabletList.First(x => x.CharacterPawn == c))
+                    .OrderBy(x => x.OrderNumber.Value)
+                    .Reverse().ToList();
+
+                PlayerTablet target = await GetPrioritizedTarget(possibleTargets);
+                enemy.Attack(target);
             }
+            
+            Ended?.Invoke(this);
+        }
+
+        private async UniTask<PlayerTablet> GetPrioritizedTarget(IEnumerable<PlayerTablet> possibleTargets)
+        {
+            PlayerTablet target = possibleTargets.First();
+            IReadOnlyCollection<ActionCard> hand = await target.CharacterPawn.ActionCardsDeck.GetHand();
+            int handSize = hand.Count;
+            foreach (PlayerTablet i in possibleTargets)
+            {
+                hand = await i.CharacterPawn.ActionCardsDeck.GetHand();
+                if (hand.Count < handSize)
+                {
+                    target = i;
+                    handSize = hand.Count;
+                }
+            }
+
+            return target;
         }
     }
 }

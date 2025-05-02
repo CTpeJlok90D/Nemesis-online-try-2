@@ -1,20 +1,20 @@
-using System;
 using Core.Players;
 using Core.PlayerTablets;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
+using Zenject;
 
 namespace UI.PlayerTablets
 {
     public class PlayerNickname : MonoBehaviour
     {
         [SerializeField] private TMP_Text _label;
-
         [SerializeField] private PlayerTabletContainer _playerTabletContainer;
 
+        [Inject] private NetworkManager _networkManager;
+        
         private NicknameContainer _lastNicknameContainer;
-
         private Player _lastPlayer;
 
         private void OnEnable()
@@ -27,6 +27,17 @@ namespace UI.PlayerTablets
         private void OnDisable()
         {
             _playerTabletContainer.PlayerTablet.PlayerReference.Changed -= OnPlayerChange;
+        }
+
+        private void Update()
+        {
+            UpdateLabel();
+        }
+
+        private void Start()
+        {
+            UpdatePlayerContainer();
+            UpdateLabel();
         }
 
         private void OnPlayerChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)

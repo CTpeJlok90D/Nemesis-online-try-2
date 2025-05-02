@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.EventsDeck
+namespace Core.EventsDecks
 {
     public abstract class EventCardAction : ScriptableObject
     {

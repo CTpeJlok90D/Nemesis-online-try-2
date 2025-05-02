@@ -2,6 +2,7 @@
     "name": "Core.Scenarios.EnemiesPhase",
     "rootNamespace": "Core.Scenarios.EnemiesPhase",
     "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",
         "GUID:1491147abca9d7d4bb7105af628b223e",
@@ -14,7 +15,16 @@
         "GUID:abeed9924bcb1ad458fff652f1a603b7",
         "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
         "GUID:e4bbb787809e36348a4ae9c2360166dd",
-        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7"
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7",
+        "GUID:307c5ec9f36ebc341ae52e24d0791ebf",
+        "GUID:f684c81ce60e27148bc87c32635d3ae5",
+        "GUID:d19caaf46d78fa64c91f14801b1f8d84",
+        "GUID:d90fbe2af79b2334a8e529a10c3fca16",
+        "GUID:5e404939be1c72c44ab2d73529220589",
+        "GUID:77a95e666ef809040bfa8a723f9b3fd2",
+        "GUID:e99187c4fc4adf14cab11b2fd0c8e84d",
+        "GUID:af098b1f33f2cb74b8bbe96b7ee1343b",
+        "GUID:cea7544fb8d07494aa7bd3d211d57ce3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

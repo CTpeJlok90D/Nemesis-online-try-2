@@ -1,7 +1,7 @@
 using System;
 using Unity.Netcode;
 
-namespace Core.EventsDeck
+namespace Core.EventsDecks
 {
     [Serializable]
     public struct EventDeckConfiguration : INetworkSerializable

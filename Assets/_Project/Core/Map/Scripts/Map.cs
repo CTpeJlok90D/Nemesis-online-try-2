@@ -75,7 +75,7 @@ namespace Core.Maps
             _escapePods = _escapePods.Where(x => x != null).ToList();
         }
 
-        public async void NoiseInRoom(RoomCell roomCell, NoiseDice.Result noiseDiceResult)
+        public async UniTask NoiseInRoom(RoomCell roomCell, NoiseDice.Result noiseDiceResult)
         {
             if (noiseDiceResult == NoiseDice.Result.Silence)
             {
@@ -84,7 +84,7 @@ namespace Core.Maps
 
             if (noiseDiceResult == NoiseDice.Result.Dangerous)
             {
-                foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
+                foreach (INoiseContainer noiseContainer in roomCell.Tunnels)
                 {
                     if (noiseContainer.IsNoised.Value == false)
                     {
@@ -94,8 +94,7 @@ namespace Core.Maps
                 return;
             }
 
-            int tunnelIndex = (int)noiseDiceResult;
-            INoiseContainer iNoiseContainer = roomCell.NoiseContainers.ElementAt(tunnelIndex);
+            INoiseContainer iNoiseContainer = roomCell.GetTunnelForNoiseRollResult(noiseDiceResult);
             
             if (iNoiseContainer.IsNoised.Value)
             {
@@ -128,14 +127,16 @@ namespace Core.Maps
             tunnel.Noise();
         }
         
-        public void NoiseInRoom(RoomCell roomCell)
+        public async UniTask<NoiseDice.Result> NoiseInRoom(RoomCell roomCell)
         {
-            NoiseInRoom(roomCell, NoiseDice.Roll());
+            NoiseDice.Result result = NoiseDice.Roll();
+            await NoiseInRoom(roomCell, result);
+            return result;
         }
 
         public void ClearNoiseInRoom(RoomCell roomCell)
         {
-            foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
+            foreach (INoiseContainer noiseContainer in roomCell.Tunnels)
             {
                 noiseContainer.Clear();
             }
@@ -143,7 +144,7 @@ namespace Core.Maps
 
         public void NoiseInAllTunnelsFromRoom(RoomCell roomCell)
         {
-            foreach (INoiseContainer noiseContainer in roomCell.NoiseContainers)
+            foreach (INoiseContainer noiseContainer in roomCell.Tunnels)
             {
                 noiseContainer.Noise();
             }

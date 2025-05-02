@@ -51,6 +51,8 @@ MonoBehaviour:
     _serializedList:
     - Key: 1
       Value: 1
+    - Key: 0
+      Value: 1
   _baseDamage: 1
   _constantDamage: 0
 --- !u!114 &7598543308143817575

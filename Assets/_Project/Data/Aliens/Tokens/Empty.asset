@@ -16,10 +16,10 @@ MonoBehaviour:
     _selfAssetReference:
       m_AssetGUID: 1dc56fb3e110e114893a7b36a84575b7
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
-  <Id>k__BackingField: Empty
+  <AlienType>k__BackingField: Empty
   <AttackReaction>k__BackingField: 0
   <IsEmpty>k__BackingField: 1

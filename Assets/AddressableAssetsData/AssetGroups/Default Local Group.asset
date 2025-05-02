@@ -26,7 +26,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 069110f25be01644fb6d0fbc6b9f83de
-    m_Address: Assets/_Project/Data/Aliens/Default/Creeper.asset
+    m_Address: Creeper alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -47,6 +47,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d37d51d9977ab04a92ab497c9e00d0d
     m_Address: Assets/_Project/Data/Missions/Default/Test personal mission.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d78184d666685044a7606d8b7c4b429
+    m_Address: Slime character token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -86,7 +91,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
-    m_Address: Assets/_Project/Data/Aliens/Default/Empty.asset
+    m_Address: Empty alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -126,7 +131,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36d160c84370af646b944d1ed74a9f97
-    m_Address: Assets/_Project/Data/Aliens/Default/Queen.asset
+    m_Address: Queen alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -201,7 +206,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 510f3d8b68a1e6343b7bc54bcecd25b7
-    m_Address: Assets/_Project/Data/Aliens/Default/Breeder.asset
+    m_Address: Breeder alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -248,6 +253,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70aa1086638e52749ac293832fe9b106
     m_Address: Assets/_Project/Data/Room contents/Default room 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70f478bee1042d44e80ad25506a17054
+    m_Address: Larvae character token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -323,7 +333,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c469b25e4ab46d44be5eeb72ec96f7b
-    m_Address: Assets/_Project/Data/Aliens/Default/Larvae.asset
+    m_Address: Larvae alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -493,13 +503,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee1111b4af14c5b40a864e3b638b0b6e
+    m_Address: Signal character token
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ee7ec93ce5c7dad4aa3ce24c88d213a7
     m_Address: Assets/_Project/Data/Aliens/Prefabs/Larvae.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f45563ac563f9d74b9d7314b880c47b6
-    m_Address: Assets/_Project/Data/Aliens/Default/Adult intruder.asset
+    m_Address: Adult intruter alien token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

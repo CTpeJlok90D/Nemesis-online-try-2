@@ -86,7 +86,7 @@ namespace Core.ActionsCards
             _discard.Add(actionCard);
         }
 
-        public async UniTask DrawCards(int count = -1)
+        public async UniTask<IReadOnlyCollection<ActionCard>> DrawCards(int count = -1)
         {
             if (count == -1)
             {
@@ -102,6 +102,7 @@ namespace Core.ActionsCards
             ActionCard[] cards = mainDeckCards.Take(count).ToArray();
             _mainDeck.RemoveRange(cards);
             _hand.AddRange(cards);
+            return cards;
         }
 
         public async Task ShuffleActionDeck()

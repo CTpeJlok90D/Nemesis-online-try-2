@@ -7,6 +7,8 @@ using AYellowpaper;
 using System.Linq;
 using System;
 using System.Collections;
+using Core.Entity;
+using Zenject;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,56 +17,71 @@ using UnityEditor;
 namespace Core.Maps
 {
     [Icon("Assets/_Project/Core/Map/Editor/icons8-room-96.png")]
-    public class RoomCell : NetworkBehaviour, IEnumerable<RoomContent>
+    public class RoomCell : NetEntity<RoomCell>, IEnumerable<RoomContent>
     {
         public const int NOISE_CONTAINERS_COUNT = 4;
 
         [field: SerializeField] private RoomType _roomContent;
-
         [field: SerializeField] public int Number { get; private set; } = 1;
-
         [field: SerializeField] public int Layer { get; private set; } = 1;
-
         [field: SerializeField] public bool GenerateIntellegenceToken { get; private set; } = true;
-
         [field: SerializeField] private InterfaceReference<INoiseContainer>[] _linkedTunnels = new InterfaceReference<INoiseContainer>[NOISE_CONTAINERS_COUNT];
 
-        private NetworkList<NetworkObjectReference> _roomContentsNet;
-
-        private RoomContent[] _roomContents;
-
-        public NetVariable<IntelegenceToken> IntellegenceTokenNet { get; private set; }
+        [Inject] private NetworkManager _networkManager;
         
+        private NetworkList<NetworkObjectReference> _roomContentsNet;
+        private RoomContent[] _roomContents;
         private NetVariable<RoomType> _roomTypeNet;
-
         private NetVariable<bool> _isExplored;
-
+        
+        public NetVariable<IntelegenceToken> IntellegenceTokenNet { get; private set; }
         public NetVariable<bool> IsInitialized { get; private set; }
 
         public RoomType Type => _roomTypeNet.Value;
-
         public IReadOnlyReactiveField<bool> IsExplored => _isExplored;
-
         public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
-
-        public IReadOnlyCollection<INoiseContainer> NoiseContainers => _linkedTunnels.Select(x => x.Value).ToArray();
+        public IReadOnlyCollection<INoiseContainer> Tunnels => _linkedTunnels.Select(x => x.Value).ToArray();
+        protected override RoomCell Instance => this;
 
         public event IReadOnlyReactiveField<RoomType>.ChangedListener TypeChanged
         {
             add => _roomTypeNet.Changed += value;
             remove => _roomTypeNet.Changed -= value;
         }
+        
+        public INoiseContainer GetTunnelForNoiseRollResult(NoiseDice.Result noiseDiceResult)
+        {
+            if (noiseDiceResult == NoiseDice.Result.Silence || noiseDiceResult == NoiseDice.Result.Dangerous)
+            {
+                throw new ArgumentOutOfRangeException($"{noiseDiceResult} have no tunnels");
+            }
+            
+            int tunnelIndex = (int)noiseDiceResult;
+            INoiseContainer iNoiseContainer = Tunnels.ElementAt(tunnelIndex);
+            return iNoiseContainer;
+        }
+
+        public IEnumerable<T> GetContentWith<T>() where T : Component
+        {
+            foreach (RoomContent roomContent in _roomContents)
+            {
+                if (roomContent.TryGetComponent(out T characterPawn))
+                {
+                    yield return characterPawn;
+                }
+            }
+        }
 
         private void Awake()
         {
             if (_linkedTunnels.Contains(null))
             {
-                throw new System.Exception("Room cell contains null noiseContainer");
+                throw new Exception("Room cell contains null noiseContainer");
             }
 
             if (_linkedTunnels.Length != NOISE_CONTAINERS_COUNT)
             {
-                throw new System.Exception($"Every room cell must have {NOISE_CONTAINERS_COUNT} tunnels");
+                throw new Exception($"Every room cell must have {NOISE_CONTAINERS_COUNT} tunnels");
             }
 
             IntellegenceTokenNet = new();
@@ -77,9 +94,29 @@ namespace Core.Maps
             _roomContentsNet.OnListChanged += OnListChange;
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            RoomContent.Despawned += OnContentDespawn;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            RoomContent.Despawned -= OnContentDespawn;
+        }
+
+        private void OnContentDespawn(RoomContent sender)
+        {
+            if (_roomContents.Contains(sender) && _networkManager.IsServer)
+            {
+                RemoveContent(sender);
+            }
+        }
+
         public INoiseContainer[] GetPassagesTo(RoomCell other)
         {
-            INoiseContainer[] noiseContainers = NoiseContainers.Intersect(other.NoiseContainers).ToArray();
+            INoiseContainer[] noiseContainers = Tunnels.Intersect(other.Tunnels).ToArray();
             return noiseContainers;
         }
 

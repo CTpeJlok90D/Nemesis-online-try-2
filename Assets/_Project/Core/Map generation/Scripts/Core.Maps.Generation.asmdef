@@ -1,0 +1,31 @@
+{
+    "name": "Core.Maps.Generation",
+    "rootNamespace": "Core.Maps.Generation",
+    "references": [
+        "GUID:d525ad6bd40672747bde77962f1c401e",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:3276f6df9e93a6a4c886e23eb9f04444",
+        "GUID:2e42ce681cb322840805717f30a5581f",
+        "GUID:3e0593558f2c18a4faa297e430c0d4c3",
+        "GUID:a22d22136f8a2b84da16f7df8456b346",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:7e4ff47241c1bcb47942e8e37e3da035",
+        "GUID:e99187c4fc4adf14cab11b2fd0c8e84d",
+        "GUID:77a95e666ef809040bfa8a723f9b3fd2",
+        "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

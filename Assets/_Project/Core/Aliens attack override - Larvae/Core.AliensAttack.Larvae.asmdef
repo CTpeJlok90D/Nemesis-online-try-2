@@ -1,0 +1,23 @@
+{
+    "name": "Core.AliensAttack.Larvae",
+    "rootNamespace": "Core.AliensAttack.Larvae",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
+        "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
+        "GUID:b7b6c6c9f68695f4fa7cef8b0c0c912f",
+        "GUID:df6adc614236d7548ba780a43d6addaa",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:abeed9924bcb1ad458fff652f1a603b7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

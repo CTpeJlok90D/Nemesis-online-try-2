@@ -28,7 +28,6 @@ namespace Core.PlayerTablets
         public CharacterHealth Health { get; private set; }
 
         [Inject] private PlayerTabletList _playerTabletList;
-
         [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
 
         private bool _haveResult;
@@ -107,6 +106,11 @@ namespace Core.PlayerTablets
 
         private void OnCharacterPawnChange(CharacterPawn oldValue, CharacterPawn newValue)
         {
+            if (newValue == null)
+            {
+                return;
+            }
+            
             SmallItemsInventory = newValue.SmallItemsInventory;
             BigItemsInventory = newValue.BigItemsInventory;
 
@@ -188,6 +192,7 @@ namespace Core.PlayerTablets
         private void Pass_RPC()
         {
             IsPassed.Value = true;
+            ActionCount.Value = 0;
         }
 
         [Rpc(SendTo.Server)]

@@ -21,8 +21,8 @@ MonoBehaviour:
     _selfAssetReference:
       m_AssetGUID: 7fe97d5cde2c625469b9c2cd20bd6112
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
   references:

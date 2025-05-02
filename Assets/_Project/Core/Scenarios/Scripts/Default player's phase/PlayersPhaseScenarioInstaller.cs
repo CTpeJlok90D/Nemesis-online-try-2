@@ -1,3 +1,4 @@
+using System;
 using Core.PlayerTablets;
 using UnityEngine;
 using Zenject;
@@ -8,6 +9,7 @@ namespace Core.Scenarios.PlayersPhase
     {
         [SerializeField] private ActionPointsGiver _actionPointsGiver;
         [SerializeField] private ScenarioLauncher _enemiesPhaseScenarioLauncher;
+        [SerializeField] private ScenarioLauncher _playersPhaseScenarioLauncher;
 
         [Inject] private PlayerTabletList _playerTabletList;
         
@@ -19,10 +21,21 @@ namespace Core.Scenarios.PlayersPhase
                 new DrawCardsChapter(_playerTabletList),
                 new MoveFirstPlayer(_actionPointsGiver),
                 new PlayersActionPhase(_playerTabletList, _actionPointsGiver),
-                new LaunchScenarioChapter(_enemiesPhaseScenarioLauncher)
             };
 
             Scenario = new(chapters);
+            
+            _playersPhaseScenarioLauncher.ScenarioCompleted += OnScenarioComplete;
+        }
+
+        private void OnDestroy()
+        {
+            _playersPhaseScenarioLauncher.ScenarioCompleted -= OnScenarioComplete;
+        }
+
+        private void OnScenarioComplete()
+        {
+            _enemiesPhaseScenarioLauncher.Launch();
         }
     }
 }

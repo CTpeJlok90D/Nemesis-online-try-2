@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -30,7 +30,12 @@ namespace Unity.Netcode.Custom
 
         public NetScriptableObjectList4096(NetworkVariableReadPermission readPermission = NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission writePermission = NetworkVariableWritePermission.Server) : base(string.Empty, readPermission, writePermission)
         {
+            Changed += OnListChange;
+        }
 
+        ~NetScriptableObjectList4096()
+        {
+            Changed -= OnListChange;
         }
 
         public override FixedString4096Bytes Value
@@ -63,7 +68,6 @@ namespace Unity.Netcode.Custom
             private set
             {
                 base.Value = string.Join(Separator, value);
-                ListChanged?.Invoke(this);
             }
         }
 
@@ -115,16 +119,20 @@ namespace Unity.Netcode.Custom
                 keys.Add(key.Net.RuntimeLoadKey);
             }
             Keys = keys.ToArray();
+        }
+
+        private void OnListChange(FixedString4096Bytes previousValue, FixedString4096Bytes newValue)
+        {
+            _ = SyncValues();
+        }
+
+        private async UniTask SyncValues()
+        {
+            await CashValues();
             ListChanged?.Invoke(this);
         }
 
-        protected override void OnValueChange(FixedString4096Bytes previousValue, FixedString4096Bytes newValue)
-        {
-            base.OnValueChange(previousValue, newValue);
-            CashValues();
-        }
-
-        private void CashValues()
+        private async UniTask CashValues()
         {
             _cashIndex++;
             int linkedCashIndex = _cashIndex;
@@ -162,16 +170,15 @@ namespace Unity.Netcode.Custom
                     continue;
                 }
 
-                handle.Completed += (loadedHandle) => 
-                {
-                    if (linkedCashIndex != _cashIndex)
-                    {
-                        return;
-                    }
+                await handle.ToUniTask();
 
-                    result.Add(loadedHandle.Result);
-                    RemoveKey(ref keysToLoadCount, result);
-                };
+                if (linkedCashIndex != _cashIndex)
+                {
+                    return;
+                }
+
+                result.Add(handle.Result);
+                RemoveKey(ref keysToLoadCount, result);
             }
         }
 
@@ -182,7 +189,6 @@ namespace Unity.Netcode.Custom
             {
                 _cashedElements = result.ToList();
                 IsSyncing = false;
-                ListChanged?.Invoke(this);
             }
         }
 
@@ -211,7 +217,6 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Add(value.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
         }
 
         public void AddRange(IEnumerable<T> values)
@@ -219,7 +224,6 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList(); 
             keys.AddRange(from x in values select x.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
         }
 
         public int IndexOf(T item)
@@ -232,7 +236,6 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Insert(index, item.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
         }
 
         public void RemoveAt(int index)
@@ -240,13 +243,11 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.RemoveAt(index);
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
         }
 
         public void Clear()
         {
             base.Value = new();
-            ListChanged?.Invoke(this);
         }
 
         public bool Contains(T item)
@@ -269,7 +270,6 @@ namespace Unity.Netcode.Custom
             List<string> keys = Keys.ToList();
             keys.Remove(item.Net.RuntimeLoadKey);
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
             return true;
         }
 
@@ -283,7 +283,6 @@ namespace Unity.Netcode.Custom
             }
 
             Keys = keys.ToArray();
-            ListChanged?.Invoke(this);
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Maps;
+using Core.Maps.CharacterPawns;
 using UnityEngine;
 
 namespace Core.PlayerActions.Base
@@ -43,14 +44,14 @@ namespace Core.PlayerActions.Base
             get
             {
                 RoomCell selectedRoomCell = RoomSelection.First();
-                return selectedRoomCell.NoiseContainers.Where(x => x.IsNoised.Value == false).ToArray();
+                return selectedRoomCell.Tunnels.Where(x => x.IsNoised.Value == false).ToArray();
             }
         }
 
         public override IEnumerable<RoomCell> GetPossibleRooms()
         {
              IEnumerable<RoomCell> rooms = base.GetPossibleRooms();
-             return rooms.Where(x => x.NoiseContainers.Any(y => y.IsNoised.Value == false));
+             return rooms.Where(x => x.Tunnels.Any(y => y.IsNoised.Value == false) && x.GetContentWith<MoveNoiseBlocker>().Any() == false);
         }
 
         public override void ForceExecute()
@@ -59,6 +60,11 @@ namespace Core.PlayerActions.Base
 
             Executor.ActionCount.Value--;
             selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
+            
+            if (selectedRoom.IsExplored.Value == false)
+            {
+                selectedRoom.Explore();
+            }
             
             Map.CarefulNoiseInTunnel(_selectedNoiseContainer);
         }

@@ -44,6 +44,7 @@ namespace UI.Hands
             if (spriteLoadHandle.IsDone)
             {
                 _image.sprite = spriteLoadHandle.Result;
+                _image.DOColor(Color.white, 0.5f);
                 return;
             }
 

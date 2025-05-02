@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Unity.Netcode.Custom
@@ -45,7 +46,7 @@ namespace Unity.Netcode.Custom
 
         public event ReferenceChangedListener ReferenceChanged;
 
-        public NetBehaviourReference() : base()
+        public NetBehaviourReference()
         {
             OnValueChanged = OnValueChange;
         }
@@ -60,6 +61,13 @@ namespace Unity.Netcode.Custom
         private void OnValueChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)
         {
             Changed?.Invoke(previousValue, newValue);
+            ReferenceChanged?.Invoke(_previousReference, Reference);
+        }
+
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            Changed?.Invoke(Value, Value);
             ReferenceChanged?.Invoke(_previousReference, Reference);
         }
     }

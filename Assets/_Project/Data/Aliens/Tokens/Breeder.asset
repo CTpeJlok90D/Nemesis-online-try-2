@@ -20,6 +20,6 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
-  <Id>k__BackingField: Breeder
+  <AlienType>k__BackingField: Breeder
   <AttackReaction>k__BackingField: 4
   <IsEmpty>k__BackingField: 0

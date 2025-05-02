@@ -28,6 +28,13 @@ namespace Core.Characters.Infection
             }
         }
 
+        public ActionCard PickOne()
+        {
+            ActionCard result = _deck[Random.Range(0, _deck.Count)];
+            _deck.Remove(result);
+            return result;
+        }
+
         [Serializable]
         public struct Config : INetworkSerializable 
         {

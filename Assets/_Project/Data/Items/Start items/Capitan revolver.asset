@@ -64,6 +64,6 @@ MonoBehaviour:
   _additionalDamagePerAttackTypes:
     _serializedList:
     - Key: 0
-      Value: 1
+      Value: 2
   _baseDamage: 1
   _constantDamage: 0

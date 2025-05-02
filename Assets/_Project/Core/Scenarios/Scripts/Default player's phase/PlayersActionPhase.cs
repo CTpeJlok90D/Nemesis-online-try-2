@@ -1,6 +1,7 @@
 using System.Linq;
 using Core.PlayerTablets;
 using Unity.Netcode;
+using UnityEngine;
 
 namespace Core.Scenarios.PlayersPhase
 {
@@ -30,6 +31,7 @@ namespace Core.Scenarios.PlayersPhase
                 playerTablet.IsPassed.Changed += OnIsPassedChange;
             }
 
+            Debug.Log("Action phase started");
             _actionPointsGiver.Give();
         }
 
@@ -37,6 +39,7 @@ namespace Core.Scenarios.PlayersPhase
         {
             if (_playerTabletList.All(x => x.IsPassed.Value))
             {
+                Debug.Log("Players actions phase is ended");
                 Ended?.Invoke(this);
             }
         }

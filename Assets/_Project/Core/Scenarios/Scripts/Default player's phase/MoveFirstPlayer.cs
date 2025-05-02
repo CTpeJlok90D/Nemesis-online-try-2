@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Core.Scenarios.PlayersPhase
 {
     public class MoveFirstPlayer : IChapter
@@ -13,6 +15,7 @@ namespace Core.Scenarios.PlayersPhase
         public void Begin()
         {
             _actionPointsGiver.MoveFirstPlayer();
+            Debug.Log($"First player now is {_actionPointsGiver.ActiveTablet.Nickname}");
             Ended?.Invoke(this);
         }
     }

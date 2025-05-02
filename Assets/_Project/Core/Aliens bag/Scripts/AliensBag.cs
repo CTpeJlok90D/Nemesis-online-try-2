@@ -79,6 +79,11 @@ namespace Core.AliensBags
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
+
+                if (Application.IsPlaying(target) == false)
+                {
+                    return;
+                }
                 
                 GUI.enabled = false;
                 foreach (AlienToken alienToken in AliensBag._contentNet.CashedElements)

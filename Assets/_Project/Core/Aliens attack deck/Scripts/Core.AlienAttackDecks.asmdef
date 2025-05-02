@@ -2,6 +2,7 @@
     "name": "Core.AlienAttackDecks",
     "rootNamespace": "Core.AlienAttackDecks",
     "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:1491147abca9d7d4bb7105af628b223e",
         "GUID:58946ea638f53f54d9ccaa0cb6215515",
@@ -11,7 +12,12 @@
         "GUID:5fbb32fc4e2996a4c983cb1a7b7a93ab",
         "GUID:3276f6df9e93a6a4c886e23eb9f04444",
         "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+        "GUID:df6adc614236d7548ba780a43d6addaa",
+        "GUID:d19caaf46d78fa64c91f14801b1f8d84",
+        "GUID:307c5ec9f36ebc341ae52e24d0791ebf",
+        "GUID:b74ba711a3321dc4aa3c7f7b7ae6c6b7",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

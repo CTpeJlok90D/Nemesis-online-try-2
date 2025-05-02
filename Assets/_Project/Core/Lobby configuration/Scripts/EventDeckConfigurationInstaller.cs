@@ -1,4 +1,4 @@
-using Core.EventsDeck;
+using Core.EventsDecks;
 using Zenject;
 
 namespace Core.Lobbies

@@ -17,6 +17,7 @@ namespace Core.Scenarios.EnemiesPhase
             if (_timeTrack.IsActive.Value)
             {
                 _timeTrack.Current.Value--;
+                Debug.Log($"Time track {_timeTrack} was moved to value: {_timeTrack.Current.Value}");
             }
             Ended?.Invoke(this);
         }

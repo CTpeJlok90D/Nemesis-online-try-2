@@ -33,7 +33,7 @@ namespace Core.Characters.Health
             _heavyDamages = new();
         }
 
-        public void LightDamage(int count)
+        public void LightDamage(int count = 1)
         {
             _lightDamageCount.Value += count;
             int overdamage =  _lightDamageCount.Value / LIGHTS_TO_HEAVY;

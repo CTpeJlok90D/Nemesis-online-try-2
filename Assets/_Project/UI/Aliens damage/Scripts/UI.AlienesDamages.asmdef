@@ -1,0 +1,19 @@
+{
+    "name": "UI.AlienesDamages",
+    "rootNamespace": "UI.AlienesDamages",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:b7b6c6c9f68695f4fa7cef8b0c0c912f",
+        "GUID:e74d2f5357f23d044a37333c8efba8f2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

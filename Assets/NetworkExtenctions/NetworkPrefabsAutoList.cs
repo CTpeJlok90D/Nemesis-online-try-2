@@ -23,15 +23,20 @@ namespace Unity.Netcode.Custom
 
             Validate();
         }
-
-        [ContextMenu(nameof(Validate))]
+        
         private void Validate()
         {
             if (EditorApplication.isUpdating)
             {
                 return;
             }
-            
+
+            ForceValidate();
+        }
+
+        [ContextMenu(nameof(Validate))]
+        private void ForceValidate()
+        {
             SerializedObject serializedSelf = new(this);
             SerializedProperty serializedList = serializedSelf.FindProperty("List");
             serializedList.arraySize = 0;

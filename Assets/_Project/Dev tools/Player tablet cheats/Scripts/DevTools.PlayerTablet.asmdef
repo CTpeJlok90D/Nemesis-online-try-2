@@ -1,0 +1,19 @@
+{
+    "name": "DevTools.PlayerTablet",
+    "rootNamespace": "DevTools.PlayerTablet",
+    "references": [
+        "Unity.Netcode.Runtime",
+        "IngameDebugConsole.Runtime",
+        "Core.PlayerTablet",
+        "DevTools.Common"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

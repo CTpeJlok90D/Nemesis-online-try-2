@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.CharacterInventorys;
 using Core.PlayerTablets;
 using UI.Common;
+using Unity.Netcode;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +17,9 @@ namespace UI.InventoryItems
         [SerializeField] private Transform _parent;
 
         [Inject] private PlayerTabletList _playerTabletList;
+        [Inject] private NetworkManager _networkManager;
 
-        private PlayerTablet localTablet => _playerTabletList.Local;
+        private PlayerTablet LocalTablet => _playerTabletList.Local;
         
         private Inventory _inventory;
         private List<InventoryItemInstanceContainer> _instances;
@@ -26,57 +27,40 @@ namespace UI.InventoryItems
         private void Awake()
         {
             _instances = new();
+            UpdateLinkedInventory();
+        }
+
+        private void Update()
+        {
+            if (_networkManager.IsClient == false)
+            {
+                return;
+            }
+            
+            if (_inventory == null)
+            {
+                UpdateLinkedInventory();
+            }
+
+            if (_inventory == null)
+            {
+                return;
+            }
+            
+            SyncInventory();
         }
 
         private void UpdateLinkedInventory()
         {
             if (_inventoryType is ItemType.Big)
             {
-                _inventory = localTablet.BigItemsInventory;
+                _inventory = LocalTablet.BigItemsInventory;
             }
 
             if (_inventoryType is ItemType.Small)
             {
-                _inventory = localTablet.SmallItemsInventory;
+                _inventory = LocalTablet.SmallItemsInventory;
             }
-        }
-
-        private void OnEnable()
-        {
-            localTablet.PawnLinked += OnPawnLink;
-            if (localTablet.CharacterPawn != null)
-            {
-                UpdateLinkedInventory();
-                _inventory.ItemsListChanged += OnItemListChange;
-                SyncInventory();
-            }
-        }
-
-        private void OnDisable()
-        {
-            // if (localTablet != null && localTablet.CharacterPawn != null)
-            // {
-            //     localTablet.PawnLinked -= OnPawnLink;
-            //     _inventory.ItemsListChanged -= OnItemListChange;
-            // throwing error for now.
-            // }
-        }
-
-        private void OnPawnLink(PlayerTablet sender)
-        {
-            if (_inventory != null)
-            {
-                _inventory.ItemsListChanged -= OnItemListChange;
-            }
-            UpdateLinkedInventory();
-            _inventory.ItemsListChanged += OnItemListChange;
-            
-            SyncInventory();
-        }
-
-        private void OnItemListChange(Inventory sender)
-        {
-            SyncInventory();
         }
 
         private void SyncInventory()

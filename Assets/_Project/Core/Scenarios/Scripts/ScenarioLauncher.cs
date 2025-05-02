@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using TNRD;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Core.Scenarios
 
         private bool _isLaunched;
 
+        private static int LaunchCount = 0;
+
         public IChapter ActiveChapter
         {
             get { return _scenario.Value.Scenario.Chapters[_currentChapterIndex]; }
@@ -31,6 +34,11 @@ namespace Core.Scenarios
             }
         }
 
+        private void Update()
+        {
+            LaunchCount = 0;
+        }
+
         public void Launch()
         {
             if (_isLaunched)
@@ -43,8 +51,26 @@ namespace Core.Scenarios
                 throw new ScenarioException("Scenario is empty");
             }
 
+            if (LaunchCount >= 10)
+            {
+                throw new Exception("Too many. TOOOOOOOOOOOO");
+            }
+
+            LaunchCount++;
+            
+            _currentChapterIndex = 0;
+
             ActiveChapter.Ended += OnActiveChapterEnd;
-            ActiveChapter.Begin();
+            try
+            {
+                ActiveChapter.Begin();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"Cant execute chapter {ActiveChapter}. Skipping");
+                Debug.LogException(ex);
+                OnActiveChapterEnd(ActiveChapter);
+            }
         }
 
         private void OnActiveChapterEnd(IChapter sender)
@@ -60,6 +86,8 @@ namespace Core.Scenarios
             }
             else
             {
+                _isLaunched = false;
+                _currentChapterIndex = 0;
                 ScenarioCompleted?.Invoke();
             }
         }

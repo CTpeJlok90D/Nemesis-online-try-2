@@ -16,9 +16,10 @@ MonoBehaviour:
     _selfAssetReference:
       m_AssetGUID: 069110f25be01644fb6d0fbc6b9f83de
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
     _isLoaded: 1
-  <Id>k__BackingField: Creeper
+  <AlienType>k__BackingField: Creeper
   <AttackReaction>k__BackingField: 2
+  <IsEmpty>k__BackingField: 0

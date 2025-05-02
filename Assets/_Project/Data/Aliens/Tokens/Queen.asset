@@ -16,8 +16,10 @@ MonoBehaviour:
     _selfAssetReference:
       m_AssetGUID: 36d160c84370af646b944d1ed74a9f97
       m_SubObjectName: 
-      m_SubObjectGUID: 
       m_SubObjectType: 
+      m_SubObjectGUID: 
       m_EditorAssetChanged: 0
-  <Id>k__BackingField: Queen
+    _isLoaded: 1
+  <AlienType>k__BackingField: Queen
   <AttackReaction>k__BackingField: 5
+  <IsEmpty>k__BackingField: 0

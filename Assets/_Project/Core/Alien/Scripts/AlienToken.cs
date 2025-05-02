@@ -11,7 +11,7 @@ namespace Core.Aliens
     {
         [field: SerializeField] private NetScriptableObject<AlienToken> _self = new();
         
-        [field: SerializeField] public string Id { get; private set; }
+        [field: SerializeField] public string AlienType { get; private set; }
 
         [field: SerializeField] public int AttackReaction { get; private set; }
         
@@ -36,7 +36,7 @@ namespace Core.Aliens
         private void OnLoad(AlienToken result)
         {
             _self.Preloaded -= OnLoad;
-            Id = result.Id;
+            AlienType = result.AlienType;
             IsEmpty = result.IsEmpty;
             AttackReaction = result.AttackReaction;
         }
