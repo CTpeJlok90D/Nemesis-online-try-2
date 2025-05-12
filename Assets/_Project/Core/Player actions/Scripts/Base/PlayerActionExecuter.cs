@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
 using Core.CharacterInventories;
+using Core.LootDecks;
 using Core.Maps;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using Core.Selection.Cards;
 using Core.Selection.InventoryItems;
+using Core.Selection.LootDeckSelections;
 using Core.Selection.RoomContentSelections;
 using Core.Selection.Rooms;
 using Core.Selection.Tunnels;
@@ -21,8 +23,6 @@ namespace Core.PlayerActions
 {
     public class PlayerActionExecutor : NetworkBehaviour
     {
-        public delegate void RoomsSelectionChangedHandler(PlayerActionExecutor sender);
-
         public static PlayerActionExecutor Instance { get; private set; }
 
         [SerializeField] private Map _map;
@@ -38,6 +38,8 @@ namespace Core.PlayerActions
         [Inject] private RoomContentSelection _roomContentSelection;
         
         [Inject] private InventoryItemsSelection _inventoryItemsSelection;
+        
+        [Inject] private LootDeckSelection _lootDeckSelection;
 
         private NetworkList<NetworkObjectReference> _roomsSelectionNet;
         
@@ -46,6 +48,8 @@ namespace Core.PlayerActions
         private NetworkList<NetworkObjectReference> _roomContentSelectionNet;
 
         private NetworkList<NetworkObjectReference> _inventoryItemsSelectionNet;
+
+        private NetworkList<int> _selectedLootTypes;
 
         private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
 
@@ -82,6 +86,7 @@ namespace Core.PlayerActions
             _actionIsExecuting = new(writePerm: NetworkVariableWritePermission.Owner);
             _roomContentSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _inventoryItemsSelectionNet = new (writePerm: NetworkVariableWritePermission.Owner);
+            _selectedLootTypes = new(writePerm: NetworkVariableWritePermission.Owner);
         }
 
         protected override void OnOwnershipChanged(ulong previous, ulong current)
@@ -114,8 +119,15 @@ namespace Core.PlayerActions
                 {
                     iNeedMap.Initialzie(_map);
                 }
+                
+                _roomSelection.CanCancel = gameAction.CanCancel;
+                _cardsSelection.CanCancel = gameAction.CanCancel;
+                _noiseContainerSelection.CanCancel = gameAction.CanCancel;
+                _inventoryItemsSelection.CanCancel = gameAction.CanCancel;
+                _roomContentSelection.CanCancel = gameAction.CanCancel;
+                _lootDeckSelection.CanCancel = gameAction.CanCancel;
 
-                if (gameAction is IGameActionWithPayment gameActionWithPayment)
+                if (gameAction is INeedPayment gameActionWithPayment)
                 {
                     ActionCard[] selection = await gameActionWithPayment.GetSelectionLocal(_executor, _cardsSelection);
                     
@@ -127,8 +139,25 @@ namespace Core.PlayerActions
                     
                     _selectionActionCards.SetElements(selection);
                 }
-                
-                if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
+
+                if (gameAction is INeedLootDeck needLootDeck)
+                {
+                    _selectedLootTypes.Clear();
+                    LootDeck.Type[] selectedTypes = await needLootDeck.GetSelectionLocal(_lootDeckSelection);
+
+                    if (selectedTypes.Length != needLootDeck.RequiredLootDecksAmount)
+                    {
+                        _actionIsExecuting.Value = false;
+                        return;
+                    }
+
+                    foreach (LootDeck.Type selectedType in selectedTypes)
+                    {
+                        _selectedLootTypes.Add((int)selectedType);
+                    }
+                }
+
+                if (gameAction is INeedInventoryItems gameActionWithInventoryItem)
                 {
                     _inventoryItemsSelectionNet.Clear();
                     InventoryItem[] selection = await gameActionWithInventoryItem.GetSelectionLocal(_inventoryItemsSelection);
@@ -145,7 +174,7 @@ namespace Core.PlayerActions
                     }
                 }
 
-                if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+                if (gameAction is INeedRooms gameActionWithRoomsSelection)
                 {
                     _roomsSelectionNet.Clear();
                     RoomCell[] selectedRooms = await _roomSelection.SelectFrom(gameActionWithRoomsSelection.RoomSelectionSource, gameActionWithRoomsSelection.RequredRoomsCount);
@@ -182,7 +211,7 @@ namespace Core.PlayerActions
                     }
                 }
 
-                if (gameAction is IGameActionWithRoomContentSelection gameActionWithRoomContentSelection)
+                if (gameAction is INeedRoomContents gameActionWithRoomContentSelection)
                 {
                     _roomContentSelectionNet.Clear();
                     RoomContent[] selection = await _roomContentSelection.SelectFrom(gameActionWithRoomContentSelection.RoomContentSelectionSource, gameActionWithRoomContentSelection.RequiredRoomContentCount);
@@ -206,7 +235,7 @@ namespace Core.PlayerActions
             }
             catch (Exception e)
             {
-                Debug.LogError(e);
+                Debug.LogException(e);
                 _actionIsExecuting.Value = false;
             }
         }
@@ -230,7 +259,22 @@ namespace Core.PlayerActions
                 gameActionWithMap.Initialzie(_map);
             }
             
-            if (gameAction is IRequireInventoryItems gameActionWithInventoryItem)
+            if (gameAction is INeedLootDeck needLootDeck)
+            {
+                while (_selectedLootTypes.Count != needLootDeck.RequiredLootDecksAmount)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+
+                    await Awaitable.NextFrameAsync();
+                }
+
+                needLootDeck.InventoryItemsSelection = _selectedLootTypes.ToEnumerable().Cast<LootDeck.Type>().ToArray();
+            }
+            
+            if (gameAction is INeedInventoryItems gameActionWithInventoryItem)
             {
                 while (_inventoryItemsSelectionNet.Count != gameActionWithInventoryItem.RequiredItemsAmount)
                 {
@@ -245,7 +289,7 @@ namespace Core.PlayerActions
                 gameActionWithInventoryItem.InventoryItemsSelection = _inventoryItemsSelectionNet.ToEnumerable<InventoryItem>().ToArray();
             }
 
-            if (gameAction is IGameActionWithRoomsSelection gameActionWithRoomsSelection)
+            if (gameAction is INeedRooms gameActionWithRoomsSelection)
             {
                 while (_roomsSelectionNet.Count != gameActionWithRoomsSelection.RequredRoomsCount)
                 {
@@ -285,7 +329,7 @@ namespace Core.PlayerActions
                 }).ToArray();
             }
 
-            if (gameAction is IGameActionWithRoomContentSelection gameActionWithRoomContentSelection)
+            if (gameAction is INeedRoomContents gameActionWithRoomContentSelection)
             {
                 while (gameActionWithRoomContentSelection.RequiredRoomContentCount != _roomContentSelectionNet.Count)
                 {
@@ -306,7 +350,7 @@ namespace Core.PlayerActions
 
             gameAction.Execute();
             
-            if (gameAction is IGameActionWithPayment gameActionWithPayment)
+            if (gameAction is INeedPayment gameActionWithPayment)
             {
                 while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
                 {

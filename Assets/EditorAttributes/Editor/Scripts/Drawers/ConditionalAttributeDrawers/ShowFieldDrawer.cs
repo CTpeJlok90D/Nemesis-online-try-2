@@ -15,13 +15,15 @@ namespace EditorAttributes.Editor
 			var root = new VisualElement();
 			var errorBox = new HelpBox();
 
-			var propertyField = DrawProperty(property);
+			var propertyField = CreatePropertyField(property);
+
+			root.Add(propertyField);
 
 			UpdateVisualElement(root, () =>
 			{
 				if (GetConditionValue(conditionalProperty, showAttribute, property, errorBox))
 				{
-					root.Add(propertyField);
+					AddElement(root, propertyField);
 				}
 				else
 				{
@@ -30,8 +32,6 @@ namespace EditorAttributes.Editor
 
 				DisplayErrorBox(root, errorBox);
 			});
-
-			root.Add(propertyField);
 
 			return root;
 		}

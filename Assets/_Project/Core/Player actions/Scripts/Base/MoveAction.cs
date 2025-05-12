@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Core.PlayerActions
 {
     [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Move action")]
-    public class MoveAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomsSelection, INeedMap
+    public class MoveAction : ScriptableObject, IGameAction, INeedPayment, INeedRooms, INeedMap
     {
         public Map Map { get; private set; }
         public PlayerTablet Executor { get; private set; }

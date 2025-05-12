@@ -1,5 +1,5 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UIElements;
 
 namespace EditorAttributes.Editor
@@ -13,7 +13,7 @@ namespace EditorAttributes.Editor
 
 			var root = new VisualElement();
 			var errorBox = new HelpBox();
-			var propertyField = DrawProperty(property);
+			var propertyField = CreatePropertyField(property);
 
 			var prefixLabel = new Label()
 			{
@@ -30,18 +30,17 @@ namespace EditorAttributes.Editor
 			prefixLabel.style.color = CanApplyGlobalColor ? EditorExtension.GLOBAL_COLOR : Color.gray;
 			root.Add(propertyField);
 
-			UpdateVisualElement(root, () =>
+			ExecuteLater(root, () =>
+			{
+				var field = propertyField.Q<Label>();							
+				field.Add(prefixLabel);
+			});
+
+			UpdateVisualElement(prefixLabel, () =>
 			{
 				prefixLabel.text = GetDynamicString(prefixAttribute.Prefix, property, prefixAttribute, errorBox);		
 				DisplayErrorBox(root, errorBox);
 			});
-			
-			// We do queries 1ms later so the visual tree is properly initialized
-			root.schedule.Execute(() =>
-			{
-				var field = propertyField.Q<Label>();							
-				field.Add(prefixLabel);
-			}).ExecuteLater(1);
 
 			return root;
 		}

@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 namespace EditorAttributes.Editor
 {
-    [CustomPropertyDrawer(typeof(TimeFieldAttribute))]
+	[CustomPropertyDrawer(typeof(TimeFieldAttribute))]
     public class TimeFieldDrawer : PropertyDrawerBase
     {
     	public override VisualElement CreatePropertyGUI(SerializedProperty property)
@@ -22,20 +22,14 @@ namespace EditorAttributes.Editor
             {
 				var timeField = new Vector3Field(property.displayName)
 				{
-					value = new Vector3(EditorPrefs.GetFloat(timeVectorSaveKeyX), EditorPrefs.GetFloat(timeVectorSaveKeyY), EditorPrefs.GetFloat(timeVectorSaveKeyZ))
+					value = new Vector3(EditorPrefs.GetFloat(timeVectorSaveKeyX), EditorPrefs.GetFloat(timeVectorSaveKeyY), EditorPrefs.GetFloat(timeVectorSaveKeyZ)),
+					tooltip = property.tooltip
 				};
 
-                root.schedule.Execute(() =>
-                {
-                    var labels = timeField.Query<Label>(className: "unity-base-text-field__label").ToList();
+				timeField.AddToClassList(BaseField<Void>.alignedFieldUssClassName);
+				AddPropertyContextMenu(timeField, property);
 
-                    foreach (var label in labels)
-                        label.text = GetFormatInitial(labels.IndexOf(label), timeFieldAttribute);
-                }).ExecuteLater(1);
-
-				timeField.AddToClassList("unity-base-field__aligned");
-
-                timeField.RegisterValueChangedCallback((callback) =>
+				timeField.RegisterValueChangedCallback((callback) =>
                 {
 					switch (property.propertyType)
 					{
@@ -55,8 +49,16 @@ namespace EditorAttributes.Editor
                 });
 
 				root.Add(timeField);
-            }
-            else
+
+				ExecuteLater(timeField, () =>
+				{
+					var labels = timeField.Query<Label>(className: "unity-base-text-field__label").ToList();
+
+					foreach (var label in labels)
+						label.text = GetFormatInitial(labels.IndexOf(label), timeFieldAttribute);
+				});
+			}
+			else
             {
                 errorBox.text = "The TimeField Attribute can only be attached to Integers or Floats";
             }
@@ -66,7 +68,21 @@ namespace EditorAttributes.Editor
             return root;
     	}
 
-        private string GetFormatInitial(int index, TimeFieldAttribute timeFieldAttribute)
+		protected override string CopyValue(VisualElement element, SerializedProperty property)
+		{
+			var vector3field = element as Vector3Field;
+
+			return $"Vector3{vector3field.value}";
+		}
+
+		protected override void PasteValue(VisualElement element, SerializedProperty property, string clipboardValue)
+		{
+			var vector3field = element as Vector3Field;
+
+			vector3field.value = VectorUtils.ParseVector3(clipboardValue.Replace("Vector3", ""));
+		}
+
+		private string GetFormatInitial(int index, TimeFieldAttribute timeFieldAttribute)
         {
 			return timeFieldAttribute.TimeFormat switch
 			{

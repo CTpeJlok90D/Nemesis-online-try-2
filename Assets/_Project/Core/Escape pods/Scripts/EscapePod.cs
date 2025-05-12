@@ -1,12 +1,11 @@
-using Unity.Netcode;
+using Core.Entities;
 using Unity.Netcode.Custom;
 using UnityEngine;
-using Zenject;
 
 namespace Core.EscapePods
 {
     [Icon("Assets/_Project/Core/Escape pods/Editor/icons8-escape-96.png")]
-    public class EscapePod : NetworkBehaviour
+    public class EscapePod : NetEntity<EscapePod>
     {
         [field: SerializeField] public EscapeZone EscapeZone { get; private set; }
         [field: SerializeField] public int Number { get; private set; }
@@ -19,11 +18,6 @@ namespace Core.EscapePods
         {
             _isLocked = new(false);
             _freePlaces = new(_defualtFreePlaces);
-        }
-
-        private void Start()
-        {
-            
         }
     }
 }

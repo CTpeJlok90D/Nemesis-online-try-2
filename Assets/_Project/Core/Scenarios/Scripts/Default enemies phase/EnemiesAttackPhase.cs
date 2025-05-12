@@ -4,7 +4,7 @@ using Core.ActionsCards;
 using Core.AlienAttackDecks;
 using Core.Aliens;
 using Core.Characters.Infection;
-using Core.Entity;
+using Core.Entities;
 using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;

@@ -101,6 +101,11 @@ namespace Core.Maps.Generation
 
             foreach (EscapePod escapePod in _map.EscapePods.ToArray())
             {
+                if (escapePod.NetworkObject.IsSpawned == false)
+                {
+                    escapePod.NetworkObject.Spawn();
+                }
+                
                 if (enablePodsCount <= 0)
                 {
                     _map.RemoveEscapePod(escapePod);
@@ -168,7 +173,10 @@ namespace Core.Maps.Generation
                     _tokens = new(_mapGeneratorConfiguration.IntelegenceTokens);
                     tokensIsOut = true;
                 }
-                roomCell.IntellegenceTokenNet.Value = _tokens.PickOne();
+                
+                IntelegenceToken intelegenceToken = _tokens.PickOne();
+                roomCell.IntellegenceTokenNet.Value = intelegenceToken; 
+                roomCell.LootCount.Value = intelegenceToken.LootCount;
             }
 
             if (tokensIsOut)

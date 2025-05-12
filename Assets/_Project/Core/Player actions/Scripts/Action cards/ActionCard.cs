@@ -9,7 +9,7 @@ namespace Core.ActionsCards
     [CreateAssetMenu(menuName = "Game/Action cards/Card")]
     public class ActionCard : ScriptableObject, INetworkSerializable, IEquatable<ActionCard>, INetScriptableObjectArrayElement<ActionCard>
     {
-        [field: SerializeField] public int Cost = 0;
+        [field: SerializeField] public int _cost = 0;
         [field: SerializeField] private NetScriptableObject<ActionCard> _actionCard = new();
         [field: SerializeField] public string ID { get; private set; }
         [field: SerializeField] public InfectionType Type { get; private set; }
@@ -30,7 +30,7 @@ namespace Core.ActionsCards
         private void OnCardLoaded(ActionCard result)
         {
             _actionCard.Preloaded -= OnCardLoaded;
-            Cost = result.Cost;
+            _cost = result._cost;
             ID = result.ID;
         }
 

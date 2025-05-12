@@ -1,7 +1,7 @@
 using UnityEditor;
+using System.Reflection;
 using UnityEngine.UIElements;
 using EditorAttributes.Editor.Utility;
-using System.Reflection;
 
 namespace EditorAttributes.Editor
 {
@@ -14,7 +14,7 @@ namespace EditorAttributes.Editor
 			var validateAttribute = attribute as ValidateAttribute;
 			var conditionalProperty = ReflectionUtility.GetValidMemberInfo(validateAttribute.ConditionName, property);
 
-			var propertyField = DrawProperty(property);
+			var propertyField = CreatePropertyField(property);
 
 			root.Add(propertyField);
 
@@ -29,22 +29,22 @@ namespace EditorAttributes.Editor
 
 			UpdateVisualElement(root, () =>
 			{
-				if (GetConditionValue(conditionalProperty, validateAttribute, property, errorBox))
+				DisplayErrorBox(root, errorBox);
+
+				if (GetConditionValue(conditionalProperty, validateAttribute, property, helpBox, errorBox))
 				{
-					root.Add(helpBox);
+					AddElement(root, helpBox);
 				}
 				else
 				{
 					RemoveElement(root, helpBox);
 				}
-
-				DisplayErrorBox(root, errorBox);
 			});
 
 			return root;
 		}
 
-		private bool GetConditionValue(MemberInfo memberInfo, ValidateAttribute validateAttribute, SerializedProperty serializedProperty, HelpBox errorBox)
+		private bool GetConditionValue(MemberInfo memberInfo, ValidateAttribute validateAttribute, SerializedProperty serializedProperty, HelpBox helpBox, HelpBox errorBox)
 		{
 			var memberInfoType = ReflectionUtility.GetMemberInfoType(memberInfo);
 
@@ -63,8 +63,24 @@ namespace EditorAttributes.Editor
 
 				return (bool)memberInfoValue;
 			}
+			else if (memberInfoType == typeof(ValidationCheck))
+			{
+				if (ReflectionUtility.GetMemberInfoValue(memberInfo, serializedProperty) is not ValidationCheck memberInfoValue)
+					return false;
 
-			errorBox.text = $"The provided condition \"{validateAttribute.ConditionName}\" is not a valid boolean";
+				if (validateAttribute.ValidationMessage != null)
+				{
+					errorBox.text = "The condition uses <b>ValidationCheck</b> but the attribute still uses the constructor with the <b>validationMessage</b> parameter which will be overriden";
+					errorBox.messageType = HelpBoxMessageType.Info;
+				}
+
+				helpBox.text = memberInfoValue.ValidationMessage;
+				helpBox.messageType = (HelpBoxMessageType)memberInfoValue.Severety;
+
+				return !memberInfoValue.PassedCheck;
+			}
+
+			errorBox.text = $"The provided condition \"{validateAttribute.ConditionName}\" is not a valid boolean or ValidationCheck type";
 
 			return false;
 		}

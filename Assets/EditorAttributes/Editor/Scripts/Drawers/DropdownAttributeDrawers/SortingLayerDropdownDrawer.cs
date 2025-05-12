@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace EditorAttributes.Editor
 {
-    [CustomPropertyDrawer(typeof(SortingLayerDropdownAttribute))]
+	[CustomPropertyDrawer(typeof(SortingLayerDropdownAttribute))]
     public class SortingLayerDropdownDrawer : PropertyDrawerBase
     {
 		public override VisualElement CreatePropertyGUI(SerializedProperty property)
@@ -15,11 +16,14 @@ namespace EditorAttributes.Editor
 
 			if (property.propertyType == SerializedPropertyType.Integer)
 			{
-				var maskField = new MaskField(property.displayName, GetSortingLayerNames(), property.intValue) { showMixedValue = property.hasMultipleDifferentValues };
+				var maskField = new MaskField(property.displayName, GetSortingLayerNames(), property.intValue) 
+				{ 
+					showMixedValue = property.hasMultipleDifferentValues,
+					tooltip = property.tooltip
+				};
 
-				root.schedule.Execute(() => maskField.Q(className: "unity-base-popup-field__input").style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f).ExecuteLater(1);
-
-				maskField.AddToClassList("unity-base-field__aligned");
+				maskField.AddToClassList(BaseField<Void>.alignedFieldUssClassName);
+				AddPropertyContextMenu(maskField, property);
 
 				maskField.RegisterValueChangedCallback(callback =>
 				{
@@ -28,6 +32,8 @@ namespace EditorAttributes.Editor
 				});
 
 				root.Add(maskField);
+
+				ExecuteLater(maskField, () => maskField.Q(className: MaskField.inputUssClassName).style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f);
 			}
 			else
 			{
@@ -37,7 +43,23 @@ namespace EditorAttributes.Editor
 			return root;
 		}
 
-        private List<string> GetSortingLayerNames()
+		protected override void PasteValue(VisualElement element, SerializedProperty property, string clipboardValue)
+		{
+			var dropdown = element as MaskField;
+
+			base.PasteValue(element, property, clipboardValue);
+
+			try
+			{
+				dropdown.SetValueWithoutNotify(int.Parse(clipboardValue));
+			}
+			catch (FormatException)
+			{
+				// Ignore, error will already be thrown by the base function
+			}
+		}
+
+		private List<string> GetSortingLayerNames()
         {
             var layerList = new List<string>();
 

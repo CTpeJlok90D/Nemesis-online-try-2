@@ -1,0 +1,21 @@
+{
+    "name": "UI.Selection.LootTypeSelection",
+    "rootNamespace": "UI.Selection.LootTypeSelection",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:f0f496dad1a1bf042b83bac0ccd25489",
+        "GUID:01d3be44548e6474192a3643044bd230",
+        "GUID:b333b5a5fde3844428bbfac02f556511",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16",
+        "GUID:deead63c09dfb414680d988c3a4f6b80"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

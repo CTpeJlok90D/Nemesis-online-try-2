@@ -1,0 +1,26 @@
+{
+    "name": "Core.Characters.Actions",
+    "rootNamespace": "Core.Characters.Actions",
+    "references": [
+        "Unity.Netcode.Runtime",
+        "NetworkExtenctions",
+        "Core.Map.CharacterPawns",
+        "Core.PlayerActions.Base",
+        "Core.PlayerActions.Cards",
+        "Core.Maps",
+        "Core.PlayerTablet",
+        "Core.LootDecks",
+        "Core.CharacterInventory",
+        "Core.Entity",
+        "Core.Common"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

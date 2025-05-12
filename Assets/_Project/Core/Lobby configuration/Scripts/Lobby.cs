@@ -87,6 +87,11 @@ namespace Core.Lobbies
                 return;
             }
 
+            if (_playerTabletList.IsSpawned == false)
+            {
+                _playerTabletList.NetworkObject.Spawn();
+            }
+            
             _playerTabletList.Clear();
 
             int oldPlayersCount = _playerTabletList.ActiveTablets.Length;

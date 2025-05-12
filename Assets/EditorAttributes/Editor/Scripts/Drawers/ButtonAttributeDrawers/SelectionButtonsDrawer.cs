@@ -19,6 +19,7 @@ namespace EditorAttributes.Editor
 		{
 			var selectionButtonsAttribute = attribute as SelectionButtonsAttribute;
 
+			var errorBox = new HelpBox();
 			var root = new VisualElement()
 			{
 				style = {
@@ -26,7 +27,6 @@ namespace EditorAttributes.Editor
 					paddingBottom = 3f
 				}
 			};
-			var errorBox = new HelpBox();
 			
 			if (property.propertyType == SerializedPropertyType.Enum)
 			{
@@ -37,7 +37,7 @@ namespace EditorAttributes.Editor
 				{
 					var flagValue = property.enumValueFlag;
 
-					root.Add(DrawEnumFlagButtons(flagValue, property.enumDisplayNames, selectionButtonsAttribute, (value) =>
+					root.Add(DrawEnumFlagButtons(flagValue, property.enumDisplayNames, property, selectionButtonsAttribute, (value) =>
 					{
 						property.enumValueFlag = value;
 						property.serializedObject.ApplyModifiedProperties();
@@ -47,7 +47,7 @@ namespace EditorAttributes.Editor
 				{
 					var buttonsValue = property.enumValueIndex;
 
-					root.Add(DrawButtons(buttonsValue, property.enumDisplayNames, selectionButtonsAttribute, (value) =>
+					root.Add(DrawButtons(buttonsValue, property.enumDisplayNames, property, selectionButtonsAttribute, (value) =>
 					{
 						property.enumValueIndex = value;
 						property.serializedObject.ApplyModifiedProperties();
@@ -61,12 +61,10 @@ namespace EditorAttributes.Editor
 
 				var buttonsValue = Array.IndexOf(displayNames, GetPropertyValueAsString(property));
 
-				root.Add(DrawButtons(buttonsValue, displayNames, selectionButtonsAttribute, (value) =>
+				root.Add(DrawButtons(buttonsValue, displayNames, property, selectionButtonsAttribute, (value) =>
 				{
 					if (value >= 0 && value < displayNames.Length)
-						SetProperyValueFromString(displayNames[value], ref property, errorBox);
-
-					property.serializedObject.ApplyModifiedProperties();
+						SetPropertyValueFromString(displayNames[value], property);
 				}));
 			}
 			else
@@ -79,7 +77,7 @@ namespace EditorAttributes.Editor
 			return root;
 		}
 
-		private VisualElement DrawButtons(int buttonsValue, string[] valueLabels, SelectionButtonsAttribute selectionButtonsAttribute, Action<int> onValueChanged)
+		private VisualElement DrawButtons(int buttonsValue, string[] valueLabels, SerializedProperty property, SelectionButtonsAttribute selectionButtonsAttribute, Action<int> onValueChanged)
 		{
 			if (valueLabels == null || valueLabels.Length == 0)
 				return new HelpBox("The provided collection is empty", HelpBoxMessageType.Error);
@@ -93,11 +91,12 @@ namespace EditorAttributes.Editor
 			{
 				var label = new Label(preferredLabel);
 
-				label.AddToClassList("unity-base-field__label");
+				label.AddToClassList(BaseField<Void>.labelUssClassName);
 
 				label.style.flexGrow = 1f;
 				label.style.paddingLeft = 4f;
 				label.style.minWidth = 100f;
+				label.tooltip = property.tooltip;
 
 				toolbar.Add(label);
 			}
@@ -163,7 +162,7 @@ namespace EditorAttributes.Editor
 			return toolbar;
 		}
 
-		private VisualElement DrawEnumFlagButtons(int flagValue, string[] valueLabels, SelectionButtonsAttribute selectionButtonsAttribute, Action<int> onValueChanged)
+		private VisualElement DrawEnumFlagButtons(int flagValue, string[] valueLabels, SerializedProperty property, SelectionButtonsAttribute selectionButtonsAttribute, Action<int> onValueChanged)
 		{
 			var toolbar = new OverlayToolbar();
 			toolbar.style.flexDirection = FlexDirection.Row;
@@ -174,6 +173,7 @@ namespace EditorAttributes.Editor
 
 				label.style.flexGrow = 1f;
 				label.style.minWidth = 100f;
+				label.tooltip = property.tooltip;
 
 				toolbar.Add(label);
 			}

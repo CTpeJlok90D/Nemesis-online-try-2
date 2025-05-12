@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Core.Entity;
+using Core.Entities;
 using Core.Maps;
 using TNRD;
 using Unity.Netcode.Custom;

@@ -95,6 +95,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f77c859a3a8c0849b08430f3ce78856
+    m_Address: Assets/_Project/Data/Action cards/Actions/Simple search.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2539834e570f2fd47bcff150a66f026b
     m_Address: Assets/_Project/Data/Action cards/Test action card 4.asset
     m_ReadOnly: 0
@@ -185,6 +190,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ba338e258e3ba34484ec81b719eaa0d
+    m_Address: Frag granate
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d300efed72d1ab45835a1346552e75d
     m_Address: Infection
     m_ReadOnly: 0
@@ -253,6 +263,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6648204404f61f3469a20061b627863d
     m_Address: Assets/_Project/Data/Map/Control point/Destinations/Earth.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b603d284b246844a9a8f066e56b6112
+    m_Address: Energy consumption - yellow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -342,6 +357,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 901f7e0657d78c548bc61e7614ad1d1d
+    m_Address: Assets/_Project/UI/Inventory items/Textures/Items.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 90d47e4cd9977024c9e30a414f5d14d8
     m_Address: Assets/_Project/Data/Map/Intellegence tokens/Fire intellegence token.asset
     m_ReadOnly: 0
@@ -359,6 +379,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99e0489f2723f5d49912959d59369013
     m_Address: Assets/_Project/Data/Weakness cards/Weakness test card 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b03bedbf2d57694aa908854b8846ee8
+    m_Address: Energy consumption - red
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -482,6 +507,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e10ee2b4036165841836b79574b5f3ab
+    m_Address: Assets/_Project/Data/Action cards/Actions/NetContainers/Simple search
+      container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e26b66a04ce062f48b90cac906da99c5
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/Unexplored
       room layer 2.prefab
@@ -498,8 +529,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e76cbdc9e8099f142ba7d8282ed32978
+    m_Address: Bandage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e92ce2550ea83b64ea5f133f8407e865
     m_Address: Assets/_Project/Data/Map/Room contents/Default rooms/Engine room 3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eab4759c675ef044c8431d14ce1f3793
+    m_Address: Chemicals
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -515,6 +556,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ee7ec93ce5c7dad4aa3ce24c88d213a7
     m_Address: Assets/_Project/Data/Aliens/Prefabs/Larvae.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f32742976a111e444b24791982984e3f
+    m_Address: Med kit
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

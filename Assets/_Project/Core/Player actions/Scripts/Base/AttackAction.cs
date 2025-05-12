@@ -13,7 +13,7 @@ using UnityEngine;
 namespace Core.PlayerActions.Base
 {
     [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Attack action")]
-    public class AttackAction : ScriptableObject, IGameAction, IGameActionWithPayment, IGameActionWithRoomContentSelection, IRequireInventoryItems
+    public class AttackAction : ScriptableObject, IGameAction, INeedPayment, INeedRoomContents, INeedInventoryItems
     {
         private InventoryItem _attackItem;
         

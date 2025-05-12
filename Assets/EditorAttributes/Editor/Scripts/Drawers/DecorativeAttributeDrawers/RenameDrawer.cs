@@ -1,6 +1,7 @@
 using UnityEditor;
 using System.Text;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 namespace EditorAttributes.Editor
 {
@@ -9,28 +10,41 @@ namespace EditorAttributes.Editor
     {
 		public override VisualElement CreatePropertyGUI(SerializedProperty property)
 		{
+			var renameAttribute = attribute as RenameAttribute;
+
 			var root = new VisualElement();
 			var errorBox = new HelpBox();
-			var propertyField = DrawProperty(property, new Label(property.displayName));
-
-			UpdateVisualElement(root, () =>
-			{
-				propertyField.Q<Label>().text = GetNewName(property, errorBox);
-				DisplayErrorBox(root, errorBox);
-			});
+			var propertyField = new PropertyField(property, GetNewName(renameAttribute, property, errorBox));
 
 			root.Add(propertyField);
+
+			if (renameAttribute.StringInputMode == StringInputMode.Dynamic)
+			{
+				Label propertyLabel = null;
+
+				ExecuteLater(propertyField, () => propertyLabel = propertyField.Q<Label>());
+
+				UpdateVisualElement(propertyField, () =>
+				{
+					if (propertyLabel != null)
+						propertyLabel.text = GetNewName(renameAttribute, property, errorBox);
+				});
+
+				DisplayErrorBox(root, errorBox);
+			}
 
 			return root;
 		}
 
-        private string GetNewName(SerializedProperty property, HelpBox errorBox)
+        internal static string GetNewName(RenameAttribute renameAttribute, SerializedProperty property, HelpBox errorBox)
         {
-			var renameAttribute = attribute as RenameAttribute;
 			var newName = GetDynamicString(renameAttribute.Name, property, renameAttribute, errorBox);
 
 			switch (renameAttribute.CaseType)
 			{
+				case CaseType.None:
+					return newName;
+
 				case CaseType.Unity:
 					newName = ObjectNames.NicifyVariableName(newName);
 					break;
@@ -71,7 +85,7 @@ namespace EditorAttributes.Editor
 			return newName;
 		}
 
-        private void FormatString(ref string stringToFormat)
+        private static void FormatString(ref string stringToFormat)
         {
 			while (stringToFormat.Contains(" "))
 			{

@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEngine;
 
-namespace Core.Entity
+namespace Core.Entities
 {
-    public abstract class NetEntity<T> : NetworkBehaviour
+    [RequireComponent(typeof(NetworkObject))]
+    public abstract class NetEntity<T> : NetworkBehaviour where T : NetEntity<T>
     {
-        private static List<T> _instances = new();
+        private static readonly List<T> _instances = new();
         
         public static IReadOnlyList<T> Instances
         {

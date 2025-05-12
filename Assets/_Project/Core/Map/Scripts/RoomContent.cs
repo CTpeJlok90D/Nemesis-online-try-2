@@ -1,4 +1,4 @@
-using Core.Entity;
+using Core.Entities;
 using UnityEngine;
 using Unity.Netcode;
 using Zenject;

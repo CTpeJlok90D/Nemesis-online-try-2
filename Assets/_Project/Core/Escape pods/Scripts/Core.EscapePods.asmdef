@@ -3,7 +3,8 @@
     "rootNamespace": "Core.EscapePods",
     "references": [
         "GUID:1491147abca9d7d4bb7105af628b223e",
-        "GUID:58946ea638f53f54d9ccaa0cb6215515"
+        "GUID:58946ea638f53f54d9ccaa0cb6215515",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

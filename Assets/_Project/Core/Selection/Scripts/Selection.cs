@@ -25,6 +25,9 @@ namespace Core.SelectionBase
         public bool IsActive => _isSelectionInProgress;
         public IEnumerable<T> SelectionSource => _whiteList;
         public virtual bool OnlyUniqueItems => true; 
+        public virtual bool SkipSelectionWithSameItemCount => false;
+        // Меняется из PlayerActionExecutor;
+        public bool CanCancel = true;
 
         public event IReadOnlyReactiveField<int>.ChangedListener MaxCountChanged
         {
@@ -111,6 +114,11 @@ namespace Core.SelectionBase
 
         public void Cancel()
         {
+            if (CanCancel == false)
+            {
+                throw new InvalidOperationException("Can't cancel selection: cancel is disabled");
+            }
+            
             if (IsActive == false)
             {
                 throw new InvalidOperationException("Can't cancel selection: selection is not active");
@@ -124,6 +132,11 @@ namespace Core.SelectionBase
 
         public async Task<T[]> SelectFrom(IEnumerable<T> source, int count)
         {
+            if (SkipSelectionWithSameItemCount && count == source.Count())
+            {
+                return source.ToArray();
+            }
+            
             _whiteList = new(source);
             T[] result = await Select(count);
             _whiteList.Clear();

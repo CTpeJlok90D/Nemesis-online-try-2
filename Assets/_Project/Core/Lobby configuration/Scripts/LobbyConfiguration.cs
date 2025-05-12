@@ -6,6 +6,7 @@ using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Infection;
 using Core.EventsDecks;
+using Core.LootDecks;
 using Core.Maps;
 using Core.Maps.Generation;
 using Core.Missions.Dealing;
@@ -39,6 +40,8 @@ namespace Core.Lobbies
         public HeavyDamageDeck.Config HeavyDamageDeckConfig;
         
         public InfectionDeck.Config InfectionDeckConfiguration;
+        
+        public LootDecksConfig LootDecksConfig;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
@@ -54,6 +57,7 @@ namespace Core.Lobbies
             serializer.SerializeValue(ref KitStartConfig);
             serializer.SerializeValue(ref HeavyDamageDeckConfig);
             serializer.SerializeValue(ref InfectionDeckConfiguration);
+            serializer.SerializeValue(ref LootDecksConfig);
         }
     }
 }

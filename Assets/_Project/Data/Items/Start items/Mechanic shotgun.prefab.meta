@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 44fbc4e9467039f4fa93cbabf343fcda
+labels:
+- InventoryItem
 PrefabImporter:
   externalObjects: {}
   userData: 

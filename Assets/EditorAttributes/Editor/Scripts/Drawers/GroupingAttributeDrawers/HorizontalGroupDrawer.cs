@@ -1,8 +1,7 @@
-using System;
 using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEditorInternal;
+using System.Reflection;
 using UnityEngine.UIElements;
+using EditorAttributes.Editor.Utility;
 
 namespace EditorAttributes.Editor
 {
@@ -25,6 +24,7 @@ namespace EditorAttributes.Editor
 
 				if (variableProperty != null)
 				{
+					var errorBox = new HelpBox();
 					var groupBox = new VisualElement() 
 					{
 						style = {
@@ -35,8 +35,14 @@ namespace EditorAttributes.Editor
 						}
 					};
 
-					var label = new Label(variableProperty.displayName)
+					var fieldInfo = ReflectionUtility.GetValidMemberInfo(variableProperty.name, property) as FieldInfo;
+					var renameAttribute = fieldInfo?.GetCustomAttribute<RenameAttribute>();
+
+					string labelText = renameAttribute == null ? variableProperty.displayName : RenameDrawer.GetNewName(renameAttribute, variableProperty, errorBox);
+
+					var label = new Label(labelText)
 					{
+						tooltip = variableProperty.tooltip,
 						style = {
 							flexGrow = 1f,
 							flexBasis = 0.1f,
@@ -50,11 +56,20 @@ namespace EditorAttributes.Editor
 					propertyField.style.flexBasis = 0.1f;
 					groupBox.style.paddingLeft = 20f;
 
-					if (variableProperty.propertyType != SerializedPropertyType.Generic) 
-						groupBox.Add(label); // Do not add labels to serialized objects else it will show twice
+					if (variableProperty.propertyType != SerializedPropertyType.Generic) // Do not add labels to serialized objects else it will show twice
+						groupBox.Add(label);
 
 					groupBox.Add(propertyField);
 					root.Add(groupBox);
+
+					if (renameAttribute != null)
+					{
+						UpdateVisualElement(label, () =>
+						{
+							label.text = RenameDrawer.GetNewName(renameAttribute, property, errorBox);
+							DisplayErrorBox(propertyField, errorBox);
+						});
+					}
 				}
 				else
 				{
@@ -66,28 +81,21 @@ namespace EditorAttributes.Editor
 			return root;
 		}
 
-		// Had to override this function to remove the label from property fields since they are drawn manualy
-		protected override VisualElement DrawProperty(SerializedProperty property, Label label = null)
+		private VisualElement DrawProperty(SerializedProperty property)
 		{
-			eventDrawer ??= new UnityEventDrawer();
+			var propertyField = CreatePropertyField(property);
 
-			try
+			if (property.propertyType != SerializedPropertyType.Generic)
 			{
-				var eventContainer = eventDrawer.CreatePropertyGUI(property);
-				var eventLabel = eventContainer.Q<Label>();
+				ExecuteLater(propertyField, () =>
+				{
+					var propertyLabel = propertyField.Q<Label>();
 
-				eventLabel.text = label == null ? eventLabel.text : "";
-
-				return eventContainer;
+					propertyLabel?.RemoveFromHierarchy();
+				});
 			}
-			catch (NullReferenceException)
-			{
-				var propertyField = new PropertyField(property, "");
 
-				propertyField.BindProperty(property);
-
-				return propertyField;
-			}
+			return propertyField;
 		}
 	}
 }

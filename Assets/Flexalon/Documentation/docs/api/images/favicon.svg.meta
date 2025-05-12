@@ -4,9 +4,9 @@ AssetOrigin:
   serializedVersion: 1
   productId: 254652
   packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
+  packageVersion: 4.3.0
   assetPath: Assets/Flexalon/Documentation/docs/api/images/favicon.svg
-  uploadId: 684591
+  uploadId: 745904
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -58,5 +58,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: fe364b8732877bb4a84a5e0d404062d1
+      spriteID: bd9382931f6e9254389e603d00101bf0
     PhysicsOutlines: []

@@ -17,7 +17,7 @@ namespace UI.GameActions.MoveActionButtons
 
         private void UpdatePrice()
         {
-            if (_gameActionContainer.GameAction.Value is IGameActionWithPayment gameActionWithPayment)
+            if (_gameActionContainer.GameAction.Value is INeedPayment gameActionWithPayment)
             {
                 _caption.text = gameActionWithPayment.RequaredPaymentCount.ToString();
             }

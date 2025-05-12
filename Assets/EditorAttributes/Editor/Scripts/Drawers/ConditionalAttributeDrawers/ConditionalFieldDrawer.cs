@@ -13,9 +13,11 @@ namespace EditorAttributes.Editor
 			var conditionalAttribute = attribute as ConditionalFieldAttribute;
 
 			var root = new VisualElement();
-			var propertyField = DrawProperty(property);
+			var propertyField = CreatePropertyField(property);
 
 			var errorBox = new HelpBox();
+
+			root.Add(propertyField);
 
 			UpdateVisualElement(root, () =>
 			{
@@ -26,7 +28,7 @@ namespace EditorAttributes.Editor
 					case ConditionResult.ShowHide:
 						if (canDrawProperty)
 						{
-							root.Add(propertyField);
+							AddElement(root, propertyField);
 						}
 						else
 						{
@@ -41,8 +43,6 @@ namespace EditorAttributes.Editor
 
 				DisplayErrorBox(root, errorBox);
 			});
-
-			root.Add(propertyField);
 
 			return root;
 		}

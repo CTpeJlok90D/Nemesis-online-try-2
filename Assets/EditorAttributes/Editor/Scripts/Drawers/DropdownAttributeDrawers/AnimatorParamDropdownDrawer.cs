@@ -24,9 +24,10 @@ namespace EditorAttributes.Editor
 				var dropdownField = IsCollectionValid(animatorParameters) ? new DropdownField(property.displayName, animatorParameters, GetDropdownDefaultValue(animatorParameters, property)) 
 					: new DropdownField(property.displayName, new List<string>() { "NULL" }, 0);
 
-				root.schedule.Execute(() => dropdownField.Q(className: "unity-base-popup-field__input").style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f).ExecuteLater(1);
+				dropdownField.tooltip = property.tooltip;
+				dropdownField.AddToClassList(BaseField<Void>.alignedFieldUssClassName);
 
-				dropdownField.AddToClassList("unity-base-field__aligned");
+				AddPropertyContextMenu(dropdownField, property);
 
 				dropdownField.RegisterValueChangedCallback(callback =>
 				{
@@ -48,15 +49,17 @@ namespace EditorAttributes.Editor
 					}
 				}
 
-				UpdateVisualElement(root, () =>
+				root.Add(dropdownField);
+
+				ExecuteLater(dropdownField, () => dropdownField.Q(className: DropdownField.inputUssClassName).style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f);
+
+				UpdateVisualElement(dropdownField, () =>
 				{
 					var animatorParams = GetAnimatorParams(animatorParamAttribute, property, errorBox);
 
 					if (IsCollectionValid(animatorParams))
 						dropdownField.choices = animatorParams;
 				});
-
-				root.Add(dropdownField);
 			}
 			else
 			{
@@ -100,6 +103,21 @@ namespace EditorAttributes.Editor
 			}
 
 			return paramList;
+		}
+
+		protected override void PasteValue(VisualElement element, SerializedProperty property, string clipboardValue)
+		{
+			var dropdown = element as DropdownField;
+
+			if (dropdown.choices.Contains(clipboardValue))
+			{
+				base.PasteValue(element, property, clipboardValue);
+				dropdown.SetValueWithoutNotify(clipboardValue);
+			}
+			else
+			{
+				Debug.LogWarning($"Could not paste value \"{clipboardValue}\" since is not availiable as an option in the dropdown");
+			}
 		}
 
 		private string GetDropdownDefaultValue(List<string> collectionValues, SerializedProperty property)

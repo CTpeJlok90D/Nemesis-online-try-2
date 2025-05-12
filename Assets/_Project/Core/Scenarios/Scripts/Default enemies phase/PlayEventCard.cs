@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Aliens;
 using Core.AliensBags;
-using Core.Entity;
+using Core.Entities;
 using Core.EventsDecks;
 using Core.Maps;
 using Core.Maps.CharacterPawns;

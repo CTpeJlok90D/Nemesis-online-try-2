@@ -14,10 +14,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _assets:
     _serializedList:
+    - Key: Bandage
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sheets-med
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     - Key: Capitan revolver
       Value:
         m_AssetGUID: 810823e78f3b3d34a920582a30fd2f08
         m_SubObjectName: characters-start-item-shert-capitan
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Chemicals
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sherts-engineering
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Energy consumption - red
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sheets-weapons
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Energy consumption - yellow
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sherts-engineering
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Frag granate
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sheets-weapons
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Med kit
+      Value:
+        m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
+        m_SubObjectName: item-card-sheets-med
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 

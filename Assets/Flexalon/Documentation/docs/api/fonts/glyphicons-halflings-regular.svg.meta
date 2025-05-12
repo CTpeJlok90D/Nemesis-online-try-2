@@ -4,9 +4,9 @@ AssetOrigin:
   serializedVersion: 1
   productId: 254652
   packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
+  packageVersion: 4.3.0
   assetPath: Assets/Flexalon/Documentation/docs/api/fonts/glyphicons-halflings-regular.svg
-  uploadId: 684591
+  uploadId: 745904
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -58,5 +58,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: cda92cdec1ebb74409c7d84bbbad707d
+      spriteID: cf33aa2900849ea4686291bea597015e
     PhysicsOutlines: []

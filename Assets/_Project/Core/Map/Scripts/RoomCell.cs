@@ -7,7 +7,7 @@ using AYellowpaper;
 using System.Linq;
 using System;
 using System.Collections;
-using Core.Entity;
+using Core.Entities;
 using Zenject;
 
 #if UNITY_EDITOR
@@ -28,7 +28,8 @@ namespace Core.Maps
         [field: SerializeField] private InterfaceReference<INoiseContainer>[] _linkedTunnels = new InterfaceReference<INoiseContainer>[NOISE_CONTAINERS_COUNT];
 
         [Inject] private NetworkManager _networkManager;
-        
+
+        public NetVariable<int> LootCount { get; private set; }
         private NetworkList<NetworkObjectReference> _roomContentsNet;
         private RoomContent[] _roomContents;
         private NetVariable<RoomType> _roomTypeNet;
@@ -38,6 +39,7 @@ namespace Core.Maps
         public NetVariable<bool> IsInitialized { get; private set; }
 
         public RoomType Type => _roomTypeNet.Value;
+        public RoomType.LootType Loot => _roomTypeNet.Value.Loot;
         public IReadOnlyReactiveField<bool> IsExplored => _isExplored;
         public IReadOnlyCollection<RoomContent> RoomContents => _roomContents;
         public IReadOnlyCollection<INoiseContainer> Tunnels => _linkedTunnels.Select(x => x.Value).ToArray();
@@ -83,6 +85,7 @@ namespace Core.Maps
                 throw new Exception($"Every room cell must have {NOISE_CONTAINERS_COUNT} tunnels");
             }
 
+            LootCount = new();
             IntellegenceTokenNet = new();
             _roomTypeNet = new();
             IsInitialized = new();

@@ -22,6 +22,7 @@ namespace Core.ActionsCards
 
         [Inject] private Config _config;
 
+        public IReadOnlyCollection<ActionCard> HandLocal => _hand.ToArray();
         public async UniTask<IReadOnlyCollection<ActionCard>> GetHand() => await _hand.GetElements();
         public async UniTask<IReadOnlyCollection<ActionCard>> GetDiscard() => await _discard.GetElements();
         public async UniTask<IReadOnlyCollection<ActionCard>> GetMainDeck() => await _mainDeck.GetElements();

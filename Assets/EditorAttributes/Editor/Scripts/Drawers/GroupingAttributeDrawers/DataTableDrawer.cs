@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 using EditorAttributes.Editor.Utility;
 
 namespace EditorAttributes.Editor
@@ -29,10 +30,13 @@ namespace EditorAttributes.Editor
 
 			var label = new Label(property.displayName) 
 			{
+				tooltip = property.tooltip,
 				style = {
+					overflow = Overflow.Hidden,
 					unityFontStyleAndWeight = FontStyle.Bold,
 					marginRight = 50f,
-					maxWidth = 50f,
+					maxWidth = 100f,
+					width = 100f,
 					alignSelf = Align.Center,
 					color = EditorExtension.GLOBAL_COLOR
 				}
@@ -47,7 +51,7 @@ namespace EditorAttributes.Editor
 			{
 				if (serializedProperty.propertyType is SerializedPropertyType.Generic or SerializedPropertyType.Vector4 or SerializedPropertyType.ArraySize)
 				{
-					var errorBox = new HelpBox("Collection, UnityEvent and Serialized object types are not supported", HelpBoxMessageType.Error);
+					var errorBox = new HelpBox("Collection, UnityEvent and Serialized Object types are not supported", HelpBoxMessageType.Error);
 					root.Add(errorBox);
 					break;
 				}
@@ -67,10 +71,37 @@ namespace EditorAttributes.Editor
 					tableColumn.Add(propertyLabel);
 				}
 
-				var propertyField = DrawProperty(serializedProperty, new Label());
+				var propertyField = new PropertyField(serializedProperty, string.Empty);
 
 				propertyField.style.flexGrow = 1f;
 				propertyField.style.marginRight = 10f;
+
+				// Add X Y Z labels to Vector fields
+				if (serializedProperty.propertyType is SerializedPropertyType.Vector2 or SerializedPropertyType.Vector3 or SerializedPropertyType.Vector2Int or SerializedPropertyType.Vector3Int)
+				{
+					ExecuteLater(propertyField, () =>
+					{
+						var floatFields = propertyField.Query<FloatField>().ToList();
+
+						for (int i = 0; i < floatFields.Count; i++)
+						{
+							var label = new Label(i == 0 ? "X" : i == 1 ? "Y" : "Z")
+							{
+								style = {
+									alignSelf = Align.Center,
+									marginRight = 3f,
+									color = EditorExtension.GLOBAL_COLOR
+								}
+							};
+
+							floatFields[i].style.marginRight = 3f;
+
+							floatFields[i].parent.Add(label);
+
+							floatFields[i].PlaceInFront(label);
+						}
+					});
+				}
 
 				if (EditorExtension.GLOBAL_COLOR != EditorExtension.DEFAULT_GLOBAL_COLOR)
 					ColorUtils.ApplyColor(propertyField, EditorExtension.GLOBAL_COLOR, 100);

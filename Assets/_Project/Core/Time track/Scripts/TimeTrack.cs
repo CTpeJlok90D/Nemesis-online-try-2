@@ -1,5 +1,5 @@
 using System;
-using Core.Entity;
+using Core.Entities;
 using Unity.Netcode.Custom;
 using UnityEngine;
 

@@ -2,7 +2,10 @@ using UnityEngine;
 
 namespace EditorAttributes
 {
-    public class AssetPreviewAttribute : PropertyAttribute
+	/// <summary>
+	/// Attribute to preview an asset in the inspector
+	/// </summary>
+	public class AssetPreviewAttribute : PropertyAttribute
     {
 	    public float PreviewWidth { get; private set; }
         public float PreviewHeight { get; private set; }
@@ -17,5 +20,5 @@ namespace EditorAttributes
             PreviewWidth = previewWidth;
             PreviewHeight = previewHeight;
         }
-    }
+	}
 }

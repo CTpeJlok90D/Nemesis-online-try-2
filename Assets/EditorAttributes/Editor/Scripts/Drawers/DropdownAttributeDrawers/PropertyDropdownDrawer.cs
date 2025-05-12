@@ -17,7 +17,7 @@ namespace EditorAttributes.Editor
 			var fieldType = ReflectionUtility.GetMemberInfoType(currentField);
 
 			var root = new VisualElement();
-			var propertyField = DrawProperty(property);
+			var propertyField = CreatePropertyField(property);
 			var errorBox = new HelpBox("The PropertyDropdown Attribute can only be attached to objects deriving from Component or ScriptableObject", HelpBoxMessageType.Error);
 
 			ApplyBoxStyle(root);
@@ -26,8 +26,10 @@ namespace EditorAttributes.Editor
 
 			if (property.propertyType == SerializedPropertyType.ObjectReference)
 			{
+				InitializeFoldoutDrawer(root, property, fieldType, errorBox);
+
 				// Register the callback later to skip any initialization calls
-				root.schedule.Execute(() =>
+				ExecuteLater(propertyField, () =>
 				{
 					propertyField.RegisterCallback<SerializedPropertyChangeEvent>((callback) =>
 					{
@@ -36,9 +38,7 @@ namespace EditorAttributes.Editor
 
 						InitializeFoldoutDrawer(root, property, fieldType, errorBox);
 					});
-				}).ExecuteLater(1);
-
-				InitializeFoldoutDrawer(root, property, fieldType, errorBox);
+				});
 			}
 			else
 			{
@@ -107,7 +107,7 @@ namespace EditorAttributes.Editor
 						if (field?.GetCustomAttribute<HidePropertyAttribute>() != null) // Skip fields with the HideProperty attribute
 							continue;
 
-						var propertyField = DrawProperty(property);
+						var propertyField = CreatePropertyField(property);
 
 						propertyField.style.unityFontStyleAndWeight = FontStyle.Normal;
 

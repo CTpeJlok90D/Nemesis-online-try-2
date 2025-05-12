@@ -1,0 +1,21 @@
+{
+    "name": "UI.SearchActionButton",
+    "rootNamespace": "UI.SearchActionButton",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:484f8c867453d04498b688d5f0a1e27d",
+        "GUID:53c5fe4773e53d44aa875a6b89faf3e6",
+        "GUID:c3afef91c40c7744aae8455e2bd7be6a",
+        "GUID:abeed9924bcb1ad458fff652f1a603b7",
+        "GUID:ad0f7f21d3294e44f8f08e5f5f7b9d16"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

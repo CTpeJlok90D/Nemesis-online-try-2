@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Aliens;
 using Core.Characters.Health;
-using Core.Entity;
+using Core.Entities;
 using Core.Maps;
 using Core.RoomCellTokens;
 using UnityEngine;

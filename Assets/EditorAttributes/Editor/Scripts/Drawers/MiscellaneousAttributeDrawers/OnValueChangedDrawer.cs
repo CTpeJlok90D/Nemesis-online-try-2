@@ -5,7 +5,7 @@ using EditorAttributes.Editor.Utility;
 
 namespace EditorAttributes.Editor
 {
-    [CustomPropertyDrawer(typeof(OnValueChangedAttribute))]
+	[CustomPropertyDrawer(typeof(OnValueChangedAttribute))]
     public class OnValueChangedDrawer : PropertyDrawerBase
     {
     	public override VisualElement CreatePropertyGUI(SerializedProperty property)
@@ -14,21 +14,21 @@ namespace EditorAttributes.Editor
 			ReflectionUtility.GetNestedObjectType(property, out object target);
 
     		var root = new VisualElement();
-		    var propertyField = DrawProperty(property);
+		    var propertyField = CreatePropertyField(property);
 
 			var function = ReflectionUtility.FindFunction(onValueChangedAttribute.FunctionName, property);
 			var functionParameters = function.GetParameters();
 
 			if (functionParameters.Length == 0)
 			{
-				root.schedule.Execute(() =>
+				root.Add(propertyField);
+
+				ExecuteLater(propertyField, () =>
 				{
-					var field = propertyField.Q(className: "unity-property-field") as PropertyField;
+					var field = propertyField.Q(className: PropertyField.ussClassName) as PropertyField;
 
 					field.RegisterValueChangeCallback((callback) => function.Invoke(target, null));
-				}).ExecuteLater(1);
-
-				root.Add(propertyField);
+				});
 			}
 			else
 			{

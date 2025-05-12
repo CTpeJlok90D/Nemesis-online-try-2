@@ -41,5 +41,10 @@ namespace Core.TabletopRandom
             Bag<T> result = new(Items);
             return result;
         }
+
+        public void Add(T item)
+        {
+            _items.Add(item);
+        }
     }
 }

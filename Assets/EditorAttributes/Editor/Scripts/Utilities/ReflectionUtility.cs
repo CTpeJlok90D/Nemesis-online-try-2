@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using System.Linq;
+using System.Text;
 using System.Reflection;
 using System.Collections;
 
@@ -8,7 +9,7 @@ namespace EditorAttributes.Editor.Utility
 {
 	public static class ReflectionUtility
     {
-		public const BindingFlags BINDING_FLAGS = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+		public const BindingFlags BINDING_FLAGS = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy;
 
 		/// <summary>
 		/// Finds a field inside a serialized object
@@ -18,12 +19,15 @@ namespace EditorAttributes.Editor.Utility
 		/// <returns>The field info of the desired field</returns>
 		public static FieldInfo FindField(string fieldName, SerializedProperty property)
 		{
+			if (fieldName.Contains('.'))
+				return GetStaticMemberInfoFromPath(fieldName, MemberTypes.Field) as FieldInfo;
+
 			var fieldInfo = FindField(fieldName, property.serializedObject.targetObject);
 
 			// If the field null we try to see if its inside a serialized object
 			if (fieldInfo == null)
 			{
-				var serializedObjectType = GetNestedObjectType(property, out _);
+				var serializedObjectType = GetNestedObjectType(property, out _);				
 
 				if (serializedObjectType != null)
 					fieldInfo = serializedObjectType.GetField(fieldName, BINDING_FLAGS);
@@ -32,7 +36,7 @@ namespace EditorAttributes.Editor.Utility
 			return fieldInfo;
 		}
 
-		internal static FieldInfo FindField(string fieldName, object targetObject) => FindMember(fieldName, targetObject.GetType(), BINDING_FLAGS, MemberTypes.Field) as FieldInfo;
+		internal static FieldInfo FindField(string fieldName, object targetObject) => FindMember(fieldName, targetObject?.GetType(), BINDING_FLAGS, MemberTypes.Field) as FieldInfo;
 
 		/// <summary>
 		/// Finds a property inside a serialized object
@@ -42,6 +46,9 @@ namespace EditorAttributes.Editor.Utility
 		/// <returns>The property info of the desired property</returns>
 		public static PropertyInfo FindProperty(string propertyName, SerializedProperty property)
 		{
+			if (propertyName.Contains('.'))
+				return GetStaticMemberInfoFromPath(propertyName, MemberTypes.Property) as PropertyInfo;
+
 			var propertyInfo = FindProperty(propertyName, property.serializedObject.targetObject);
 
 			// If the property null we try to see if its inside a serialized object
@@ -56,7 +63,7 @@ namespace EditorAttributes.Editor.Utility
 			return propertyInfo;
 		}
 
-		internal static PropertyInfo FindProperty(string propertyName, object targetObject) => FindMember(propertyName, targetObject.GetType(), BINDING_FLAGS, MemberTypes.Property) as PropertyInfo;
+		internal static PropertyInfo FindProperty(string propertyName, object targetObject) => FindMember(propertyName, targetObject?.GetType(), BINDING_FLAGS, MemberTypes.Property) as PropertyInfo;
 
 		/// <summary>
 		/// Finds a funciton inside a serialized object
@@ -66,6 +73,9 @@ namespace EditorAttributes.Editor.Utility
 		/// <returns>The method info of the desired function</returns>
 		public static MethodInfo FindFunction(string functionName, SerializedProperty property)
 		{
+			if (functionName.Contains('.'))
+				return GetStaticMemberInfoFromPath(functionName, MemberTypes.Method) as MethodInfo;
+
 			MethodInfo methodInfo;
 
 			methodInfo = FindFunction(functionName, property.serializedObject.targetObject);
@@ -101,11 +111,11 @@ namespace EditorAttributes.Editor.Utility
 		{
 			try
 			{
-				return FindMember(functionName, targetObject.GetType(), BINDING_FLAGS, MemberTypes.Method) as MethodInfo;
+				return FindMember(functionName, targetObject?.GetType(), BINDING_FLAGS, MemberTypes.Method) as MethodInfo;
 			}
 			catch (AmbiguousMatchException)
 			{
-				var functions = targetObject.GetType().GetMethods();
+				var functions = targetObject?.GetType().GetMethods();
 
 				foreach (var function in functions)
 				{
@@ -123,41 +133,87 @@ namespace EditorAttributes.Editor.Utility
 		/// <param name="memberName">The name of the member to look for</param>
 		/// <param name="targetType">The type to get the member from</param>
 		/// <param name="bindingFlags">The binding flags</param>
-		/// <param name="memberType">The type of the member to look for. Only Field, Property and Method are supported</param>
-		/// <returns>The member info of the desired member</returns>
+		/// <param name="memberType">The type of the member to look for. Only Field, Property and Method types are supported</param>
+		/// <returns>The member info of the specified member type</returns>
 		public static MemberInfo FindMember(string memberName, Type targetType, BindingFlags bindingFlags, MemberTypes memberType)
 		{
 			switch (memberType)
 			{
 				case MemberTypes.Field:
-
-					FieldInfo fieldInfo = null;
-
-					while (targetType != null && !TryGetField(memberName, targetType, bindingFlags, out fieldInfo)) 
-						targetType = targetType.BaseType;
-
-					return fieldInfo;
+				{
+					if (targetType != null)
+						return targetType.GetField(memberName, bindingFlags);
+				}
+				break;
 
 				case MemberTypes.Property:
-
-					PropertyInfo propertyInfo = null;
-
-					while (targetType != null && !TryGetProperty(memberName, targetType, bindingFlags, out propertyInfo)) 
-						targetType = targetType.BaseType;
-
-					return propertyInfo;
+				{
+					if (targetType != null)
+						return targetType.GetProperty(memberName, bindingFlags);
+				}
+				break;
 
 				case MemberTypes.Method:
-
-					MethodInfo methodInfo = null;
-
-					while (targetType != null && !TryGetMethod(memberName, targetType, bindingFlags, out methodInfo)) 
-						targetType = targetType.BaseType;
-
-					return methodInfo;
+				{
+					if (targetType != null)
+						return targetType.GetMethod(memberName, bindingFlags);
+				}
+				break;
 			}
 
 			return null;
+		}
+
+		/// <summary>
+		/// Gets the info of a const or static member from the type specified in the path
+		/// </summary>
+		/// <param name="memberPath">The path on which to locate the member</param>
+		/// <param name="memberTypes">The type of the member to look for. Only Field, Property and Method types are supported</param>
+		/// <returns>The member info of the specified member type</returns>
+		public static MemberInfo GetStaticMemberInfoFromPath(string memberPath, MemberTypes memberTypes)
+		{
+			MemberInfo memberInfo = null;
+
+			string[] splitPath = memberPath.Split('.');
+
+			string typeNamespace = GetNamespaceString(splitPath);
+			string typeName = splitPath[^2];
+			string actualFieldName = splitPath[^1];
+
+			var matchingTypes = TypeCache.GetTypesDerivedFrom<object>().Where((type) => type.Name == typeName && type.Namespace == typeNamespace);
+
+			foreach (var type in matchingTypes)
+			{
+				memberInfo = FindMember(actualFieldName, type, BINDING_FLAGS ^ BindingFlags.Instance, memberTypes);
+
+				if (memberInfo == null)
+				{
+					continue;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			return memberInfo;
+		}
+
+		private static string GetNamespaceString(string[] splitMemberPath)
+		{
+			var stringBuilder = new StringBuilder();
+
+			string[] namespacePath = splitMemberPath[..^2];
+
+			for (int i = 0; i < namespacePath.Length; i++)
+			{
+				stringBuilder.Append(namespacePath[i]);
+
+				if (i != namespacePath.Length - 1)
+					stringBuilder.Append('.');
+			}
+
+			return stringBuilder.Length == 0 ? null : stringBuilder.ToString();
 		}
 
 		/// <summary>
@@ -219,6 +275,26 @@ namespace EditorAttributes.Editor.Utility
 		}
 
 		/// <summary>
+		/// Checks to see if a member has one of the specified attributes
+		/// </summary>
+		/// <param name="memberInfo">The member to check</param>
+		/// <param name="attributeTypes">The attribute types</param>
+		/// <returns>True if the member has at least one of specified attributes</returns>
+		public static bool HasAnyAttributes(MemberInfo memberInfo, params Type[] attributeTypes)
+		{
+			if (memberInfo == null)
+				return false;
+
+			foreach (var attribute in attributeTypes)
+			{
+				if (memberInfo.GetCustomAttribute(attribute) != null)
+					return true;
+			}
+
+			return false;
+		}
+
+		/// <summary>
 		/// Finds a member inside a serialzied object
 		/// </summary>
 		/// <param name="memberName">The name of the member to look for</param>
@@ -236,7 +312,7 @@ namespace EditorAttributes.Editor.Utility
 			return memberInfo;
 		}
 
-		internal static MemberInfo GetValidMemberInfo(string memberName, object targetObject) // Internal function used for the button drawer
+		internal static MemberInfo GetValidMemberInfo(string memberName, object targetObject)
 		{
 			MemberInfo memberInfo;
 
@@ -409,7 +485,7 @@ namespace EditorAttributes.Editor.Utility
 			return null;
 		}
 
-		internal static object GetMemberInfoValue(MemberInfo memberInfo, object targetObject) // Internal function used for the button drawer
+		internal static object GetMemberInfoValue(MemberInfo memberInfo, object targetObject)
 		{
 			if (targetObject == null)
 				return null;

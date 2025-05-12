@@ -66,7 +66,7 @@ namespace Core.Maps
         public void RemoveEscapePod(EscapePod escapePod)
         {
             RemoveEscapePod_RPC(escapePod.NetworkObject);
-            escapePod.NetworkObject.Despawn(true);
+            escapePod.NetworkObject.Despawn();
         }
 
         [Rpc(SendTo.Everyone)]

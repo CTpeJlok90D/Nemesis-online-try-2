@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _assets:
     _serializedList:
+    - Key: Bandage
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-bandage
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     - Key: Capitan revolver
       Value:
         m_AssetGUID: fd18af760e38e394c8194ab95e447375
@@ -22,10 +30,50 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
+    - Key: Chemicals
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-chemicals
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Energy consumption - red
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-energy-consumption-red
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Energy consumption - yellow
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-energy-consumption-yelllow
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Frag granate
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-frag-grenate
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     - Key: Mechanic shotgun
       Value:
         m_AssetGUID: fd18af760e38e394c8194ab95e447375
         m_SubObjectName: character-mechanic-shotgun
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    - Key: Med kit
+      Value:
+        m_AssetGUID: 901f7e0657d78c548bc61e7614ad1d1d
+        m_SubObjectName: Items-med-kit
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         m_SubObjectGUID: 

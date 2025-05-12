@@ -78,6 +78,19 @@ namespace Core.PlayerTablets
 
         public bool CanBookIt(Player player) => IsEmpty && _playerTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
 
+        public void AddItem(InventoryItem item)
+        {
+            if (item.ItemType == ItemType.Big)
+            {
+                BigItemsInventory.AddItem(item);
+            }
+
+            if (item.ItemType == ItemType.Small)
+            {
+                SmallItemsInventory.AddItem(item);
+            }
+        }
+        
         public void LinkPawn(CharacterPawn characterPawn)
         {
             _linkedCharacterPawn.Value = characterPawn.NetworkObject;

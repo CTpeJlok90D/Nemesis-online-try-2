@@ -21,6 +21,7 @@ namespace Core.Maps
         [field: SerializeField] public string Id { get; private set; }
         [field: SerializeField] public RoomAction RoomAction { get; private set; } 
         [field: SerializeField] public int Layer { get; private set; } = 0;
+        [field: SerializeField] public LootType Loot { get; private set; } = 0;
 
         public event LoadedListener Loaded;
 
@@ -76,6 +77,14 @@ namespace Core.Maps
                 }
                 Loaded?.Invoke(this);
             };
+        }
+        
+        public enum LootType
+        {
+            MedicineRoom,
+            BattleRoom,
+            TechnicalRoom,
+            UniversalRoom,
         }
 
 #if UNITY_EDITOR

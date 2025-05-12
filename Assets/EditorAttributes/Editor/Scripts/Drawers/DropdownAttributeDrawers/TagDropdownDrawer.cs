@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine.UIElements;
@@ -5,7 +6,7 @@ using UnityEditor.UIElements;
 
 namespace EditorAttributes.Editor
 {
-    [CustomPropertyDrawer(typeof(TagDropdownAttribute))]
+	[CustomPropertyDrawer(typeof(TagDropdownAttribute))]
     public class TagDropdownDrawer : PropertyDrawerBase
     {
 		public override VisualElement CreatePropertyGUI(SerializedProperty property)
@@ -14,11 +15,14 @@ namespace EditorAttributes.Editor
 
             if (property.propertyType == SerializedPropertyType.String)
             {
-                var tagField = new TagField(property.displayName, DoesStringValueContainTag(property.stringValue) ? property.stringValue : "Untagged") { showMixedValue = property.hasMultipleDifferentValues };
+                var tagField = new TagField(property.displayName, DoesStringValueContainTag(property.stringValue) ? property.stringValue : "Untagged") 
+                {
+                    showMixedValue = property.hasMultipleDifferentValues, 
+                    tooltip = property.tooltip
+                };
 
-                root.schedule.Execute(() => tagField.Q(className: "unity-base-popup-field__input").style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f).ExecuteLater(1);
-
-				tagField.AddToClassList("unity-base-field__aligned");
+				tagField.AddToClassList(BaseField<Void>.alignedFieldUssClassName);
+                AddPropertyContextMenu(tagField, property);
 
 				tagField.RegisterValueChangedCallback(callback =>
                 {
@@ -27,6 +31,8 @@ namespace EditorAttributes.Editor
                 });
 
                 root.Add(tagField);
+
+                ExecuteLater(tagField, () => tagField.Q(className: TagField.inputUssClassName).style.backgroundColor = EditorExtension.GLOBAL_COLOR / 2f);
             }
             else
             {
@@ -36,11 +42,27 @@ namespace EditorAttributes.Editor
             return root;
 		}
 
-        private bool DoesStringValueContainTag(string stringValue)
+		protected override void PasteValue(VisualElement element, SerializedProperty property, string clipboardValue)
+		{
+			var dropdown = element as TagField;
+
+			if (dropdown.choices.Contains(clipboardValue))
+			{
+				base.PasteValue(element, property, clipboardValue);
+				dropdown.SetValueWithoutNotify(clipboardValue);
+			}
+			else
+			{
+				Debug.LogWarning($"Could not paste value \"{clipboardValue}\" since is not availiable as an option in the dropdown");
+			}
+		}
+
+		private bool DoesStringValueContainTag(string stringValue)
         {
             foreach (var tag in InternalEditorUtility.tags)
             {
-                if (stringValue == tag) return true;
+                if (stringValue == tag) 
+                    return true;
             }
 
             return false;

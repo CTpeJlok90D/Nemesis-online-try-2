@@ -13,6 +13,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 254652
   packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
+  packageVersion: 4.3.0
   assetPath: Assets/Flexalon/Runtime/Core/FlexalonLayoutBase.cs
-  uploadId: 684591
+  uploadId: 745904
