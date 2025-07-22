@@ -60,7 +60,7 @@ namespace Core.Scenarios.PlayersPhase
 
                 _activePlayerIndex.Value = index;
 
-                PlayerActionExecutor.Instance.Executor = tablet;
+                PlayerActionExecutor.Singleton.Executor = tablet;
 
                 tablet.ActionCount.Value = _actionPointsToGive;
                 tablet.ActionCount.Changed += OnActionPointsCountChange;

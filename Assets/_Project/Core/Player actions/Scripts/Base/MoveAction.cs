@@ -69,17 +69,6 @@ namespace Core.PlayerActions
             };
         }
 
-        public virtual void Execute()
-        {
-            IGameAction.CanExecuteCheckResult chekResult = CanExecute();
-            if (chekResult == false)
-            {
-                throw chekResult.Error;
-            }
-
-            ForceExecute();
-        }
-
         public virtual void ForceExecute()
         {
             RoomCell selectedRoom = RoomSelection.First();

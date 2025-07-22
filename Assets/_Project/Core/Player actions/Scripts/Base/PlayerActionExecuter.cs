@@ -23,7 +23,7 @@ namespace Core.PlayerActions
 {
     public class PlayerActionExecutor : NetworkBehaviour
     {
-        public static PlayerActionExecutor Instance { get; private set; }
+        public static PlayerActionExecutor Singleton { get; private set; }
 
         [SerializeField] private Map _map;
 
@@ -74,12 +74,12 @@ namespace Core.PlayerActions
 
         private void Awake()
         {
-            if (Instance != null)
+            if (Singleton != null)
             {
                 enabled = false;
                 throw new Exception($"{nameof(PlayerActionExecutor)} is already instantiated!");
             }
-            Instance = this;
+            Singleton = this;
             _roomsSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _selectionActionCards = new(writePermission: NetworkVariableWritePermission.Owner);
             _noiseContainerSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);

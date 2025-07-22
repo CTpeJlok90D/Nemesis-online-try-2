@@ -6,7 +6,7 @@ using UI.Common;
 namespace UI.SelectionBase
 {
     [RequireComponent(typeof(PointerEvents))]
-    public class MoveActionButton : MonoBehaviour
+    public class ExecuteActionButton : MonoBehaviour
     {
         [SerializeField] private GameActionContainer _moveAction;
         private PointerEvents _pointerEvents;
@@ -33,7 +33,7 @@ namespace UI.SelectionBase
 
         private void ExecuteMoveAction()
         {
-            PlayerActionExecutor.Instance.Execute(_moveAction);
+            PlayerActionExecutor.Singleton.Execute(_moveAction);
         }
     }
 }

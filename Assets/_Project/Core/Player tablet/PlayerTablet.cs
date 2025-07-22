@@ -98,6 +98,19 @@ namespace Core.PlayerTablets
                 SmallItemsInventory.AddItem(item);
             }
         }
+
+        public void RemoveItem(InventoryItem item)
+        {
+            if (item.ItemType == ItemType.Big)
+            {
+                BigItemsInventory.RemoveItem(item);
+            }
+
+            if (item.ItemType == ItemType.Small)
+            {
+                SmallItemsInventory.RemoveItem(item);
+            }
+        }
         
         public void LinkPawn(CharacterPawn characterPawn)
         {

@@ -27,6 +27,8 @@ namespace Core.CharacterInventories
         public delegate void ItemsListChangedDelegate(Inventory sender);
         public event ItemsListChangedDelegate ItemsListChanged;
         
+        public IReadOnlyCollection<InventoryItem> Items => _items.ToEnumerable<InventoryItem>().ToArray();
+        
         private void Awake()
         {
             _items = new();
@@ -50,11 +52,6 @@ namespace Core.CharacterInventories
         private void OnListChange()
         {
             ItemsListChanged?.Invoke(this);
-        }
-
-        public IReadOnlyCollection<InventoryItem> GetItems()
-        {
-            return _items.ToEnumerable<InventoryItem>().ToArray();
         }
         
         public bool CanAddItem(InventoryItem item)
@@ -139,7 +136,7 @@ namespace Core.CharacterInventories
                 GUILayout.Label("Inventory:");
                 
                 _loadedItems.Clear();
-                foreach (InventoryItem item in Inventory.GetItems())
+                foreach (InventoryItem item in Inventory.Items)
                 {
                     if (_loadedItems.Contains(item) == false)
                     {

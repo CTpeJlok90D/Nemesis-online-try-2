@@ -27,7 +27,7 @@ namespace Core.PlayerActions.Base
         {
             get
             {
-                List<InventoryItem> itemsWithDamage = _executor.BigItemsInventory.GetItems()
+                List<InventoryItem> itemsWithDamage = _executor.BigItemsInventory.Items
                     .Where(x => 
                         x.TryGetComponent(out WeaponDamage weaponDamage) 
                         && 

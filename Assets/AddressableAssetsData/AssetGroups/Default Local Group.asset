@@ -70,6 +70,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17319cdeb3666be4e8a7856c15932709
+    m_Address: Assets/_Project/Core/Characters/Inventories/Pick up item action container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 17ff339965d9ae04b9e4b069593c323b
     m_Address: Capitan revolver
     m_ReadOnly: 0
@@ -117,6 +122,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2ae9b9df514898e42b9644299ae5cece
     m_Address: Assets/_Project/View/Characters/action-card-shert.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 304d84d7b46c7a34d9b6b4fe1c695e75
+    m_Address: Assets/_Project/Core/Characters/Inventories/Action container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
