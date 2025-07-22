@@ -11,24 +11,32 @@ namespace UI.Connection
         
         [SerializeField] private GameObject _connectedTab;
 
-        [Inject] private NetworkManager _networkManager;
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
 
         private void OnEnable()
         {
-            ValidateTabs();
-            _networkManager.OnClientStarted += OnClientStart;
-            _networkManager.OnClientStopped += OnClientStop;
+            if (didStart)
+            {
+                NetworkManager.OnClientStarted += OnClientStart;
+                NetworkManager.OnClientStopped += OnClientStop;
+                ValidateTabs();
+            }
         }
 
         private void Start()
         {
+            NetworkManager.OnClientStarted += OnClientStart;
+            NetworkManager.OnClientStopped += OnClientStop;
             ValidateTabs();
         }
 
         private void OnDisable()
         {
-            _networkManager.OnClientStarted -= OnClientStart;
-            _networkManager.OnClientStopped -= OnClientStop;
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnClientStarted -= OnClientStart;
+                NetworkManager.OnClientStopped -= OnClientStop;
+            }
         }
 
         private void OnClientStop(bool obj) => EnableNotConnectedTab();
@@ -47,7 +55,7 @@ namespace UI.Connection
 
         private void ValidateTabs()
         {
-            if (_networkManager.IsConnectedClient) 
+            if (NetworkManager.IsConnectedClient) 
             {
                 EnableConnectedTab();
             }

@@ -1,27 +1,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using Core.Entities;
 using Core.PlayerTablets;
+using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
-using Zenject;
 
 namespace Core.Lobbies
 {
-    public class Lobby : NetworkBehaviour
+    public class Lobby : NetEntity<Lobby>
     {
         public delegate void PlayerCountChangedListener(ChangedData changedData, int oldCount, int newCount);
 
         [SerializeField] private LobbyConfiguration _defaultLobbyConfiguration;
+        [SerializeField] private PlayerTablet _playerTablet_PREFAB;
 
         private NetVariable<LobbyConfiguration> _configuration;
 
         public event PlayerCountChangedListener PlayerCountChanged;
-
-        private PlayerTabletList _playerTabletList;
-
-        [Inject] private NetworkManager _networkManager;
 
         public LobbyConfiguration Configuration 
         {
@@ -42,20 +41,8 @@ namespace Core.Lobbies
                 }
 
                 _configuration.Value = value;
-                UpdateTablets();
+                _ = UpdateTablets();
             }
-        }
-
-        public Lobby Instantiate(PlayerTabletList playerTabletList, NetworkManager networkManager)
-        {
-            gameObject.SetActive(false);
-            Lobby result = Instantiate(this);
-            gameObject.SetActive(true);
-
-            result._playerTabletList = playerTabletList;
-            result._networkManager = networkManager;
-            result.gameObject.SetActive(true);
-            return result;
         }
 
         public void Awake()
@@ -66,7 +53,7 @@ namespace Core.Lobbies
         public override void OnNetworkSpawn()
         {
             _configuration.Changed += OnConfigurationChange;
-            UpdateTablets();
+            _ = UpdateTablets();
         }
 
         public override void OnNetworkDespawn()
@@ -77,36 +64,31 @@ namespace Core.Lobbies
 
         private void OnConfigurationChange(LobbyConfiguration previousValue, LobbyConfiguration newValue)
         {
-            UpdateTablets();
+            _ = UpdateTablets();
         }
 
-        private void UpdateTablets()
+        private async UniTask UpdateTablets()
         {
             if (IsServer == false)
             {
                 return;
             }
 
-            if (_playerTabletList.IsSpawned == false)
-            {
-                _playerTabletList.NetworkObject.Spawn();
-            }
-            
-            _playerTabletList.Clear();
-
-            int oldPlayersCount = _playerTabletList.ActiveTablets.Length;
+            int oldPlayersCount = PlayerTablet.Instances.Count;
             List<PlayerTablet> addedTablets = new();
             List<PlayerTablet> removedTablets = new();
 
-            while (_playerTabletList.ActiveTablets.Length > _configuration.Value.PlayersCount)
+            while (PlayerTablet.Instances.Count > _configuration.Value.PlayersCount)
             {
-                PlayerTablet removedTablet = _playerTabletList.Remove();
-                removedTablets.Add(removedTablet);
+                PlayerTablet tabletToRemove = PlayerTablet.Instances.First();
+                removedTablets.Add(tabletToRemove);
+                tabletToRemove.NetworkObject.Despawn();
             }
 
-            while (_playerTabletList.ActiveTablets.Length < _configuration.Value.PlayersCount)
+            while (PlayerTablet.Instances.Count < _configuration.Value.PlayersCount)
             {
-                PlayerTablet playerTablet = _playerTabletList.Add();
+                PlayerTablet playerTablet = Instantiate(_playerTablet_PREFAB);
+                playerTablet.NetworkObject.Spawn();
                 addedTablets.Add(playerTablet);
             }
 
@@ -116,7 +98,7 @@ namespace Core.Lobbies
                 RemovedTablets = removedTablets
             };
 
-            PlayerCountChanged?.Invoke(data, oldPlayersCount, _playerTabletList.ActiveTablets.Length);
+            PlayerCountChanged?.Invoke(data, oldPlayersCount, PlayerTablet.Instances.Count);
         }
 
         public record ChangedData

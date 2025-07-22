@@ -12,24 +12,24 @@ public struct Target : IEnumerable<PlayerTablet>
 
     public string TargetsMessage => string.Join(", ", Tablets.Select(x => x.Nickname));
     
-    public Target(string targetName, PlayerTabletList playerTabletList)
+    public Target(string targetName)
     {
         _tablets = new List<PlayerTablet>();
         
         switch (targetName)
         {
             case "@a":
-                _tablets.AddRange(playerTabletList.ActiveTablets);
+                _tablets.AddRange(PlayerTablet.Instances);
                 break;
             case "@s":
-                _tablets.Add(playerTabletList.Local);
+                _tablets.Add(PlayerTablet.Local);
                 break;
             case "@r":
-                PlayerTablet randomTablet = playerTabletList.ActiveTablets[Random.Range(0, _tablets.Count)];
+                PlayerTablet randomTablet = PlayerTablet.Instances[Random.Range(0, _tablets.Count)];
                 _tablets.Add(randomTablet);
                 break;
             default:
-                PlayerTablet playerTablet = playerTabletList.FindTabletByPlayerNickname(targetName);
+                PlayerTablet playerTablet = PlayerTablet.Instances.First(x => x.Nickname == targetName);
                 _tablets.Add(playerTablet);
                 break;
         }

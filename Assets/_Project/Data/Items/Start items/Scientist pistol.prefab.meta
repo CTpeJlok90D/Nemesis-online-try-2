@@ -2,6 +2,7 @@ fileFormatVersion: 2
 guid: 790bf6854d7e71845a8e7324bd04207a
 labels:
 - InventoryItem
+- Net
 PrefabImporter:
   externalObjects: {}
   userData: 

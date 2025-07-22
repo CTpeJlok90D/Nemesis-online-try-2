@@ -32,8 +32,6 @@ namespace Core.PlayerActions
         [Inject] private CardsSelection _cardsSelection;
 
         [Inject] private NoiseContainerSelection _noiseContainerSelection;
-
-        [Inject] private PlayerTabletList _playerTabletList;
         
         [Inject] private RoomContentSelection _roomContentSelection;
         
@@ -92,7 +90,7 @@ namespace Core.PlayerActions
         protected override void OnOwnershipChanged(ulong previous, ulong current)
         {
             base.OnOwnershipChanged(previous, current);
-            _executor = _playerTabletList.First(x => x.Player.OwnerClientId == current);
+            _executor = PlayerTablet.Instances.First(x => x.Player.OwnerClientId == current);
         }
 
         public async void Execute(GameActionContainer gameActionContainer)
@@ -106,14 +104,14 @@ namespace Core.PlayerActions
 
                 if (IsOwner == false)
                 {
-                    throw new Exception("Only object owner can execute actions");
+                    throw new InvalidOperationException("Only object owner can execute actions");
                 }
                 
                 _actionIsExecuting.Value = true;
 
                 IGameAction gameAction = gameActionContainer.GameAction.Value;
                 
-                gameAction.Inititalize(_executor);
+                gameAction.Initialize(_executor);
 
                 if (gameAction is INeedMap iNeedMap)
                 {
@@ -252,7 +250,7 @@ namespace Core.PlayerActions
                 
             IGameAction gameAction = gameActionContainer.GameAction.Value;
             
-            gameAction.Inititalize(_executor);
+            gameAction.Initialize(_executor);
 
             if (gameAction is INeedMap gameActionWithMap)
             {
@@ -376,6 +374,8 @@ namespace Core.PlayerActions
             _selectionActionCards.Clear();
             _noiseContainerSelectionNet.Clear();
             _roomContentSelectionNet.Clear();
+            _inventoryItemsSelection.Clear();
+            _inventoryItemsSelectionNet.Clear();
             _actionIsExecuting.Value = false;
         }
     }

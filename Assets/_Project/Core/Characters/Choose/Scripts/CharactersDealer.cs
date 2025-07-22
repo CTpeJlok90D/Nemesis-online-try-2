@@ -14,11 +14,9 @@ namespace Core.CharacterChoose
 {
     public class CharactersDealer : NetworkBehaviour
     {
-        public delegate void СhoiceIsProvidedListener();
+        public delegate void СhoiseIsProvidedListener();
 
         [SerializeField] private CharactersSelection _charactersSelection;
-
-        private PlayerTabletList _playerTabletList;
 
         public CharactersSelection Selection => _charactersSelection;
 
@@ -30,10 +28,9 @@ namespace Core.CharacterChoose
 
         public int ChooseCharactersCount => _lobby.Configuration.ChooseCharactersCount;
 
-        public void Init(Lobby lobby, PlayerTabletList playerTabletList)
+        public void Init(Lobby lobby)
         {
             _lobby = lobby;
-            _playerTabletList = playerTabletList;
         }
 
         public async Task StartDeal()
@@ -52,7 +49,7 @@ namespace Core.CharacterChoose
 
                 IsDealing.Value = true;
 
-                PlayerTablet[] orderedTablets = _playerTabletList.OrderBy(x => x.OrderNumber.Value).ToArray();
+                PlayerTablet[] orderedTablets = PlayerTablet.Instances.OrderBy(x => x.OrderNumber.Value).ToArray();
 
                 _characters = _lobby.Configuration.Characters.ToList();
                 foreach (PlayerTablet tablet in orderedTablets)

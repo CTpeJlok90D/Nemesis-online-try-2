@@ -5,8 +5,6 @@ using Zenject;
 
 public class PlayerTabletCheats : MonoBehaviour
 {
-    [Inject] private PlayerTabletList _playerTabletList;
-    
     private void Awake()
     {
         DebugLogConsole.AddCommand<string>("Pass", "Pass player", Pass);
@@ -14,7 +12,7 @@ public class PlayerTabletCheats : MonoBehaviour
 
     private void Pass(string playerNickname)
     {
-        Target targets = new(playerNickname, _playerTabletList);
+        Target targets = new(playerNickname);
 
         foreach (PlayerTablet target in targets)
         {

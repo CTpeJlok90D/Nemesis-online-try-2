@@ -8,12 +8,13 @@ using Zenject;
 
 namespace UI
 {
+    [DefaultExecutionOrder(-1)]
     public class PlayerList : MonoBehaviour
     {
         [SerializeField] private PlayerContainer _playerListElement_PREFAB;
         [SerializeField] private Transform _elementsParent;
 
-        [Inject] private NetworkManager _networkManager;
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
 
         private Dictionary<Player, PlayerContainer> _listElementsInstances = new();
 
@@ -24,14 +25,26 @@ namespace UI
 
         private void OnEnable()
         {
+            if (didStart)
+            {
+                NetworkManager.OnClientStarted += OnClientStart;
+                NetworkManager.OnClientStopped += OnClientStopped;
+            }
+            
             Player.Join += OnPlayerJoin;
             Player.Left += OnPlayerLeft;
 
-            _networkManager.OnClientStarted += OnClientStart;
-            _networkManager.OnClientStopped += OnClientStopped;
-
             ClearList();
             InitializeList();
+        }
+
+        private void Start()
+        {
+            if (didStart)
+            {
+                NetworkManager.OnClientStarted += OnClientStart;
+                NetworkManager.OnClientStopped += OnClientStopped;
+            }
         }
 
         private void OnDisable()
@@ -39,8 +52,11 @@ namespace UI
             Player.Join -= OnPlayerJoin;
             Player.Left -= OnPlayerLeft;
 
-            _networkManager.OnClientStarted -= OnClientStart;
-            _networkManager.OnClientStopped -= OnClientStopped;
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnClientStarted -= OnClientStart;
+                NetworkManager.OnClientStopped -= OnClientStopped;
+            }
         }
 
         private void OnClientStopped(bool obj)

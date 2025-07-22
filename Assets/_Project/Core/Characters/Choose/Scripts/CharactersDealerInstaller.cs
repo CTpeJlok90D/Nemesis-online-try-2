@@ -14,9 +14,8 @@ namespace Core.CharacterChoose
         public override void InstallBindings()
         {
             LobbyInstaller lobbyInstaller = ProjectContext.Instance.GetComponentInChildren<LobbyInstaller>();
-            PlayerTabletListInstaller playerTabletList = ProjectContext.Instance.GetComponentInChildren<PlayerTabletListInstaller>();
 
-            _dealer.Init(lobbyInstaller.Lobby, playerTabletList.PlayerTabletList);
+            _dealer.Init(lobbyInstaller.Lobby);
 
             Container.Bind<CharactersDealer>().FromInstance(_dealer).AsSingle();
         }

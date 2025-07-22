@@ -10,8 +10,6 @@ namespace Core.Missions.Dealing
     public class MissionsDealer : MonoBehaviour, IChapter
     {
         [Inject] private MissionsDealerConfiguration _config;
-        
-        [Inject] private PlayerTabletList _playerTablets;
 
         public event IChapter.EndedListener Ended;
 
@@ -19,10 +17,10 @@ namespace Core.Missions.Dealing
         {
             Mission[] availableMissions = _config.AvailableMissions.ToArray();
 
-            Bag<Mission> personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= _playerTablets.Count()));
-            Bag<Mission> corporateMissions = new(availableMissions.Where(x => x.Type == MissionType.Сorporate && x.MinPlayerCount <= _playerTablets.Count()));
+            Bag<Mission> personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= PlayerTablet.Instances.Count));
+            Bag<Mission> corporateMissions = new(availableMissions.Where(x => x.Type == MissionType.Сorporate && x.MinPlayerCount <= PlayerTablet.Instances.Count));
 
-            foreach (PlayerTablet tablet in _playerTablets)
+            foreach (PlayerTablet tablet in PlayerTablet.Instances)
             {
                 int personalMissionsLeft = _config.PersonalMissionsCount;
                 int corporateMissionsLeft = _config.CorporateMissionsCount;
@@ -35,7 +33,7 @@ namespace Core.Missions.Dealing
 
                     if (personalMissions.Items.Count == 0)
                     {
-                        personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= _playerTablets.Count()));
+                        personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= PlayerTablet.Instances.Count));
                         Debug.LogWarning("[<color=yellow>Missions dealing</color>] Personal missions is out. Duplication is possible");
                     }
                 }
@@ -48,7 +46,7 @@ namespace Core.Missions.Dealing
 
                     if (corporateMissions.Items.Count == 0)
                     {
-                        corporateMissions = new(availableMissions.Where(x => x.Type == MissionType.Сorporate && x.MinPlayerCount <= _playerTablets.Count()));
+                        corporateMissions = new(availableMissions.Where(x => x.Type == MissionType.Сorporate && x.MinPlayerCount <= PlayerTablet.Instances.Count));
                         Debug.LogWarning("[<color=yellow>Missions dealing</color>] Сorporate missions is out. Duplication is possible");
                     }
                 }

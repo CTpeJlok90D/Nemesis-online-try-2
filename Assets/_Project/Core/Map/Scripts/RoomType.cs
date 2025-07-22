@@ -71,6 +71,7 @@ namespace Core.Maps
             {
                 _loadKey = handle.Result._loadKey;
                 RoomAction = handle.Result.RoomAction;
+                Loot = handle.Result.Loot;
                 if (string.IsNullOrEmpty(name))
                 {
                     name = $"{handle.Result.name} (net loaded)";

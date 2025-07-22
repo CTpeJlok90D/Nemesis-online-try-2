@@ -7,21 +7,33 @@ namespace Core.Starter
 {
     public class Activator
     {
-        private readonly string _activatedGameSceneName;
-        private readonly string _lobbySceneName;
+        private const string ActivatedGameSceneName = "DefaultMap";
+        private const string _lobbySceneName = "MainMenu";
         private readonly float _loadDelay = 0.5f;
 
         private bool _gameIsActive;
 
         public delegate void ActivatedListener();
-        public event ActivatedListener GameActivated;
         public delegate void DeactivatedListener();
+        public event ActivatedListener GameActivated;
         public event DeactivatedListener GameDeactivated;
 
-        public Activator(string activeGameSceneName, string lobbySceneName)
+        private static Activator _singleton;
+        public static Activator Singleton
         {
-            _activatedGameSceneName = activeGameSceneName;
-            _lobbySceneName = lobbySceneName;
+            get
+            {
+                if (_singleton == null)
+                {
+                    _singleton = new();
+                }
+
+                return _singleton;
+            }
+        }
+        
+        private Activator()
+        {
         }
 
         public async UniTask StartGame()
@@ -40,7 +52,7 @@ namespace Core.Starter
             GameActivated?.Invoke();
                 
             
-            NetworkManager.Singleton.SceneManager.LoadScene(_activatedGameSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
+            NetworkManager.Singleton.SceneManager.LoadScene(ActivatedGameSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
             bool isCompleted = false;
             NetworkManager.Singleton.SceneManager.OnLoadComplete += (clientID, sceneName, mode) => 
             {

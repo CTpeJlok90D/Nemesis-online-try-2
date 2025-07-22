@@ -26,11 +26,10 @@ namespace Core.Scenarios.EnemiesPhase
         [SerializeField] private MapGenerator _mapGenerator;
         [SerializeField] private EventsDeck _eventDeck;
         
-        [Inject] private PlayerTabletList _playerTabletList;
         [Inject] private Map _map;
         [Inject] private DiContainer _diContainer;
         [Inject] private AliensBag _aliensBag;
-        [Inject] private NetworkManager _networkManager;
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
         public Scenario Scenario { get; private set; }
 
         private void OnEnable()
@@ -50,7 +49,7 @@ namespace Core.Scenarios.EnemiesPhase
 
         private void Init()
         {
-            if (_networkManager.IsServer == false)
+            if (NetworkManager.IsServer == false)
             {
                 return;
             }
@@ -69,7 +68,7 @@ namespace Core.Scenarios.EnemiesPhase
             {
                 new MoveTrackChapter(_mainTimeTrack),
                 new MoveTrackChapter(_selfDestructionTimeTrack),
-                new EnemiesAttackPhase(_playerTabletList),
+                new EnemiesAttackPhase(),
                 new FireDamage(),
                 new PlayEventCard(_eventDeck, _aliensBag, _diContainer),
                 hiveDevelopment

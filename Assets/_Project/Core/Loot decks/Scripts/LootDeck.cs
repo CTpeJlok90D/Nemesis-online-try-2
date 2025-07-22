@@ -19,12 +19,14 @@ namespace Core.LootDecks
         [Inject] private LootDecksConfig _config;
 
         private NetworkList<NetworkObjectReference> _items;
+        private NetVariable<Type> _typeNet;
 
-        public Type DeckType => _type;
+        public Type DeckType => _typeNet.Value;
 
         private void Awake()
         {
             _items = new();
+            _typeNet = new(_type);
         }
 
         private void Start()
@@ -38,7 +40,7 @@ namespace Core.LootDecks
         private async UniTask InitializeDeck()
         {
             List<InventoryItem> itemInstances = new();
-            foreach (AssetReference item in _config.DeckItems[_type])
+            foreach (AssetReference item in _config.DeckItems[DeckType])
             {
                 GameObject itemInstanceObject = await item.InstantiateAsync().ToUniTask();
                 InventoryItem itemInstance = itemInstanceObject.GetComponent<InventoryItem>();
@@ -52,6 +54,8 @@ namespace Core.LootDecks
             {
                 _items.Add(item.NetworkObject);
             }
+            
+            Shuffle();
         }
 
         public void Shuffle()

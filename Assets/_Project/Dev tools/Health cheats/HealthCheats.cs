@@ -9,8 +9,6 @@ using Zenject;
 
 public class HealthCheats : MonoBehaviour
 {
-    [Inject] private PlayerTabletList _playerTabletList;
-    
     private void Awake()
     {
         DebugLogConsole.AddCommand<string>("Kill", "Kill player", KillPlayer);
@@ -20,7 +18,7 @@ public class HealthCheats : MonoBehaviour
     
     private void KillPlayer(string playerNickname)
     {
-        Target target = new Target(playerNickname, _playerTabletList);
+        Target target = new Target(playerNickname);
 
         foreach (PlayerTablet playerTablet in target)
         {
@@ -33,7 +31,7 @@ public class HealthCheats : MonoBehaviour
 
     private void LightDamagePlayer(string playerNickname, int damage)
     {
-        Target target = new Target(playerNickname, _playerTabletList);
+        Target target = new Target(playerNickname);
 
         foreach (PlayerTablet playerTablet in target)
         {
@@ -46,7 +44,7 @@ public class HealthCheats : MonoBehaviour
     
     private async UniTask HeavyDamagePlayer(string playerNickname, string damageID)
     {
-        Target target = new Target(playerNickname, _playerTabletList);
+        Target target = new Target(playerNickname);
 
         AsyncOperationHandle<HeavyDamage> handle = Addressables.LoadAssetAsync<HeavyDamage>(damageID);
         await handle.ToUniTask();

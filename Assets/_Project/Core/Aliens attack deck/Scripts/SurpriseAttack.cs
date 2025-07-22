@@ -7,20 +7,18 @@ using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
-using Zenject;
 
 namespace Core.AlienAttackDecks
 {
     public class SurpriseAttack : MonoBehaviour
     {
         [SerializeField] private Enemy _enemy;
-
-        [Inject] private PlayerTabletList _playerTabletList;
-        [Inject] private NetworkManager _networkManager;
+        
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
         
         private void Start()
         {
-            if (_networkManager.IsServer == false)
+            if (NetworkManager.IsServer == false)
             {
                 return;
             }
@@ -53,7 +51,7 @@ namespace Core.AlienAttackDecks
             if (targetHand.Count < _enemy.LinkedToken.Value.AttackReaction)
             {
                 Debug.Log($"{_enemy} suddenly attacks {target}. Attacks reaction:{_enemy.LinkedToken.Value.AttackReaction}, Cards on hand: {targetHand.Count}");
-                PlayerTablet playerTablet = _playerTabletList.First(x => x.CharacterPawn == target);
+                PlayerTablet playerTablet = PlayerTablet.Instances.First(x => x.CharacterPawn == target);
                 _enemy.Attack(playerTablet);
             }
             else

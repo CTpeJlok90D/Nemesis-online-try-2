@@ -15,8 +15,6 @@ namespace Core.Scenarios.Default
 {
     public class PawnsPlacer : IChapter
     {
-        private PlayerTabletList _playerTabletList;
-
         private PawnPlacerConfig _config;
 
         private RoomCell _startRoom;
@@ -25,9 +23,8 @@ namespace Core.Scenarios.Default
 
         public event IChapter.EndedListener Ended;
 
-        public PawnsPlacer(PlayerTabletList playerTabletsList, PawnPlacerConfig pawnPlacerConfig, RoomCell startRoom, KitStartConfig kitStartConfig)
+        public PawnsPlacer(PawnPlacerConfig pawnPlacerConfig, RoomCell startRoom, KitStartConfig kitStartConfig)
         {
-            _playerTabletList = playerTabletsList;
             _startRoom = startRoom;
             _config = pawnPlacerConfig;
             _kitStartConfig = kitStartConfig;
@@ -40,7 +37,7 @@ namespace Core.Scenarios.Default
 
         private async UniTask PlacePawns()
         {
-            foreach (PlayerTablet tablet in _playerTabletList)
+            foreach (PlayerTablet tablet in PlayerTablet.Instances)
             {
                 CharacterPawn characterPawn_PREFAB = _config.PawnsForCharacters[tablet.Character.Value.Id];
                 CharacterPawn characterInstance = characterPawn_PREFAB.Instantiate();

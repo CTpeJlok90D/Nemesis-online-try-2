@@ -14,7 +14,6 @@ namespace Devtools.Maps
 {
     public class InventoryCheats : MonoBehaviour
     {
-        [Inject] private PlayerTabletList _playerTabletList;
         private void Awake()
         {
             DebugLogConsole.AddCommand<string, string>("Give", "Give item to player. ItemID, PlayerNickname", GiveItem);
@@ -24,7 +23,7 @@ namespace Devtools.Maps
         
         private async UniTask GiveItemAsync(string item, string playerName)
         {
-            Target target = new(playerName, _playerTabletList);
+            Target target = new(playerName);
             
             AsyncOperationHandle<InventoryItem> handle = Addressables.LoadAssetAsync<InventoryItem>(item);
             await handle.ToUniTask();

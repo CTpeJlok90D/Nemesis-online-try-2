@@ -16,10 +16,7 @@ namespace UI.InventoryItems
         [SerializeField] private InventoryItemInstanceContainer _inventoryItemInstance_PREFAB;
         [SerializeField] private Transform _parent;
 
-        [Inject] private PlayerTabletList _playerTabletList;
-        [Inject] private NetworkManager _networkManager;
-
-        private PlayerTablet LocalTablet => _playerTabletList.Local;
+        private PlayerTablet LocalTablet => PlayerTablet.Local;
         
         private Inventory _inventory;
         private List<InventoryItemInstanceContainer> _instances;
@@ -32,7 +29,7 @@ namespace UI.InventoryItems
 
         private void Update()
         {
-            if (_networkManager.IsClient == false)
+            if (NetworkManager.Singleton == null || NetworkManager.Singleton.IsClient == false)
             {
                 return;
             }

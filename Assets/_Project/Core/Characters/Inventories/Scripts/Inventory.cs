@@ -70,19 +70,25 @@ namespace Core.CharacterInventories
             }
         }
 
-        public void AddItem(InventoryItem item_PREFAB)
+        public void AddItem(InventoryItem itemToAdd)
         {
-            if (CanAddItem(item_PREFAB) == false)
+            if (CanAddItem(itemToAdd) == false)
             {
                 throw new Exception("Can't add item");
             }
 
-            InventoryItem item = Instantiate(item_PREFAB);
+            if (itemToAdd.IsInstance)
+            {
+                AddItemInstance(itemToAdd);
+                return;
+            }
+
+            InventoryItem item = Instantiate(itemToAdd);
             item.NetworkObject.Spawn();
             AddItemInstance(item);
         }
         
-        public void AddItemsInstancesRange(IEnumerable<InventoryItem> items)
+        private void AddItemsInstancesRange(IEnumerable<InventoryItem> items)
         {
             foreach (InventoryItem item in items)
             {
@@ -90,9 +96,10 @@ namespace Core.CharacterInventories
             }
         }
 
-        public void AddItemInstance(InventoryItem instance)
+        private void AddItemInstance(InventoryItem instance)
         {
             _items.Add(instance.NetworkObject);
+            instance.NetworkObject.TrySetParent(NetworkObject);
             instance.OwnerInventory.Reference = this;
         }
 
@@ -118,7 +125,7 @@ namespace Core.CharacterInventories
         {
             private Inventory Inventory => target as Inventory;
             private string _itemName;
-            private Dictionary<string, string> _loadedItems = new();
+            private List<InventoryItem> _loadedItems = new();
             
             public override void OnInspectorGUI()
             {
@@ -131,19 +138,21 @@ namespace Core.CharacterInventories
                 
                 GUILayout.Label("Inventory:");
                 
+                _loadedItems.Clear();
                 foreach (InventoryItem item in Inventory.GetItems())
                 {
-                    if (_loadedItems.ContainsKey(item.ID) == false)
+                    if (_loadedItems.Contains(item) == false)
                     {
-                        _loadedItems.Add(item.ID, "");
-                        _ = LoadItem(item.ID);
+                        _loadedItems.Add(item);
                     }
                 }
                 
-                foreach (var item in _loadedItems)
+                GUI.enabled = false;
+                foreach (InventoryItem item in _loadedItems)
                 {
-                    GUILayout.Label($"[{item.Value}]:[{item.Key}]");
+                    EditorGUILayout.ObjectField(item, typeof(InventoryItem), true);
                 }
+                GUI.enabled = true;
                 
                 GUILayout.Space(10);
                 GUILayout.BeginHorizontal();
@@ -162,15 +171,6 @@ namespace Core.CharacterInventories
                 
                 InventoryItem item = handle.Result;
                 Inventory.AddItem(item);
-            }
-
-            private async UniTask LoadItem(string guiID)
-            {
-                AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(guiID);
-                await handle.ToUniTask();
-                
-                InventoryItem item = handle.Result.GetComponent<InventoryItem>();
-                _loadedItems[guiID] = item.name;
             }
         }
 #endif

@@ -15,23 +15,22 @@ namespace Core.LoadObservers
 
         private SerializedDictionary<ulong, Status> _loadStatuses = new();
 
-        private NetworkManager _networkManager;
-
         private NetworkVariable<bool> _everyOneIsReady;
 
         public event StatusChangedListener StatusChanged;
 
         public IReadOnlyDictionary<ulong, Status> LoadStatuses => _loadStatuses;
 
+        public NetworkManager NetworkManager => NetworkManager.Singleton;
+
         public bool EveryoneIsReady => _everyOneIsReady.Value;
 
-        public LoadObserver Instantiate(NetworkManager networkManager)
+        public LoadObserver Instantiate()
         {
             gameObject.SetActive(false);
             LoadObserver result = Instantiate(this);
             gameObject.SetActive(true);
-
-            result._networkManager = networkManager;
+            
             result.gameObject.SetActive(true);
 
             return result;
@@ -58,29 +57,36 @@ namespace Core.LoadObservers
         private void Awake()
         {
             _everyOneIsReady = new(true);
-            _networkManager.OnClientStarted += OnClientStart;
-            _networkManager.OnClientStopped += OnClientStop;
+        }
+
+        private void Start()
+        {
+            NetworkManager.OnClientStarted += OnClientStart;
+            NetworkManager.OnClientStopped += OnClientStop;
         }
 
         public override void OnDestroy()
         {
             base.OnDestroy();
-            _networkManager.OnClientStarted -= OnClientStart;
-            _networkManager.OnClientStopped -= OnClientStop;
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnClientStarted -= OnClientStart;
+                NetworkManager.OnClientStopped -= OnClientStop;
+            }
         }
 
         private void OnClientStart()
         {
-            _networkManager.SceneManager.OnLoad += OnLoadStart;
-            _networkManager.SceneManager.OnLoadComplete += OnLoadComplete;
+            NetworkManager.SceneManager.OnLoad += OnLoadStart;
+            NetworkManager.SceneManager.OnLoadComplete += OnLoadComplete;
         }
 
         private void OnClientStop(bool obj)
         {
-            if (_networkManager != null && _networkManager.SceneManager != null)
+            if (NetworkManager != null && NetworkManager.SceneManager != null)
             {
-                _networkManager.SceneManager.OnLoad -= OnLoadStart;
-                _networkManager.SceneManager.OnLoadComplete -= OnLoadComplete;
+                NetworkManager.SceneManager.OnLoad -= OnLoadStart;
+                NetworkManager.SceneManager.OnLoadComplete -= OnLoadComplete;
             }
         }
 

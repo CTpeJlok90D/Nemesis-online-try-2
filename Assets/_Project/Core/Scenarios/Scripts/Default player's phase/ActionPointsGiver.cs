@@ -13,8 +13,6 @@ namespace Core.Scenarios.PlayersPhase
 {
     public class ActionPointsGiver : NetworkBehaviour
     {
-        [Inject] private PlayerTabletList _playerTabletsList;
-
         private NetVariable<int> _firstPlayerIndex;
 
         private NetVariable<int> _activePlayerIndex;
@@ -23,7 +21,7 @@ namespace Core.Scenarios.PlayersPhase
 
         private bool _isFistMove;
 
-        public PlayerTablet ActiveTablet => _playerTabletsList.ElementAt(_activePlayerIndex.Value);
+        public PlayerTablet ActiveTablet => PlayerTablet.Instances[_activePlayerIndex.Value];
 
         private void Awake()
         {
@@ -35,7 +33,7 @@ namespace Core.Scenarios.PlayersPhase
         {
             try
             {
-                if (_playerTabletsList.All(x => x.IsPassed.Value))
+                if (PlayerTablet.Instances.All(x => x.IsPassed.Value))
                 {
                     return;
                 }
@@ -46,12 +44,12 @@ namespace Core.Scenarios.PlayersPhase
                 do 
                 {
                     index++;
-                    if (index >= _playerTabletsList.Count())
+                    if (index >= PlayerTablet.Instances.Count)
                     {
                         index = 0;
                     }
                     
-                    tablet = _playerTabletsList.ElementAt(index);
+                    tablet = PlayerTablet.Instances[index];
                 } while (tablet.IsPassed.Value);
 
                 _activePlayerIndex.Value = index;
@@ -70,7 +68,7 @@ namespace Core.Scenarios.PlayersPhase
 
         private void OnActivePlayerPass(bool previousValue, bool newValue)
         {
-            if (_playerTabletsList.Any() == false)
+            if (PlayerTablet.Instances.Any() == false)
             {
                 return;
             }
@@ -114,7 +112,7 @@ namespace Core.Scenarios.PlayersPhase
                 _isFistMove = false;
             }
 
-            if (_firstPlayerIndex.Value + 1 >= _playerTabletsList.Count())
+            if (_firstPlayerIndex.Value + 1 >= PlayerTablet.Instances.Count)
             {
                 _firstPlayerIndex.Value = 0;
             }

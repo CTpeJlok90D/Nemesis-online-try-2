@@ -321,6 +321,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dddae815ee73db429757dfa8f2b03ad
+    m_Address: Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f097c5497cf331489205708eaef2c9d
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Room base.prefab
     m_ReadOnly: 0
@@ -449,6 +454,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b815646be81b77c49b5f7d00447127a8
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Unexplored room error.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b84ca319cd9dd8f46be28db6b2c45ab1
+    m_Address: Assets/_Project/Data/Map/Room contents/Layer 1/labaratory.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

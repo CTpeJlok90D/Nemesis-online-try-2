@@ -7,24 +7,28 @@ using Zenject;
 
 namespace UI.Loading
 {
+    [DefaultExecutionOrder(1)]
     public class SceneLoadScreen : MonoBehaviour
     {
         [Inject] private LoadScreen _loadScreen;
-        [Inject] private NetworkManager _networkManager;
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
 
         private void OnEnable()
         {
-            _networkManager.OnClientStarted += OnClientStart;
+            NetworkManager.OnClientStarted += OnClientStart;
         }
 
         private void OnDisable()
         {
-            _networkManager.OnClientStarted -= OnClientStart;
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnClientStarted -= OnClientStart;
+            }
         }
 
         private void OnClientStart()
         {
-            _networkManager.SceneManager.OnLoad += OnSceneEvent;
+            NetworkManager.SceneManager.OnLoad += OnSceneEvent;
         }
 
         private void OnSceneEvent(ulong clientId, string sceneName, LoadSceneMode loadSceneMode, AsyncOperation asyncOperation)

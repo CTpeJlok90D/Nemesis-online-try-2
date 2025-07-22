@@ -14,25 +14,19 @@ namespace UI.Hands
     {
         [field: SerializeField] private ActionCardContainer _uiActionCard_PREFAB;
         [field: SerializeField] private Transform _parent;
-
-        [Inject] private PlayerTabletList _playerTabletList;
+        
         [Inject] private DiContainer _diContainer;
 
         private int _handSyncIndex;
         private ActionCardsDeck _oldActionCards;
         private bool _handIsSyncing;
-        public PlayerTablet ActiveTablet { get; private set; }
+        public PlayerTablet ActiveTablet => PlayerTablet.Local;
         public ActionCardsDeck ActionsCardsDeck => ActiveTablet.ActionCardsDeck;
         private readonly Dictionary<ActionCard, List<ActionCardContainer>> _displayedActionCards = new();
-        
-        private void Awake()
-        {
-            ActiveTablet = _playerTabletList.Local;
-        }
 
         private void Update()
         {
-            if (_handIsSyncing == false && ActionsCardsDeck != null)
+            if (_handIsSyncing == false && ActiveTablet != null && ActionsCardsDeck != null)
             {
                 _ = SyncHand();
             }

@@ -111,7 +111,7 @@ namespace Core.PlayerActions
             Map = map;
         }
 
-        public void Inititalize(PlayerTablet executer)
+        public void Initialize(PlayerTablet executer)
         {
             Executor = executer;
         }

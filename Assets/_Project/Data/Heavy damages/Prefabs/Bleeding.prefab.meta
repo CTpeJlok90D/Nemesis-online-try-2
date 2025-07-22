@@ -2,6 +2,7 @@ fileFormatVersion: 2
 guid: f6e35cb8274a76a45904b8a7952dea20
 labels:
 - Heavydamage
+- Net
 PrefabImporter:
   externalObjects: {}
   userData: 

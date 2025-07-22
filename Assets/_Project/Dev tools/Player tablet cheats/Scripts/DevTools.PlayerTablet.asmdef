@@ -5,7 +5,8 @@
         "Unity.Netcode.Runtime",
         "IngameDebugConsole.Runtime",
         "Core.PlayerTablet",
-        "DevTools.Common"
+        "DevTools.Common",
+        "Core.Entity"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

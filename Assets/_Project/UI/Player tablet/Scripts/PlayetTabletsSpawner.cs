@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Players;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using UnityEngine;
@@ -8,15 +7,13 @@ using Zenject;
 
 namespace UI.PlayerTablets
 {
-    public class PlayetTabletsElementsSpawner : MonoBehaviour
+    public class PlayerTabletsElementsSpawner : MonoBehaviour
     {
         [SerializeField] private PlayerTabletContainer _card_PREFAB;
 
         [SerializeField] private Transform _cardsParent;
-
-        [Inject] private PlayerTabletList _playetTabletList;
-
-        [Inject] private NetworkManager _networkManager;
+        
+        private NetworkManager NetworkManager => NetworkManager.Singleton;
         
         [Inject] private DiContainer _diContainer;
 
@@ -24,8 +21,9 @@ namespace UI.PlayerTablets
 
         private void OnEnable()
         {
-            _playetTabletList.ActiveTabletsChanged += OnActiveTabletsChange;
-            _networkManager.OnClientStarted += OnClientStart;
+            PlayerTablet.Spawned += OnActiveTabletsChange;
+            PlayerTablet.Despawned += OnActiveTabletsChange;
+            NetworkManager.OnClientStarted += OnClientStart;
             if (didStart)
             {
                 UpdateCards();
@@ -34,8 +32,12 @@ namespace UI.PlayerTablets
 
         private void OnDisable()
         {
-            _playetTabletList.ActiveTabletsChanged -= OnActiveTabletsChange;
-            _networkManager.OnClientStarted -= OnClientStart;
+            PlayerTablet.Spawned -= OnActiveTabletsChange;
+            PlayerTablet.Despawned -= OnActiveTabletsChange;
+            if (NetworkManager != null)
+            {
+                NetworkManager.OnClientStarted -= OnClientStart;
+            }
         }
 
         private void Start()
@@ -44,7 +46,7 @@ namespace UI.PlayerTablets
         }
 
         private void OnClientStart() => UpdateCards();
-        private void OnActiveTabletsChange(NetworkListEvent<NetworkObjectReference> changeEvent) => UpdateCards();
+        private void OnActiveTabletsChange(PlayerTablet spawned) => UpdateCards();
         private void UpdateCards()
         {
             DestroyCards();
@@ -63,7 +65,7 @@ namespace UI.PlayerTablets
 
         private void SpawnLobbyCards()
         {
-            foreach (PlayerTablet tablet in _playetTabletList.ActiveTablets.OrderBy(x => x.OrderNumber.Value))
+            foreach (PlayerTablet tablet in PlayerTablet.Instances.OrderBy(x => x.OrderNumber.Value))
             {
                 PlayerTabletContainer instance = _card_PREFAB.Instantiate(tablet, _diContainer, _cardsParent);
                 _playerTabletInstances.Add(tablet, instance);

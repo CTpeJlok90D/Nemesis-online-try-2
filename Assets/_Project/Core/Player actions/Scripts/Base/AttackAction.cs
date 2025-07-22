@@ -7,7 +7,6 @@ using Core.CharacterWeapons;
 using Core.Maps;
 using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
-using UnityEditor.Android;
 using UnityEngine;
 
 namespace Core.PlayerActions.Base
@@ -57,7 +56,7 @@ namespace Core.PlayerActions.Base
         }
         public int RequiredRoomContentCount => 1;
         
-        public void Inititalize(PlayerTablet executor)
+        public void Initialize(PlayerTablet executor)
         {
             _executor = executor;
         }

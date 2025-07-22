@@ -14,14 +14,12 @@ namespace Core.Scenarios.EnemiesPhase
 {
     public class EnemiesAttackPhase : IChapter
     {
-        private readonly PlayerTabletList _playerTabletList;
         private InfectionDeck _infectionDeck;
         
         public event IChapter.EndedListener Ended;
         
-        public EnemiesAttackPhase(PlayerTabletList playerTablets)
+        public EnemiesAttackPhase()
         {
-            _playerTabletList = playerTablets;
         }
         
         public void Begin()
@@ -44,7 +42,7 @@ namespace Core.Scenarios.EnemiesPhase
                 }
                 
                 List<PlayerTablet> possibleTargets = characterPawns
-                    .Select(c => _playerTabletList.First(x => x.CharacterPawn == c))
+                    .Select(c => PlayerTablet.Instances.First(x => x.CharacterPawn == c))
                     .OrderBy(x => x.OrderNumber.Value)
                     .Reverse().ToList();
 

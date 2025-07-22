@@ -12,22 +12,20 @@ namespace Core.OrderNumberDestributors
     {
         public delegate void OrderNumbersWereDistributedListener();
 
-        [Inject] private PlayerTabletList _playerTabletList;
-
         public event OrderNumbersWereDistributedListener OrderNumbersWereDistributed;
         public event IChapter.EndedListener Ended;
 
         private void DistributeOrderNumbers()
         {
             List<int> numbers = new();
-            for (int i = 1; i <= _playerTabletList.ActiveTablets.Length; i++)
+            for (int i = 1; i <= PlayerTablet.Instances.Count; i++)
             {
                 numbers.Add(i);
             }
 
-            foreach (PlayerTablet playerTablet in _playerTabletList)
+            foreach (PlayerTablet playerTablet in PlayerTablet.Instances)
             {
-                int number = Random.Range(0, _playerTabletList.Count());
+                int number = Random.Range(0, PlayerTablet.Instances.Count);
                 playerTablet.OrderNumber.Value = number;
                 numbers.Remove(number);
             }

@@ -15,6 +15,8 @@ namespace Core.CharacterInventories
         
         public ItemType ItemType => _itemType;
 
+        public bool IsInstance => didAwake;
+
         private void Awake()
         {
             OwnerInventory = new();

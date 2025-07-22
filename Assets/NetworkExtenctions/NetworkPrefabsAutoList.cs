@@ -47,15 +47,12 @@ namespace Unity.Netcode.Custom
             foreach (string assetPath in assetsPaths)
             {
                 GameObject loadedAsset = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
-                NetworkPrefab netPrefab = new()
-                {
-                    Prefab = loadedAsset
-                };
                 serializedList.arraySize++;
                 serializedList.GetArrayElementAtIndex(serializedList.arraySize - 1).FindPropertyRelative("Prefab").objectReferenceValue = loadedAsset;
             }
 
             serializedSelf.ApplyModifiedProperties();
+            EditorUtility.SetDirty(this);
         }
 #endif
     }

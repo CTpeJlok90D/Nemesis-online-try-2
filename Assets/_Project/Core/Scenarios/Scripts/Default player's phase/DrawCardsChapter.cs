@@ -10,14 +10,7 @@ namespace Core.Scenarios.PlayersPhase
 {
     public class DrawCardsChapter : IChapter
     {
-        private PlayerTabletList _playerTablets;
-
         public event IChapter.EndedListener Ended;
-
-        public DrawCardsChapter(PlayerTabletList playerTabletsList)
-        {
-            _playerTablets = playerTabletsList;
-        }
 
         public void Begin()
         {
@@ -31,7 +24,7 @@ namespace Core.Scenarios.PlayersPhase
 
         private async UniTask DrawCards()
         {
-            foreach (PlayerTablet playerTablet in _playerTablets)
+            foreach (PlayerTablet playerTablet in PlayerTablet.Instances)
             {
                 IReadOnlyCollection<ActionCard> takenCards = await playerTablet.ActionCardsDeck.DrawCards();
                 Debug.Log($"{playerTablet} took cards: {string.Join(", ",takenCards)}");

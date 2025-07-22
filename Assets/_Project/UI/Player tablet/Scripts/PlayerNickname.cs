@@ -12,7 +12,7 @@ namespace UI.PlayerTablets
         [SerializeField] private TMP_Text _label;
         [SerializeField] private PlayerTabletContainer _playerTabletContainer;
 
-        [Inject] private NetworkManager _networkManager;
+        private NetworkManager NetworkManager;
         
         private NicknameContainer _lastNicknameContainer;
         private Player _lastPlayer;

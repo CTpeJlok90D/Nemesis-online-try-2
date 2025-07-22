@@ -6,6 +6,7 @@ using Core.ActionsCards;
 using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Health;
+using Core.Entities;
 using Core.Missions;
 using Core.Players;
 using Core.Maps.CharacterPawns;
@@ -19,15 +20,22 @@ using Zenject;
 
 namespace Core.PlayerTablets
 {
-    public class PlayerTablet : NetworkBehaviour, IContainsPlayer
+    public class PlayerTablet : NetEntity<PlayerTablet>, IContainsPlayer
     {
+        public static PlayerTablet Local
+        {
+            get
+            {
+                return Instances.FirstOrDefault(x => x.Player == Player.Local);
+            }
+        }
+        
         public Inventory SmallItemsInventory { get; private set; }
         public Inventory BigItemsInventory { get; private set; }
         public ActionCardsDeck ActionCardsDeck { get; private set; }
         public NicknameContainer NicknameContainer { get; private set; }
         public CharacterHealth Health { get; private set; }
-
-        [Inject] private PlayerTabletList _playerTabletList;
+        
         [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
 
         private bool _haveResult;
@@ -76,7 +84,7 @@ namespace Core.PlayerTablets
             Missions = new();
         }
 
-        public bool CanBookIt(Player player) => IsEmpty && _playerTabletList.ActiveTablets.Any(x => x.PlayerReference.Reference == player) == false;
+        public bool CanBookIt(Player player) => IsEmpty && Instances.Any(x => x.PlayerReference.Reference == player) == false;
 
         public void AddItem(InventoryItem item)
         {
@@ -102,17 +110,19 @@ namespace Core.PlayerTablets
 
         private void OnPawnDeath(CharacterHealth characterHealth)
         {
-            _playerTabletList.Remove(this);
+            Destroy(this);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             Player.Left += OnPlayerLeft;
             _linkedCharacterPawn.ReferenceChanged += OnCharacterPawnChange;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             Player.Left -= OnPlayerLeft;
             _linkedCharacterPawn.ReferenceChanged -= OnCharacterPawnChange;
         }

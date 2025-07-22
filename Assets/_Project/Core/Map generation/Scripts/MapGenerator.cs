@@ -20,8 +20,6 @@ namespace Core.Maps.Generation
 
         [Inject] private MapGeneratorConfiguration _mapGeneratorConfiguration;
 
-        [Inject] private PlayerTabletList _playerTabletList;
-
         [Inject] private AliensTablet _aliensTablet;
 
         [Inject] private AliensBag _aliensBag;
@@ -59,7 +57,7 @@ namespace Core.Maps.Generation
 
             result.AddRange(_mapGeneratorConfiguration.DefaultAliensBag);
 
-            for (int i = 0; i < _playerTabletList.Count(); i++)
+            for (int i = 0; i < PlayerTablet.Instances.Count; i++)
             {
                 result.AddRange(_mapGeneratorConfiguration.AddictionalAliensPerPlayer);
             }
@@ -89,14 +87,14 @@ namespace Core.Maps.Generation
         private void GenerateEscapePods()
         {
             int enablePodsCount;
-            if (_playerTabletList.ActiveTablets.Length >= _mapGeneratorConfiguration.EscapePodCountPerPlayer.Length)
+            if (PlayerTablet.Instances.Count >= _mapGeneratorConfiguration.EscapePodCountPerPlayer.Length)
             {
                 enablePodsCount = _mapGeneratorConfiguration.EscapePodCountPerPlayer.Last();
                 Debug.LogWarning($"[<color=yellow>Generation warning</color>] map config do not cotains capsule count for {_mapGeneratorConfiguration.EscapePodCountPerPlayer.Length} players count. Using max");
             }
             else
             {
-                enablePodsCount = _mapGeneratorConfiguration.EscapePodCountPerPlayer[_playerTabletList.ActiveTablets.Length];
+                enablePodsCount = _mapGeneratorConfiguration.EscapePodCountPerPlayer[PlayerTablet.Instances.Count];
             }
 
             foreach (EscapePod escapePod in _map.EscapePods.ToArray())

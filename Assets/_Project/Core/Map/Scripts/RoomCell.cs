@@ -27,8 +27,6 @@ namespace Core.Maps
         [field: SerializeField] public bool GenerateIntellegenceToken { get; private set; } = true;
         [field: SerializeField] private InterfaceReference<INoiseContainer>[] _linkedTunnels = new InterfaceReference<INoiseContainer>[NOISE_CONTAINERS_COUNT];
 
-        [Inject] private NetworkManager _networkManager;
-
         public NetVariable<int> LootCount { get; private set; }
         private NetworkList<NetworkObjectReference> _roomContentsNet;
         private RoomContent[] _roomContents;
@@ -110,7 +108,7 @@ namespace Core.Maps
 
         private void OnContentDespawn(RoomContent sender)
         {
-            if (_roomContents.Contains(sender) && _networkManager.IsServer)
+            if (_roomContents.Contains(sender) && NetworkManager.IsServer)
             {
                 RemoveContent(sender);
             }
@@ -256,6 +254,7 @@ namespace Core.Maps
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
                     EditorGUILayout.ObjectField("Room: " ,RoomCell._roomTypeNet.Value, typeof(RoomType), false);
                     EditorGUILayout.ObjectField("Intellegence token: " ,RoomCell.IntellegenceTokenNet.Value, typeof(IntelegenceToken), false);
+                    GUILayout.Label($"Loot count: {RoomCell.LootCount.Value}");
                     
                     if (RoomCell.RoomContents != null)
                     {

@@ -191,6 +191,7 @@ MonoBehaviour:
   _paddingFront: 0
   _paddingBack: 0
   _skipLayout: 0
+  _useDefaultAdapter: 1
 --- !u!114 &1073263201172645796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1092,7 @@ MonoBehaviour:
   _paddingFront: 0
   _paddingBack: 0
   _skipLayout: 0
+  _useDefaultAdapter: 1
 --- !u!114 &7223199665473844092
 MonoBehaviour:
   m_ObjectHideFlags: 0

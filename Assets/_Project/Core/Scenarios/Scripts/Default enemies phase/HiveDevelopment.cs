@@ -17,7 +17,6 @@ namespace Core.Scenarios.EnemiesPhase
     public class HiveDevelopment : IChapter
     {
         [Inject] private AliensBag _aliensBag;
-        [Inject] private PlayerTabletList _playerTabletList;
         [Inject] private AliensTablet _aliensTablet;
         [Inject] private Map _map;
 
@@ -76,7 +75,7 @@ namespace Core.Scenarios.EnemiesPhase
 
         public async UniTask AllNoise()
         {
-            foreach (PlayerTablet playerTablet in _playerTabletList.OrderBy(x => x.OrderNumber.Value))
+            foreach (PlayerTablet playerTablet in PlayerTablet.Instances.OrderBy(x => x.OrderNumber.Value))
             {
                 RoomCell roomCell = playerTablet.CharacterPawn.RoomContent.Owner;
                 NoiseDice.Result rollResult = await _map.NoiseInRoom(roomCell);

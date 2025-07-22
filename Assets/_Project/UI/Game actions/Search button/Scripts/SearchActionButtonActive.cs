@@ -10,24 +10,23 @@ namespace UI.SearchActionButton
     public class SearchActionButtonActive : MonoBehaviour
     {
         [SerializeField] private GameObject _target;
-
-        [Inject] private PlayerTabletList _playerTabletList;
         
-        private RoomCell RoomCell => _playerTabletList.Local.CharacterPawn.RoomContent.Owner;
+        private RoomCell RoomCell => PlayerTablet.Local.CharacterPawn.RoomContent.Owner;
+        private PlayerTablet LocalTablet => PlayerTablet.Local;
         
         private void Update()
         {
-            if (NetworkManager.Singleton.IsClient == false)
+            if (NetworkManager.Singleton == null || NetworkManager.Singleton.IsClient == false)
             {
                 return;
             }
             
-            if (_playerTabletList.Local == null || _playerTabletList.Local.CharacterPawn == null)
+            if (LocalTablet == null || LocalTablet.CharacterPawn == null)
             {
                 return;
             }
             
-            _target.SetActive(SimpleSearch.RoomIsValidToLoot(RoomCell) && SimpleSearch.ExecutorHaveCard(_playerTabletList.Local));
+            _target.SetActive(SimpleSearch.RoomIsValidToLoot(RoomCell) && SimpleSearch.ExecutorHaveCard(LocalTablet));
         }
     }
 }

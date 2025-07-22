@@ -7,7 +7,7 @@ namespace Core.Characters.Health
 {
     public class HeavyDamageDeck : Bag<HeavyDamage>
     {
-        private Config _config;
+        private readonly Config _config;
 
         public HeavyDamageDeck(Config config) : base(config.DamageCards)
         {

@@ -47,19 +47,19 @@ namespace Core.CharacterInventories
                 int itemsCount = 0;
                 if (serializer.IsWriter)
                 {
-                    itemsCount = StartItems.Count;
+                    itemsCount = characterStartItems.Length;
                 }
+                
+                serializer.SerializeValue(ref itemsCount);
 
                 if (serializer.IsReader)
                 {
                     characterStartItems = new FixedString128Bytes[itemsCount];
                 }
-                
-                serializer.SerializeValue(ref itemsCount);
 
                 for (int j = 0; j < itemsCount; j++)
                 {
-                    serializer.SerializeValue(ref characterStartItems[i]);
+                    serializer.SerializeValue(ref characterStartItems[j]);
                 }
 
                 if (serializer.IsReader)

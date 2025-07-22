@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Core.ActionsCards;
 using Core.CharacterInventories;
-using Core.Entities;
 using Core.LootDecks;
 using Core.Maps;
 using Core.PlayerActions;
@@ -18,9 +17,9 @@ namespace Core.Characters.Actions
         public const string SearchCardId = "Search";
         
         public const int SelectItemsFrom = 2;
-        private PlayerTablet _playerTablet;
         public int RequiredItemsAmount => 1;
         public int RequiredLootDecksAmount => 1;
+        public PlayerTablet Executor { get; private set; }
         public InventoryItem[] InventoryItemsSelection { get; set; } = Array.Empty<InventoryItem>();
         LootDeck.Type[] INeedLootDeck.InventoryItemsSelection { get; set; } = Array.Empty<LootDeck.Type>();
         public bool CanCancel => false;
@@ -29,21 +28,19 @@ namespace Core.Characters.Actions
         {
             get
             {
-                RoomContent roomContent = _playerTablet.CharacterPawn.RoomContent;
+                RoomContent roomContent = Executor.CharacterPawn.RoomContent;
                 RoomCell roomCell = roomContent.Owner;
+                Debug.Log(roomCell, roomCell);
                 
-                if (roomCell.Loot is RoomType.LootType.UniversalRoom)
-                {
-                    return new[]
-                    {
-                        LootDeck.Type.BattleDeck,
-                        LootDeck.Type.MedDeck,
-                        LootDeck.Type.TechDeck,
-                    };
-                }
-
                 switch (roomCell.Loot)
                 {
+                    case RoomType.LootType.UniversalRoom:
+                        return new[]
+                        {
+                            LootDeck.Type.BattleDeck,
+                            LootDeck.Type.MedDeck,
+                            LootDeck.Type.TechDeck,
+                        };
                     case RoomType.LootType.BattleRoom:
                         return new [] { LootDeck.Type.BattleDeck} ;
                     case RoomType.LootType.MedicineRoom:
@@ -61,18 +58,20 @@ namespace Core.Characters.Actions
             get
             {
                 InventoryItem[] itemsToSelectFrom = LootDeck.GetItems(SelectItemsFrom);
+                Debug.Log($"Loot deck type = {string.Join(", ", LootDecksSource)}", LootDeck);
+                Debug.Log(string.Join(", ", itemsToSelectFrom.Select(x => x.ID)), LootDeck);
                 return itemsToSelectFrom;
             }
         }
 
         private LootDeck LootDeck
         {
-            get { return NetEntity<LootDeck>.Instances.First(x => x.DeckType == LootDecksSource.First()); }
+            get { return LootDeck.Instances.First(x => x.DeckType == LootDecksSource.First()); }
         }
 
-        public void Inititalize(PlayerTablet executor)
+        public void Initialize(PlayerTablet executor)
         {
-            _playerTablet = executor;
+            Executor = executor;
         }
 
         public static bool RoomIsValidToLoot(RoomCell roomCell)
@@ -98,7 +97,7 @@ namespace Core.Characters.Actions
                 };
             }
 
-            if (ExecutorHaveCard(_playerTablet) == false)
+            if (ExecutorHaveCard(Executor) == false)
             {
                 return new IGameAction.CanExecuteCheckResult()
                 {
@@ -117,7 +116,7 @@ namespace Core.Characters.Actions
         {
             get
             {
-                RoomContent roomContent = _playerTablet.CharacterPawn.RoomContent;
+                RoomContent roomContent = Executor.CharacterPawn.RoomContent;
                 RoomCell roomCell = roomContent.Owner;
                 return roomCell;
             }
@@ -140,9 +139,13 @@ namespace Core.Characters.Actions
             
             LootDeck.RemoveItems(source);
             LootDeck.AddItems(source.First(x => x != selectedItem));
-            _playerTablet.AddItem(selectedItem);
+            Executor.AddItem(selectedItem);
             
             OwnerRoomCell.LootCount.Value--;
+            Executor.ActionCount.Value--;
+
+            ActionCard card = Executor.ActionCardsDeck.HandLocal.First(x => x.ID == SearchCardId);
+            Executor.ActionCardsDeck.DiscardCard(card);
         }
     }
 }

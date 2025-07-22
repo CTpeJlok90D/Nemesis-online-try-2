@@ -32,7 +32,6 @@ namespace Core.Scenarios
         [SerializeField] private ScenarioLauncher _playersPhaseScenarioLauncher;
 
         [Inject] private KitStartConfig _kitStartConfig;
-        [Inject] private PlayerTabletList _playerTabletList;
         [Inject] private LoadObserver _loadObserver;
         
         public Scenario Scenario { get; private set; }
@@ -51,7 +50,7 @@ namespace Core.Scenarios
                 new AwaitOtherPlayers(_loadObserver),
                 delay,
                 new DealCharactersChapter(_charactersDealer),
-                new PawnsPlacer(_playerTabletList, _pawnPlacerConfig, _startRoom, _kitStartConfig),
+                new PawnsPlacer(_pawnPlacerConfig, _startRoom, _kitStartConfig),
                 new LaunchScenarioChapter(_playersPhaseScenarioLauncher),
                 _cameraChapter,
             };
