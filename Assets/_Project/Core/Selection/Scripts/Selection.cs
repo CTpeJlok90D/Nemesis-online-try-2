@@ -154,6 +154,7 @@ namespace Core.SelectionBase
             if (_selection.Count == RequiredCount)
             {
                 _isSelectionInProgress = false;
+                SelectionConfirmed?.Invoke(this);
             }
             else
             {

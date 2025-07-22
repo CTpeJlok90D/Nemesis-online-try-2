@@ -392,6 +392,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cedae7c1c11ed846b6589eb6823ebcf
+    m_Address: Assets/_Project/Data/Map/Room actions/Empty room action container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9fc5fe5342c648442826ed3f491960a5
     m_Address: Assets/_Project/Data/Aliens/Prefabs/Breeder.prefab
     m_ReadOnly: 0

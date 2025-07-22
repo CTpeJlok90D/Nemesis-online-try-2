@@ -21,8 +21,6 @@ namespace Core.LoadObservers
 
         public IReadOnlyDictionary<ulong, Status> LoadStatuses => _loadStatuses;
 
-        public NetworkManager NetworkManager => NetworkManager.Singleton;
-
         public bool EveryoneIsReady => _everyOneIsReady.Value;
 
         public LoadObserver Instantiate()

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadKey: 385542f880d787840834b5eaedc6daef
   <Id>k__BackingField: armory
-  <RoomAction>k__BackingField: {fileID: 11400000, guid: 46da0b449f9c73f47854207c49a69639, type: 2}
+  <RoomAction>k__BackingField: {fileID: 11400000, guid: 9cedae7c1c11ed846b6589eb6823ebcf, type: 2}
   <Layer>k__BackingField: 1
   <Loot>k__BackingField: 1

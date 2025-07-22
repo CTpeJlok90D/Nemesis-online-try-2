@@ -39,11 +39,12 @@ namespace UI.Characters
 
         private void UpdatePoints()
         {
-            _actionPointsRoot.gameObject.SetActive(PlayerTablet.ActionCount.Value >= 0);
+            _actionPointsRoot.gameObject.SetActive(PlayerTablet.ActionCount.Value > 0);
 
             while (_actionPointsIndicatorsIntances.Count < PlayerTablet.ActionCount.Value)
             {
-                _actionPointsIndicatorsIntances.Add(Instantiate(_actionPointIndicator_PREFAB, _actionPointsRoot.transform));
+                GameObject instance = Instantiate(_actionPointIndicator_PREFAB, _actionPointsRoot.transform);
+                _actionPointsIndicatorsIntances.Add(instance);
             }
 
             int i = 1;

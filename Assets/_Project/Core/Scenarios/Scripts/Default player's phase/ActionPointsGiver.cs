@@ -23,6 +23,12 @@ namespace Core.Scenarios.PlayersPhase
 
         public PlayerTablet ActiveTablet => PlayerTablet.Instances[_activePlayerIndex.Value];
 
+        public event IReadOnlyReactiveField<int>.ChangedListener ActiveTabletIndexChanged
+        {
+            add => _activePlayerIndex.Changed += value;
+            remove => _activePlayerIndex.Changed -= value;
+        }
+
         private void Awake()
         {
             _firstPlayerIndex = new();

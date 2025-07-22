@@ -41,7 +41,7 @@ namespace Core.Lobbies
                 }
 
                 _configuration.Value = value;
-                _ = UpdateTablets();
+                UpdateTablets();
             }
         }
 
@@ -53,7 +53,7 @@ namespace Core.Lobbies
         public override void OnNetworkSpawn()
         {
             _configuration.Changed += OnConfigurationChange;
-            _ = UpdateTablets();
+            UpdateTablets();
         }
 
         public override void OnNetworkDespawn()
@@ -64,10 +64,10 @@ namespace Core.Lobbies
 
         private void OnConfigurationChange(LobbyConfiguration previousValue, LobbyConfiguration newValue)
         {
-            _ = UpdateTablets();
+            UpdateTablets();
         }
 
-        private async UniTask UpdateTablets()
+        private void UpdateTablets()
         {
             if (IsServer == false)
             {

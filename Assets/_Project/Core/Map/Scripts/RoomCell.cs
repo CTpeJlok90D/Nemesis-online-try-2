@@ -162,7 +162,11 @@ namespace Core.Maps
                 {
                     RoomContent content = result.GetComponent<RoomContent>();
                     contents.Add(content);
-                    content.Owner = this;
+
+                    if (NetworkManager.IsServer)
+                    {
+                        content.Owner = this;
+                    }
                 }
             }
 
@@ -208,7 +212,10 @@ namespace Core.Maps
             NetworkObject roomContentNetObject = roomContent;
             RoomContent content = roomContentNetObject.GetComponent<RoomContent>();
 
-            content.Owner = this;
+            if (NetworkManager.IsServer)
+            {
+                content.Owner = this;
+            }
 
             IRoomOwnerChangedHandler[] hadlers = content.GetComponents<IRoomOwnerChangedHandler>();
             foreach (IRoomOwnerChangedHandler changedHandler in hadlers)

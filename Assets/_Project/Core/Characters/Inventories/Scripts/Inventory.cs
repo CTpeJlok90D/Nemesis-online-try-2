@@ -159,7 +159,7 @@ namespace Core.CharacterInventories
                 _itemName = EditorGUILayout.TextField(_itemName);
                 if (GUILayout.Button("Add"))
                 {
-                    AddItem(_itemName);
+                    _ = AddItem(_itemName);
                 }
                 GUILayout.EndHorizontal();
             }

@@ -20,7 +20,7 @@ namespace Devtools.Maps
             try
             {
                 RoomCell cell = _map.RoomCells.ElementAt(roomIndex - 1);
-                _map.SummonEnemyIn(cell);
+                _ = _map.SummonEnemyIn(cell);
             }
             catch (Exception ex)
             {

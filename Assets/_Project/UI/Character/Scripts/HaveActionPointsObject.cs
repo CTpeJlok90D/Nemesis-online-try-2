@@ -10,28 +10,20 @@ namespace UI.Characters
         
         [SerializeField] private GameObject _target;
 
-        public PlayerTablet PlayerTablet 
-        {
-            get
-            {
-                return _playerTablet.Value.PlayerTablet;
-            }
-        }
-
-        private bool TargetActive => PlayerTablet.ActionCount.Value > 0;
+        public PlayerTablet PlayerTablet => _playerTablet.Value.PlayerTablet;
 
         private void OnEnable()
         {
             PlayerTablet.ActionCount.Changed += OnActionCountChange;
             if (didStart)
             {
-                _target.SetActive(TargetActive);
+                UpdateSize();
             }
         }
 
         private void Start()
         {
-            _target.SetActive(TargetActive);
+            UpdateSize();
         }
 
         private void OnDisable()
@@ -42,7 +34,7 @@ namespace UI.Characters
         private void OnActionCountChange(int previousValue, int newValue) => UpdateSize();
         private void UpdateSize()
         {
-            _target.SetActive(TargetActive);
+            _target.SetActive(PlayerTablet.ActionCount.Value > 0);
         }
     }
 }

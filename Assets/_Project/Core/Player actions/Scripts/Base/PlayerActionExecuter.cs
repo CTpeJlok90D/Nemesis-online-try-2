@@ -55,6 +55,8 @@ namespace Core.PlayerActions
         
         private NetVariable<bool> _actionIsExecuting;
 
+        public IReadOnlyReactiveField<bool> ActionIsExecuting => _actionIsExecuting;
+
         public PlayerTablet Executor
         {
             get
@@ -92,7 +94,7 @@ namespace Core.PlayerActions
             base.OnOwnershipChanged(previous, current);
             _executor = PlayerTablet.Instances.First(x => x.Player.OwnerClientId == current);
         }
-
+        
         public async void Execute(GameActionContainer gameActionContainer)
         {
             try
