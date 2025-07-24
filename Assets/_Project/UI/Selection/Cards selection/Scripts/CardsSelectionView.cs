@@ -37,6 +37,7 @@ namespace SelectionStarted
         public bool IsActive => _cardsSelection.IsActive;
         public int RequiredCount => _cardsSelection.RequiredCount;
         public int SelectedCount => _cardsSelection.SelectedCount;
+        public bool CanCancel => true;
 
         private void OnSelectionChange(ISelection sender)
         {

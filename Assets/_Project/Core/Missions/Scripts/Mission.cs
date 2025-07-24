@@ -14,6 +14,7 @@ namespace Core.Missions
         [field: SerializeField] private NetScriptableObject<Mission> _net = new();
         [field: SerializeField] public int MinPlayerCount { get; private set; }
         [field: SerializeField] public MissionTarget[] Targets { get; private set; }
+        [field: SerializeField] public string ID { get; private set; }
 
         public NetScriptableObject<Mission> Net => _net;
 
@@ -38,6 +39,16 @@ namespace Core.Missions
         {
             return other._net.SelfAssetReference.RuntimeKey.Equals(_net.SelfAssetReference.RuntimeKey);
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (string.IsNullOrEmpty(ID))
+            {
+                ID = name;
+            }
+        }
+#endif
     }
 
     public enum MissionType

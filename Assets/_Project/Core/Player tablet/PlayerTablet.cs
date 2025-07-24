@@ -12,7 +12,6 @@ using Core.Players;
 using Core.Maps.CharacterPawns;
 using Cysharp.Threading.Tasks;
 using ModestTree;
-using Unity.Collections;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -31,6 +30,10 @@ namespace Core.PlayerTablets
             }
         }
 
+        public delegate void LocalChangedDelegate(PlayerTablet old, PlayerTablet newValue);
+
+        public static event LocalChangedDelegate LocalChanged;
+
         public static IReadOnlyCollection<PlayerTablet> ActiveTablets
         {
             get
@@ -39,33 +42,35 @@ namespace Core.PlayerTablets
             }
         }
         
+        [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
+        
+        private NetworkList<int> _tags;
+        private NetVariable<bool> _inSaveCapsule;
+        private NetVariable<bool> _inHybridizationCapsule;
+        private bool _haveResult;
+        private ToBookResult _result;
+        private NetBehaviourReference<CharacterPawn> _linkedCharacterPawn;
+        
         public Inventory SmallItemsInventory { get; private set; }
         public Inventory BigItemsInventory { get; private set; }
         public ActionCardsDeck ActionCardsDeck { get; private set; }
         public NicknameContainer NicknameContainer { get; private set; }
         public CharacterHealth Health { get; private set; }
-        
-        [Inject] private ActionCardsDecksDictionary _actionCardsDecksDictionary;
-
-        private bool _haveResult;
-
-        private ToBookResult _result;
-
-        private NetBehaviourReference<CharacterPawn> _linkedCharacterPawn;
-
         public NetBehaviourReference<Player> PlayerReference { get; private set; }
         public NetVariable<Character> Character { get; private set; }
         public NetVariable<int> ActionCount { get; private set; }
         public NetVariable<bool> IsPassed { get; private set; }
         public NetVariable<int> OrderNumber { get; private set; }
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
-        private NetworkList<int> _tags;
-        private NetVariable<bool> _leftShip;
+        
         public IReadOnlyCollection<PlayerTag> Tags => _tags.ToEnumerable().Select(x => (PlayerTag)x).ToArray();
         public Player Player => PlayerReference.Reference;
         public bool IsEmpty => PlayerReference.Reference == null;
         public string Nickname => NicknameContainer.Value;
-        public bool IsDead => _leftShip.Value == false && CharacterPawn == null;
+        public bool IsSpectator => CharacterPawn == null;
+        public bool IsDead => InSaveCapsule == false && InHybridizationCapsule == false && CharacterPawn == null;
+        public bool InSaveCapsule => _inSaveCapsule.Value;
+        public bool InHybridizationCapsule => _inHybridizationCapsule.Value;
         
         public delegate void LinkPawnHandler(PlayerTablet sender);
         public event LinkPawnHandler PawnLinked;
@@ -96,7 +101,8 @@ namespace Core.PlayerTablets
             OrderNumber = new();
             Missions = new();
             _tags = new();
-            _leftShip = new();
+            _inSaveCapsule = new();
+            _inHybridizationCapsule = new();
         }
 
         public void AddTag(PlayerTag tag)
@@ -270,6 +276,8 @@ namespace Core.PlayerTablets
             }
 
             Player player = playerObject.GetComponent<Player>();
+            PlayerTablet oldTablet = Instances.FirstOrDefault(x => x.Player == Player);
+            
             if (IsEmpty)
             {
                 PlayerReference.Reference = player;
@@ -279,6 +287,12 @@ namespace Core.PlayerTablets
                 return;
             }
             SendResult_RPC(ToBookResult.Failure, RpcTarget.Single(player.OwnerClientId, RpcTargetUse.Persistent));
+            if (oldTablet == null)
+            {
+                oldTablet = this;
+            }
+
+            InvokeEvent_RPC(oldTablet.NetworkObject, NetworkObject);
         }
 
         [Rpc(SendTo.SpecifiedInParams)]
@@ -286,6 +300,23 @@ namespace Core.PlayerTablets
         {
             _result = result;
             _haveResult = true;
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void InvokeEvent_RPC(NetworkObjectReference oldTabletReference, NetworkObjectReference newTabletReference)
+        {
+            oldTabletReference.TryGet(out NetworkObject oldTabletNetObject);
+            newTabletReference.TryGet(out NetworkObject newTabletNetObject);
+
+            if (oldTabletNetObject == null || newTabletNetObject == null)
+            {
+                throw new Exception("Player tablet was not found");
+            }
+            
+            PlayerTablet oldTablet = oldTabletNetObject.GetComponent<PlayerTablet>();
+            PlayerTablet newTablet = newTabletNetObject.GetComponent<PlayerTablet>();
+            
+            LocalChanged?.Invoke(oldTablet, newTablet);
         }
 
         public void LeavePlayerTablet()
@@ -300,7 +331,23 @@ namespace Core.PlayerTablets
 
         public void LeaveShip()
         {
-            _leftShip.Value = true;
+            if (IsSpectator)
+            {
+                throw new Exception($"{this} tablet not in game. It can't leave ship");
+            }
+            
+            _inHybridizationCapsule.Value = true;
+            ForceKill();
+        }
+        
+        public void EnterSaveCapsule()
+        {
+            if (IsSpectator)
+            {
+                throw new Exception($"{this} tablet not in game. It can't enter save capsule");
+            }
+            
+            _inSaveCapsule.Value = true;
             ForceKill();
         }
 

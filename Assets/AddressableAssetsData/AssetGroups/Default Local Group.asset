@@ -102,6 +102,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d6246cc1c9a0ba4193bb47a0c1f88c3
+    m_Address: Assets/_Project/View/Targets/Sprites/targets.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
     m_Address: Empty alien token
     m_ReadOnly: 0
@@ -678,6 +683,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f89950464d9a2e845a3370cc86df1328
     m_Address: Spine damage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb934da19bbc62b49a76f0e282a24c38
+    m_Address: Assets/_Project/View/Targets/Sprites/target-card-shert.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

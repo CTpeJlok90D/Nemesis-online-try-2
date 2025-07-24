@@ -8,6 +8,7 @@ namespace Core.SelectionBase
         public bool IsActive { get; }
         public int RequiredCount { get; }
         public int SelectedCount { get; }
+        public bool CanCancel { get; }
         public void Confirm();
         public void Cancel();
 

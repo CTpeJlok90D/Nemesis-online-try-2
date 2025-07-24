@@ -27,7 +27,7 @@ namespace Core.SelectionBase
         public virtual bool OnlyUniqueItems => true; 
         public virtual bool SkipSelectionWithSameItemCount => false;
         // Меняется из PlayerActionExecutor;
-        public bool CanCancel = true;
+        public bool CanCancel { get; set; }
 
         public event IReadOnlyReactiveField<int>.ChangedListener MaxCountChanged
         {

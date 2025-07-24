@@ -12,6 +12,7 @@ namespace UI.Selection
         
         private void OnEnable()
         {
+            _button.interactable = _selection.CanCancel;
             _button.onClick.AddListener(OnButtonClick);
         }
 

@@ -31,7 +31,7 @@ namespace Core.ResultEvaluators
             
             if (CharacterPawn.Instances.Any() == false)
             {
-                _ = _activator.StopGame();
+                //_ = _activator.StopGame();
             }
         }
     }

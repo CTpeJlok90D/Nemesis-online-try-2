@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
@@ -10,16 +11,6 @@ namespace Core.Common
         [SerializeField] private SerializedDictionary<TKey, TValue> _assets;
         [SerializeField] private TValue _errorValue;
 
-        public TValue this[TKey key]
-        {
-            get
-            {
-                if (_assets.TryGetValue(key, out TValue assetReferenceGameObject))
-                {
-                    return assetReferenceGameObject;
-                }
-                return _errorValue;
-            }
-        }
+        public TValue this[TKey key] => _assets.GetValueOrDefault(key, _errorValue);
     }
 }
