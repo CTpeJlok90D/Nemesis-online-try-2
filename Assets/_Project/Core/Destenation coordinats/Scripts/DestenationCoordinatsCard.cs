@@ -9,17 +9,17 @@ namespace Core.DestinationCoordinats
 {
     [CreateAssetMenu(menuName = "Game/Maps/Control point/Destination coordinats card")]
     [Icon("Assets/_Project/Core/Destenation coordinats/Editor/icons8-map-96.png")]
-    public class DestinationCoordinatsCard : ScriptableObject, INetworkSerializable, IEquatable<DestinationCoordinatsCard>, INetScriptableObjectArrayElement<DestinationCoordinatsCard>
+    public class DestinationCoordinatesCard : ScriptableObject, INetworkSerializable, IEquatable<DestinationCoordinatesCard>, INetScriptableObjectArrayElement<DestinationCoordinatesCard>
     {
         [field: SerializeField] private SerializedDictionary<Coordinate, Destination> _coordinateForDestenation;
 
-        [field: SerializeField] public NetScriptableObject<DestinationCoordinatsCard> _net = new();
+        [field: SerializeField] public NetScriptableObject<DestinationCoordinatesCard> _net = new();
 
         public IReadOnlyDictionary<Coordinate, Destination> CoordinatesForDestinations => _coordinateForDestenation;
 
-        public NetScriptableObject<DestinationCoordinatsCard> Net => _net;
+        public NetScriptableObject<DestinationCoordinatesCard> Net => _net;
 
-        public bool Equals(DestinationCoordinatsCard other)
+        public bool Equals(DestinationCoordinatesCard other)
         {
             return 
                 _net.SelfAssetReference.RuntimeKey == other._net.SelfAssetReference.RuntimeKey;
@@ -31,7 +31,7 @@ namespace Core.DestinationCoordinats
             _net.OnNetworkSerialize(serializer, this);
         }
 
-        private void OnLoad(DestinationCoordinatsCard result)
+        private void OnLoad(DestinationCoordinatesCard result)
         {
             _net.Preloaded -= OnLoad;
             _coordinateForDestenation = new(result._coordinateForDestenation);

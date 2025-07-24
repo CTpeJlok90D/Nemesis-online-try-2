@@ -9,12 +9,23 @@ namespace Core.Missions.Dealing
 {
     public class MissionsDealer : MonoBehaviour, IChapter
     {
+        [SerializeField] private Mission _corporateMissionForOnePlayer;
+        [SerializeField] private Mission _personalMissionForOnePlayer;
+        
         [Inject] private MissionsDealerConfiguration _config;
 
         public event IChapter.EndedListener Ended;
 
         public void Begin()
         {
+            if (PlayerTablet.Instances.Count == 1)
+            {
+                PlayerTablet.Instance.Missions.Add(_corporateMissionForOnePlayer);
+                PlayerTablet.Instance.Missions.Add(_personalMissionForOnePlayer);
+                Ended?.Invoke(this);
+                return;
+            }
+            
             Mission[] availableMissions = _config.AvailableMissions.ToArray();
 
             Bag<Mission> personalMissions = new(availableMissions.Where(x => x.Type == MissionType.Personal && x.MinPlayerCount <= PlayerTablet.Instances.Count));

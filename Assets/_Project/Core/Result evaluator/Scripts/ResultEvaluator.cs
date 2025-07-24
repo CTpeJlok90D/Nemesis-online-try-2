@@ -1,4 +1,5 @@
 using System.Linq;
+using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
 using Core.Starter;
 using Unity.Netcode;
@@ -13,22 +14,22 @@ namespace Core.ResultEvaluators
 
         private void OnEnable()
         {
-            PlayerTablet.Despawned += OnTabletRemove;
+            CharacterPawn.Despawned += OnTabletRemove;
         }
 
         private void OnDisable()
         {
-            PlayerTablet.Despawned -= OnTabletRemove;
+            CharacterPawn.Despawned -= OnTabletRemove;
         }
 
-        private void OnTabletRemove(PlayerTablet spawned)
+        private void OnTabletRemove(CharacterPawn spawned)
         {
             if (NetworkManager.Singleton == null || NetworkManager.Singleton.IsServer == false)
             {
                 return;
             }
             
-            if (PlayerTablet.Instances.Any() == false)
+            if (CharacterPawn.Instances.Any() == false)
             {
                 _ = _activator.StopGame();
             }

@@ -12,6 +12,7 @@ using Core.Players;
 using Core.Maps.CharacterPawns;
 using Cysharp.Threading.Tasks;
 using ModestTree;
+using Unity.Collections;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEditor;
@@ -27,6 +28,14 @@ namespace Core.PlayerTablets
             get
             {
                 return Instances.FirstOrDefault(x => x.Player == Player.Local);
+            }
+        }
+
+        public static IReadOnlyCollection<PlayerTablet> ActiveTablets
+        {
+            get
+            {
+                return Instances.Where(x => x.CharacterPawn != null).ToArray();
             }
         }
         
@@ -50,13 +59,17 @@ namespace Core.PlayerTablets
         public NetVariable<bool> IsPassed { get; private set; }
         public NetVariable<int> OrderNumber { get; private set; }
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
-        
+        private NetworkList<int> _tags;
+        private NetVariable<bool> _leftShip;
+        public IReadOnlyCollection<PlayerTag> Tags => _tags.ToEnumerable().Select(x => (PlayerTag)x).ToArray();
         public Player Player => PlayerReference.Reference;
         public bool IsEmpty => PlayerReference.Reference == null;
         public string Nickname => NicknameContainer.Value;
+        public bool IsDead => _leftShip.Value == false && CharacterPawn == null;
         
         public delegate void LinkPawnHandler(PlayerTablet sender);
         public event LinkPawnHandler PawnLinked;
+        
 
         public CharacterPawn CharacterPawn
         {
@@ -82,6 +95,23 @@ namespace Core.PlayerTablets
             IsPassed = new();
             OrderNumber = new();
             Missions = new();
+            _tags = new();
+            _leftShip = new();
+        }
+
+        public void AddTag(PlayerTag tag)
+        {
+            if (_tags.Contains((int)tag))
+            {
+                return;
+            }
+            
+            _tags.Add((int)tag);
+        }
+
+        public void RemoveTag(PlayerTag tag)
+        {
+            _tags.Remove((int)tag);
         }
 
         public bool CanBookIt(Player player) => IsEmpty && Instances.Any(x => x.PlayerReference.Reference == player) == false;
@@ -263,6 +293,17 @@ namespace Core.PlayerTablets
             LeavePlayerTablet_RPC();
         }
 
+        public void ForceKill()
+        {
+            CharacterPawn.NetworkObject.Despawn();
+        }
+
+        public void LeaveShip()
+        {
+            _leftShip.Value = true;
+            ForceKill();
+        }
+
         [Rpc(SendTo.Server)]
         private void LeavePlayerTablet_RPC()
         {
@@ -306,7 +347,4 @@ namespace Core.PlayerTablets
         }
     #endif
     }
-
-    public enum ToBookResult { Success, Failure }
-
 }

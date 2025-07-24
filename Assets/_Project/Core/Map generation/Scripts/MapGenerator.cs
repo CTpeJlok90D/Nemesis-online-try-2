@@ -16,12 +16,9 @@ namespace Core.Maps.Generation
 {
     public class MapGenerator : MonoBehaviour
     {
-        [Inject] private Map _map;
-
+        [Inject] private Ship _ship;
         [Inject] private MapGeneratorConfiguration _mapGeneratorConfiguration;
-
         [Inject] private AliensTablet _aliensTablet;
-
         [Inject] private AliensBag _aliensBag;
 
         private Dictionary<int, Bag<RoomType>> _runtimeBags;
@@ -38,17 +35,24 @@ namespace Core.Maps.Generation
             GenerateShipEngines();
             GenerateAlienTablets();
             GenerateAliensBug();
+            InitializeShip();
             Generated?.Invoke(this);
+        }
+
+        private void InitializeShip()
+        {
+            _ship.MaxMalfunctionTokenCount.Value = _mapGeneratorConfiguration.MaxMalfunctionTokenCount;
+            _ship.MaxFireTokenCount.Value = _mapGeneratorConfiguration.MaxFireTokenCount;
         }
 
         private void GenerateAliensBug()
         {
-            if (_mapGeneratorConfiguration.DefaultAliensBag.Count() == 0)
+            if (_mapGeneratorConfiguration.DefaultAliensBag.Any() == false)
             {
                 Debug.LogWarning($"[<color=yellow>Generation warning</color>] Default aliens bag is empty!");
             }
 
-            if (_mapGeneratorConfiguration.AddictionalAliensPerPlayer.Count() == 0)
+            if (_mapGeneratorConfiguration.AddictionalAliensPerPlayer.Any() == false)
             {
                 Debug.LogWarning($"[<color=yellow>Generation warning</color>] Addictional aliens bag is empty!");
             }
@@ -78,7 +82,7 @@ namespace Core.Maps.Generation
 
         private void GenerateShipEngines()
         {
-            foreach (ShipEngine shipEngine in _map.ShipEngines)
+            foreach (ShipEngine shipEngine in _ship.ShipEngines)
             {
                 shipEngine.IsWorking.Value = Random.Range(0,2) == 0;
             }
@@ -97,7 +101,7 @@ namespace Core.Maps.Generation
                 enablePodsCount = _mapGeneratorConfiguration.EscapePodCountPerPlayer[PlayerTablet.Instances.Count];
             }
 
-            foreach (EscapePod escapePod in _map.EscapePods.ToArray())
+            foreach (EscapePod escapePod in _ship.EscapePods.ToArray())
             {
                 if (escapePod.NetworkObject.IsSpawned == false)
                 {
@@ -106,7 +110,7 @@ namespace Core.Maps.Generation
                 
                 if (enablePodsCount <= 0)
                 {
-                    _map.RemoveEscapePod(escapePod);
+                    _ship.RemoveEscapePod(escapePod);
                 }
                 else
                 {
@@ -131,7 +135,7 @@ namespace Core.Maps.Generation
 
             bool roomsIsOut = false;
 
-            foreach (RoomCell roomCell in _map)
+            foreach (RoomCell roomCell in _ship)
             {
                 if (_runtimeBags.ContainsKey(roomCell.Layer) == false)
                 {
@@ -164,7 +168,7 @@ namespace Core.Maps.Generation
                 throw new MapGenerationException("Map generation configuration have no intekegence tokens"); 
             }
 
-            foreach (RoomCell roomCell in _map.Where(x => x.GenerateIntellegenceToken))
+            foreach (RoomCell roomCell in _ship.Where(x => x.GenerateIntellegenceToken))
             {
                 if (_tokens.Items.Count == 0)
                 {
@@ -185,15 +189,15 @@ namespace Core.Maps.Generation
 
         private void GenerateDestinationCards()
         {
-            DestinationCoordinatsCard[] availableCards = _mapGeneratorConfiguration.AvailableDestinationCards.ToArray();
+            DestinationCoordinatesCard[] availableCards = _mapGeneratorConfiguration.AvailableDestinationCards.ToArray();
             
             if (availableCards.Length == 0)
             {
                 throw new MapGenerationException("Destination cards in map generation config not found");
             }
 
-            DestinationCoordinatsCard card = availableCards[Random.Range(0, availableCards.Length)];
-            _map.DestinationCoordinatsCard.Value = card;
+            DestinationCoordinatesCard card = availableCards[Random.Range(0, availableCards.Length)];
+            _ship.DestinationCoordinatesCard.Value = card;
         }
     }
 }

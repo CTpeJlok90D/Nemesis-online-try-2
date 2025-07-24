@@ -51,7 +51,7 @@ namespace Core.AlienAttackDecks
             if (targetHand.Count < _enemy.LinkedToken.Value.AttackReaction)
             {
                 Debug.Log($"{_enemy} suddenly attacks {target}. Attacks reaction:{_enemy.LinkedToken.Value.AttackReaction}, Cards on hand: {targetHand.Count}");
-                PlayerTablet playerTablet = PlayerTablet.Instances.First(x => x.CharacterPawn == target);
+                PlayerTablet playerTablet = PlayerTablet.ActiveTablets.First(x => x.CharacterPawn == target);
                 _enemy.Attack(playerTablet);
             }
             else

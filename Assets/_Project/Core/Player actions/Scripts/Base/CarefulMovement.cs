@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Core.PlayerActions.Base
 {
-    [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Careful move action")]
+    [CreateAssetMenu(menuName = CreateAssetMenuPaths.Actions + "Careful move action")]
     public class CarefulMovement : MoveAction, INeedNoiseContainers
     {
         public override int RequaredPaymentCount => 2;
@@ -66,7 +66,7 @@ namespace Core.PlayerActions.Base
                 selectedRoom.Explore();
             }
             
-            Map.CarefulNoiseInTunnel(_selectedNoiseContainer);
+            Ship.CarefulNoiseInTunnel(_selectedNoiseContainer);
         }
     }
 }

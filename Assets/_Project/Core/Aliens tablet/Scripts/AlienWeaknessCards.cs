@@ -18,14 +18,12 @@ namespace Core.AliensTablets
 
         public NetScriptableObject<AlienWeaknessCard> Net => _net;
 
-        private bool _isActive;
+        public AlienWeakness Weakness => _alienWeakness;
 
         public AlienWeaknessCard Instantiate()
         {
             AlienWeaknessCard instance = Instantiate(this);
-            instance._isActive = _isActive;
             instance._alienWeakness = Instantiate(instance._alienWeakness);
-            instance._alienWeakness.IsActive = instance._isActive;
             return instance;
         }
 
@@ -37,7 +35,6 @@ namespace Core.AliensTablets
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
-            serializer.SerializeValue(ref _isActive);
         }
     }
 }

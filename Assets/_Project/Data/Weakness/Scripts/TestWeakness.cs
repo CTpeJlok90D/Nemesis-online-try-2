@@ -1,9 +1,9 @@
 using Core.AliensTablets;
 using UnityEngine;
 
-namespace Data.AliensTablet
+namespace Data.AliensTablets
 {
-    [CreateAssetMenu(menuName = "Game/Aliens/Test alient weakness")]
+    [CreateAssetMenu(menuName = "Game/Aliens/Test alien weakness")]
     public class TestWeakness : AlienWeakness
     {
         private bool _isActive;

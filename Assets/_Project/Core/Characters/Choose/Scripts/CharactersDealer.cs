@@ -14,8 +14,6 @@ namespace Core.CharacterChoose
 {
     public class CharactersDealer : NetworkBehaviour
     {
-        public delegate void СhoiseIsProvidedListener();
-
         [SerializeField] private CharactersSelection _charactersSelection;
 
         public CharactersSelection Selection => _charactersSelection;

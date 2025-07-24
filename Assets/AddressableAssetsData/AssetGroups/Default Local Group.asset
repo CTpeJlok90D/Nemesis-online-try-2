@@ -40,13 +40,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0d37d51d9977ab04a92ab497c9e00d0d
-    m_Address: Assets/_Project/Data/Missions/Default/Test personal mission.asset
+  - m_GUID: 0d78184d666685044a7606d8b7c4b429
+    m_Address: Slime character token
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0d78184d666685044a7606d8b7c4b429
-    m_Address: Slime character token
+  - m_GUID: 0d98cd0adfd06824ab585f48650e2fe6
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/Containers/The destination
+      must be Mars container 1.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -67,6 +68,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1149afd990674364fa4bd0314f477a20
     m_Address: Assets/_Project/Data/Characters/Mechanic.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16222fd687c250b4ba5ecade53a09d4a
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/Containers/Other player
+      must survive.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -210,6 +217,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d6c7f901ca0c9b468cd298e0101bc0e
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/The destination must
+      be Mars container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4d941375d9de76841bf39ffabc5c7875
     m_Address: Assets/_Project/Core/Player actions/Move Action container.asset
     m_ReadOnly: 0
@@ -251,6 +264,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ac5d0d9ffd1aa340ba65f098e4a389a
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/The destination must
+      be Earch container 2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5b7d72e4813b48a469029336e2cf8841
     m_Address: Assets/_Project/Data/Characters/Scout.asset
     m_ReadOnly: 0
@@ -266,6 +285,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63e7f62807f306448a27513891bd4091
+    m_Address: Assets/_Project/Data/Missions/Default/N alien weaknesses must be learned
+      container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 640e60c0966db1842814e773dfa2aa1c
     m_Address: Assets/_Project/Data/Map/Control point/Destenation cards/2.asset
     m_ReadOnly: 0
@@ -278,6 +303,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b603d284b246844a9a8f066e56b6112
     m_Address: Energy consumption - yellow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c67ec7f76f3f6944b552b0b275f18ef
+    m_Address: Assets/_Project/Data/Missions/Default/Alien egg must be learned container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 705637c989fa6e746a798ca541c93bf5
+    m_Address: Assets/_Project/Data/Missions/Default/Kill 4 player corporate mission.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -331,6 +366,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d61389b018f7224f83a23b60d84653b
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/Containers/Send signal
+      and destroy ship or queen.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7dddae815ee73db429757dfa8f2b03ad
     m_Address: Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset
     m_ReadOnly: 0
@@ -364,6 +405,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 898aa18b2d9a5a44aabfd2c9fd7464c1
     m_Address: Fake infection
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a9ae681b1bd3f64c8936f891a03a2a6
+    m_Address: Assets/_Project/Data/Missions/Default/Kill 2 player corporate mission.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -409,6 +455,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9fc5fe5342c648442826ed3f491960a5
     m_Address: Assets/_Project/Data/Aliens/Prefabs/Breeder.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a02decb9fe662454798d8aa4b4b6198c
+    m_Address: Assets/_Project/Data/Missions/Default/Kill 3 player corporate mission.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -477,6 +528,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b851ae0881c3ae048b468ae3e400ebf3
+    m_Address: Assets/_Project/Data/Missions/Debug/Personal debug.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b98f25c575d5a7c4ba8535d610c1fe9e
     m_Address: Assets/_Project/View/Characters/Scout/Prefabs/Scout view.prefab
     m_ReadOnly: 0
@@ -497,6 +553,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c928b359695b5584a909bd1d7418d87f
+    m_Address: Assets/_Project/Data/Missions/Default/Personal/The destination must
+      be Earch container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9a8f08b51d9e924093c07abbc33f18f
     m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 5.asset
     m_ReadOnly: 0
@@ -504,6 +566,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1529cc6b3b018643b1074eb87920257
     m_Address: Assets/_Project/Data/Characters/Pilot.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d87a4ebf7ce2623459a4163ef00a9a5b
+    m_Address: Assets/_Project/Data/Missions/Default/Alien body must be learned container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -538,6 +605,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1375f271b110984ab126d869fbf6def
+    m_Address: Assets/_Project/Data/Missions/Default/Kill 5 player corporate mission.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e26b66a04ce062f48b90cac906da99c5
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/Unexplored
       room layer 2.prefab
@@ -556,6 +628,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e76cbdc9e8099f142ba7d8282ed32978
     m_Address: Bandage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e872ba549cc86ff489aae755a6a3a0ef
+    m_Address: Assets/_Project/Data/Missions/Debug/Corporate debug.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

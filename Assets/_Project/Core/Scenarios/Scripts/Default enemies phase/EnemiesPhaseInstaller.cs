@@ -26,7 +26,7 @@ namespace Core.Scenarios.EnemiesPhase
         [SerializeField] private MapGenerator _mapGenerator;
         [SerializeField] private EventsDeck _eventDeck;
         
-        [Inject] private Map _map;
+        [Inject] private Ship _ship;
         [Inject] private DiContainer _diContainer;
         [Inject] private AliensBag _aliensBag;
         private NetworkManager NetworkManager => NetworkManager.Singleton;
@@ -54,7 +54,7 @@ namespace Core.Scenarios.EnemiesPhase
                 return;
             }
             
-            RoomCell hiveRoom = _map.RoomCells.FirstOrDefault(x => x.Type == _hiveRoomType);
+            RoomCell hiveRoom = _ship.RoomCells.FirstOrDefault(x => x.Type == _hiveRoomType);
 
             if (hiveRoom == null)
             {

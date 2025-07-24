@@ -6,14 +6,14 @@ using UnityEngine;
 namespace Core.Missions
 {
     [Icon("Assets/_Project/Core/Missions/Editor/icons8-mission-96.png")]
-    [CreateAssetMenu(menuName = "Game/Players/Mission")]
+    [CreateAssetMenu(menuName = "Game/Mission/Mission")]
     public class Mission : ScriptableObject, INetScriptableObjectArrayElement<Mission>, INetworkSerializable, IEquatable<Mission>
     {
         [field: SerializeField] public MissionType Type { get; private set; }
 
         [field: SerializeField] private NetScriptableObject<Mission> _net = new();
-
         [field: SerializeField] public int MinPlayerCount { get; private set; }
+        [field: SerializeField] public MissionTarget[] Targets { get; private set; }
 
         public NetScriptableObject<Mission> Net => _net;
 
@@ -27,6 +27,7 @@ namespace Core.Missions
         {
             _net.Preloaded -= OnLoad;
             MinPlayerCount = result.MinPlayerCount;
+            Targets = result.Targets;
             if (string.IsNullOrEmpty(name))
             {
                 name = $"{result.name} (net loaded)";
@@ -41,6 +42,7 @@ namespace Core.Missions
 
     public enum MissionType
     {
-        Personal, Сorporate
+        Personal, 
+        Сorporate
     }
 }

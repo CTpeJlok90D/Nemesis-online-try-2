@@ -17,8 +17,6 @@ namespace Core.Scenarios
 
         private bool _isLaunched;
 
-        private static int LaunchCount = 0;
-
         public IChapter ActiveChapter
         {
             get { return _scenario.Value.Scenario.Chapters[_currentChapterIndex]; }
@@ -34,11 +32,6 @@ namespace Core.Scenarios
             }
         }
 
-        private void Update()
-        {
-            LaunchCount = 0;
-        }
-
         public void Launch()
         {
             if (_isLaunched)
@@ -50,13 +43,6 @@ namespace Core.Scenarios
             {
                 throw new ScenarioException("Scenario is empty");
             }
-
-            if (LaunchCount >= 10)
-            {
-                throw new Exception("Too many. TOOOOOOOOOOOO");
-            }
-
-            LaunchCount++;
             
             _currentChapterIndex = 0;
 

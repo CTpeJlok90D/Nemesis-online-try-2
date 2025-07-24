@@ -4,6 +4,6 @@ namespace Core.PlayerActions
 {
     public interface INeedMap
     {
-        public void Initialzie(Map map);
+        public void Initialzie(Ship ship);
     }
 }

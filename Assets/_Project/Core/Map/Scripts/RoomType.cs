@@ -88,6 +88,7 @@ namespace Core.Maps
             BattleRoom,
             TechnicalRoom,
             UniversalRoom,
+            None,
         }
 
 #if UNITY_EDITOR

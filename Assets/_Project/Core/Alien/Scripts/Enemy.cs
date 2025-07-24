@@ -11,6 +11,17 @@ namespace Core.Aliens
     [RequireComponent(typeof(RoomContent))]
     public class Enemy : NetEntity<Enemy>
     {
+        public static IEnumerable<Enemy> GetAllEnemiesWithType(AlienToken token)
+        {
+            foreach (Enemy enemy in Instances)
+            {
+                if (enemy.LinkedToken.Value == token)
+                {
+                    yield return enemy;
+                }
+            }
+        }
+        
         [field: SerializeField] private SerializableInterface<IAlienDamageHandler> _damageHandler;
         [field: SerializeField] private AttackDice.Result[] _attacksToHit;
         

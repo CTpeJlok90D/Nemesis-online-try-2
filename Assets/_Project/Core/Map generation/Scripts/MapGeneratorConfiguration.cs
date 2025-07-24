@@ -9,6 +9,7 @@ using Core.DestinationCoordinats;
 using Core.Maps.IntellegenceTokens;
 using Core.TabletopRandom;
 using Unity.Netcode;
+using UnityEngine.Serialization;
 
 namespace Core.Maps.Generation
 {
@@ -22,7 +23,7 @@ namespace Core.Maps.Generation
 
         public IntelegenceToken[] IntelegenceTokens;
 
-        public DestinationCoordinatsCard[] AvailableDestinationCards;
+        public DestinationCoordinatesCard[] AvailableDestinationCards;
 
         public AlienWeaknessCard[] AlienWeaknessCards;
 
@@ -34,6 +35,10 @@ namespace Core.Maps.Generation
 
         public int PlayerCount;
 
+        public int MaxFireTokenCount;
+
+        public int MaxMalfunctionTokenCount;
+
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             serializer.SerializeValue(ref PlayerCount);
@@ -43,6 +48,8 @@ namespace Core.Maps.Generation
             serializer.SerializeValue(ref AlienWeaknessCards);
             serializer.SerializeValue(ref DefaultAliensBag);
             serializer.SerializeValue(ref AddictionalAliensPerPlayer);
+            serializer.SerializeValue(ref MaxFireTokenCount);
+            serializer.SerializeValue(ref MaxMalfunctionTokenCount);
             SerializeRooms(serializer);
         }
 

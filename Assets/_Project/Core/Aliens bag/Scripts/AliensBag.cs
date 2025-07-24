@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Aliens;
+using Core.Entities;
 using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
@@ -9,12 +10,12 @@ using UnityEngine;
 
 namespace Core.AliensBags
 {
-    public class AliensBag : NetworkBehaviour
+    public class AliensBag : NetEntity<AliensBag>
     {
         [SerializeField] private AlienToken _emptyToken;
         
         private NetScriptableObjectList4096<AlienToken> _contentNet;
-        public async UniTask<IReadOnlyCollection<AlienToken>> GetAlienTokens() => await _contentNet.GetElements();
+        public IReadOnlyCollection<AlienToken> AlienTokens => _contentNet.CashedElements;
 
         private void Awake()
         {

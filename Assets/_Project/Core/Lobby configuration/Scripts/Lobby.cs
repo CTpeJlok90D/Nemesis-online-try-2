@@ -74,7 +74,7 @@ namespace Core.Lobbies
                 return;
             }
 
-            int oldPlayersCount = PlayerTablet.Instances.Count;
+            int oldPlayersCount = PlayerTablet.ActiveTablets.Count;
             List<PlayerTablet> addedTablets = new();
             List<PlayerTablet> removedTablets = new();
 

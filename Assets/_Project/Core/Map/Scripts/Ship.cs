@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.DestinationCoordinats;
 using Core.Engines;
+using Core.Entities;
 using Core.EscapePods;
+using Core.PlayerActions.Base;
+using Core.RoomCellTokens;
+using Core.TimeTracks;
 using Cysharp.Threading.Tasks;
 using TNRD;
 using Unity.Netcode;
@@ -14,37 +18,38 @@ using UnityEngine;
 
 namespace Core.Maps
 {
-    [Icon("Assets/_Project/Core/Map/Editor/icons8-map-96.png")]
-    public class Map : NetworkBehaviour, IEnumerable<RoomCell>
+    [Icon(EditorSOIcons.SpaceShip)]
+    public class Ship : NetEntity<Ship>, IEnumerable<RoomCell>
     {
-        [SerializeField] private Coordinate _defaultCordinats;
-
+        [SerializeField] private Coordinate _defaultCoordinates;
         [SerializeField] private RoomCell[] _roomCells;
-
         [SerializeField] private Tunnel[] _tunnels;
-
         [SerializeField] private ShipEngine[] _shipEngines;
-
         [SerializeField] private List<EscapePod> _escapePods;
-
         [SerializeField] private SerializableInterface<IEnemySummoner> _enemySummner;
+        [SerializeField] private TimeTrack _selfDestructionTimeTrack;
         
-        public NetVariable<DestinationCoordinatsCard> DestinationCoordinatsCard { get; private set; }
-
-        public NetVariable<Coordinate> Cordinates { get; private set; }
-
+        public NetVariable<DestinationCoordinatesCard> DestinationCoordinatesCard { get; private set; }
+        public NetVariable<Coordinate> Coordinates { get; private set; }
+        public Destination Destination => DestinationCoordinatesCard.Value.CoordinatesForDestinations[Coordinates.Value];
+        public NetVariable<int> MaxFireTokenCount { get; private set; }
+        public NetVariable<int> MaxMalfunctionTokenCount { get; private set; }
         public IReadOnlyCollection<EscapePod> EscapePods => _escapePods;
-
         public IReadOnlyCollection<ShipEngine> ShipEngines => _shipEngines;
-
         public IReadOnlyCollection<RoomCell> RoomCells => _roomCells;
-
         public IReadOnlyCollection<Tunnel> Tunnels => _tunnels;
+
+        public bool IsDestroyed =>
+            _roomCells.Count(x => x.GetContentWith<FireRoomToken>() != null) > MaxFireTokenCount.Value ||
+            _roomCells.Count(x => x.GetContentWith<MalfunctionToken>() != null) > MaxMalfunctionTokenCount.Value ||
+            _selfDestructionTimeTrack.Current.Value == 0;
 
         private void Awake()
         {
-            DestinationCoordinatsCard = new();
-            Cordinates = new(_defaultCordinats);
+            DestinationCoordinatesCard = new();
+            Coordinates = new(_defaultCoordinates);
+            MaxFireTokenCount = new();
+            MaxMalfunctionTokenCount = new();
         }
 
         public IEnumerator<RoomCell> GetEnumerator()
@@ -156,19 +161,19 @@ namespace Core.Maps
         }
 
 #if UNITY_EDITOR
-        [CustomEditor(typeof(Map))]
+        [CustomEditor(typeof(Ship))]
         private class CEditor : Editor
         {
-            private Map Map => target as Map;
+            private Ship Ship => target as Ship;
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
-                if (Map.DestinationCoordinatsCard == null)
+                if (Ship.DestinationCoordinatesCard == null)
                 {
                     return;
                 }
                 GUI.enabled = false;
-                EditorGUILayout.ObjectField(Map.DestinationCoordinatsCard.Value, typeof(DestinationCoordinatsCard), false);
+                EditorGUILayout.ObjectField(Ship.DestinationCoordinatesCard.Value, typeof(DestinationCoordinatesCard), false);
                 GUI.enabled = true;
             }
         }

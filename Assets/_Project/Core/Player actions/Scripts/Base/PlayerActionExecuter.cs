@@ -17,6 +17,7 @@ using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Core.PlayerActions
@@ -25,7 +26,7 @@ namespace Core.PlayerActions
     {
         public static PlayerActionExecutor Singleton { get; private set; }
 
-        [SerializeField] private Map _map;
+        [FormerlySerializedAs("_map")] [SerializeField] private Ship _ship;
 
         [Inject] private RoomsSelection _roomSelection;
 
@@ -117,7 +118,7 @@ namespace Core.PlayerActions
 
                 if (gameAction is INeedMap iNeedMap)
                 {
-                    iNeedMap.Initialzie(_map);
+                    iNeedMap.Initialzie(_ship);
                 }
                 
                 _roomSelection.CanCancel = gameAction.CanCancel;
@@ -256,7 +257,7 @@ namespace Core.PlayerActions
 
             if (gameAction is INeedMap gameActionWithMap)
             {
-                gameActionWithMap.Initialzie(_map);
+                gameActionWithMap.Initialzie(_ship);
             }
             
             if (gameAction is INeedLootDeck needLootDeck)

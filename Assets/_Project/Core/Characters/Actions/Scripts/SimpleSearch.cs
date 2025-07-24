@@ -8,10 +8,11 @@ using Core.PlayerActions;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using UnityEngine;
+using UnityEngine.Localization.SmartFormat.Utilities;
 
 namespace Core.Characters.Actions
 {
-    [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Simple search")]
+    [CreateAssetMenu(menuName = CreateAssetMenuPaths.Actions + "Simple search")]
     public class SimpleSearch : ScriptableObject, IGameAction, INeedInventoryItems, INeedLootDeck
     {
         public const string SearchCardId = "Search";
@@ -76,7 +77,7 @@ namespace Core.Characters.Actions
 
         public static bool RoomIsValidToLoot(RoomCell roomCell)
         {
-            return roomCell.LootCount.Value != 0;
+            return roomCell.LootCount.Value != 0 && roomCell.Loot != RoomType.LootType.None;
         }
 
         public static bool ExecutorHaveCard(PlayerTablet playerTablet)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ namespace Core.Entities
         public static IReadOnlyList<T> Instances
         {
             get { return _instances.ToArray(); }
+        }
+
+        public static T Instance
+        {
+            get { return _instances.First(); }
         }
 
         protected virtual void OnEnable()

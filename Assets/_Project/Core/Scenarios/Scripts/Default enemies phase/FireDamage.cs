@@ -15,7 +15,7 @@ namespace Core.Scenarios.EnemiesPhase
         
         public void Begin()
         {
-            List<RoomCell> roomCells = NetEntity<RoomCell>.Instances.Where(x => x.GetContentWith<FireRoomToken>().Count() > 0).ToList();
+            List<RoomCell> roomCells = RoomCell.Instances.Where(x => x.GetContentWith<FireRoomToken>().Any()).ToList();
 
             if (roomCells.Count == 0)
             {

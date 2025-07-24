@@ -18,7 +18,7 @@ namespace Core.Scenarios.EnemiesPhase
     {
         [Inject] private AliensBag _aliensBag;
         [Inject] private AliensTablet _aliensTablet;
-        [Inject] private Map _map;
+        [Inject] private Ship _ship;
 
         private RoomCell _hiveRoom;
         private DefaultEnemySummoner _defaultEnemySummoner;
@@ -78,7 +78,7 @@ namespace Core.Scenarios.EnemiesPhase
             foreach (PlayerTablet playerTablet in PlayerTablet.Instances.OrderBy(x => x.OrderNumber.Value))
             {
                 RoomCell roomCell = playerTablet.CharacterPawn.RoomContent.Owner;
-                NoiseDice.Result rollResult = await _map.NoiseInRoom(roomCell);
+                NoiseDice.Result rollResult = await _ship.NoiseInRoom(roomCell);
                 
                 Debug.Log($"Noise dice result for {playerTablet.Nickname} : {rollResult}");
             }

@@ -125,10 +125,24 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f45563ac563f9d74b9d7314b880c47b6, type: 2}
       EscapePodCountPerPlayer: 020000000200000002000000030000000300000004000000
       PlayerCount: 5
+      MaxFireTokenCount: 0
+      MaxMalfunctionTokenCount: 0
     DealMissionsConfiguration:
       AvailableMissions:
       - {fileID: 11400000, guid: 0da1f9f5475fd4444a60d0473fd7465d, type: 2}
-      - {fileID: 11400000, guid: 0d37d51d9977ab04a92ab497c9e00d0d, type: 2}
+      - {fileID: 11400000, guid: 8a9ae681b1bd3f64c8936f891a03a2a6, type: 2}
+      - {fileID: 11400000, guid: a02decb9fe662454798d8aa4b4b6198c, type: 2}
+      - {fileID: 11400000, guid: 705637c989fa6e746a798ca541c93bf5, type: 2}
+      - {fileID: 11400000, guid: e1375f271b110984ab126d869fbf6def, type: 2}
+      - {fileID: 11400000, guid: d87a4ebf7ce2623459a4163ef00a9a5b, type: 2}
+      - {fileID: 11400000, guid: 6c67ec7f76f3f6944b552b0b275f18ef, type: 2}
+      - {fileID: 11400000, guid: 63e7f62807f306448a27513891bd4091, type: 2}
+      - {fileID: 11400000, guid: 16222fd687c250b4ba5ecade53a09d4a, type: 2}
+      - {fileID: 11400000, guid: 0d98cd0adfd06824ab585f48650e2fe6, type: 2}
+      - {fileID: 11400000, guid: 7d61389b018f7224f83a23b60d84653b, type: 2}
+      - {fileID: 11400000, guid: c928b359695b5584a909bd1d7418d87f, type: 2}
+      - {fileID: 11400000, guid: 5ac5d0d9ffd1aa340ba65f098e4a389a, type: 2}
+      - {fileID: 11400000, guid: 4d6c7f901ca0c9b468cd298e0101bc0e, type: 2}
       PersonalMissionsCount: 1
       CorporateMissionsCount: 1
     EventDeckConfiguration:

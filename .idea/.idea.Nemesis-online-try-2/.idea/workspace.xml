@@ -5,20 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AlienWeaknessType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AlienWeaknessType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CreateAssetMenuPaths.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/EditorSOIcons.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/EditorSOIcons.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTag.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTag.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/ToBookResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/ToBookResult.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/Inventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Alien/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Alien/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens attack deck/Scripts/SurpriseAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens attack deck/Scripts/SurpriseAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/AliensBag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens bag/Scripts/AliensBag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AlienWeaknessCards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AlienWeaknessCards.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AliensTablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Aliens tablet/Scripts/AliensTablet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Choose/Scripts/CharactersDealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Choose/Scripts/CharactersDealer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Health/Scripts/CharacterHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Health/Scripts/CharacterHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Destenation coordinats/Scripts/DestenationCoordinatsCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Destenation coordinats/Scripts/DestenationCoordinatsCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Entity/Scripts/NetEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Entity/Scripts/NetEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Lobby].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Lobby].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Player tablet list].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Prefabs/[Player tablet list].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Lobby.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/Lobby.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map generation/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map generation/Scripts/MapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map generation/Scripts/MapGeneratorConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map generation/Scripts/MapGeneratorConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Ship.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Map.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/Ship.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/MapInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/MapInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomContent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Missions/Scripts/Deal missions chapter/MissionsDealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Missions/Scripts/Deal missions chapter/MissionsDealer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Missions/Scripts/Mission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Missions/Scripts/Mission.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IGameAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IGameAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/Constants.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/Constants.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CreateAssetMenuPaths.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/ActionPointsGiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default player's phase/ActionPointsGiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/MoveActionButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ExecuteActionButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/MoveActionButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ExecuteActionButton.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/View/Ship/Sprites/Materials/ship-map-main.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/View/Ship/Sprites/Materials/ship-map-main.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Result evaluator/Scripts/ResultEvaluator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Result evaluator/Scripts/ResultEvaluator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/EnemiesPhaseInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/EnemiesPhaseInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/FireDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/FireDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/HiveDevelopment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default enemies phase/HiveDevelopment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/DealCharactersChapter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/DealCharactersChapter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/ScenarioLauncher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/ScenarioLauncher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Control point/Destenation cards/3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/hive.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/hive.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Missions/Default/Test corporate mission.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Missions/Default/Test corporate mission.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Missions/Default/Test personal mission.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Missions/Default/Test personal mission.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Network object lists.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Weakness/Cards/Weakness test card 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Weakness/Cards/Weakness test card 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Weakness/Scripts/TestWeakness.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Weakness/Scripts/TestWeakness.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Dev tools/Map cheats/MapCheats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Dev tools/Map cheats/MapCheats.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +82,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89527d299cb64ba88f87240781b415e51ea400/13/980004a7/ScriptableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9c2967a135e648bdb993c5397a44991b573620/55/c0cc8593/BindingFlags.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9c2967a135e648bdb993c5397a44991b573620/5e/7396f990/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2b6204eed6b41348236173e8a2f539817a880/16/f8f742c5/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/feebb6ba3b8642f68cab1044548dad4c4fc800/b8/bb7fd7ac/Map.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7d303c2bf72cd4cec95665b89c457d265d2b8ef3ed6da17cd4f85587c2f9de7/System.Linq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,11 +109,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Lobby configuration/Scripts/LootDeckConfigInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDeck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDecksConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Map generation/Scripts/MapGeneratorConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/IEnemySummoner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Missions/Scripts/MissionTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Noise dice/NoiseDice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CarefulMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/CreateAssetMenuPaths.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedLootDeck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedRoomContents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveNoiseBlocker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,6 +140,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Tunnel selection/TunnelSelectionInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Starter/Scripts/Tablet cleaner/TabletsCleaner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/Game.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/AlienWeaknessesMustBeLearned.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/AliensHiveMustBeDestroyed.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/And.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/MinCountOfSurvivorsMustBeAlive.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/NAlienWeaknessesMustBeLearned.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/OnlyYouMustSurvive.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/PlayerNMustBeDead.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/ShipMustSurvive.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/SurviveMission.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Data/Missions/Scripts/TheDestinationMustBe.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/Inventory cheats/InventoryCheats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/Map cheats/MapCheats.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Dev tools/Player tablet cheats/Scripts/PlayerTabletCheats.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,19 +184,34 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/NoiseView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/TunnelSelectionView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@6a18b5d4ef81/Runtime/Internal/WeakDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@6a18b5d4ef81/Runtime/Linq/Concat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@6a18b5d4ef81/Runtime/Linq/UnityExtensions/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@6a18b5d4ef81/Runtime/UniTaskScheduler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@0960051b8c8a/Runtime/ResourceManager/Util/PlatformUtilities.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@6aff1dd08a0c/Runtime/CompilerServices/Constant.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@6aff1dd08a0c/Unity.Burst.CodeGen/ILPostProcessingLegacy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@624f919d8cdd/Editor/PropertyDrawers/EmbeddedBlenderSettingsPropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@c854d1f7d97f/Editor/SceneView/DrawSceneOperations.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@c854d1f7d97f/Editor/UI/DrawActionButton.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@198cdf337d13/Editor/SimpleJSON.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/Editor/AssetImporter/IInputActionAssetEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/Events/ActionEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.tools@0c41ac017106/DependencyInjection/Container.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/Messaging/Messages/RpcMessages.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/Messaging/RpcTargets/NotServerRpcTarget.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@837011a5fcd5/Runtime/NetworkVariable/Serialization/FallbackSerializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@cedf7ca623df/Editor/HeaderFoldout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@150a31bd1157/Editor/AssetPostProcessors/ShaderGraphMaterialsUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.authentication@868ebdf18f3f/Player Accounts/Editor/Settings/PlayerAccountEditorService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core@9e81a5e38245/Editor/Core/UiHelpers/AccessTokenErrorUiHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer@e9296dd42336/Editor/Multiplay/Authoring/YamlDotNet/Core/Tokens/Token.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@7056e7f856e9/UnityEditor.TestRunner/TestLaunchers/PlayerLauncher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@fa3a0bab2b90/DocCodeExamples/ActionExamples.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.transport@9dd554c2c47e/Runtime/Layers/NetworkInterfaceLayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Editor/Drawers/ReferenceDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Editor/Items/NoneDropdownItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Runtime/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -259,7 +334,9 @@
       <workItem from="1746180242459" duration="17268000" />
       <workItem from="1747043460220" duration="19726000" />
       <workItem from="1753098733656" duration="8525000" />
-      <workItem from="1753174827196" duration="21667000" />
+      <workItem from="1753174827196" duration="21819000" />
+      <workItem from="1753201329802" duration="3708000" />
+      <workItem from="1753347358024" duration="6090000" />
     </task>
     <servers />
   </component>

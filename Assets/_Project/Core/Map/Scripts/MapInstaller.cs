@@ -1,17 +1,18 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Core.Maps
 {
     public class MapInstaller : MonoInstaller
     {
-        [SerializeField] private Map _map;
+        [FormerlySerializedAs("_map")] [SerializeField] private Ship _ship;
 
         public override void InstallBindings()
         {
             Container
-                .Bind<Map>()
-                .FromInstance(_map)
+                .Bind<Ship>()
+                .FromInstance(_ship)
                 .AsSingle();
         }
     }

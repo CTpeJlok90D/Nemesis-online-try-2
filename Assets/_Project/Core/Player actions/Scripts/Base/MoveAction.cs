@@ -10,22 +10,22 @@ using UnityEngine;
 
 namespace Core.PlayerActions
 {
-    [CreateAssetMenu(menuName = Constants.ACTIONS_CREATE_PARH + "Move action")]
+    [CreateAssetMenu(menuName = CreateAssetMenuPaths.Actions + "Move action")]
     public class MoveAction : ScriptableObject, IGameAction, INeedPayment, INeedRooms, INeedMap
     {
-        public Map Map { get; private set; }
+        public Ship Ship { get; private set; }
         public PlayerTablet Executor { get; private set; }
         public RoomCell[] RoomSelection { get; set; }
         public virtual int RequaredPaymentCount => 1;
         public int RequredRoomsCount => 1;
-        public RoomCell RoomWithExecutor => Map.First(x => x.RoomContents.Contains(Executor.CharacterPawn.RoomContent));
+        public RoomCell RoomWithExecutor => Ship.First(x => x.RoomContents.Contains(Executor.CharacterPawn.RoomContent));
         public RoomCell[] RoomSelectionSource => GetPossibleRooms().ToArray();
 
         public virtual IEnumerable<RoomCell> GetPossibleRooms()
         {
             RoomCell roomWithExecutor = RoomWithExecutor;
             IEnumerable<RoomCell> result =
-                Map.Where(x => x.GetPassagesTo(roomWithExecutor).Length != 0 && x != roomWithExecutor);
+                Ship.Where(x => x.GetPassagesTo(roomWithExecutor).Length != 0 && x != roomWithExecutor);
             
             return result;
         }
@@ -91,13 +91,13 @@ namespace Core.PlayerActions
 
         private async UniTask NoiseAfterMove(RoomCell selectedRoom)
         {
-            NoiseDice.Result result = await Map.NoiseInRoom(selectedRoom);
+            NoiseDice.Result result = await Ship.NoiseInRoom(selectedRoom);
             Debug.Log($"Dice roll move result: {result}");
         }
 
-        public void Initialzie(Map map)
+        public void Initialzie(Ship ship)
         {
-            Map = map;
+            Ship = ship;
         }
 
         public void Initialize(PlayerTablet executer)

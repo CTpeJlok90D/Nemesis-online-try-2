@@ -12,7 +12,7 @@ namespace Core.Maps
     [Icon("Assets/_Project/Core/Map/Editor/icons8-box-100.png")]
     public class RoomContent : NetEntity<RoomContent>
     {
-        [Inject] private Map _map;
+        [Inject] private Ship _ship;
         
         private NetBehaviourReference<RoomCell> _ownerNet { get; set; }
 

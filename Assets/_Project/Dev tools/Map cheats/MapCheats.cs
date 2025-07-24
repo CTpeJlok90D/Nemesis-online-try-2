@@ -9,7 +9,7 @@ namespace Devtools.Maps
 {
     public class MapCheats : MonoBehaviour
     {
-        [Inject] private Map _map;
+        [Inject] private Ship _ship;
         private void Awake()
         {
             DebugLogConsole.AddCommand<int>("Map.Summon", "Summons a creature in a specified room with a specified number", SummonEnemy);
@@ -19,8 +19,8 @@ namespace Devtools.Maps
         {
             try
             {
-                RoomCell cell = _map.RoomCells.ElementAt(roomIndex - 1);
-                _ = _map.SummonEnemyIn(cell);
+                RoomCell cell = _ship.RoomCells.ElementAt(roomIndex - 1);
+                _ = _ship.SummonEnemyIn(cell);
             }
             catch (Exception ex)
             {

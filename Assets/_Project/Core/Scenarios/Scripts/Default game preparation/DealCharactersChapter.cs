@@ -1,4 +1,7 @@
+using System.Threading.Tasks;
 using Core.CharacterChoose;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Core.Scenarios
 {
@@ -15,10 +18,10 @@ namespace Core.Scenarios
 
         public void Begin()
         {
-            DealAsync();
+            _ = DealAsync();
         }
 
-        private async void DealAsync()
+        private async UniTask DealAsync()
         {
             await _charactersDealer.StartDeal();
             Ended?.Invoke(this);

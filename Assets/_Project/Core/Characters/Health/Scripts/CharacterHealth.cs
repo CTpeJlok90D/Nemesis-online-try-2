@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Maps.CharacterPawns;
+using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
@@ -18,6 +20,7 @@ namespace Core.Characters.Health
         
         private NetVariable<int> _lightDamageCount;
         private NetworkList<NetworkObjectReference> _heavyDamages;
+        private CharacterPawn _characterPawn;
         
         public IReadOnlyReactiveField<int> LightDamageCount => _lightDamageCount;
         public IEnumerable<HeavyDamage> HeavyDamages => _heavyDamages.ToEnumerable<HeavyDamage>();
@@ -29,6 +32,7 @@ namespace Core.Characters.Health
         
         private void Awake()
         {
+            _characterPawn = GetComponent<CharacterPawn>();
             _lightDamageCount = new();
             _heavyDamages = new();
         }
@@ -102,8 +106,9 @@ namespace Core.Characters.Health
 
         public void ForceKill()
         {
+            PlayerTablet tablet = PlayerTablet.Instances.First(x => x.CharacterPawn == _characterPawn);
+            tablet.ForceKill();
             Dead?.Invoke(this);
-            NetworkObject.Despawn();
         }
 
 #if UNITY_EDITOR
