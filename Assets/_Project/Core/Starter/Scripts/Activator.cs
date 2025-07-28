@@ -66,7 +66,7 @@ namespace Core.Starter
 
             _gameIsActive = true;
         }
-
+        
         public async UniTask StopGame()
         {
             if (NetworkManager.Singleton.IsServer == false)

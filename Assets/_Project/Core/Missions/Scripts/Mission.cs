@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using Core.PlayerTablets;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -17,6 +19,16 @@ namespace Core.Missions
         [field: SerializeField] public string ID { get; private set; }
 
         public NetScriptableObject<Mission> Net => _net;
+
+        public bool IsCompletedFor(PlayerTablet executor)
+        {
+            return Targets.Any(x => x.IsCompletedFor(executor));
+        }
+
+        public bool IsSurvivedFor(PlayerTablet executor)
+        {
+            return Targets.Any(x => x.IsSurvived(executor));
+        }
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {

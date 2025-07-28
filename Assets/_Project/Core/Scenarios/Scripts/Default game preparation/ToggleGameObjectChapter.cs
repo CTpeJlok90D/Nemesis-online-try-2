@@ -8,6 +8,7 @@ namespace Core.Scenarios
     public class ToggleGameObjectChapter : NetworkBehaviour, IChapter
     {
         [SerializeField] private GameObject[] Targets;
+        [SerializeField] private bool _defaultValue = true;
 
         public event IChapter.EndedListener Ended;
 
@@ -15,7 +16,7 @@ namespace Core.Scenarios
 
         private void Awake()
         {
-            _isEnabled = new(true);
+            _isEnabled = new(_defaultValue);
         }
 
         private void Start()

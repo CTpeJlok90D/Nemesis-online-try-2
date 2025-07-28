@@ -34,6 +34,11 @@ namespace UI.InventoryItems
                 return;
             }
             
+            if (LocalTablet == null)
+            {
+                return;
+            }
+            
             if (_inventory == null)
             {
                 UpdateLinkedInventory();
@@ -62,6 +67,23 @@ namespace UI.InventoryItems
 
         private void SyncInventory()
         {
+            foreach (InventoryItemInstanceContainer itemInstance in _instances.ToArray())
+            {
+                if (_instances.Count(x => x.Item == itemInstance.Item) > _inventory.Count(x => x == itemInstance.Item))
+                {
+                    _instances.Remove(itemInstance);
+                    
+                    if (itemInstance.TryGetComponent(out IDestroyable destroyable))
+                    {
+                        destroyable.Destroy();
+                    }
+                    else
+                    {
+                        Destroy(itemInstance.gameObject);
+                    }
+                }
+            }
+            
             foreach (InventoryItem item in _inventory.ToArray())
             {
                 while (_instances.Count(x => x.Item == item) > _inventory.Count(x => x == item))
@@ -75,7 +97,7 @@ namespace UI.InventoryItems
                     }
                     else
                     {
-                        Destroy(instanceToRemove);
+                        Destroy(instanceToRemove.gameObject);
                     }
                 }
                 

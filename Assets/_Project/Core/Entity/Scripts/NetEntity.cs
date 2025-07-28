@@ -11,8 +11,9 @@ namespace Core.Entities
         private static readonly List<T> _instances = new();
 
         public delegate void SpawnedDelegate(T spawned);
+        public delegate void DespawnedDelegate(T despawned);
         public static event SpawnedDelegate Spawned;
-        public static event SpawnedDelegate Despawned;
+        public static event DespawnedDelegate Despawned;
         
         public static IReadOnlyList<T> Instances
         {

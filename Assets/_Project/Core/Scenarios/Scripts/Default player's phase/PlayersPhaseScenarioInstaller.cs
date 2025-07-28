@@ -1,12 +1,11 @@
-using System;
 using Core.PlayerTablets;
 using UnityEngine;
-using Zenject;
 
 namespace Core.Scenarios.PlayersPhase
 {
     public class PlayersPhaseScenarioInstaller : MonoBehaviour, IContainsScenario
     {
+        [SerializeField] private ScenarioLauncher _gameEndScenario;
         [SerializeField] private ActionPointsGiver _actionPointsGiver;
         [SerializeField] private ScenarioLauncher _enemiesPhaseScenarioLauncher;
         [SerializeField] private ScenarioLauncher _playersPhaseScenarioLauncher;
@@ -33,7 +32,14 @@ namespace Core.Scenarios.PlayersPhase
 
         private void OnScenarioComplete()
         {
-            _enemiesPhaseScenarioLauncher.Launch();
+            if (PlayerTablet.ActiveTablets.Count > 0)
+            {
+                _enemiesPhaseScenarioLauncher.Launch();
+            }
+            else
+            {
+                _gameEndScenario.Launch();
+            }
         }
     }
 }

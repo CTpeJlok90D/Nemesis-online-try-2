@@ -1,4 +1,5 @@
 using System.Linq;
+using Core.Maps.CharacterPawns;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Core.Scenarios.PlayersPhase
 {
     public class PlayersActionPhase : IChapter
     {
-        private ActionPointsGiver _actionPointsGiver;
+        private readonly ActionPointsGiver _actionPointsGiver;
 
         public event IChapter.EndedListener Ended;
 
@@ -23,7 +24,9 @@ namespace Core.Scenarios.PlayersPhase
                 return;
             }
 
-            foreach (PlayerTablet playerTablet in PlayerTablet.Instances)
+            CharacterPawn.Despawned += OnDespawn;
+
+            foreach (PlayerTablet playerTablet in PlayerTablet.ActiveTablets)
             {
                 playerTablet.IsPassed.Value = false;
                 playerTablet.IsPassed.Changed += OnIsPassedChange;
@@ -38,6 +41,15 @@ namespace Core.Scenarios.PlayersPhase
             if (PlayerTablet.Instances.All(x => x.IsPassed.Value))
             {
                 Debug.Log("Players actions phase is ended");
+                Ended?.Invoke(this);
+                CharacterPawn.Despawned -= OnDespawn;
+            }
+        }
+
+        private void OnDespawn(CharacterPawn despawned)
+        {
+            if (PlayerTablet.ActiveTablets.Count == 0)
+            {
                 Ended?.Invoke(this);
             }
         }

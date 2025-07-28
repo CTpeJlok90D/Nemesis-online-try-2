@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
+using Core.Maps.CharacterPawns;
+using Core.OrderNumberDestributors;
 using Core.PlayerActions;
 using Core.PlayerTablets;
 using Unity.Netcode;
@@ -21,7 +23,10 @@ namespace Core.Scenarios.PlayersPhase
 
         private bool _isFistMove;
 
-        public PlayerTablet ActiveTablet => PlayerTablet.Instances[_activePlayerIndex.Value];
+        private PlayerTablet[] OrderedPlayerTablets =>
+            PlayerTablet.ActiveTablets.OrderBy(x => x.OrderNumber.Value).ToArray();
+
+        public PlayerTablet ActiveTablet => OrderedPlayerTablets[_activePlayerIndex.Value];
 
         public event IReadOnlyReactiveField<int>.ChangedListener ActiveTabletIndexChanged
         {
@@ -35,11 +40,31 @@ namespace Core.Scenarios.PlayersPhase
             _activePlayerIndex = new();
         }
 
+        private void OnEnable()
+        {
+            CharacterPawn.Despawned += OnCharacterDespawn;
+        }
+
+        private void OnDisable()
+        {
+            CharacterPawn.Despawned -= OnCharacterDespawn;
+        }
+
+        private void OnCharacterDespawn(CharacterPawn despawned)
+        {
+            PlayerTablet playerTablet = OrderedPlayerTablets.FirstOrDefault(x => x.CharacterPawn == despawned);
+            if (playerTablet == null)
+            {
+                return;
+            }
+            playerTablet.Pass();
+        }
+
         public void Give()
         {
             try
             {
-                if (PlayerTablet.Instances.All(x => x.IsPassed.Value))
+                if (PlayerTablet.ActiveTablets.All(x => x.IsPassed.Value))
                 {
                     return;
                 }
@@ -50,12 +75,12 @@ namespace Core.Scenarios.PlayersPhase
                 do 
                 {
                     index++;
-                    if (index >= PlayerTablet.Instances.Count)
+                    if (index >= OrderedPlayerTablets.Length)
                     {
                         index = 0;
                     }
                     
-                    tablet = PlayerTablet.Instances[index];
+                    tablet = OrderedPlayerTablets[index];
                 } while (tablet.IsPassed.Value);
 
                 _activePlayerIndex.Value = index;
@@ -74,7 +99,7 @@ namespace Core.Scenarios.PlayersPhase
 
         private void OnActivePlayerPass(bool previousValue, bool newValue)
         {
-            if (PlayerTablet.Instances.Any() == false)
+            if (PlayerTablet.ActiveTablets.Any() == false)
             {
                 return;
             }
@@ -118,7 +143,7 @@ namespace Core.Scenarios.PlayersPhase
                 _isFistMove = false;
             }
 
-            if (_firstPlayerIndex.Value + 1 >= PlayerTablet.Instances.Count)
+            if (_firstPlayerIndex.Value + 1 >= OrderedPlayerTablets.Length)
             {
                 _firstPlayerIndex.Value = 0;
             }

@@ -73,7 +73,7 @@ namespace Core.Scenarios.EnemiesPhase
 
         public event IChapter.EndedListener Ended;
 
-        public async UniTask AllNoise()
+        private async UniTask AllNoise()
         {
             foreach (PlayerTablet playerTablet in PlayerTablet.Instances.OrderBy(x => x.OrderNumber.Value))
             {
@@ -84,7 +84,7 @@ namespace Core.Scenarios.EnemiesPhase
             }
         }
 
-        public async UniTask ComingOfTheQueen()
+        private async UniTask ComingOfTheQueen()
         {
             CharacterPawn[] characters = _hiveRoom.GetContentWith<CharacterPawn>().ToArray();
 

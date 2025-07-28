@@ -68,7 +68,7 @@ namespace Core.PlayerTablets
         public bool IsEmpty => PlayerReference.Reference == null;
         public string Nickname => NicknameContainer.Value;
         public bool IsSpectator => CharacterPawn == null;
-        public bool IsDead => InSaveCapsule == false && InHybridizationCapsule == false && CharacterPawn == null;
+        public bool IsDead => (InSaveCapsule == false && InHybridizationCapsule == false) || CharacterPawn == null;
         public bool InSaveCapsule => _inSaveCapsule.Value;
         public bool InHybridizationCapsule => _inHybridizationCapsule.Value;
         
@@ -157,11 +157,6 @@ namespace Core.PlayerTablets
             PawnLinked?.Invoke(this);
         }
 
-        private void OnPawnDeath(CharacterHealth characterHealth)
-        {
-            Destroy(this);
-        }
-
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -194,12 +189,7 @@ namespace Core.PlayerTablets
             ActionCardsDeck = newValue.ActionCardsDeck;
             ActionCardsDeck.HandChanged += OnHandChange;
             
-            if (Health != null)
-            {
-                Health.Dead -= OnPawnDeath;
-            }
             Health = newValue.Health;
-            Health.Dead += OnPawnDeath;
         }
 
         private void OnHandChange(NetScriptableObjectList4096<ActionCard> sender)

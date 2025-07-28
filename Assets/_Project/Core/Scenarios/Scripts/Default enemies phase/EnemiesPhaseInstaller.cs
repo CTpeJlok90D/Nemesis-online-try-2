@@ -18,6 +18,7 @@ namespace Core.Scenarios.EnemiesPhase
     {
         [SerializeField] private TimeTrack _mainTimeTrack;
         [SerializeField] private TimeTrack _selfDestructionTimeTrack;
+        [SerializeField] private ScenarioLauncher _gameEndScenario;
         [SerializeField] private ScenarioLauncher _playerPhaseLauncher;
         [SerializeField] private ScenarioLauncher _enemiesPhaseScenarioLauncher;
         [SerializeField] private HiveDevelopment.Config _hiveDevelopment;
@@ -86,7 +87,14 @@ namespace Core.Scenarios.EnemiesPhase
 
         private void OnScenarioComplete()
         {
-            _playerPhaseLauncher.Launch();
+            if (PlayerTablet.ActiveTablets.Count > 0)
+            {
+                _playerPhaseLauncher.Launch();
+            }
+            else
+            {
+                _gameEndScenario.Launch();
+            }
         }
     }
 }

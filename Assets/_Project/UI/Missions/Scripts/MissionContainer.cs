@@ -10,8 +10,6 @@ namespace UI
         public ReactiveField<Mission> MissionReference;
         public Mission Mission => MissionReference.Value;
 
-        public event IContainsMission.ChangedDelegate Changed;
-
         public MissionContainer Instantiate(Mission mission, Transform parent = null)
         {
             gameObject.SetActive(false);
@@ -22,21 +20,6 @@ namespace UI
             result.gameObject.SetActive(true);
             
             return result;
-        }
-
-        private void OnEnable()
-        {
-            MissionReference.Changed += OnMissionChange;
-        }
-
-        private void OnDisable()
-        {
-            MissionReference.Changed -= OnMissionChange;
-        }
-
-        private void OnMissionChange(Mission oldValue, Mission newValue)
-        {
-            Changed?.Invoke(oldValue, newValue);
         }
     }
 }
