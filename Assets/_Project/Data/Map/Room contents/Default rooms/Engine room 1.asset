@@ -15,5 +15,6 @@ MonoBehaviour:
   _loadKey: b511e7db71bc5ce4f8a1c18b8ee809f5
   <Id>k__BackingField: Engine room 1
   <RoomAction>k__BackingField: {fileID: 11400000, guid: 9cedae7c1c11ed846b6589eb6823ebcf, type: 2}
+  <HaveComputer>k__BackingField: 0
   <Layer>k__BackingField: 0
-  <Loot>k__BackingField: 3
+  <Loot>k__BackingField: 4

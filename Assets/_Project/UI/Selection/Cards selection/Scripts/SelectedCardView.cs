@@ -25,12 +25,12 @@ namespace SelectionStarted
 
         private void OnEnable()
         {
-            _cardsSelectionView.SelectionChanged += OnSelectionChange;
+            _cardsSelectionView.Changed += OnSelectionChange;
         }
 
         private void OnDisable()
         {
-            _cardsSelectionView.SelectionChanged -= OnSelectionChange;
+            _cardsSelectionView.Changed -= OnSelectionChange;
         }
 
         private void OnSelectionChange(ISelection sender)

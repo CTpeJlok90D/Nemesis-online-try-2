@@ -11,26 +11,26 @@ namespace SelectionStarted
     {
         private CardsSelection _cardsSelection;
         
-        public event ISelection.SelectionChangedHandler SelectionChanged;
-        public event ISelection.SelectionChangedHandler SelectionStarted;
-        public event ISelection.SelectionChangedHandler SelectionConfirmed;
-        public event ISelection.SelectionChangedHandler SelectionCanceled;
+        public event ISelection.SelectionChangedHandler Changed;
+        public event ISelection.SelectionChangedHandler Started;
+        public event ISelection.SelectionChangedHandler Confirmed;
+        public event ISelection.SelectionChangedHandler Canceled;
         
         public CardsSelectionView(CardsSelection cardsSelection)
         {
             _cardsSelection = cardsSelection;
-            _cardsSelection.SelectionStarted += OnSelectionStart;
-            _cardsSelection.SelectionCanceled += OnSelectionCancel;
-            _cardsSelection.SelectionConfirmed += OnSelectionConfirm;
-            _cardsSelection.SelectionChanged += OnSelectionChange;
+            _cardsSelection.Started += OnStart;
+            _cardsSelection.Canceled += OnCancel;
+            _cardsSelection.Confirmed += OnConfirm;
+            _cardsSelection.Changed += OnChange;
         }
 
         ~CardsSelectionView()
         {
-            _cardsSelection.SelectionStarted -= OnSelectionStart;
-            _cardsSelection.SelectionCanceled -= OnSelectionCancel;
-            _cardsSelection.SelectionConfirmed -= OnSelectionConfirm;
-            _cardsSelection.SelectionChanged -= OnSelectionChange;
+            _cardsSelection.Started -= OnStart;
+            _cardsSelection.Canceled -= OnCancel;
+            _cardsSelection.Confirmed -= OnConfirm;
+            _cardsSelection.Changed -= OnChange;
         }
 
         public bool CanConfirmSelection => _cardsSelection.CanConfirmSelection;
@@ -39,7 +39,7 @@ namespace SelectionStarted
         public int SelectedCount => _cardsSelection.SelectedCount;
         public bool CanCancel => true;
 
-        private void OnSelectionChange(ISelection sender)
+        private void OnChange(ISelection sender)
         {
             foreach (SelectedCardView selectedCardView in ToArray())
             {
@@ -51,22 +51,22 @@ namespace SelectionStarted
             }
         }
         
-        private void OnSelectionConfirm(ISelection sender)
+        private void OnConfirm(ISelection sender)
         {
             Clear();
-            SelectionConfirmed?.Invoke(sender);
+            Confirmed?.Invoke(sender);
         }
         
-        private void OnSelectionStart(ISelection sender)
+        private void OnStart(ISelection sender)
         {
             Clear();
-            SelectionStarted?.Invoke(this);
+            Started?.Invoke(this);
         }
         
-        private void OnSelectionCancel(ISelection sender)
+        private void OnCancel(ISelection sender)
         {
             Clear();
-            SelectionCanceled?.Invoke(this);
+            Canceled?.Invoke(this);
         }
         
         public new void Add(SelectedCardView value)
@@ -78,26 +78,26 @@ namespace SelectionStarted
             base.Add(value);
             
             _cardsSelection.Add(value.ActionCard);
-            SelectionChanged?.Invoke(this);
+            Changed?.Invoke(this);
         }
 
         public new void Remove(SelectedCardView value)
         {
             base.Remove(value);
             _cardsSelection.Remove(value.ActionCard);
-            SelectionChanged?.Invoke(this);
+            Changed?.Invoke(this);
         }
         
         public void Confirm()
         {
             _cardsSelection.Confirm();
-            SelectionConfirmed?.Invoke(this);
+            Confirmed?.Invoke(this);
         }
 
         public void Cancel()
         {
             _cardsSelection.Cancel();
-            SelectionCanceled?.Invoke(this);
+            Canceled?.Invoke(this);
         }
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadKey: ad27df700b0f6f040b39d4e642397459
   <Id>k__BackingField: Hibernation compartment
-  <RoomAction>k__BackingField: {fileID: 11400000, guid: 9cedae7c1c11ed846b6589eb6823ebcf, type: 2}
+  <RoomAction>k__BackingField: {fileID: 11400000, guid: 5f2b843b700a3da49a9f06f7670d9818, type: 2}
+  <HaveComputer>k__BackingField: 0
   <Layer>k__BackingField: 0
-  <Loot>k__BackingField: 3
+  <Loot>k__BackingField: 4

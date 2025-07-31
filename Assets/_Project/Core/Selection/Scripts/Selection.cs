@@ -14,10 +14,10 @@ namespace Core.SelectionBase
         private ReactiveField<int> _countToSelect = new(0);
         private bool _isSelectionInProgress;
 
-        public event ISelection.SelectionChangedHandler SelectionStarted;
-        public event ISelection.SelectionChangedHandler SelectionConfirmed;
-        public event ISelection.SelectionChangedHandler SelectionCanceled;
-        public event ISelection.SelectionChangedHandler SelectionChanged;
+        public event ISelection.SelectionChangedHandler Started;
+        public event ISelection.SelectionChangedHandler Confirmed;
+        public event ISelection.SelectionChangedHandler Canceled;
+        public event ISelection.SelectionChangedHandler Changed;
         public int Count => _selection.Count;
         public int SelectedCount => Count;
         public IReadOnlyCollection<T> Elements => _selection;
@@ -93,7 +93,7 @@ namespace Core.SelectionBase
                 Remove(element);
             }
 
-            SelectionChanged?.Invoke(this);
+            Changed?.Invoke(this);
         }
 
         internal async Task<T[]> Select(int count)
@@ -108,8 +108,13 @@ namespace Core.SelectionBase
             T[] result =  _selection.ToArray();
             
             Clear();
-            SelectionStarted?.Invoke(this);
+            Started?.Invoke(this);
             return result;
+        }
+
+        public bool IsSelected(T item)
+        {
+            return _selection.Contains(item);
         }
 
         public void Cancel()
@@ -127,7 +132,7 @@ namespace Core.SelectionBase
             _isSelectionInProgress = false;
             _whiteList.Clear();
             Clear();
-            SelectionCanceled?.Invoke(this);
+            Canceled?.Invoke(this);
         }
 
         public async Task<T[]> SelectFrom(IEnumerable<T> source, int count)
@@ -154,7 +159,7 @@ namespace Core.SelectionBase
             if (_selection.Count == RequiredCount)
             {
                 _isSelectionInProgress = false;
-                SelectionConfirmed?.Invoke(this);
+                Confirmed?.Invoke(this);
             }
             else
             {
@@ -165,13 +170,13 @@ namespace Core.SelectionBase
         public virtual void Remove(T value)
         {
             _selection.Remove(value);
-            SelectionChanged?.Invoke(this);
+            Changed?.Invoke(this);
         }
 
         public void Clear()
         {
             _selection.Clear();
-            SelectionChanged?.Invoke(this);
+            Changed?.Invoke(this);
         }
 
         public IEnumerator<T> GetEnumerator()

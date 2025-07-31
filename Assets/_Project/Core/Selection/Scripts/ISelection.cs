@@ -13,10 +13,10 @@ namespace Core.SelectionBase
         public void Cancel();
 
         public delegate void SelectionChangedHandler(ISelection sender);
-        public event SelectionChangedHandler SelectionChanged;
-        public event SelectionChangedHandler SelectionStarted;
-        public event SelectionChangedHandler SelectionConfirmed;
-        public event SelectionChangedHandler SelectionCanceled;
+        public event SelectionChangedHandler Changed;
+        public event SelectionChangedHandler Started;
+        public event SelectionChangedHandler Confirmed;
+        public event SelectionChangedHandler Canceled;
         
     }
 }

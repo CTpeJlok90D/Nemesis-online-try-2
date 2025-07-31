@@ -11,6 +11,11 @@ namespace UI.Selection
 
         private void Update()
         {
+            if (_selection == null)
+            {
+                return;
+            }
+            
             _target.gameObject.SetActive(_selection.IsActive);
         }
     }

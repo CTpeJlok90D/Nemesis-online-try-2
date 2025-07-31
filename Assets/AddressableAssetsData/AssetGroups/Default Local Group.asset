@@ -280,6 +280,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f2b843b700a3da49a9f06f7670d9818
+    m_Address: Assets/_Project/Data/Map/Room actions/Hibernation compartment action
+      container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 60c85b4e085e1824ca97ddcf3dbb1ce6
     m_Address: Assets/_Project/View/Characters/_Sprites/character-backgrounds.png
     m_ReadOnly: 0

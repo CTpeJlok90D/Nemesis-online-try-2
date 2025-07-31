@@ -130,7 +130,6 @@ namespace Core.PlayerActions
 
                 if (gameAction is INeedPayment gameActionWithPayment)
                 {
-                    Debug.Log(_executor);
                     ActionCard[] selection = await gameActionWithPayment.GetSelectionLocal(_executor, _cardsSelection);
                     
                     if (selection.Length != gameActionWithPayment.RequaredPaymentCount)

@@ -5,14 +5,13 @@ using Core.CharacterInventories;
 using Core.Selection.InventoryItems;
 using Core.SelectionBase;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace UI.Selection.InventoryItemsSelections
 {
     public class InventoryItemsSelectionItemsSpawner : MonoBehaviour
     {
-        [FormerlySerializedAs("_itemContainerPrefab")] [FormerlySerializedAs("_item_PREFAB")] [field: SerializeField] private InventoryItemSelectionItem _itemSelectionItemPrefab;
+        [field: SerializeField] private InventoryItemSelectionItem _itemSelectionItemPrefab;
         [field: SerializeField] private Transform _parent;
         
         [Inject] private InventoryItemsSelection _selection;
@@ -32,15 +31,15 @@ namespace UI.Selection.InventoryItemsSelections
         {
             DestroyItems();
             InstantiateItems();
-            _selection.SelectionChanged += OnSelectionChange;
+            _selection.Changed += OnChange;
         }
 
         private void OnDisable()
         {
-            _selection.SelectionChanged -= OnSelectionChange;
+            _selection.Changed -= OnChange;
         }
 
-        private void OnSelectionChange(ISelection sender)
+        private void OnChange(ISelection sender)
         {
             foreach (InventoryItemSelectionItem instance in _selectedItems.ToArray())
             {

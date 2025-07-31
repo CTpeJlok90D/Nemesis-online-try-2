@@ -319,7 +319,7 @@ namespace Core.PlayerTablets
             CharacterPawn.NetworkObject.Despawn();
         }
 
-        public void LeaveShip()
+        public void EnterHybridizationCapsule()
         {
             if (IsSpectator)
             {

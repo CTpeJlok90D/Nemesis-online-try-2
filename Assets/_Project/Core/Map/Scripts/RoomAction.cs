@@ -13,13 +13,9 @@ namespace Core.Maps
         public void Initialize(PlayerTablet executor)
         {
             Executor = executor;
-            OnInitialize();
         }
         
-        protected virtual void OnInitialize(){}
-        
         public abstract IGameAction.CanExecuteCheckResult CanExecute();
-        public abstract void Execute();
         public abstract void ForceExecute();
     }
 }

@@ -14,13 +14,13 @@ namespace UI.Selection
         {
             UpdateInteractable();
             _button.onClick.AddListener(OnButtonClick);
-            _selection.SelectionChanged += OnSelectionChanged;
+            _selection.Changed += OnSelectionChanged;
         }
 
         private void OnDisable()
         {
             _button.onClick.RemoveListener(OnButtonClick);
-            _selection.SelectionChanged -= OnSelectionChanged;
+            _selection.Changed -= OnSelectionChanged;
         }
 
         private void OnSelectionChanged(ISelection sender)

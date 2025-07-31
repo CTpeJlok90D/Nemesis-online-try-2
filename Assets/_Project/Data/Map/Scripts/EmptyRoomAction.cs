@@ -21,11 +21,6 @@ namespace Data.Maps
             };
         }
 
-        public override void Execute()
-        {
-            ForceExecute();
-        }
-
         public override void ForceExecute()
         {
             Debug.Log($"{Executor.Nickname} is executing empty action at {Room}", Room);

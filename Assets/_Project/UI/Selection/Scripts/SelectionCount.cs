@@ -14,16 +14,16 @@ namespace Core.SelectionBase
         private void OnEnable()
         {
             UpdateText();
-            _selection.SelectionChanged += UpdateText;
-            _selection.SelectionConfirmed += UpdateText;
-            _selection.SelectionCanceled += UpdateText;
+            _selection.Changed += UpdateText;
+            _selection.Confirmed += UpdateText;
+            _selection.Canceled += UpdateText;
         }
 
         private void OnDisable()
         {
-            _selection.SelectionChanged -= UpdateText;
-            _selection.SelectionConfirmed += UpdateText;
-            _selection.SelectionCanceled += UpdateText;
+            _selection.Changed -= UpdateText;
+            _selection.Confirmed += UpdateText;
+            _selection.Canceled += UpdateText;
         }
 
         private void UpdateText(ISelection sender) => UpdateText();

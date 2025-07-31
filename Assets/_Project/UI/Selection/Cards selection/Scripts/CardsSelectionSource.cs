@@ -29,29 +29,29 @@ namespace UI.Selection.Cards
         private void OnEnable()
         {
             UpdateSelectionSource();
-            _cardsSelection.SelectionStarted += OnSelectionStart;
-            _cardsSelection.SelectionConfirmed += OnSelectionConfirm;
-            _cardsSelection.SelectionCanceled += OnSelectionCancel;
+            _cardsSelection.Started += OnStart;
+            _cardsSelection.Confirmed += OnConfirm;
+            _cardsSelection.Canceled += OnCancel;
         }
 
         private void OnDisable()
         {
-            _cardsSelection.SelectionStarted -= OnSelectionStart;
-            _cardsSelection.SelectionConfirmed -= OnSelectionConfirm;
-            _cardsSelection.SelectionCanceled -= OnSelectionCancel;
+            _cardsSelection.Started -= OnStart;
+            _cardsSelection.Confirmed -= OnConfirm;
+            _cardsSelection.Canceled -= OnCancel;
         }
 
-        private void OnSelectionCancel(ISelection sender)
+        private void OnCancel(ISelection sender)
         {
             ClearInstances();
         }
 
-        private void OnSelectionStart(ISelection sender)
+        private void OnStart(ISelection sender)
         {
             UpdateSelectionSource();
         }
 
-        private void OnSelectionConfirm(ISelection sender)
+        private void OnConfirm(ISelection sender)
         {
             ClearInstances();
         }
