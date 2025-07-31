@@ -8,9 +8,11 @@ namespace Data.Maps
     [CreateAssetMenu(menuName = "Game/Maps/Actions/Empty")]
     public class EmptyRoomAction : RoomAction, IEquatable<EmptyRoomAction>
     {
+        public override int RequaredPaymentCount => 0;
+
         public bool Equals(EmptyRoomAction other)
         {
-            return true;
+            return other == this;
         }
 
         public override IGameAction.CanExecuteCheckResult CanExecute()

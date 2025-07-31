@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.ActionsCards;
 using Core.CharacterInventories;
+using Core.DestinationCoordinats;
 using Core.LootDecks;
 using Core.Maps;
 using Core.PlayerActions.Base;
@@ -14,6 +15,7 @@ using Core.Selection.RoomContentSelections;
 using Core.Selection.Rooms;
 using Core.Selection.Tunnels;
 using Cysharp.Threading.Tasks;
+using UI.Selection;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
 using UnityEngine;
@@ -29,33 +31,23 @@ namespace Core.PlayerActions
         [FormerlySerializedAs("_map")] [SerializeField] private Ship _ship;
 
         [Inject] private RoomsSelection _roomSelection;
-
         [Inject] private CardsSelection _cardsSelection;
-
         [Inject] private NoiseContainerSelection _noiseContainerSelection;
-        
         [Inject] private RoomContentSelection _roomContentSelection;
-        
         [Inject] private InventoryItemsSelection _inventoryItemsSelection;
-        
         [Inject] private LootDeckSelection _lootDeckSelection;
+        [Inject] private CoordinatesSelection _coordinatesSelection;
 
         private NetworkList<NetworkObjectReference> _roomsSelectionNet;
-        
         private NetworkList<NetworkObjectReference> _noiseContainerSelectionNet;
-        
         private NetworkList<NetworkObjectReference> _roomContentSelectionNet;
-
         private NetworkList<NetworkObjectReference> _inventoryItemsSelectionNet;
-
-        private NetworkList<int> _selectedLootTypes;
-
-        private NetScriptableObjectList4096<ActionCard> _selectionActionCards;
-
+        private NetworkList<int> _selectedLootTypesNet;
+        private NetScriptableObjectList4096<ActionCard> _selectionActionCardsNet;
+        private NetScriptableObjectList4096<Coordinate> _selectionCoordinatesNet;
         private PlayerTablet _executor;
-        
         private NetVariable<bool> _actionIsExecuting;
-
+        
         public IReadOnlyReactiveField<bool> ActionIsExecuting => _actionIsExecuting;
 
         public PlayerTablet Executor
@@ -82,12 +74,12 @@ namespace Core.PlayerActions
             }
             Singleton = this;
             _roomsSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
-            _selectionActionCards = new(writePermission: NetworkVariableWritePermission.Owner);
+            _selectionActionCardsNet = new(writePermission: NetworkVariableWritePermission.Owner);
             _noiseContainerSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _actionIsExecuting = new(writePerm: NetworkVariableWritePermission.Owner);
             _roomContentSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _inventoryItemsSelectionNet = new (writePerm: NetworkVariableWritePermission.Owner);
-            _selectedLootTypes = new(writePerm: NetworkVariableWritePermission.Owner);
+            _selectedLootTypesNet = new(writePerm: NetworkVariableWritePermission.Owner);
         }
 
         protected override void OnOwnershipChanged(ulong previous, ulong current)
@@ -138,12 +130,12 @@ namespace Core.PlayerActions
                         return;
                     }
                     
-                    _selectionActionCards.SetElements(selection);
+                    _selectionActionCardsNet.SetElements(selection);
                 }
 
                 if (gameAction is INeedLootDeck needLootDeck)
                 {
-                    _selectedLootTypes.Clear();
+                    _selectedLootTypesNet.Clear();
                     LootDeck.Type[] selectedTypes = await needLootDeck.GetSelectionLocal(_lootDeckSelection);
 
                     if (selectedTypes.Length != needLootDeck.RequiredLootDecksAmount)
@@ -154,7 +146,7 @@ namespace Core.PlayerActions
 
                     foreach (LootDeck.Type selectedType in selectedTypes)
                     {
-                        _selectedLootTypes.Add((int)selectedType);
+                        _selectedLootTypesNet.Add((int)selectedType);
                     }
                 }
 
@@ -230,6 +222,19 @@ namespace Core.PlayerActions
                         _roomContentSelectionNet.Add(roomContent.NetworkObject);
                     }
                 }
+
+                if (gameAction is INeedCoordinates needCoordinates)
+                {
+                    _selectionCoordinatesNet.Clear();
+                    Coordinate[] coordinates = await needCoordinates.GetSelectionLocal(_coordinatesSelection);
+
+                    needCoordinates.CoordinatesSelection = coordinates;
+
+                    foreach (Coordinate coordinate in coordinates)
+                    {
+                        _selectionCoordinatesNet.Add(coordinate);
+                    }
+                }
                 
                 _actionIsExecuting.Value = false;
                 Execute_RPC(gameActionContainer);
@@ -262,7 +267,7 @@ namespace Core.PlayerActions
             
             if (gameAction is INeedLootDeck needLootDeck)
             {
-                while (_selectedLootTypes.Count != needLootDeck.RequiredLootDecksAmount)
+                while (_selectedLootTypesNet.Count != needLootDeck.RequiredLootDecksAmount)
                 {
                     if (_actionIsExecuting.Value == false)
                     {
@@ -272,7 +277,7 @@ namespace Core.PlayerActions
                     await Awaitable.NextFrameAsync();
                 }
 
-                needLootDeck.InventoryItemsSelection = _selectedLootTypes.ToEnumerable().Cast<LootDeck.Type>().ToArray();
+                needLootDeck.InventoryItemsSelection = _selectedLootTypesNet.ToEnumerable().Cast<LootDeck.Type>().ToArray();
             }
             
             if (gameAction is INeedInventoryItems gameActionWithInventoryItem)
@@ -349,11 +354,26 @@ namespace Core.PlayerActions
                 }).ToArray();
             }
 
+            if (gameAction is INeedCoordinates iNeedCoordinates)
+            {
+                while (iNeedCoordinates.RequiredCoordinatesAmount != _selectionCoordinatesNet.Count)
+                {
+                    if (_actionIsExecuting.Value == false)
+                    {
+                        return;
+                    }
+
+                    await Awaitable.NextFrameAsync();
+                }
+
+                iNeedCoordinates.CoordinatesSelection = _selectionCoordinatesNet.CashedElements.ToArray();
+            }
+
             gameAction.Execute();
             
             if (gameAction is INeedPayment gameActionWithPayment)
             {
-                while (_selectionActionCards.Count != gameActionWithPayment.RequaredPaymentCount)
+                while (_selectionActionCardsNet.Count != gameActionWithPayment.RequaredPaymentCount)
                 {
                     if (_actionIsExecuting.Value == false)
                     {
@@ -363,7 +383,7 @@ namespace Core.PlayerActions
                     await Awaitable.NextFrameAsync();
                 }
                 
-                ActionCard[] cards = await _selectionActionCards.GetElements();
+                ActionCard[] cards = await _selectionActionCardsNet.GetElements();
                 _executor.ActionCardsDeck.DiscardCards(cards);
             }
             
@@ -374,7 +394,7 @@ namespace Core.PlayerActions
         private void ClearData_RPC()
         {
             _roomsSelectionNet.Clear();
-            _selectionActionCards.Clear();
+            _selectionActionCardsNet.Clear();
             _noiseContainerSelectionNet.Clear();
             _roomContentSelectionNet.Clear();
             _inventoryItemsSelection.Clear();

@@ -20,7 +20,7 @@ namespace Core.Maps
 
         [field: SerializeField] private string _loadKey;
         [field: SerializeField] public string Id { get; private set; }
-        [field: SerializeField] public GameActionContainer RoomAction { get; private set; }
+        [field: SerializeField] public GameActionContainer[] RoomActions { get; private set; }
         [field: SerializeField] public bool HaveComputer { get; private set; }
         [field: SerializeField] public int Layer { get; private set; } = 0;
         [field: SerializeField] public LootType Loot { get; private set; } = 0;
@@ -72,7 +72,7 @@ namespace Core.Maps
             loadHandle.Completed += (handle) => 
             {
                 _loadKey = handle.Result._loadKey;
-                RoomAction = handle.Result.RoomAction;
+                RoomActions = handle.Result.RoomActions;
                 Loot = handle.Result.Loot;
                 if (string.IsNullOrEmpty(name))
                 {

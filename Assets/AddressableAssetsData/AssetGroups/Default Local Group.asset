@@ -187,6 +187,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fadd21dada583a41a96851ab8ddcc0f
+    m_Address: Assets/_Project/UI/Selection/Coordinates selection/Sprites/B coordinate.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 420e8a2fdd0bceb4db9f4f84418ea94a
     m_Address: Pilot shotgun
     m_ReadOnly: 0
@@ -209,6 +214,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 49d1611b13264b146ab9aeeaad9364eb
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/laboratory.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b112548afdf4f44093075683ad4fa02
+    m_Address: Assets/_Project/UI/Selection/Coordinates selection/Sprites/D coordinate.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -250,6 +260,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 510f3d8b68a1e6343b7bc54bcecd25b7
     m_Address: Breeder alien token
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 556476b5ad4a81540805dffa45fb9e63
+    m_Address: Assets/_Project/UI/Selection/Coordinates selection/Sprites/A coordinate.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -526,6 +541,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b77dae1967412a54f85113b7d3b07c98
     m_Address: Assets/_Project/View/Characters/Pilot/Prefabs/Pilot view.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7f8bdb482e23a8449018728dfa729b0
+    m_Address: Assets/_Project/UI/Selection/Coordinates selection/Sprites/C coordinate.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

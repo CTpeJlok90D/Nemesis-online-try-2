@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadKey: b84ca319cd9dd8f46be28db6b2c45ab1
   <Id>k__BackingField: labaratory
-  <RoomAction>k__BackingField: {fileID: 11400000, guid: 9cedae7c1c11ed846b6589eb6823ebcf, type: 2}
+  <RoomActions>k__BackingField:
+  - {fileID: 11400000, guid: 9cedae7c1c11ed846b6589eb6823ebcf, type: 2}
+  <HaveComputer>k__BackingField: 0
   <Layer>k__BackingField: 1
   <Loot>k__BackingField: 0

@@ -30,8 +30,8 @@ namespace Core.Maps
         [SerializeField] private TimeTrack _selfDestructionTimeTrack;
         
         public NetVariable<DestinationCoordinatesCard> DestinationCoordinatesCard { get; private set; }
-        public NetVariable<Coordinate> Coordinates { get; private set; }
-        public Destination Destination => DestinationCoordinatesCard.Value.CoordinatesForDestinations[Coordinates.Value];
+        public NetVariable<Coordinate> Coordinate { get; private set; }
+        public Destination Destination => DestinationCoordinatesCard.Value.CoordinatesForDestinations[Coordinate.Value];
         public NetVariable<int> MaxFireTokenCount { get; private set; }
         public NetVariable<int> MaxMalfunctionTokenCount { get; private set; }
         public IReadOnlyCollection<EscapePod> EscapePods => _escapePods;
@@ -47,7 +47,7 @@ namespace Core.Maps
         private void Awake()
         {
             DestinationCoordinatesCard = new();
-            Coordinates = new(_defaultCoordinates);
+            Coordinate = new(_defaultCoordinates);
             MaxFireTokenCount = new();
             MaxMalfunctionTokenCount = new();
         }

@@ -10,6 +10,7 @@ namespace Core.DestinationCoordinats
     public class Coordinate : ScriptableObject, INetworkSerializable, IEquatable<Coordinate>, INetScriptableObjectArrayElement<Coordinate>
     {
         [field: SerializeField] public NetScriptableObject<Coordinate> _net = new();
+        [field: SerializeField] public string Id { get; private set; }
 
         public NetScriptableObject<Coordinate> Net => _net;
 
@@ -22,6 +23,10 @@ namespace Core.DestinationCoordinats
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             _net.OnNetworkSerialize(serializer, this);
+            _net.Loaded += result =>
+            {
+                Id = result.Id;
+            };
         }
     }
 }

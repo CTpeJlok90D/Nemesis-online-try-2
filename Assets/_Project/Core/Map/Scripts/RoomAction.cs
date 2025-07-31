@@ -5,10 +5,11 @@ using Core.PlayerTablets;
 namespace Core.Maps
 {
     [Icon("Assets/_Project/Core/Map/Editor/icons8-room-action-96.png")]
-    public abstract class RoomAction : ScriptableObject, IGameAction
+    public abstract class RoomAction : ScriptableObject, IGameAction, INeedPayment
     {
         public PlayerTablet Executor { get; private set; }
         public RoomCell Room => Executor.CharacterPawn.RoomContent.Owner;
+        public virtual int RequaredPaymentCount => 2;
 
         public void Initialize(PlayerTablet executor)
         {
