@@ -56,7 +56,7 @@ namespace Core.SelectionBase
                 return false;
             }
 
-            if (_whiteList.Count > 0 && _whiteList.Contains(value) == false)
+            if (_whiteList.Contains(value) == false)
             {
                 return false;
             }
@@ -76,7 +76,7 @@ namespace Core.SelectionBase
                 throw new InvalidOperationException($"Cant add {value} to selection: Selection is not active");
             }
             
-            if (_whiteList.Count > 0 &&_whiteList.Contains(value) == false)
+            if (_whiteList.Contains(value) == false)
             {
                 throw new InvalidOperationException($"Cant add {value} to selection: {value} was not found in source");
             }

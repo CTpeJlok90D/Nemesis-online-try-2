@@ -1,4 +1,5 @@
 using AYellowpaper;
+using Core.Players;
 using Core.PlayerTablets;
 using Unity.Netcode;
 using UnityEngine;
@@ -23,14 +24,14 @@ namespace UI.PlayerTablets
             PlayerTablet.PlayerReference.Changed -= OnPlayerChange;   
         }
 
-        private void OnPlayerChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)
+        private void OnPlayerChange(Player previousValue, Player newValue)
         {
             UpdateView();
         }
 
         private void UpdateView()
         {
-            _target.SetActive(PlayerTablet.PlayerReference.Reference == null);
+            _target.SetActive(PlayerTablet.PlayerReference.Value == null);
         }
     }
 }

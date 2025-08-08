@@ -97,13 +97,13 @@ namespace Core.CharacterInventories
         {
             _items.Add(instance.NetworkObject);
             instance.NetworkObject.TrySetParent(NetworkObject);
-            instance.OwnerInventory.Reference = this;
+            instance.OwnerInventory.Value = this;
         }
 
         public void RemoveItem(InventoryItem item)
         {
             _items.Remove(item.NetworkObject);
-            item.OwnerInventory.Reference = null;
+            item.OwnerInventory.Value = null;
         }
         
         public IEnumerator<InventoryItem> GetEnumerator()

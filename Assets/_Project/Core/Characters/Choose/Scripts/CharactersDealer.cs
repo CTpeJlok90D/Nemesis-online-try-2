@@ -54,7 +54,7 @@ namespace Core.CharacterChoose
                 {
                     Character[] charactersToChooseFrom = GetRandomCharacters(ChooseCharactersCount, _characters.ToArray());
 
-                    Selection.NetworkObject.ChangeOwnership(tablet.PlayerReference.Reference.OwnerClientId);
+                    Selection.NetworkObject.ChangeOwnership(tablet.PlayerReference.Value.OwnerClientId);
                     Character choose = await Selection.Choose(charactersToChooseFrom);
                     Selection.NetworkObject.ChangeOwnership(NetworkManager.ServerClientId);
 

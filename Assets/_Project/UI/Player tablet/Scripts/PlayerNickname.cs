@@ -40,7 +40,7 @@ namespace UI.PlayerTablets
             UpdateLabel();
         }
 
-        private void OnPlayerChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)
+        private void OnPlayerChange(Player previousValue, Player newValue)
         {
             UpdatePlayerContainer();
             UpdateLabel();
@@ -55,7 +55,7 @@ namespace UI.PlayerTablets
 
             _lastNicknameContainer = null;
 
-            _lastPlayer = _playerTabletContainer.PlayerTablet.PlayerReference.Reference;
+            _lastPlayer = _playerTabletContainer.PlayerTablet.PlayerReference.Value;
             if (_lastPlayer == null)
             {
                 return;

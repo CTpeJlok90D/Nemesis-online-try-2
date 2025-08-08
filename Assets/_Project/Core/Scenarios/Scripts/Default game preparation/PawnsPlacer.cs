@@ -48,7 +48,7 @@ namespace Core.Scenarios.Default
                 foreach (string itemID in startItemsIds)
                 {
                     AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(itemID);
-                    await handle.ToUniTask();
+                    await UniTask.WaitUntil(() => handle.IsDone);
                     loadedItems.Add(handle.Result.GetComponent<InventoryItem>());
                 }
                 

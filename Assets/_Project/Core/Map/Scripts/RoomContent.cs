@@ -1,9 +1,8 @@
-using System;
 using Core.Entities;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Custom;
+using UnityEditor;
 using Zenject;
 
 namespace Core.Maps
@@ -20,18 +19,18 @@ namespace Core.Maps
         {
             get
             {
-                return _ownerNet.Reference;
+                return _ownerNet.Value;
             }
             internal set
             {
-                _ownerNet.Reference = value;
+                _ownerNet.Value = value;
             }
         }
 
-        public event NetBehaviourReference<RoomCell>.ReferenceChangedListener OwnerChanged
+        public event IReadOnlyReactiveField<RoomCell>.ChangedListener OwnerChanged
         {
-            add => _ownerNet.ReferenceChanged += value;
-            remove => _ownerNet.ReferenceChanged -= value;
+            add => _ownerNet.Changed += value;
+            remove => _ownerNet.Changed -= value;
         }
 
         public delegate void DespawnedHandler(RoomContent sender);
@@ -47,5 +46,26 @@ namespace Core.Maps
             base.OnNetworkDespawn();
             Despawned?.Invoke(this);
         }
+#if UNITY_EDITOR
+        [CustomEditor(typeof(RoomContent))]
+        private class CEditor : Editor
+        {
+            public RoomContent RoomContent => target as RoomContent;
+            
+            public override void OnInspectorGUI()
+            {
+                base.OnInspectorGUI();
+
+                if (Application.isPlaying)
+                {
+                    return;
+                }
+                
+                GUI.enabled = false;
+                EditorGUILayout.ObjectField("Room cell", RoomContent._ownerNet.Value, typeof(RoomCell), false);
+                GUI.enabled = true;
+            }
+        }
+#endif
     }
 }

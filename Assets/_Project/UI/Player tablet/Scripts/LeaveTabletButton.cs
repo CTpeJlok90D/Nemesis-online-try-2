@@ -18,14 +18,14 @@ namespace UI.PlayerTablets
         private void OnEnable()
         {
             _button.onClick.AddListener(OnButtonClick);
-            PlayerTablet.PlayerReference.ReferenceChanged += OnPlayerChange;
+            PlayerTablet.PlayerReference.Changed += OnPlayerChange;
             UpdateButtonView();
         }
 
         private void OnDisable()
         {
             _button.onClick.RemoveListener(OnButtonClick);
-            PlayerTablet.PlayerReference.ReferenceChanged -= OnPlayerChange;
+            PlayerTablet.PlayerReference.Changed -= OnPlayerChange;
         }
 
         private void OnPlayerChange(Player previousValue, Player newValue)
@@ -40,12 +40,12 @@ namespace UI.PlayerTablets
 
         private void UpdateButtonView()
         {
-            if (PlayerTablet.PlayerReference.Reference == null)
+            if (PlayerTablet.PlayerReference.Value == null)
             {
                 _button.gameObject.SetActive(false);
                 return;
             }
-            _button.gameObject.SetActive(PlayerTablet.PlayerReference.Reference.IsLocal);
+            _button.gameObject.SetActive(PlayerTablet.PlayerReference.Value.IsLocal);
         }
     }
 }

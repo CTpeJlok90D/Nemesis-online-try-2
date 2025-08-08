@@ -28,7 +28,7 @@ namespace Unity.Netcode.Custom
 
         private Dictionary<string, AsyncOperationHandle<T>> _loadedValues = new();
 
-        public NetScriptableObjectList4096(NetworkVariableReadPermission readPermission = NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission writePermission = NetworkVariableWritePermission.Server) : base(string.Empty, readPermission, writePermission)
+        public NetScriptableObjectList4096(NetworkVariableReadPermission readPermission = NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission writePerm = NetworkVariableWritePermission.Server) : base(string.Empty, readPermission, writePerm)
         {
             Changed += OnListChange;
         }

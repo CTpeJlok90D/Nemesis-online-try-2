@@ -17,6 +17,11 @@ namespace Core.PlayerActions
 
         internal async UniTask<ActionCard[]> GetSelectionLocal(PlayerTablet executor, CardsSelection cardsSelection)
         {
+            if (RequaredPaymentCount == 0)
+            {
+                return Array.Empty<ActionCard>();
+            }
+            
             int requiredPaymentCount = RequaredPaymentCount;
             IReadOnlyCollection<ActionCard> hand = await executor.ActionCardsDeck.GetHand();
             hand = hand.Where(x => x.Type == ActionCard.InfectionType.Basic).ToList();

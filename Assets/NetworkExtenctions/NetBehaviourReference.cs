@@ -1,21 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace Unity.Netcode.Custom
 {
     [Serializable]
-    public class NetBehaviourReference<T> : NetworkVariable<NetworkObjectReference> where T : NetworkBehaviour
+    public class NetBehaviourReference<T> : NetworkVariable<NetworkObjectReference>, IReadOnlyReactiveField<T> where T : NetworkBehaviour
     {
         public delegate void ReferenceChangedListener(T oldValue, T newValue);
 
         private T _previousReference;
 
-        public T Reference 
+        public T Value 
         {
             get
             {
-                if (Value.TryGet(out NetworkObject networkObject))
+                if (base.Value.TryGet(out NetworkObject networkObject))
                 {
                     T result = networkObject.GetComponent<T>();
                     return result;
@@ -24,7 +25,7 @@ namespace Unity.Netcode.Custom
             }
             set
             {
-                if (Value.TryGet(out NetworkObject netObject))
+                if (base.Value.TryGet(out NetworkObject netObject))
                 {
                     _previousReference = netObject.GetComponent<T>();
                 }
@@ -35,16 +36,14 @@ namespace Unity.Netcode.Custom
 
                 if (value == null)
                 {
-                    Value = new NetworkObjectReference();
+                    base.Value = new NetworkObjectReference();
                     return;
                 }
-                Value = value.NetworkObject;
+                base.Value = value.NetworkObject;
             }
         }
-
-        public event OnValueChangedDelegate Changed;
-
-        public event ReferenceChangedListener ReferenceChanged;
+        
+        public event IReadOnlyReactiveField<T>.ChangedListener Changed;
 
         public NetBehaviourReference()
         {
@@ -60,15 +59,13 @@ namespace Unity.Netcode.Custom
 
         private void OnValueChange(NetworkObjectReference previousValue, NetworkObjectReference newValue)
         {
-            Changed?.Invoke(previousValue, newValue);
-            ReferenceChanged?.Invoke(_previousReference, Reference);
+            Changed?.Invoke(_previousReference, Value);
         }
 
         public override void OnInitialize()
         {
             base.OnInitialize();
             Changed?.Invoke(Value, Value);
-            ReferenceChanged?.Invoke(_previousReference, Reference);
         }
     }
 }

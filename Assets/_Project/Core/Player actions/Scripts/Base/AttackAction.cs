@@ -48,9 +48,9 @@ namespace Core.PlayerActions.Base
         {
             get
             {
-                RoomContent executorContent = _executor.CharacterPawn.RoomContent; 
+                RoomContent executorContent = _executor.CharacterPawn.RoomContent;
                 RoomCell room = executorContent.Owner;
-                RoomContent[] result = room.RoomContents.Where(x => x != executorContent && x.GetComponent<Enemy>() != null).ToArray();
+                RoomContent[] result = room.RoomContents.Where(x => x != executorContent && x.TryGetComponent(out Enemy _)).ToArray();
                 return result;
             }
         }

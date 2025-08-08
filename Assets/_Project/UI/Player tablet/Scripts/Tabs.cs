@@ -19,12 +19,12 @@ namespace UI.PlayerTablets
         private void OnEnable()
         {
             UpdateTabsActive();
-            PlayerTablet.PlayerReference.ReferenceChanged += OnReferenceChange;
+            PlayerTablet.PlayerReference.Changed += OnReferenceChange;
         }
 
         private void OnDisable()
         {
-            PlayerTablet.PlayerReference.ReferenceChanged -= OnReferenceChange;
+            PlayerTablet.PlayerReference.Changed -= OnReferenceChange;
         }
 
         private void OnReferenceChange(Player oldValue, Player newValue)
@@ -34,7 +34,7 @@ namespace UI.PlayerTablets
 
         private void UpdateTabsActive()
         {
-            if (PlayerTablet.PlayerReference.Reference == null)
+            if (PlayerTablet.PlayerReference.Value == null)
             {
                 _emptyTab.Enable();
                 return;

@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using Core.CharacterInventories;
 using Core.Common;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using OdinSerializer;
 using TNRD;
-using UI.Selection.InventoryItemsSelections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 namespace UI.Hands
@@ -16,50 +14,20 @@ namespace UI.Hands
         [SerializeField] private Image _image;
         [SerializeField] private SerializableInterface<IContainsInventoryItemInstance> _inventoryItemInstance;
         [SerializeField] private SpriteByID _cardImages;
-
-        private Dictionary<object, AsyncOperationHandle<Sprite>> _loadHandles = new();
         
         private IContainsInventoryItemInstance InventoryItem => _inventoryItemInstance?.Value;
 
         private void OnEnable()
         {
-            AsyncOperationHandle<Sprite> spriteLoadHandle;
-            object runtimeKey = _cardImages[InventoryItem.ID].RuntimeKey;
-            if (_loadHandles.ContainsKey(runtimeKey))
-            {
-                spriteLoadHandle = _loadHandles[runtimeKey];
-            }
-            else
-            {
-                AssetReferenceT<Sprite> spriteReference = _cardImages[InventoryItem.ID];
-                if (spriteReference.OperationHandle.IsValid() == false)
-                {
-                    spriteLoadHandle = spriteReference.LoadAssetAsync();
-                }
-                else
-                {
-                    spriteLoadHandle = spriteReference.OperationHandle.Convert<Sprite>();
-                }
-                _loadHandles.Add(runtimeKey, spriteLoadHandle);
-            }
-
-            if (spriteLoadHandle.IsDone)
-            {
-                _image.sprite = spriteLoadHandle.Result;
-                return;
-            }
-
-            spriteLoadHandle.Completed += OnSpriteLoadComplete;
-            if (gameObject != _image.gameObject)
-            {
-                _image.gameObject.SetActive(false);
-            }
+            _ = LoadSprite();
         }
 
-        private void OnSpriteLoadComplete(AsyncOperationHandle<Sprite> handle)
+        private async UniTask LoadSprite()
         {
-            _image.sprite = handle.Result;
-            _image.gameObject.SetActive(true);
+            Color oldColor = _image.color;
+            _image.color = new Color(oldColor.r,oldColor.g,oldColor.b,0);
+            _image.sprite = await _cardImages.LoadAsset(InventoryItem.ID);
+            _image.DOColor(oldColor, 0.2f);
         }
     }
 }

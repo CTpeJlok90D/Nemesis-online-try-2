@@ -7,6 +7,7 @@ using Core.CharacterInventories;
 using Core.Characters;
 using Core.Characters.Health;
 using Core.Entities;
+using Core.Maps;
 using Core.Missions;
 using Core.Players;
 using Core.Maps.CharacterPawns;
@@ -29,6 +30,10 @@ namespace Core.PlayerTablets
                 return Instances.FirstOrDefault(x => x.Player == Player.Local);
             }
         }
+
+        public static CharacterPawn LocalCharacterPawn => Local.CharacterPawn;
+        public static RoomContent LocalRoomContent => LocalCharacterPawn.RoomContent; 
+        public static RoomCell LocalRoomCell => LocalRoomContent.Owner;
 
         public delegate void LocalChangedDelegate(PlayerTablet old, PlayerTablet newValue);
 
@@ -64,8 +69,8 @@ namespace Core.PlayerTablets
         public NetScriptableObjectList4096<Mission> Missions { get; private set; }
         
         public IReadOnlyCollection<PlayerTag> Tags => _tags.ToEnumerable().Select(x => (PlayerTag)x).ToArray();
-        public Player Player => PlayerReference.Reference;
-        public bool IsEmpty => PlayerReference.Reference == null;
+        public Player Player => PlayerReference.Value;
+        public bool IsEmpty => PlayerReference.Value == null;
         public string Nickname => NicknameContainer.Value;
         public bool IsSpectator => CharacterPawn == null;
         public bool IsDead => (InSaveCapsule == false && InHybridizationCapsule == false) || CharacterPawn == null;
@@ -75,21 +80,9 @@ namespace Core.PlayerTablets
         public delegate void LinkPawnHandler(PlayerTablet sender);
         public event LinkPawnHandler PawnLinked;
         
+        public IReadOnlyReactiveField<CharacterPawn> CharacterPawnReference => _linkedCharacterPawn;
 
-        public CharacterPawn CharacterPawn
-        {
-            get
-            {
-                CharacterPawn result = null;
-                
-                if (_linkedCharacterPawn.Value.TryGet(out NetworkObject netObject))
-                {
-                    result = netObject.GetComponent<CharacterPawn>();
-                }
-
-                return result;
-            }
-        }
+        public CharacterPawn CharacterPawn => _linkedCharacterPawn.Value;
 
         private void Awake()
         {
@@ -120,7 +113,7 @@ namespace Core.PlayerTablets
             _tags.Remove((int)tag);
         }
 
-        public bool CanBookIt(Player player) => IsEmpty && Instances.Any(x => x.PlayerReference.Reference == player) == false;
+        public bool CanBookIt(Player player) => IsEmpty && Instances.Any(x => x.PlayerReference.Value == player) == false;
 
         public void AddItem(InventoryItem item)
         {
@@ -150,7 +143,7 @@ namespace Core.PlayerTablets
         
         public void LinkPawn(CharacterPawn characterPawn)
         {
-            _linkedCharacterPawn.Value = characterPawn.NetworkObject;
+            _linkedCharacterPawn.Value = characterPawn;
             
             ActionCardsDeck.InitializeDeck(_actionCardsDecksDictionary[characterPawn.LinkedCharacter.Id]);
             
@@ -161,14 +154,14 @@ namespace Core.PlayerTablets
         {
             base.OnEnable();
             Player.Left += OnPlayerLeft;
-            _linkedCharacterPawn.ReferenceChanged += OnCharacterPawnChange;
+            _linkedCharacterPawn.Changed += OnCharacterPawnChange;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             Player.Left -= OnPlayerLeft;
-            _linkedCharacterPawn.ReferenceChanged -= OnCharacterPawnChange;
+            _linkedCharacterPawn.Changed -= OnCharacterPawnChange;
         }
 
         private void OnCharacterPawnChange(CharacterPawn oldValue, CharacterPawn newValue)
@@ -214,9 +207,9 @@ namespace Core.PlayerTablets
                 return;
             }
 
-            if (PlayerReference.Reference == player)
+            if (PlayerReference.Value == player)
             {
-                PlayerReference.Reference = null;
+                PlayerReference.Value = null;
             }
         }
 
@@ -270,7 +263,7 @@ namespace Core.PlayerTablets
             
             if (IsEmpty)
             {
-                PlayerReference.Reference = player;
+                PlayerReference.Value = player;
                 NicknameContainer = player.GetComponent<NicknameContainer>();
                 SendResult_RPC(ToBookResult.Success, RpcTarget.Single(player.OwnerClientId, RpcTargetUse.Persistent));
 
@@ -344,7 +337,7 @@ namespace Core.PlayerTablets
         [Rpc(SendTo.Server)]
         private void LeavePlayerTablet_RPC()
         {
-            PlayerReference.Reference = null;
+            PlayerReference.Value = null;
         }
 
     #if UNITY_EDITOR
@@ -373,7 +366,7 @@ namespace Core.PlayerTablets
                 }
 
                 GUI.enabled = false;
-                EditorGUILayout.ObjectField(tablet.PlayerReference.Reference, typeof(Player), false);
+                EditorGUILayout.ObjectField(tablet.PlayerReference.Value, typeof(Player), false);
                 EditorGUILayout.IntField("Order number: ", tablet.OrderNumber.Value);
                 foreach (Mission mission in tablet.Missions)
                 {

@@ -11,6 +11,7 @@ namespace Core.PlayerActions
     {
         [field: SerializeField] public SerializableInterface<IGameAction> GameAction { get; private set; }
         [field: SerializeField] public NetScriptableObject<GameActionContainer> Net { get; private set; } = new();
+        [field: SerializeField] public string Id { get; private set; }
 
         public bool Equals(GameActionContainer other)
         {
@@ -27,6 +28,19 @@ namespace Core.PlayerActions
         {
             Net.Loaded -= OnNetLoad;
             GameAction = result.GameAction;
+            Id = result.Id;
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (Application.IsPlaying(this))
+            {
+                return;
+            }
+            
+            Id = name;
+        }
+#endif
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Core.PlayerActions;
 using TMPro;
 using UnityEngine;

@@ -34,16 +34,12 @@ namespace IngameDebugConsole
 			SceneManager.sceneLoaded += OnSceneLoaded;
 			SceneManager.sceneUnloaded -= OnSceneUnloaded;
 			SceneManager.sceneUnloaded += OnSceneUnloaded;
-
-			ActivateEventSystemIfNeeded();
 		}
 
 		private void OnDisable()
 		{
 			SceneManager.sceneLoaded -= OnSceneLoaded;
 			SceneManager.sceneUnloaded -= OnSceneUnloaded;
-
-			DeactivateEventSystem();
 		}
 
 		private void OnSceneLoaded( Scene scene, LoadSceneMode mode )

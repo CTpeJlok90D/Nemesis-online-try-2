@@ -7,7 +7,7 @@ namespace Core.Characters.Health
     public class HeavyDamage : NetworkBehaviour
     {
         private NetBehaviourReference<CharacterHealth> _owner;
-        public CharacterHealth Owner => _owner.Reference;
+        public CharacterHealth Owner => _owner.Value;
 
         public bool IsInitialized { get; private set; }
         

@@ -74,12 +74,13 @@ namespace Core.PlayerActions
             }
             Singleton = this;
             _roomsSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
-            _selectionActionCardsNet = new(writePermission: NetworkVariableWritePermission.Owner);
+            _selectionActionCardsNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _noiseContainerSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _actionIsExecuting = new(writePerm: NetworkVariableWritePermission.Owner);
             _roomContentSelectionNet = new(writePerm: NetworkVariableWritePermission.Owner);
             _inventoryItemsSelectionNet = new (writePerm: NetworkVariableWritePermission.Owner);
             _selectedLootTypesNet = new(writePerm: NetworkVariableWritePermission.Owner);
+            _selectionCoordinatesNet = new(writePerm: NetworkVariableWritePermission.Owner);
         }
 
         protected override void OnOwnershipChanged(ulong previous, ulong current)
@@ -207,6 +208,7 @@ namespace Core.PlayerActions
                 if (gameAction is INeedRoomContents gameActionWithRoomContentSelection)
                 {
                     _roomContentSelectionNet.Clear();
+                    
                     RoomContent[] selection = await _roomContentSelection.SelectFrom(gameActionWithRoomContentSelection.RoomContentSelectionSource, gameActionWithRoomContentSelection.RequiredRoomContentCount);
                     
                     if (selection.Length != gameActionWithRoomContentSelection.RequiredRoomContentCount)

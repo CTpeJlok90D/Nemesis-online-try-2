@@ -311,6 +311,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62ce7430c8c256c429d3921268092bcf
+    m_Address: Assets/_Project/Data/Map/Room actions/Conytrol point set destination
+      action container.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 63e7f62807f306448a27513891bd4091
     m_Address: Assets/_Project/Data/Missions/Default/N alien weaknesses must be learned
       container.asset
@@ -571,6 +577,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bfc0091eea6bc4f47afb2cf2dc7878e0
     m_Address: Assets/_Project/Data/Map/Control point/Coordinats/C.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c06a6d3a19edf1940b1bf30a4e6fe73d
+    m_Address: Assets/_Project/Core/Selection/Icons/room icon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
