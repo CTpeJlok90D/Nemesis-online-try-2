@@ -94,9 +94,9 @@ namespace Core.LootDecks
         
         public enum Type
         {
-            MedDeck,
-            BattleDeck,
-            TechDeck,
+            MedDeck = 0,
+            BattleDeck = 1,
+            TechDeck = 2,
         }
     }
 }

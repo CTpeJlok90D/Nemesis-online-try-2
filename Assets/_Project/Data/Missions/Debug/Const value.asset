@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d8c001d29f7114eba1c86c610061d8, type: 3}
+  m_Name: Const value
+  m_EditorClassIdentifier: 
+  <TargetDestination>k__BackingField: {fileID: 11400000, guid: 6648204404f61f3469a20061b627863d, type: 2}
+  <NeedSignal>k__BackingField: 0
+  _missionValue: 1
+  _surviveValue: 1

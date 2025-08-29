@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cfb24d6117aee344a5eeb44735fda75, type: 3}
+  m_Name: Kill 3 player corporate mission
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: a02decb9fe662454798d8aa4b4b6198c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _isLoaded: 1
+  <MinPlayerCount>k__BackingField: 3
+  <Targets>k__BackingField:
+  - {fileID: 11400000, guid: 4dd3afc9dd8c0c64c8c2ca4b932679b2, type: 2}
+  - {fileID: 11400000, guid: d5618b99d93ed36439c51680bed26034, type: 2}
+  <ID>k__BackingField: Kill 3 player corporate mission

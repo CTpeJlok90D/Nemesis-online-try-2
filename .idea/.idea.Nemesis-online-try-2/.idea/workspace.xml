@@ -5,48 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IContainsGameAction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/IContainsGameAction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetBehaviourReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetBehaviourReference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetScriptableObjectList4096.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetScriptableObjectList4096.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/IngameDebugConsole/Scripts/EventSystemHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/IngameDebugConsole/Scripts/EventSystemHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Choose/Scripts/CharactersDealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Choose/Scripts/CharactersDealer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Health/Scripts/HeavyDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Health/Scripts/HeavyDamage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Pawns/Prefabs/Character pawn base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Pawns/Prefabs/Character pawn base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Map/Scripts/RoomContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/AttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/GameActionContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/GameActionContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedPayment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedPayment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDeck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDeck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedLootDeck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedLootDeck.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player tablet/PlayerTablet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Scenarios/Scripts/Default game preparation/PawnsPlacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/icons8-sole-100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/icons8-sole-100.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/magnifier.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/magnifier.svg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/scope.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Editor/Icons/scope.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Selection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Selection/Scripts/Selection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/SpriteByID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/_Common/Scripts/SpriteByID.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Default rooms/Control point.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Default rooms/Control point.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ActionPrice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ActionPrice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/NetContainers/Simple search container.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/NetContainers/Simple search container.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/armory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/armory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/labaratory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/labaratory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/diningroom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/diningroom.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/ItemCardImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/ItemCardImage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/LeaveTabletButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/LeaveTabletButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/PlayerNickname.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/PlayerNickname.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/PlayerTabletIsEmptyObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/PlayerTabletIsEmptyObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/Tabs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Player tablet/Scripts/Tabs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VirtualProjectsConfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,8 +331,19 @@
       <workItem from="1753945857577" duration="10619000" />
       <workItem from="1754135565813" duration="97000" />
       <workItem from="1754586039559" duration="6733000" />
-      <workItem from="1754659269280" duration="4919000" />
+      <workItem from="1754659269280" duration="5202000" />
+      <workItem from="1754670182494" duration="709000" />
+      <workItem from="1756457984698" duration="4673000" />
     </task>
+    <task id="LOCAL-00001" summary="Исправлены ошибки">
+      <option name="closed" value="true" />
+      <created>1754664505999</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754664505999</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,5 +359,7 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Исправлены ошибки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлены ошибки" />
   </component>
 </project>

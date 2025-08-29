@@ -8,7 +8,6 @@ using Core.PlayerActions;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using UnityEngine;
-using UnityEngine.Localization.SmartFormat.Utilities;
 
 namespace Core.Characters.Actions
 {
@@ -22,7 +21,7 @@ namespace Core.Characters.Actions
         public int RequiredLootDecksAmount => 1;
         public PlayerTablet Executor { get; private set; }
         public InventoryItem[] InventoryItemsSelection { get; set; } = Array.Empty<InventoryItem>();
-        LootDeck.Type[] INeedLootDeck.InventoryItemsSelection { get; set; } = Array.Empty<LootDeck.Type>();
+        LootDeck.Type[] INeedLootDeck.LootDeckTypeSelection { get; set; } = Array.Empty<LootDeck.Type>();
         public bool CanCancel => false;
 
         public LootDeck.Type[] LootDecksSource
@@ -31,7 +30,6 @@ namespace Core.Characters.Actions
             {
                 RoomContent roomContent = Executor.CharacterPawn.RoomContent;
                 RoomCell roomCell = roomContent.Owner;
-                Debug.Log(roomCell, roomCell);
                 
                 switch (roomCell.Loot)
                 {
@@ -59,15 +57,17 @@ namespace Core.Characters.Actions
             get
             {
                 InventoryItem[] itemsToSelectFrom = LootDeck.GetItems(SelectItemsFrom);
-                Debug.Log($"Loot deck type = {string.Join(", ", LootDecksSource)}", LootDeck);
-                Debug.Log(string.Join(", ", itemsToSelectFrom.Select(x => x.ID)), LootDeck);
                 return itemsToSelectFrom;
             }
         }
 
         private LootDeck LootDeck
         {
-            get { return LootDeck.Instances.First(x => x.DeckType == LootDecksSource.First()); }
+            get
+            {
+                return 
+                    LootDeck.Instances.First(lootDeck => lootDeck.DeckType == ((INeedLootDeck)this).LootDeckTypeSelection.First());
+            }
         }
 
         public void Initialize(PlayerTablet executor)

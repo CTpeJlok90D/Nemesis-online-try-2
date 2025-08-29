@@ -11,13 +11,13 @@ namespace Core.PlayerActions
         
         public LootDeck.Type[] LootDecksSource { get; }
         
-        public LootDeck.Type[] InventoryItemsSelection { get; set; }
+        public LootDeck.Type[] LootDeckTypeSelection { get; set; }
         
         internal async UniTask<LootDeck.Type[]> GetSelectionLocal(LootDeckSelection selection)
         {
             LootDeck.Type[] selected = await selection.SelectFrom(LootDecksSource, RequiredLootDecksAmount);
 
-            InventoryItemsSelection = selected;
+            LootDeckTypeSelection = selected;
             return selected;
         }
     }

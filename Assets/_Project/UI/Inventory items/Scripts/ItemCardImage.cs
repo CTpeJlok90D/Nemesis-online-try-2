@@ -26,7 +26,8 @@ namespace UI.Hands
         {
             Color oldColor = _image.color;
             _image.color = new Color(oldColor.r,oldColor.g,oldColor.b,0);
-            _image.sprite = await _cardImages.LoadAsset(InventoryItem.ID);
+            Sprite loadedSprite = await _cardImages.LoadAsset(InventoryItem.ID);
+            _image.sprite = loadedSprite;
             _image.DOColor(oldColor, 0.2f);
         }
     }

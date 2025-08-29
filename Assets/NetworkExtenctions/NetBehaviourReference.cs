@@ -12,7 +12,7 @@ namespace Unity.Netcode.Custom
 
         private T _previousReference;
 
-        public T Value 
+        public new T Value 
         {
             get
             {
