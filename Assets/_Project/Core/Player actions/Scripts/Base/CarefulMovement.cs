@@ -51,7 +51,7 @@ namespace Core.PlayerActions.Base
         public override IEnumerable<RoomCell> GetPossibleRooms()
         {
              IEnumerable<RoomCell> rooms = base.GetPossibleRooms();
-             return rooms.Where(x => x.Tunnels.Any(y => y.IsNoised.Value == false) && x.GetContentWith<MoveNoiseBlocker>().Any() == false);
+             return rooms.Where(x => x.Tunnels.Any(y => y.IsNoised.Value == false) && x.GetContentWith<MoveNoiseBlockerBehaviour>().Any() == false);
         }
 
         public override void ForceExecute()

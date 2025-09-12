@@ -9,13 +9,16 @@ using UnityEngine.UI;
 
 namespace UI.Hands
 {
+    [DefaultExecutionOrder(1)]
     public class ItemCardImage : SerializedMonoBehaviour
     {
         [SerializeField] private Image _image;
         [SerializeField] private SerializableInterface<IContainsInventoryItemInstance> _inventoryItemInstance;
         [SerializeField] private SpriteByID _cardImages;
-        
-        private IContainsInventoryItemInstance InventoryItem => _inventoryItemInstance?.Value;
+        [SerializeField] private Sprite _nullSprite;
+
+        private IContainsInventoryItemInstance ItemContainer => _inventoryItemInstance?.Value;
+        public InventoryItem Item => ItemContainer?.Item;
 
         private void OnEnable()
         {
@@ -25,8 +28,16 @@ namespace UI.Hands
         private async UniTask LoadSprite()
         {
             Color oldColor = _image.color;
-            _image.color = new Color(oldColor.r,oldColor.g,oldColor.b,0);
-            Sprite loadedSprite = await _cardImages.LoadAsset(InventoryItem.ID);
+            _image.color = new Color(oldColor.r, oldColor.g, oldColor.b, 0);
+
+            if (Item == null)
+            {
+                _image.sprite = _nullSprite;
+                _image.DOColor(oldColor, 0.2f);
+                return;
+            }
+
+            Sprite loadedSprite = await _cardImages.LoadAsset(Item.ID);
             _image.sprite = loadedSprite;
             _image.DOColor(oldColor, 0.2f);
         }

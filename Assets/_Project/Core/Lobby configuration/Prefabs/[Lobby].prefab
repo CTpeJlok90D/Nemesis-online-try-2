@@ -99,8 +99,12 @@ MonoBehaviour:
             - {fileID: 11400000, guid: 597812e233da0004f9de8bbf90752454, type: 2}
             - {fileID: 11400000, guid: 7dddae815ee73db429757dfa8f2b03ad, type: 2}
       IntelegenceTokens:
+      - {fileID: 11400000, guid: 1e4a14187a27b5f41aabaf209928b97a, type: 2}
+      - {fileID: 11400000, guid: c5e7262a8549e3341898d1b20a0f380e, type: 2}
       - {fileID: 11400000, guid: 90d47e4cd9977024c9e30a414f5d14d8, type: 2}
       - {fileID: 11400000, guid: 57e622d595caf0544a32835125e5589c, type: 2}
+      - {fileID: 11400000, guid: 0950234d1e148bc408780e6855a368d4, type: 2}
+      - {fileID: 11400000, guid: 7b9416aad9165754aba45bf3eed30f8c, type: 2}
       AvailableDestinationCards:
       - {fileID: 11400000, guid: 4db021a610b412d41adbbc01f09f1612, type: 2}
       - {fileID: 11400000, guid: 640e60c0966db1842814e773dfa2aa1c, type: 2}

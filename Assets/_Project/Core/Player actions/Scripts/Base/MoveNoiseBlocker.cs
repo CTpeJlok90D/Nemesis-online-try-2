@@ -2,7 +2,12 @@ using UnityEngine;
 
 namespace Core.PlayerActions.Base
 {
-    public class MoveNoiseBlocker : MonoBehaviour
+    public class MoveNoiseBlockerBehaviour : MonoBehaviour, IMoveNoiseBlocker
+    {
+
+    }
+    
+    public interface IMoveNoiseBlocker
     {
         
     }

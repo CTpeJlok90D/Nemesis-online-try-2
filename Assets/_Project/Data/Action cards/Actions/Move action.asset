@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba530cf759786aa489d0238fdbc5ff2a, type: 3}
   m_Name: Move action
   m_EditorClassIdentifier: 
-  <RequredPaymentCount>k__BackingField: 1
+  _noNoiseToken: {fileID: 11400000, guid: 0950234d1e148bc408780e6855a368d4, type: 2}
+  _dangerousToken: {fileID: 11400000, guid: c5e7262a8549e3341898d1b20a0f380e, type: 2}

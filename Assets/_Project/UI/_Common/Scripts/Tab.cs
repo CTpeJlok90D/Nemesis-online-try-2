@@ -7,7 +7,7 @@ using UnityEditor;
 
 namespace UI.CommonScripts
 {
-    [Icon("Assets/_Project/UI/_Ñommon scripts/Editor/Icons/icons8-tab-96.png")]
+    [Icon("Assets/_Project/UI/_Common scripts/Editor/Icons/icons8-tab-96.png")]
     public class Tab : MonoBehaviour
     {
         [SerializeField] private UnityEvent _enabled;

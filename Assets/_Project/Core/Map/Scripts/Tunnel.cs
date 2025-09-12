@@ -34,7 +34,7 @@ namespace Core.Maps
             _doorStateNet = new(_doorState);
         }
 
-        public void Open()
+        public void OpenDoor()
         {
             if (NetworkManager.IsServer == false)
             {
@@ -49,7 +49,7 @@ namespace Core.Maps
             _doorStateNet.Value = DoorState.Opened;
         }
 
-        public void Close()
+        public void CloseDoor()
         {
             if (NetworkManager.IsServer == false)
             {
@@ -64,7 +64,7 @@ namespace Core.Maps
             _doorStateNet.Value = DoorState.Closed;
         }
 
-        public void Broke()
+        public void BrokeDoor()
         {
             if (NetworkManager.IsServer == false)
             {

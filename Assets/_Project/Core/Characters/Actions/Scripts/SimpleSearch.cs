@@ -123,16 +123,6 @@ namespace Core.Characters.Actions
             }
         }
 
-        public void Execute()
-        {
-            if (CanExecute() == false)
-            {
-                throw CanExecute().Error;
-            }
-            
-            ForceExecute();
-        }
-
         public void ForceExecute()
         {
             InventoryItem[] source = InventoryItemsSource;

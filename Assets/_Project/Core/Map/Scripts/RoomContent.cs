@@ -56,7 +56,7 @@ namespace Core.Maps
             {
                 base.OnInspectorGUI();
 
-                if (Application.isPlaying)
+                if (Application.isPlaying == false)
                 {
                     return;
                 }

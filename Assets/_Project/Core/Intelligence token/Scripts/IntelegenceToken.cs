@@ -1,25 +1,24 @@
 using System;
-using Unity.Collections;
 using Unity.Netcode;
+using Unity.Netcode.Custom;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Core.Maps.IntellegenceTokens
 {
     [Icon("Assets/_Project/Core/Map/Editor/intellegence-token.png")]
     [CreateAssetMenu(menuName = "Game/Maps/Intelegence token")]
-    public class IntelegenceToken : ScriptableObject, INetworkSerializable, IEquatable<IntelegenceToken>
+    public class IntelegenceToken : ScriptableObject, INetworkSerializable, IEquatable<IntelegenceToken>, INetScriptableObjectArrayElement<IntelegenceToken>
     {
         [field: SerializeField] private string _loadKey;
-        
         [field: SerializeField] public string Id { get; private set; }
-
         [field: SerializeField] public int LootCount { get; private set; }
-
         [field: SerializeField] public IntelegenceTokenAction Action { get; private set; }
+        [field: SerializeField] private NetScriptableObject<IntelegenceToken> _net = new();
 
+        public NetScriptableObject<IntelegenceToken> Net => _net;
+        
         public bool Equals(IntelegenceToken other)
         {
             return other._loadKey == _loadKey && other.Id == Id;
@@ -27,54 +26,25 @@ namespace Core.Maps.IntellegenceTokens
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
-            if (string.IsNullOrEmpty(Id) && serializer.IsWriter)
-            {
-                throw new ArgumentException($"ID is null");
-            }
-
-            if (string.IsNullOrEmpty(_loadKey) && serializer.IsWriter)
-            {
-                throw new ArgumentException($"Load key is null");
-            }
-
-            FixedString64Bytes loadKey = new();
-            if (serializer.IsWriter)
-            {
-                loadKey = new(_loadKey);
-            }
-            serializer.SerializeValue(ref loadKey);
-            if (serializer.IsReader)
-            {
-                _loadKey = loadKey.ToString();
-            }
-
-            FixedString64Bytes id = new();
-            if (serializer.IsWriter)
-            {
-                id = new(Id);
-            }
-            serializer.SerializeValue(ref id);
-            if (serializer.IsReader)
-            {
-                Id = id.ToString();
-            }
-
-            AssetReferenceT<IntelegenceToken> assetReference = new(_loadKey.ToString());
-            AsyncOperationHandle<IntelegenceToken> loadHandle = assetReference.LoadAssetAsync();
-
-            loadHandle.Completed += (handle) => 
-            {
-                _loadKey = handle.Result._loadKey;
-                Action = handle.Result.Action;
-                LootCount = handle.Result.LootCount;
-                if (string.IsNullOrEmpty(name))
-                {
-                    name = $"{handle.Result.name} (net loaded)";
-                }
-            };
+            _net.Loaded += OnNetLoad;
+            _net.OnNetworkSerialize(serializer, this);
         }
 
-        #if UNITY_EDITOR
+        private void OnNetLoad(IntelegenceToken result)
+        {
+            _net.Loaded -= OnNetLoad;
+            
+            _loadKey = result._loadKey;
+            Action = result.Action;
+            LootCount = result.LootCount;
+            
+            if (string.IsNullOrEmpty(name))
+            {
+                name = $"{result.name} (net loaded)";
+            }
+        }
+
+#if UNITY_EDITOR
         protected virtual void OnValidate()
         {
             if (Application.isPlaying == false)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Maps;
 using Core.Maps.CharacterPawns;
+using Core.Maps.IntellegenceTokens;
 using Core.PlayerActions.Base;
 using Core.PlayerTablets;
 using Cysharp.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace Core.PlayerActions
     [CreateAssetMenu(menuName = CreateAssetMenuPaths.Actions + "Move action")]
     public class MoveAction : ScriptableObject, IGameAction, INeedPayment, INeedRooms, INeedMap
     {
+        [SerializeField] private IntelegenceToken _noNoiseToken;
+        [SerializeField] private IntelegenceToken _dangerousToken;
         public Ship Ship { get; private set; }
         public PlayerTablet Executor { get; private set; }
         public RoomCell[] RoomSelection { get; set; }
@@ -72,18 +75,26 @@ namespace Core.PlayerActions
         public virtual void ForceExecute()
         {
             RoomCell selectedRoom = RoomSelection.First();
+            RoomCell oldRoom = Executor.CharacterPawn.RoomContent.Owner;
 
             Executor.ActionCount.Value--;
-            MoveNoiseBlocker[] blockers = selectedRoom.GetContentWith<MoveNoiseBlocker>().ToArray();
+            List<IMoveNoiseBlocker> blockers = selectedRoom.GetContentWith<IMoveNoiseBlocker>().ToList();
             
             selectedRoom.AddContent(Executor.CharacterPawn.RoomContent);
 
             if (selectedRoom.IsExplored.Value == false)
             {
                 selectedRoom.Explore();
+                if (selectedRoom.IntellegenceTokenNet.Value.Action is IMoveNoiseBlocker)
+                {
+                    blockers.Add(selectedRoom.IntellegenceTokenNet.Value.Action as IMoveNoiseBlocker);
+                }
+
+                selectedRoom.IntellegenceTokenNet.Value.Action?.Execute(selectedRoom, oldRoom, Executor);
             }
 
-            if (blockers.Length == 0)
+            
+            if (blockers.Count == 0)
             {
                 _ = NoiseAfterMove(selectedRoom);
             }

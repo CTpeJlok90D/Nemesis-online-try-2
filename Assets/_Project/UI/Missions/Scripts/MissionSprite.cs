@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Core.Common;
 using Core.Missions;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TNRD;
 using UnityEngine;
@@ -17,55 +19,29 @@ namespace UI
         [SerializeField] private SpriteByID _missions;
 
         public Mission Mission => _mission.Value.Mission;
-
-        private Dictionary<string, AsyncOperationHandle<Sprite>> _missionsLoadingTasks = new(); 
         
-        private void Start()
-        {
-            UpdateSprite();
-        }
-
+        private Tween _tween; 
+            
         private void OnEnable()
         {
-            UpdateSprite();
+            _ = UpdateSprite();
         }
 
-        private void UpdateSprite()
+        private void OnDisable()
+        {
+            _tween?.Kill();
+        }
+
+        private async UniTask UpdateSprite()
         {
             if (Mission == null)
             {
                 return;
             }
 
-            if (_missionsLoadingTasks.TryGetValue(Mission.ID, out AsyncOperationHandle<Sprite> handle))
-            {
-                if (handle.IsDone)
-                {
-                    _image.sprite = handle.Result;
-                }
-                else
-                {
-                    handle.Completed += OnHandleLoad;
-                }
-                return;
-            }
-
-            AssetReferenceT<Sprite> avatarReference = _missions[Mission.ID];
-            AsyncOperationHandle<Sprite> assetReferenceHandle = Addressables.LoadAssetAsync<Sprite>(avatarReference.RuntimeKey);
-            assetReferenceHandle.Completed += OnHandleLoad;
-
-            _missionsLoadingTasks.Add(Mission.ID, assetReferenceHandle);
             _image.color = new Color(1,1,1,0);
-        }
-
-        private void OnHandleLoad(AsyncOperationHandle<Sprite> handle)
-        {
-            if (_image == null)
-            {
-                return;
-            }
-            _image.sprite = handle.Result;
-            _image.DOColor(Color.white, 0.5f);
+            _image.sprite = await _missions.LoadAsset(_mission.Value.Mission.ID);
+            _tween = _image.DOColor(Color.white, 0.5f);
         }
     }
 }

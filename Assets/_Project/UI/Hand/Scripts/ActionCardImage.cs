@@ -1,12 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Core.ActionsCards;
 using Core.Common;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;
 
 namespace UI.Hands
 {
@@ -16,50 +16,24 @@ namespace UI.Hands
         [SerializeField] private ActionCardContainer _actionCardContainer;
         [SerializeField] private SpriteByID _cardImages;
 
-        private Dictionary<object, AsyncOperationHandle<Sprite>> _loadHandles = new();
+        private Tween _tween;
 
         private void OnEnable()
         {
-            _image.color = new  Color(1, 1, 1, 0);
-            AsyncOperationHandle<Sprite> spriteLoadHandle;
-            object runtimeKey = _cardImages[_actionCardContainer.ActionCard.ID].RuntimeKey;
-            if (_loadHandles.ContainsKey(runtimeKey))
-            {
-                spriteLoadHandle = _loadHandles[runtimeKey];
-            }
-            else
-            {
-                AssetReferenceT<Sprite> spriteReference = _cardImages[_actionCardContainer.ActionCard.ID];
-                if (spriteReference.OperationHandle.IsValid() == false)
-                {
-                    spriteLoadHandle = spriteReference.LoadAssetAsync();
-                }
-                else
-                {
-                    spriteLoadHandle = spriteReference.OperationHandle.Convert<Sprite>();
-                }
-                _loadHandles.Add(runtimeKey, spriteLoadHandle);
-            }
-
-            if (spriteLoadHandle.IsDone)
-            {
-                _image.sprite = spriteLoadHandle.Result;
-                _image.DOColor(Color.white, 0.5f);
-                return;
-            }
-
-            spriteLoadHandle.Completed += OnSpriteLoadComplete;
-            if (gameObject != _image.gameObject)
-            {
-                _image.gameObject.SetActive(false);
-            }
+            _ = LoadImage();
         }
 
-        private void OnSpriteLoadComplete(AsyncOperationHandle<Sprite> handle)
+        private void OnDisable()
         {
-            _image.sprite = handle.Result;
+            _tween?.Kill();
+        }
+
+        private async UniTask LoadImage()
+        {
+            _image.color = new  Color(1, 1, 1, 0);
+            _image.sprite = await _cardImages.LoadAsset(_actionCardContainer.ActionCard.ID);
             _image.gameObject.SetActive(true);
-            _image.DOColor(Color.white, 0.5f);
+            _tween = _image.DOColor(Color.white, 0.5f);
         }
     }
 }

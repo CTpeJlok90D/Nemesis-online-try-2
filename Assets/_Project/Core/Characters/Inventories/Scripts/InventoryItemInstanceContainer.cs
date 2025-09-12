@@ -4,7 +4,7 @@ namespace Core.CharacterInventories
 {
     public class InventoryItemInstanceContainer : MonoBehaviour, IContainsInventoryItemInstance
     {
-        public InventoryItem InventoryItemInstance { get; private set; }
+        [field: SerializeField] public InventoryItem InventoryItemInstance { get; private set; }
 
         public InventoryItem Item => InventoryItemInstance;
         

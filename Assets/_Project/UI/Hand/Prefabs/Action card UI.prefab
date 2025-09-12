@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 4114791926777029773}
   - component: {fileID: 8340124396164446032}
   - component: {fileID: 8610613598812553027}
+  - component: {fileID: 7738107054221734231}
+  - component: {fileID: 6883254374316499607}
   m_Layer: 0
   m_Name: Action card UI
   m_TagString: Untagged
@@ -194,3 +196,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7738107054221734231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898762181730494045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e73bf0bbbeb938409008eaa7ebbf639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointerEvents: {fileID: 6883254374316499607}
+  _scale: {x: 2, y: 2, z: 2}
+--- !u!114 &6883254374316499607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898762181730494045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b57522ce0dabcc46b80f7afa578d3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0950234d1e148bc408780e6855a368d4
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Noise.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c7568e796a358a4db16220c22737f2b
     m_Address: Assets/_Project/Data/Alien attack cards/Alien attack Card 2.asset
     m_ReadOnly: 0
@@ -109,6 +114,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1dc56fb3e110e114893a7b36a84575b7
     m_Address: Empty alien token
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e4a14187a27b5f41aabaf209928b97a
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Close door.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f27a457e063e874ea731516660852a3
+    m_Address: Assets/_Project/View/Items/item-slots-1.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -393,6 +408,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b9416aad9165754aba45bf3eed30f8c
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Slime.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7c3cc1628c3783c4aa204e67c4c7f0bf
     m_Address: Assets/_Project/View/Characters/Mechanic/Prefabs/Mechanic view.prefab
     m_ReadOnly: 0
@@ -422,11 +442,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fe97d5cde2c625469b9c2cd20bd6112
     m_Address: Assets/_Project/Core/Player actions/Attack action container.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 810823e78f3b3d34a920582a30fd2f08
-    m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/characters-spec-items-sherts.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -590,6 +605,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5e7262a8549e3341898d1b20a0f380e
+    m_Address: Assets/_Project/Data/Map/Intellegence tokens/Intellegence token/Dangures.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8e3f96c1b20f7f4b9facf277d986484
     m_Address: Assets/_Project/UI/Selection/Inventory items selection/Sprites/item-card-sherts.png
     m_ReadOnly: 0
@@ -623,6 +643,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: de2f395e80e419d49ae76f47476f05c2
     m_Address: Soldier rifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: deb0dcdef1c681146bc53c558aefd726
+    m_Address: Assets/_Project/Data/Action cards/Actions/NetContainers/Destroy door
+      container.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

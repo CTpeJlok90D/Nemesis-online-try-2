@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f4a7ba570511b49b2cfe581bd8b378, type: 3}
+  m_Name: Add maulfunction intellgenence token action
+  m_EditorClassIdentifier: Assembly-CSharp::Core.AddRoomContentIntellegenceTokenAction
+  _contentToAdd: {fileID: 8733288804813565574, guid: 728a1c01ba658404c96851056ade30f5, type: 3}

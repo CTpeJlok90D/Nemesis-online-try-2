@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760373cd4c3281442873c53fc40dbc39, type: 3}
+  m_Name: Close door
+  m_EditorClassIdentifier: 
+  _loadKey: 57e622d595caf0544a32835125e5589c
+  <Id>k__BackingField: Close door intelegence token
+  <LootCount>k__BackingField: 3
+  <Action>k__BackingField: {fileID: 11400000, guid: cf89822ca84c5834d829e5178154e5c3, type: 2}
+  _net:
+    _selfAssetReference:
+      m_AssetGUID: 1e4a14187a27b5f41aabaf209928b97a
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _isLoaded: 1

@@ -119,6 +119,7 @@ MonoBehaviour:
     rawReference:
       rid: -2
   _cardImages: {fileID: 11400000, guid: d9b73aae088cfe1479db4a0aa0cafb18, type: 2}
+  _nullSprite: {fileID: 0}
   references:
     version: 2
     RefIds:

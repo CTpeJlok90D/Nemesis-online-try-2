@@ -111,6 +111,8 @@ GameObject:
   - component: {fileID: 4862664401911521033}
   - component: {fileID: 6989291153517093129}
   - component: {fileID: 7778648500060402233}
+  - component: {fileID: 1380877076769085970}
+  - component: {fileID: 8870143863582865363}
   m_Layer: 5
   m_Name: Mission card
   m_TagString: Untagged
@@ -188,3 +190,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MissionReference:
     _value: {fileID: 0}
+--- !u!114 &1380877076769085970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377712413518295004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e73bf0bbbeb938409008eaa7ebbf639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointerEvents: {fileID: 8870143863582865363}
+  _scale: {x: 2, y: 2, z: 2}
+--- !u!114 &8870143863582865363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377712413518295004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b57522ce0dabcc46b80f7afa578d3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,7 @@ namespace Core.ActionsCards
 {
     public class ActionCardContainer : MonoBehaviour
     {
-        public ActionCard ActionCard { get; private set; }
+        [field: SerializeField] public ActionCard ActionCard { get; private set; }
 
         public ActionCardContainer Instantiate(ActionCard actionCard, DiContainer diContainer, Transform parent = null)
         {

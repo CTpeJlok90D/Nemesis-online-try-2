@@ -1,3 +1,4 @@
+using Core.PlayerTablets;
 using UnityEngine;
 
 namespace Core.Maps.IntellegenceTokens
@@ -5,8 +6,6 @@ namespace Core.Maps.IntellegenceTokens
     [Icon("Assets/_Project/Core/Map/Editor/intellegence-token-action.png")]
     public abstract class IntelegenceTokenAction : ScriptableObject
     {
-        [SerializeField] private int _cost;
-
-        public int Cost => _cost;
+        public abstract void Execute(RoomCell selfRoom, RoomCell roomExecutorCameFrom, PlayerTablet executor);
     }
 }

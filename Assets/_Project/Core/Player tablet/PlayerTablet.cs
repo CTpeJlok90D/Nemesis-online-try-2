@@ -23,13 +23,7 @@ namespace Core.PlayerTablets
 {
     public class PlayerTablet : NetEntity<PlayerTablet>, IContainsPlayer
     {
-        public static PlayerTablet Local
-        {
-            get
-            {
-                return Instances.FirstOrDefault(x => x.Player == Player.Local);
-            }
-        }
+        public static PlayerTablet Local => Instances.FirstOrDefault(x => x.Player == Player.Local);
 
         public static CharacterPawn LocalCharacterPawn => Local.CharacterPawn;
         public static RoomContent LocalRoomContent => LocalCharacterPawn.RoomContent; 

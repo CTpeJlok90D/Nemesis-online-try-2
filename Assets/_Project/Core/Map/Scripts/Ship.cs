@@ -41,7 +41,7 @@ namespace Core.Maps
 
         public bool IsDestroyed =>
             _roomCells.Count(x => x.GetContentWith<FireRoomToken>() != null) > MaxFireTokenCount.Value ||
-            _roomCells.Count(x => x.GetContentWith<MalfunctionToken>() != null) > MaxMalfunctionTokenCount.Value ||
+            _roomCells.Count(x => x.GetContentWith<MalfunctionRoomToken>() != null) > MaxMalfunctionTokenCount.Value ||
             _selfDestructionTimeTrack.Current.Value == 0;
 
         private void Awake()

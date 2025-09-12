@@ -6,17 +6,258 @@
   <component name="ChangeListManager">
     <list default="true" id="39fc9782-7092-4609-9c73-9126b637aab0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Nemesis-online-try-2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetBehaviourReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetworkExtenctions/NetBehaviourReference.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/EditorAttributesIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/EditorAttributesIcon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/ExampleAnimator.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/ExampleAnimator.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/ExampleScriptableObject.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/ExampleScriptableObject.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/SampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/SampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/AttributesSamples.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/AttributesSamples.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ButtonFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ButtonFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ButtonSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ButtonSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/InlineButtonSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/InlineButtonSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/SelectionButtonsSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/SelectionButtonsSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ValueButtonsSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ButtonAttributeSamples/ValueButtonsSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/ConditionalFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/ConditionalFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/DisableFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/DisableFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/EnableFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/EnableFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/HideFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/HideFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/MessageBoxSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/MessageBoxSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/ShowFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ConditionalAttributeSamples/ShowFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/AssetPreviewSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/AssetPreviewSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/ColorFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/ColorFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/GUIColorSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/GUIColorSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/HelpBoxSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/HelpBoxSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/HideLabelSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/HideLabelSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/ImageSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/ImageSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/IndentPropertySample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/IndentPropertySample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/LineSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/LineSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PrefixSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PrefixSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PropertyOrderSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PropertyOrderSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PropertyWidthSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/PropertyWidthSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/RenameSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/RenameSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/SuffixSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/SuffixSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/TitleSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DecorativeAttributeSamples/TitleSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/AnimatorParamDropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/AnimatorParamDropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/DropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/DropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/PropertyDropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/PropertyDropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/SceneDropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/SceneDropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/SortingLayerDropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/SortingLayerDropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/TagDropdownSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/DropdownAttributeSamples/TagDropdownSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ExampleScriptableObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/ExampleScriptableObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/DataTableSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/DataTableSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/FoldoutGroupSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/FoldoutGroupSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/HorizontalGroupSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/HorizontalGroupSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/TabGroupSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/TabGroupSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/ToggleGroupSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/ToggleGroupSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/VerticalGroupSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/GroupingAttributeSamples/VerticalGroupSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/CollectionRangeSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/CollectionRangeSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/DisableInEditModeSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/DisableInEditModeSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/DisableInPlayModeSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/DisableInPlayModeSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/FilePathSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/FilePathSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/FolderPathSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/FolderPathSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInChildrenSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInChildrenSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInEditModeSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInEditModeSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInPlayModeSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HideInPlayModeSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HidePropertySample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/HidePropertySample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/OnValueChangedSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/OnValueChangedSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ReadOnlySample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ReadOnlySample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/RequiredSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/RequiredSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ShowInInspectorSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ShowInInspectorSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/TypeFilterSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/TypeFilterSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ValidateSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/MiscellaneousAttributeSamples/ValidateSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/ClampSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/ClampSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/DrawHandleSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/DrawHandleSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/MinMaxSliderSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/MinMaxSliderSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/ProgressBarSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/ProgressBarSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/TimeFieldSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/TimeFieldSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/WrapSample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EditorAttributes/Samples/Scripts/NumericalAttributeSamples/WrapSample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point Surface.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point Surface.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point URP.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point URP.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Point/Point.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scenes/ExampleScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scenes/ExampleScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scripts/FunctionLibrary.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scripts/FunctionLibrary.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scripts/Graph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FastScriptReload/Examples/Scripts/Graph.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Editor/CustomLayoutEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Editor/CustomLayoutEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Editor/Flexalon.Samples.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Editor/Flexalon.Samples.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlue.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlue.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlueHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlueHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlueURP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleBlueURP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreen.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreen.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreenHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreenHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreenURP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGreenURP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGrid.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGrid.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGridHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGridHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGridURP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleGridURP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRed.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRed.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRedHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRedHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRedURP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleRedURP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhite.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhite.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhiteHDRP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhiteHDRP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhiteURP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Materials/FlexalonSampleWhiteURP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Prefabs/TextPrefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Prefabs/TextPrefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/CustomLayout.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/CustomLayout.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/Flexalon.Samples.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/Flexalon.Samples.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonColorGradient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonColorGradient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonDynamicMaterial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonDynamicMaterial.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonSampleCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/FlexalonSampleCamera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/InputFieldDataSource.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/InputFieldDataSource.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/SampleLightConfig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/SampleLightConfig.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/SampleMaterialPicker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/SampleMaterialPicker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/TextDataBinding.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Runtime/TextDataBinding.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/AnimatorsUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/AnimatorsUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/DataBindingUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/DataBindingUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/FlexibleLayoutUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/FlexibleLayoutUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/GridLayoutUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/GridLayoutUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/InteractableUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/InteractableUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/ScrollViewUISample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Scenes/UI/ScrollViewUISample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Textures/FlexalonSampleGridTexture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Textures/FlexalonSampleGridTexture.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Textures/FlexalonSampleRoughTexture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flexalon/Samples/Textures/FlexalonSampleRoughTexture.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDeck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Loot decks/Scripts/LootDeck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedLootDeck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/INeedLootDeck.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/PlayerActionExecuter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/NetContainers/Simple search container.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/NetContainers/Simple search container.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/armory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/armory.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/labaratory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 1/labaratory.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/diningroom.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/diningroom.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Room contents/Layer 2/engine room.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/ItemCardImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Inventory items/Scripts/ItemCardImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/IntelegenceToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/IntelegenceToken.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/IntelegenceTokenAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/IntelegenceTokenAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/TestIntellegenceToken.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Intelligence token/Scripts/TestIntellegenceToken.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Action cards/ActionCardContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Action cards/ActionCardContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Core/Player actions/Scripts/Base/MoveAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/Move action.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Action cards/Actions/Move action.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Intellegence tokens/Fire.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Intellegence tokens/Fire.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Map/Intellegence tokens/Malfunction.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Map/Intellegence tokens/Malfunction.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/DefaultMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/DefaultMap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Data/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Resources/ProjectContext.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Resources/ProjectContext.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Prefabs/Action card UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Prefabs/Action card UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/ActionCardImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Hand/Scripts/ActionCardImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Missions/Prefabs/Mission card.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Missions/Prefabs/Mission card.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/Missions/Scripts/MissionSprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/Missions/Scripts/MissionSprite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/UI/_Common/Scripts/PointerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/UI/_Common/Scripts/PointerEvents.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +293,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Aliens attack deck/Scripts/SurpriseAttack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Aliens attack override - Larvae/LarvaeAttackOverride.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Attack dice/Scripts/AttackDice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/DestroyDoor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Characters/Actions/Scripts/SimpleSearch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/DropItemAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Core/Characters/Inventories/Scripts/DroppedInRoomItem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -121,6 +363,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Attack button/AttackButtonToggle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Can execute action object/CanDropItemObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Can execute action object/CanPickUpItemObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Destroy door/DestroyDoorButtonToggle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Move action button/Scripts/ActionPrice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Player turn object/LocalPlayerTurnObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Game actions/Room action button/Scripts/IconByRoomID.cs" root0="FORCE_HIGHLIGHTING" />
@@ -158,6 +401,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Mission selection/Scripts/WaitForOtherPlayersMissionsChooseScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/CancelButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Selection/Scripts/SelectionIsActiveObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Zoomable object/RectBorders.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Zoomable object/ZoomCanvas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/UI/Zoomable object/ZoomableObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/NoiseView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/View/Tunnel/Scripts/TunnelSelectionView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@6a18b5d4ef81/Runtime/Internal/WeakDictionary.cs" root0="SKIP_HIGHLIGHTING" />
@@ -197,6 +443,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@8d13f365c663/Editor/Interface/IConditional.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@7056e7f856e9/UnityEditor.TestRunner/TestLaunchers/PlayerLauncher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@fa3a0bab2b90/DocCodeExamples/ActionExamples.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@ad30dfd93d36/Runtime/TMP/TMP_TextElement_Legacy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Editor/Drawers/ReferenceDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Editor/Items/NoneDropdownItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/net.tnrd.serializableinterface@71df240ccbb4/Runtime/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -333,7 +580,8 @@
       <workItem from="1754586039559" duration="6733000" />
       <workItem from="1754659269280" duration="5202000" />
       <workItem from="1754670182494" duration="709000" />
-      <workItem from="1756457984698" duration="4673000" />
+      <workItem from="1756457984698" duration="11198000" />
+      <workItem from="1756893127920" duration="6636000" />
     </task>
     <task id="LOCAL-00001" summary="Исправлены ошибки">
       <option name="closed" value="true" />

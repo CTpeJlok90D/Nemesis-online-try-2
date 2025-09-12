@@ -119,8 +119,8 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
   _errorValue:
-    m_AssetGUID: c8e3f96c1b20f7f4b9facf277d986484
-    m_SubObjectName: item-card-sherts-craft
+    m_AssetGUID: 1f27a457e063e874ea731516660852a3
+    m_SubObjectName: item-slots-1
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 

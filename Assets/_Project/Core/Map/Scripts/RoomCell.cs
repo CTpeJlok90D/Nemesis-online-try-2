@@ -60,7 +60,7 @@ namespace Core.Maps
             return iNoiseContainer;
         }
 
-        public IEnumerable<T> GetContentWith<T>() where T : Component
+        public IEnumerable<T> GetContentWith<T>()
         {
             foreach (RoomContent roomContent in _roomContents)
             {
@@ -195,8 +195,9 @@ namespace Core.Maps
             {
                 throw new NotServerException("Only server can explore rooms");
             }
-            
+
             _isExplored.Value = true;
+            Debug.Log($"Room {this} explored. Intellegence token: {IntellegenceTokenNet.Value}");
         }
 
         [Rpc(SendTo.Everyone)]
