@@ -7,7 +7,7 @@ namespace Core.CharacterInventories
     [Icon("Assets/_Project/Core/Map/Editor/icons8-box-100.png")]
     public class InventoryItem : NetEntity<InventoryItem>
     {
-        public NetBehaviourReference<Inventory> OwnerInventory;
+        public NetBehaviourReference<Inventory> OwnerInventory { get; private set; }
         
         [SerializeField] private ItemType _itemType;
         [SerializeField] public string _id;

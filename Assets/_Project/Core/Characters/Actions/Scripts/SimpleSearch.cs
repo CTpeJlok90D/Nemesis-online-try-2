@@ -138,5 +138,10 @@ namespace Core.Characters.Actions
             ActionCard card = Executor.ActionCardsDeck.HandLocal.First(x => x.ID == SearchCardId);
             Executor.ActionCardsDeck.DiscardCard(card);
         }
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            return RoomIsValidToLoot(executor.CharacterPawn.RoomContent.Owner) && ExecutorHaveCard(executor);
+        }
     }
 }

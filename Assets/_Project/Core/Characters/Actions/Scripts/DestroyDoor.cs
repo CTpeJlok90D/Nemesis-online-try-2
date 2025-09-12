@@ -12,9 +12,10 @@ namespace Core
     public class DestroyDoor : ScriptableObject, IGameAction, INeedNoiseContainers
     {
         public const string CardID = "Destruction";
+        private PlayerTablet _executor;
+
         
         public INoiseContainer[] SelectedNoiseContainers { get; set; }
-
         public INoiseContainer[] NoiseContainerSelectionSource
         {
             get
@@ -22,7 +23,7 @@ namespace Core
                 RoomContent content = _executor.CharacterPawn.RoomContent;
                 RoomCell cell = content.Owner;
                 return cell.Tunnels
-                    .Where(noiseContainer 
+                    .Where(noiseContainer
                         => noiseContainer.NetworkObject.TryGetComponent(out Tunnel tunnel) &&
                            tunnel.DoorState is not DoorState.Broken)
                     .ToArray();
@@ -30,7 +31,18 @@ namespace Core
         }
 
         public int RequiredNoiseContainerCount => 1;
-        private PlayerTablet _executor;
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            RoomContent content = executor.CharacterPawn.RoomContent;
+                RoomCell cell = content.Owner;
+                bool haveAcceptableDoor = cell.Tunnels
+                    .Any(noiseContainer => noiseContainer.NetworkObject.TryGetComponent(out Tunnel tunnel) &&
+                                       tunnel.DoorState is not DoorState.Broken);
+                bool haveCard = executor.ActionCardsDeck.HandLocal.Any(card => card.ID == CardID);
+            
+                return haveCard && haveAcceptableDoor;
+        }
         
         public void Initialize(PlayerTablet executor)
         {

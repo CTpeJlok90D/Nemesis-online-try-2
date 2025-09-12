@@ -115,5 +115,10 @@ namespace Core.PlayerActions
         {
             Executor = executer;
         }
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            return true;
+        }
     }
 }

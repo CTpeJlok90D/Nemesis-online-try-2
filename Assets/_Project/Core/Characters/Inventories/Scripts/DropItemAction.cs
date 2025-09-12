@@ -71,6 +71,12 @@ namespace Core.CharacterInventories
             _executor.RemoveItem(itemToDrop);
             _droppedItem_PREFAB.Instantiate(roomCell, itemToDrop);
         }
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            return executor.BigItemsInventory != null && executor.BigItemsInventory.Any() ||
+                              executor.SmallItemsInventory != null && executor.SmallItemsInventory.Any();
+        }
     }
 }
 

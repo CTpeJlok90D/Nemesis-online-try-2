@@ -166,5 +166,11 @@ namespace Core.PlayerActions.Base
                 postProcessor.PostProcessAttack(_executor, enemy, rollResult);
             }
         }
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            IReadOnlyCollection<RoomContent> contents = PlayerTablet.LocalRoomCell.RoomContents;
+            return contents.Any(x => x.TryGetComponent(out Enemy e));
+        }
     }
 }

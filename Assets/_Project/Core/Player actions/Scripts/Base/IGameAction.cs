@@ -5,6 +5,7 @@ namespace Core.PlayerActions
 {
     public interface IGameAction
     {
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor);
         public bool CanCancel => true;
         public void Initialize(PlayerTablet executor);
         public CanExecuteCheckResult CanExecute();

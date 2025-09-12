@@ -76,5 +76,11 @@ namespace Core.CharacterInventories
             _executor.AddItem(item);
             _executor.ActionCount.Value--;
         }
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            RoomCell cell = executor.CharacterPawn.RoomContent.Owner;
+            return cell.RoomContents.Any(x => x.TryGetComponent(out DroppedInRoomItem item));
+        }
     }
 }

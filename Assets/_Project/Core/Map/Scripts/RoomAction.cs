@@ -18,5 +18,10 @@ namespace Core.Maps
         
         public abstract IGameAction.CanExecuteCheckResult CanExecute();
         public abstract void ForceExecute();
+
+        public bool SuitableCondictionsForFulfillment(PlayerTablet executor)
+        {
+            return executor.ActionCount.Value >= RequaredPaymentCount;
+        }
     }
 }
