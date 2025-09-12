@@ -28,7 +28,14 @@ namespace Core.Characters.Health
         [Inject] private HeavyDamageDeck _heavyDamageDeck;
 
         public delegate void DealthHandler(CharacterHealth characterHealth);
+        public delegate void HeavyDamageTreadedHandler(HeavyDamage heavyDamage);
         public event DealthHandler Dead;
+        public event HeavyDamageTreadedHandler HeavyDamageTreaded;
+        public event NetworkList<NetworkObjectReference>.OnListChangedDelegate HeavyDamagesCountChanged
+        {
+            add => _heavyDamages.OnListChanged += value;
+            remove => _heavyDamages.OnListChanged -= value;
+        }
         
         private void Awake()
         {
@@ -69,6 +76,12 @@ namespace Core.Characters.Health
         public async UniTask HeavyDamage(string damageId)
         {
             AsyncOperationHandle<HeavyDamage> handle = Addressables.LoadAssetAsync<HeavyDamage>(damageId);
+
+            if (handle.IsValid())
+            {
+                throw new System.ArgumentException($"Damage id {damageId} is invalid", nameof(damageId));
+            }
+
             await handle.ToUniTask();
             HeavyDamage heavyDamage = handle.Result;
             HeavyDamage(heavyDamage);
@@ -90,18 +103,47 @@ namespace Core.Characters.Health
 
         public void HeavyDamage(HeavyDamage damagePrefab)
         {
+            if (damagePrefab == null)
+            {
+                throw new System.ArgumentNullException(nameof(damagePrefab));
+            }
+
             HeavyDamage instance = damagePrefab.Instantiate(this);
             _heavyDamages.Add(instance.NetworkObject);
             
             TryKill();
         }
 
-        private void TryKill()
+        public void TreadHeavyDamage(HeavyDamage damage)
+        {
+            if (damage == null)
+            {
+                throw new System.ArgumentNullException(nameof(damage));
+            }
+
+            damage.Tread();
+            HeavyDamageTreaded?.Invoke(damage);
+        }
+
+        public void RemoveHeavyDamage(HeavyDamage damage)
+        {
+            if (damage == null)
+            {
+                throw new System.ArgumentNullException(nameof(damage));
+            }
+
+            _heavyDamages.Remove(damage.NetworkObject);
+            damage.NetworkObject.Despawn();
+        }
+
+        private bool TryKill()
         {
             if (_heavyDamages.Count == HEAVYS_TO_DEATH && LightDamageCount.Value > 0 || _heavyDamages.Count > HEAVYS_TO_DEATH)
             {
                 ForceKill();
+                return true;
             }
+            return false;
         }
 
         public void ForceKill()

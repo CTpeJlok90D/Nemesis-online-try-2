@@ -8,9 +8,11 @@ using UnityEditor;
 namespace UI.CommonScripts
 {
     [Icon("Assets/_Project/UI/_Common scripts/Editor/Icons/icons8-tab-96.png")]
-    public class Tab : MonoBehaviour
+    public sealed class Tab : MonoBehaviour
     {
         [SerializeField] private UnityEvent _enabled;
+        [SerializeField] private UnityEvent _disabled;
+
 
         public event UnityAction Enabled
         {
@@ -18,10 +20,26 @@ namespace UI.CommonScripts
             remove => _enabled.RemoveListener(value);
         }
 
+        public event UnityAction Disabled
+        {
+            add => _disabled.AddListener(value);
+            remove => _disabled.RemoveListener(value);
+        }
+
         public void Enable()
         {
             DisableAllOtherTabs();
             gameObject.SetActive(true);
+        }
+
+        private void OnEnable()
+        {
+            _enabled.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            _disabled.Invoke();
         }
 
         private void DisableAllOtherTabs()

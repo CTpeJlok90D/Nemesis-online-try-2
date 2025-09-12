@@ -72,7 +72,10 @@ namespace Core.PlayerTablets
         public bool InHybridizationCapsule => _inHybridizationCapsule.Value;
         
         public delegate void LinkPawnHandler(PlayerTablet sender);
+        public delegate void TagChangedHandle(PlayerTablet sender, PlayerTag tag);
         public event LinkPawnHandler PawnLinked;
+        public event TagChangedHandle TagAdded;
+        public event TagChangedHandle TagRemoved;
         
         public IReadOnlyReactiveField<CharacterPawn> CharacterPawnReference => _linkedCharacterPawn;
 
@@ -98,13 +101,15 @@ namespace Core.PlayerTablets
             {
                 return;
             }
-            
+
             _tags.Add((int)tag);
+            TagAdded?.Invoke(this, tag);
         }
 
         public void RemoveTag(PlayerTag tag)
         {
             _tags.Remove((int)tag);
+            TagAdded?.Invoke(this, tag);
         }
 
         public bool CanBookIt(Player player) => IsEmpty && Instances.Any(x => x.PlayerReference.Value == player) == false;

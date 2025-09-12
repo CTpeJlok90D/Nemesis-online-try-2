@@ -12,7 +12,7 @@ namespace Core.ActionsCards
         [field: SerializeField] public int _cost = 0;
         [field: SerializeField] private NetScriptableObject<ActionCard> _actionCard = new();
         [field: SerializeField] public string ID { get; private set; }
-        [field: SerializeField] public InfectionType Type { get; private set; }
+        [field: SerializeField] public ActionCardType Type { get; private set; }
 
         public NetScriptableObject<ActionCard> Net => _actionCard;
 
@@ -34,7 +34,7 @@ namespace Core.ActionsCards
             ID = result.ID;
         }
 
-        public enum InfectionType
+        public enum ActionCardType
         {
             Basic,
             FakeInfection,

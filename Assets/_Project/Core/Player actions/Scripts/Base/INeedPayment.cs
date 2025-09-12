@@ -24,7 +24,7 @@ namespace Core.PlayerActions
             
             int requiredPaymentCount = RequaredPaymentCount;
             IReadOnlyCollection<ActionCard> hand = await executor.ActionCardsDeck.GetHand();
-            hand = hand.Where(x => x.Type == ActionCard.InfectionType.Basic).ToList();
+            hand = hand.Where(x => x.Type == ActionCard.ActionCardType.Basic).ToList();
 
             ActionCard[] selectedCards = await cardsSelection.SelectFrom(hand, requiredPaymentCount);
                     

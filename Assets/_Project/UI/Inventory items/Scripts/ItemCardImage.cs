@@ -37,7 +37,7 @@ namespace UI.Hands
                 return;
             }
 
-            Sprite loadedSprite = await _cardImages.LoadAsset(Item.ID);
+            Sprite loadedSprite = await _cardImages.LoadAssetAsync(Item.ID);
             _image.sprite = loadedSprite;
             _image.DOColor(oldColor, 0.2f);
         }

@@ -31,7 +31,7 @@ namespace UI.Hands
         private async UniTask LoadImage()
         {
             _image.color = new  Color(1, 1, 1, 0);
-            _image.sprite = await _cardImages.LoadAsset(_actionCardContainer.ActionCard.ID);
+            _image.sprite = await _cardImages.LoadAssetAsync(_actionCardContainer.ActionCard.ID);
             _image.gameObject.SetActive(true);
             _tween = _image.DOColor(Color.white, 0.5f);
         }

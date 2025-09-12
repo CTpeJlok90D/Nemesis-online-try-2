@@ -6,11 +6,18 @@ namespace Core.Characters.Health
 {
     public class HeavyDamage : NetworkBehaviour
     {
+        [SerializeField] private HeavyDamageAction _linkedAction;
+        [SerializeField] private string _id;
         private NetBehaviourReference<CharacterHealth> _owner;
-        public CharacterHealth Owner => _owner.Value;
+        private NetVariable<bool> _isTreated;
 
+
+        public CharacterHealth Owner => _owner.Value;
+        public string ID => _id;
         public bool IsInitialized { get; private set; }
+        public IReadOnlyReactiveField<bool> IsTreated => _isTreated;
         
+
         private void Awake()
         {
             if (IsInitialized == false && NetworkManager.IsServer)
@@ -25,7 +32,7 @@ namespace Core.Characters.Health
             gameObject.SetActive(false);
             HeavyDamage result = Instantiate(this);
             gameObject.SetActive(true);
-            
+
             return result.Init(owner);
         }
 
@@ -33,11 +40,17 @@ namespace Core.Characters.Health
         {
             IsInitialized = true;
             _owner = new(owner);
-            
+            _isTreated = new(false);
+
             gameObject.SetActive(true);
             NetworkObject.Spawn();
             NetworkObject.TrySetParent(owner.NetworkObject);
             return this;
+        }
+
+        public void Tread()
+        {
+            _isTreated.Value = true;
         }
     }
 }

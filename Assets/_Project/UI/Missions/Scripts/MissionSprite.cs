@@ -40,7 +40,7 @@ namespace UI
             }
 
             _image.color = new Color(1,1,1,0);
-            _image.sprite = await _missions.LoadAsset(_mission.Value.Mission.ID);
+            _image.sprite = await _missions.LoadAssetAsync(_mission.Value.Mission.ID);
             _tween = _image.DOColor(Color.white, 0.5f);
         }
     }

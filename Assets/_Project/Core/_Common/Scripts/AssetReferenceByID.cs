@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -10,7 +11,7 @@ namespace Core.Common
     {
         private static Dictionary<TKey, TValue> _avatarLoadedValues = new();
         
-        public async UniTask<TValue> LoadAsset(TKey key)
+        public async UniTask<TValue> LoadAssetAsync(TKey key, CancellationToken cancellationToken = default)
         {
             AssetReferenceT<TValue> result = this[key];
 
@@ -25,7 +26,7 @@ namespace Core.Common
             AsyncOperationHandle<TValue> assetReferenceHandle = Addressables.LoadAssetAsync<TValue>(avatarReference.RuntimeKey);
             
             _avatarLoadedValues.Add(key, null);
-            await assetReferenceHandle.ToUniTask();
+            await assetReferenceHandle.ToUniTask(cancellationToken: cancellationToken);
             _avatarLoadedValues[key] = assetReferenceHandle.Result;
             
             return assetReferenceHandle.Result;

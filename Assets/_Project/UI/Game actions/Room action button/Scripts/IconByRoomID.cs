@@ -40,7 +40,7 @@ namespace UI
             GameActionContainer gameActionContainer = PlayerTablet.LocalRoomCell.Type.RoomActions.First();
             
             _image.sprite = null;
-            _image.sprite = await _icons.LoadAsset(gameActionContainer.Id);
+            _image.sprite = await _icons.LoadAssetAsync(gameActionContainer.Id);
         }
     }
 }

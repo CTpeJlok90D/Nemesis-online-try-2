@@ -92,6 +92,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 196184859a7757e449cfd44791205799
+    m_Address: Assets/_Project/UI/Health/Sprites/injury-card-place.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a93bb2c9fcb782448e5417e395a6047
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 1/hive.prefab
     m_ReadOnly: 0
@@ -280,6 +285,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 556476b5ad4a81540805dffa45fb9e63
     m_Address: Assets/_Project/UI/Selection/Coordinates selection/Sprites/A coordinate.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57b1313110c32f547a54946964f2518a
+    m_Address: Assets/_Project/UI/Health/Sprites/injury-card-error.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -681,6 +691,11 @@ MonoBehaviour:
   - m_GUID: e26b66a04ce062f48b90cac906da99c5
     m_Address: Assets/_Project/Data/Map/Room contents/Prefabs/Layer 2/Unexplored
       room layer 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4abbe9309ab05744a5913f467e6be0a
+    m_Address: Assets/_Project/UI/Health/Sprites/injury-cards.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
